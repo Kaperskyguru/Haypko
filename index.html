@@ -9,8 +9,11 @@
     <title>Blank Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/jquery-ui.css" rel="stylesheet">
+    <link href="assets/css/jquery-ui.theme.min.css" rel="stylesheet">
     <link href="assets/css/aos.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="assets/css/inputmask.css" rel="stylesheet"> -->
     <!-- Custom styles for this template -->
     <link href="assets/css/Enyopaystyles.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -20,7 +23,7 @@
     <![endif]-->
   </head>
   <body>
-    <section class="hero">
+    <section class="hero" data-pg-collapsed>
       <div data-aos="slide-left" class="pg-empty-placeholder hero-inner-shape"></div>
       <nav class="navbar navbar-default" role="navigation" data-pg-collapsed> 
         <div class="container-fluid"> 
@@ -56,8 +59,8 @@
         </div>         
       </nav>
       <img data-aos="slide-left" class="hero-img" src="assets/images/png/fuel_PNG31.png" />
-      <div data-aos="fade-down" class="border-left  ml-40 hero-text-body">
-        <p class="hero-subtext">Get Fuel Delivered to your door step with</p>
+      <div data-aos="fade-down" class="  ml-40 hero-text-body">
+        <p class="border-left hero-subtext">Get Fuel Delivered to your door step with</p>
       </div>
       <h1 data-aos="fade-in" data-aos-delay="500" class="hero-heading text-uppercase">Confidence</h1>
       <div class="ml-40 hero-btn-body">
@@ -97,7 +100,7 @@
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section" data-pg-collapsed>
       <div class="container-fluid" data-pg-collapsed>
         <div class="row">
           <div>
@@ -130,7 +133,7 @@
         </div>
       </div>
     </section>
-    <section class="section gutter sec-partners">
+    <section class="section gutter sec-partners" data-pg-collapsed>
       <div class="container-fluid">
         <div class="row">
           <div>
@@ -149,7 +152,7 @@
             <img src="assets/images/svg/logo.svg" /> 
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4">
-            <a class="btn" href="#">Become A Partner</a> 
+            <a class="btn mt-20" href="#!">Become A Partner</a> 
           </div>
         </div>
       </div>
@@ -206,16 +209,16 @@
     <section class="form-section">
       <div class="container">
         <div class="row">
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0"> 
-            <form role="form" id="prod-form">
+          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
+            <form role="form" class="prod-form" id="prod-form">
               <h6>
     Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
               <h3>Product Details</h3>
               <div class="row" data-pg-collapsed>
                 <div class="col-md-4">
                   <div class="form-group" data-pg-collapsed> 
-                    <label class="control-label" for="exampleInputEmail1">Product</label>                     
-                    <select class="form-control" id="products">
+                    <label class="control-label" for="products">Product</label>
+                    <select class="form-control" id="products" name="products">
                       <option value="-1" selected>-- Select Products --</option>
                       <option value="petrol">Petrol</option>
                       <option value="diesel">Diesel</option>
@@ -225,55 +228,55 @@
                 </div>
                 <div class="col-md-4">
                   <div class="form-group" data-pg-collapsed> 
-                    <label class="control-label" for="exampleInputEmail1">Amount ( NGN )</label>                     
-                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Amount"> 
+                    <label class="control-label" for="price">Amount ( NGN )</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Amount">
                   </div>                   
                 </div>
                 <div class="col-md-4">
                   <div class="form-group" data-pg-collapsed> 
-                    <label class="control-label" for="exampleInputEmail1">Litres</label>                     
-                    <input type="number" class="form-control" id="litres" placeholder="Liters"> 
+                    <label class="control-label" for="litres">Litres</label>
+                    <input type="number" class="form-control" id="litres" name="litres" placeholder="Liters">
                   </div>                   
                 </div>
               </div>
               <div class="row" data-pg-collapsed>
                 <div class="col-xs-12">
-                  <h6 class="text-right"><a href="#">Add Another Product</a></h6> 
+                  <h6 class="text-right"><a href="#" id="addprod">Add Another Product</a></h6>
                 </div>
               </div>
               <h3>Your Details</h3>
               <div class="row">
                 <div class="col-xs-12" data-pg-collapsed>
                   <div class="form-group"> 
-                    <input type="text" class="form-control" id="fullname" placeholder="Fullname">
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Fullname">
                   </div>                   
                 </div>
                 <div class="col-xs-12 col-sm-6" data-pg-collapsed>
                   <div class="form-group"> 
-                    <input type="number" class="form-control" id="tel" placeholder="Phone Number">
+                    <input type="number" class="form-control" id="tel" name="tel" placeholder="Phone Number">
                   </div>                   
                 </div>
                 <div class="col-xs-12 col-sm-6" data-pg-collapsed>
                   <div class="form-group"> 
-                    <input type="Email" class="form-control" id="Email" placeholder="Email">
+                    <input type="Email" class="form-control" id="email" name="email" placeholder="Email">
                   </div>                   
                 </div>
                 <div class="col-xs-12" data-pg-collapsed>
                   <div class="form-group"> 
-                    <input type="text" class="form-control" id="deliveryadd" placeholder="Delivery Address">
+                    <input type="text" class="form-control" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address">
                   </div>                   
                 </div>
               </div>
-              <h3 class="text-right">Proceed to Checkout<button type="submit" class="btn checkout-btn">
-                  <img src="assets/images/svg/arrow.svg" />
+              <h3 class="text-right">Proceed to Checkout<button type="submit" class="checkout-btn">
+                  <i class="fa fa-fw fa-long-arrow-right"></i>
                 </button></h3> 
             </form>             
           </div>
           <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form class="checkout-box" id="card-form">
-              <div class="checkout-details" data-pg-collapsed>
+            <form class="checkout-box " id="card-form">
+              <div class="checkout-details">
                 <h3 class="text-center">Price Summary</h3>
-                <ul class="list-unstyled" data-pg-collapsed> 
+                <ul class="list-unstyled prod-list" data-pg-collapsed> 
                   <li>
                     <span>10.4L of Petrol</span>
                     <span class="summary-price">N1,500</span>
@@ -281,58 +284,55 @@
                 </ul>
                 <div class="summ-total">
                   <span>Total:</span>
-                  <h2>N1,500</h2>
+                  <h1>N1,500</h1>
                 </div>
               </div>
               <div class="checkout-form-body">
-                <div data-pg-collapsed>
+                <div>
                   <h3>Payment Info</h3>
-                  <div class="row" data-pg-collapsed>
+                  <div class="row">
                     <div class="col-md-8">
                       <div class="form-group" data-pg-collapsed> 
-                        <label class="control-label" for="exampleInputEmail1">Card Number</label>                         
-                        <input type="number" class="form-control" id="card-number" placeholder="Card Number"> 
+                        <label class="control-label" for="cardnum">Card Number</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '9999 9999 9999 9999'" name="cardnum" id="cardnum" placeholder="4444 4444 4444 4444">
                       </div>                       
                     </div>
                     <div class="col-md-4">
                       <div class="form-group" data-pg-collapsed> 
                         <label class="control-label" for="ccv">CCV</label>                         
-                        <input type="number" class="form-control" id="ccv" placeholder="ccv"> 
+                        <input type="number" class="form-control" name="ccv" id="ccv" placeholder="ccv"> 
                       </div>                       
                     </div>
                   </div>
                   <div class="row" data-pg-collapsed>
                     <div class="col-md-8">
                       <div class="form-group" data-pg-collapsed> 
-                        <label class="control-label" for="exampleInputEmail1">Card Holders Name</label>                         
-                        <input type="number" class="form-control" id="holders-name" placeholder="name"> 
+                        <label class="control-label" for="holdersname">Card Holders Name</label>
+                        <input type="text" class="form-control" name="holdersname" id="holdersname" placeholder="name">
                       </div>                       
                     </div>
                     <div class="col-md-4">
                       <div class="form-group" data-pg-collapsed> 
-                        <label class="control-label" for="exampleInputEmail1">Expiry Date</label>                         
-                        <input type="number" class="form-control" id="litres" placeholder="Liters"> 
+                        <label class="control-label" for="expdate">Expiry Date</label>
+                        <input class="form-control" id="expdate" name="expdate" placeholder="mm/yy">
                       </div>                       
                     </div>
                   </div>
-                  <h3 class="text-right"><button type="submit" class="btn pay-btn">
+                  <h3 class="text-right" data-pg-collapsed><button type="submit" class="btn ">
                       Proceed
 </button></h3> 
                 </div>
+                <a href="#" class="back-btn corner-btn"><i class="fa fa-long-arrow-left fa-fw"></i></a>
               </div>               
-            </form>                          
+            </form>             
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-</div>
       </div>
     </section>     
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/enyopay.js"></script>
+    <script src="assets/js/enyopay.js" type="text/javascript"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
