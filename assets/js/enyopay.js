@@ -65,11 +65,9 @@ class enyoUX {
 
     formwidgets(){
         //date picker
-        $( "#expdate" ).datepicker({
-            dateFormat: "mm/y"
-        });
-        $("#cardnum").inputmask({"mask": "9999 9999 9999 9999"});
-
+        $( "#expdate" ).inputmask({"mask": "99/99",greedy:false});
+        $("#cardnum").inputmask({"mask": "9999 9999 9999 9999",greedy:false});
+        $("#ccv").inputmask({"mask":"999",greedy:false});
     }
 
 	/*buy now button handler*/
@@ -178,11 +176,22 @@ class enyoUX {
                     }
 
                 }
-            }).valid()
+            });
+            cardvalid=$(this).valid()
             console.log(cardvalid);
+            if(cardvalid==true){
+            	swal("Payment Successful","An invoice has been sent to the mail given."+
+            		"Your Order Code is KQJC23 Copy It!","success");
+            }
          });
 	}
-
+	/*sets active on click menu item*/
+	dashActiveHandler(){
+		$(".nav-sidebar li ").click(function(){
+			$(".nav-sidebar li ").removeClass("active");
+			$(this).addClass("active");
+		});
+	}
 
 }
 
@@ -192,4 +201,5 @@ $(document).ready(function(){
 	enyo.aosnit();
 	enyo.buynow();
 	enyo.formwidgets();
+	enyo.dashActiveHandler();
 });

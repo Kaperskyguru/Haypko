@@ -584,3 +584,20 @@ a.btn:hover
     }
 }
 
+#ccv
+{
+    background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
+  	padding-left:35px;
+  	text-transform:uppercase;;;;
+}
+
+#cardnum
+{
+    background: url('../images/png/credit-card.png') no-repeat scroll 7px 7px;
+    padding-left: 50px;
+}
+
+
+.swal-overlay{
+    background-color:rgba(255,255,255,0.5);
+}
