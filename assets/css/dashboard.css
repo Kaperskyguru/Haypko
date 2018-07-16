@@ -1,0 +1,180 @@
+
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body
+{
+    padding-top: 0px;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header
+{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+
+.navbar-fixed-top
+{
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+
+.sidebar
+{
+    display: none;
+}
+
+@media (min-width: 768px)
+{
+    .sidebar
+    {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20p 20px 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #151d29;
+        color: white;
+        border-right: 1px solid #eee;
+    }
+}
+
+/* Sidebar navigation */
+
+.nav-sidebar
+{
+    margin: 60px -21px 20px -20px;
+}
+
+.nav-sidebar > li > a
+{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 17px;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus
+{
+    color: #fff;
+    background-color: rgba(0,0,0,0.5);
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+/*
+ * Main content
+ */
+
+.main
+{
+    padding: 20px;
+}
+
+@media (min-width: 768px)
+{
+    .main
+    {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.main .page-header
+{
+    margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders
+{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.placeholders h4
+{
+    margin-bottom: 0;
+}
+
+.placeholder
+{
+    margin-bottom: 20px;
+}
+
+.placeholder img
+{
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.dash-nav
+{
+    margin-right: -40px;
+    margin-left: -40px;
+    margin-top: -20px;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-sidebar li a
+{
+    color: white;
+}
+
+.nav-sidebar li a:hover
+{
+    background-color: #c3c3c3;
+    color: #151d29;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.profile-icon
+{
+    width: 50px;
+    height: 50px;
+    background-color: #e7e7e7;
+    border-radius: 50%;
+}
+
+.mt-20
+{
+    margin-top: 20px;
+}
+
+.navbar .navbar-brand
+{
+    color: #151d29;
+    font-size: 30px;
+}
+
