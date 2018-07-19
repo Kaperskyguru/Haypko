@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-4": {"Enyopay\\": "app/"}
+    },
+    "require": {
+        "monolog/monolog": "^1.23",
+        "yabacon/paystack-php": "^2.1"
+    }
+}
