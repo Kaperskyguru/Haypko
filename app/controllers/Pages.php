@@ -52,6 +52,11 @@
                 $this->views('pages/index');
             }
         }
+        
+        public function faq()
+        {
+            $this->views('pages/faq');
+        }
 
         public function index()
         {

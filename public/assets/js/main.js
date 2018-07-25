@@ -6,8 +6,8 @@ $(document).ready(function() {
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
-        var litres = $('#litres').val();
-        var amount = $('#price').val();
+        var litres = $('#litres0').val();
+        var amount = $('#price0').val();
         var product = $('#products').val();
 
         $.ajax({
