@@ -574,7 +574,7 @@ a.btn:hover
 {
     background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
   	padding-left:35px;
-  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 }
 
 #cardnum
@@ -876,5 +876,21 @@ a:focus
 .navbar-brand img
 {
     width: 90px;
+}
+
+@media (max-width:767px)
+{
+    .m-display
+    {
+        display: block !important;
+    }
+@media (max-width:767px)
+{
+    .m-hide
+    {
+        display: none !important;
+    }
+}
+
 }
 
