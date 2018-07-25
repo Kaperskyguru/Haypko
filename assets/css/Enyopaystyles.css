@@ -28,6 +28,7 @@ body
 .navbar-brand
 {
     font-size: 24px;
+    font-weight: 600;
 }
 
 .navbar-default .navbar-brand
@@ -38,7 +39,7 @@ body
 .navbar-default .navbar-nav li a
 {
     color: white;
-    font-size: 20px;
+    font-size: 13px;
 }
 
 @media (min-width:768px)
@@ -51,7 +52,7 @@ body
     .hero-inner-shape
     {
         display: inline-block;
-        width: 60%;
+        width: 70%;
         height: 100%;
         position: absolute;
         right: 0px;
@@ -96,7 +97,7 @@ body
     {
         font-weight: 600;
         margin-left: 40px;
-        font-size: 80px;
+        font-size: 45px;
     }
 }
 
@@ -251,6 +252,7 @@ img
     padding: 10px 10px;
     width: 50px;
     height: 50px;
+    border: none;
 }
 
 a.btn:hover
@@ -351,17 +353,21 @@ a.btn:hover
 {
     .navbar-default .navbar-nav li a
     {
-        font-size: 15px;
+        font-size: 10px;
         padding: 10px;
+    }
+}
+
+@media (min-width:480px) and (max-width:599px)
+{
+    .hero-heading
+    {
+        font-size: 50px;
     }
 }
 
 @media (min-width:480px) and (max-width:991px)
 {
-    .hero-heading
-    {
-        font-size: 60px;
-    }
     .hero-subtext
     {
         margin-top: 100px;
@@ -463,25 +469,9 @@ a.btn:hover
 {
     .hero-subtext
     {
-        padding-right: 130px;
-        font-size: 15px;
+        padding-right: 200px;
+        font-size: 12px;
         margin-top: 30px;
-    }
-}
-
-@media (min-width:768px) and (max-width:991px)
-{
-    .hero-heading
-    {
-        font-size: 40px;
-    }
-}
-
-@media (min-width:992px) and (max-width:1199px)
-{
-    .hero-heading
-    {
-        font-size: 50px;
     }
 }
 
@@ -540,17 +530,13 @@ a.btn:hover
     }
 }
 
-@media (max-width:479px)
+@media (max-width:599px)
 {
     .checkout-details
     {
         width: 100%;
         height: 300px;
     }
-}
-
-@media (max-width:599px)
-{
     .checkout-box
     {
         width: 80%;
@@ -588,7 +574,7 @@ a.btn:hover
 {
     background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
   	padding-left:35px;
-  	text-transform:uppercase;;;;
+  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 }
 
 #cardnum
@@ -597,7 +583,298 @@ a.btn:hover
     padding-left: 50px;
 }
 
-
-.swal-overlay{
-    background-color:rgba(255,255,255,0.5);
+.swal-overlay
+{
+    background-color: rgba(255,255,255,0.5);
 }
+
+@media (max-width:767px)
+{
+    .navbar-brand img
+    {
+        width: 60px;
+    }
+}
+
+.btn-topnav
+{
+    color: #151d27 !important;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+.btn-signup
+{
+    color: white;
+    background-color: #151d27;
+    border-radius: 4px;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+.navbar-nav ul li a
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-topnav:hover
+{
+    color: white !important;
+    border: 1px solid white;
+}
+
+.faq-section
+{
+}
+
+.faq-section h2
+{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.search-widget
+{
+    border: 2px solid #efefef;
+    margin: 0px auto;
+    padding: 10px 50px 10px 10px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+.panel-body
+{
+    font-size: 16px;
+    border-color: #d8d8d8;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    margin-bottom: 20px;
+}
+
+.panel-default>.panel-heading
+{
+    background-color: white;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+    border: 0px;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
+.faq-container
+{
+}
+
+.faq-container .panel-heading h2 a:hover
+{
+    color: #3c3c3c;
+}
+
+.faq-container .panel-heading h2 a
+{
+    display: block;
+}
+
+.panel.panel-default
+{
+    border: 0px;
+    margin-bottom: 50px;
+}
+
+.colored-nav
+{
+    color: white;
+    background-color: #151d27;
+}
+
+.white-brand
+{
+    color: white !important;
+}
+
+.search-widget + button
+{
+    border-radius: 50px;
+    margin-left: -50px;
+    border: none;
+    background-color: #efa632;
+}
+
+@media (max-width:767px)
+{
+    .btn-signup
+    {
+        margin-left: 0px;
+        border: none;
+    }
+    .btn-topnav
+    {
+        border-radius: 0px;
+    }
+}
+
+.navbar-toggle
+{
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
+{
+    background-color: white;
+    color: #151d27;
+}
+
+.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar
+{
+    background-color: #151d27;
+}
+
+a:focus
+{
+    outline: none;
+    color: #cbcbcb !important;
+}
+
+@media (max-width:767px)
+{
+    .search-widget
+    {
+        max-width: 250px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px)
+{
+    .navbar-default .navbar-nav li a
+    {
+        font-size: 10px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+    .hero-inner-shape
+    {
+        -webkit-clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px)
+{
+    .hero-inner-shape
+    {
+        -webkit-clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+    }
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+    .btn-signup
+    {
+        margin-left: 5px;
+        margin-right: -10px;
+    }
+}
+
+@media (min-width:1200px)
+{
+    .hero-heading
+    {
+        font-size: 60px;
+    }
+}
+
+#p-form input
+{
+}
+
+.btn-danger
+{
+    background-color: #ff4d4d;
+}
+
+.btn.btn-danger:hover
+{
+    color: white;
+    background-color: #fd3131;
+}
+
+.navbar-default .navbar-nav li a.btn-signup:hover
+{
+    color: #151d27;
+    background-color: white;
+}
+
+.p-form
+{
+    display: none;
+}
+
+#addprod .fa
+{
+    margin-right: 5px;
+}
+
+#addprod:focus
+{
+    color: #226eaf !important;
+}
+
+.detail-h3
+{
+}
+
+.detail-h3 a
+{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: -40px;
+    margin-right: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border-radius: 50%;
+}
+
+.fore-color
+{
+    color: #151d27;
+}
+
+@media (min-width:768px)
+{
+    .white-logo
+    {
+        display: none !important;
+    }
+}
+
+@media (max-width:767px)
+{
+    .black-logo
+    {
+        display: none !important;
+    }
+}
+
+.navbar-brand img
+{
+    width: 90px;
+}
+
