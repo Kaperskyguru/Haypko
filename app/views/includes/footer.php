@@ -136,60 +136,7 @@ Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
           </div>
         </form>
       </div>
-      <!-- <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed>
-        <form class="checkout-box " id="cardform">
-          <div class="checkout-details">
-            <h3 class="text-center">Price Summary</h3>
-            <ul class="list-unstyled prod-list" data-pg-collapsed>
-              <li>
-                <span>10.4L of Petrol</span>
-                <span class="summary-price">N1,500</span>
-              </li>
-            </ul>
-            <div class="summ-total">
-              <span>Total:</span>
-              <h1>N1,500</h1>
-            </div>
-          </div>
-          <div class="checkout-form-body">
-            <div>
-              <h3>Payment Info</h3>
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="cardnum">Card Number</label>
-                    <input type="text" class="form-control" name="cardnum" id="cardnum" placeholder="0000 0000 0000 0000">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="ccv">CCV</label>
-                    <input type="text" class="form-control" name="ccv" id="ccv" placeholder="ccv">
-                  </div>
-                </div>
-              </div>
-              <div class="row" data-pg-collapsed>
-                <div class="col-md-8">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="holdersname">Card Holders Name</label>
-                    <input type="text" class="form-control text-uppercase" name="holdersname" id="holdersname" placeholder="holders name">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="expdate">Expiry Date</label>
-                    <input type="text" class="form-control text-uppercase" id="expdate" name="expdate" placeholder="mm/yy">
-                  </div>
-                </div>
-              </div>
-              <h3 class="text-right" data-pg-collapsed><button type="submit" class="btn ">
-                  Proceed
-</button></h3>
-            </div>
-            <a href="#" class="back-btn corner-btn"><i class="fa fa-long-arrow-left fa-fw"></i></a>
-          </div>
-        </form>
-      </div> -->
+
       <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed>
         <form role="form" class="p-form" id="p-form">
           <h3>Partnership Details</h3>
@@ -242,10 +189,11 @@ Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
-              <h3 class="text-right "><a href="#" class="btn btn-danger">Cancel</a><button type="submit" class="ml-40 btn">
-                  Submit
-</button></h3>
+            <div class="col-xs-12 clear">
+              <div class="pull-right">
+                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
             </div>
           </div>
         </form>

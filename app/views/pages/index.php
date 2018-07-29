@@ -25,15 +25,15 @@
                 <a href="#">About </a>
               </li>
               <li>
-                <a href="Pages/faq">FAQ</a>
+                <a href="pages/faq">FAQ</a>
               </li>
               <li>
                 <a href="#">Contact</a>
               </li>
-              <li>
+              <li class="nav-btn">
                 <a href="#" class="btn-topnav">Sign In</a>
               </li>
-              <li>
+              <li class="nav-btn">
                 <a href="#" class=" btn-signup showpform">Become A Partner</a>
               </li>
             </ul>
