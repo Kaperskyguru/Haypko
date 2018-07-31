@@ -8,10 +8,8 @@
     <meta name="author" content=""> 
     <title>Haykpo|Fuel Delivery Service</title>     
     <!-- Bootstrap core CSS -->     
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/png/icons/android-icon-48x48.png">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"> 
-    <link href="assets/css/jquery-ui.css" rel="stylesheet"> 
-    <link href="assets/css/jquery-ui.theme.min.css" rel="stylesheet"> 
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/png/icons/android-icon-48x48.png"> 
     <link href="assets/css/aos.css" rel="stylesheet"> 
     <link href="assets/css/font-awesome.min.css" rel="stylesheet"> 
     <!--<link href="assets/css/inputmask.css" rel="stylesheet"> -->     
@@ -24,9 +22,8 @@
     <![endif]-->     
   </head>   
   <body> 
-    <section class="hero"> 
-      <div data-aos="slide-left" class="pg-empty-placeholder hero-inner-shape"></div>
-      <nav class="navbar navbar-default" role="navigation">
+    <section> 
+      <nav class="navbar navbar-default colored-nav" role="navigation" data-pg-collapsed> 
         <div class="container-fluid"> 
           <div class="navbar-header"> 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" data-pg-collapsed> 
@@ -34,16 +31,20 @@
               <span class="icon-bar"></span> 
               <span class="icon-bar"></span> 
               <span class="icon-bar"></span> 
-            </button>             
-            <a class="navbar-brand" href="#">
-              <img src="assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
-              <img src="assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" />
+            </button>
+            <a class="navbar-brand" href="index.html">
+              <img src="assets/images/svg/Grouphaykpo-logo-black.svg" class="white-logo m-hide" />
+              <img src="assets/images/svg/Grouphaykpo-logo-white.svg" class="black-logo m-display" />
             </a>             
           </div>           
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+            <ul class="nav navbar-nav"> 
+              <li class="active"></li>               
+              <li></li>               
+            </ul>
             <ul class="nav navbar-nav navbar-right"> 
               <li> 
-                <a href="./">Home</a> 
+                <a href="index.html">Home</a> 
               </li>               
               <li> 
                 <a href="#">About </a> 
@@ -55,113 +56,39 @@
                 <a href="#">Contact</a> 
               </li>
               <li> 
-                <a href="signin.html" class="btn-topnav">Sign In</a> 
-              </li>
-              <li> 
                 <a href="#" class=" btn-signup showpform">Become A Partner</a> 
               </li>               
             </ul>             
           </div>           
         </div>         
       </nav>       
-      <img data-aos="fade-in" class="hero-img" src="assets/images/png/fuel_PNG31.png" /> 
-      <div data-aos="fade-down" class="  ml-40 hero-text-body"> 
-        <p class="border-left hero-subtext">Get Fuel Delivered to your door step with</p> 
-      </div>       
-      <h1 data-aos="fade-in" data-aos-delay="500" class="hero-heading text-uppercase">Confidence</h1> 
-      <div class="ml-40 hero-btn-body">
-        <a class="btn  bounce" id="buynow">Buy Now</a> 
-      </div>       
     </section>
-    <section class="section guide" data-pg-collapsed> 
-      <div class="container-fluid" data-pg-collapsed> 
-        <div class="row"> 
-          <div> 
-            <div class="border-left  ml-40 section-head"> 
-              <p>How it Works</p> 
+    <section class="section faq-section">
+      <div class="container">
+        <h2 class="text-center">Login </h2>
+        <div class="signin text-center">
+          <form role="form"> 
+            <div class="form-group"> 
+              <select id="formInput10" class="form-control"> 
+                <option value="customer">Customer</option>                 
+                <option value="partner"> Partner</option>                 
+              </select>
+            </div>
+            <div class="form-group"> 
+              <input type="text" class="form-control" id="uname" name="uname" placeholder="username"> 
             </div>             
-          </div>           
-        </div>         
-      </div>       
-      <div class="container"> 
-        <div class="row"> 
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" class="box text-center"> 
-              <img src="assets/images/svg/log-in.svg" /> 
-              <p>Click “Buy Now” </p> 
-            </div>             
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" data-aos-delay="300" class="box text-center"> 
-              <img src="assets/images/svg/rectangle-tool.svg" /> 
-              <p>Fill in the necessary details</p> 
-            </div>             
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" data-aos-delay="600" class="box text-center"> 
-              <img src="assets/images/svg/truck.svg" /> 
-              <p>Await delivery</p> 
-            </div>             
-          </div>           
-        </div>         
-      </div>       
-    </section>     
-    <section class="section" data-pg-collapsed> 
-      <div class="container-fluid" data-pg-collapsed> 
-        <div class="row"> 
-          <div> 
-            <div class="border-left  ml-40 section-head"> 
-              <p>Features</p> 
-            </div>             
-          </div>           
-        </div>         
-      </div>       
-      <div class="container"> 
-        <div class="row"> 
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" class="box text-center"> 
-              <img src="assets/images/svg/tap.svg" /> 
-              <p>Easy to Use</p> 
-            </div>             
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" data-aos-delay="300" class="box text-center"> 
-              <img src="assets/images/png/runer-silhouette-running-fast.png" class="icon" /> 
-              <p>Fast Delivery</p> 
-            </div>             
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <div data-aos="fade-up" data-aos-delay="600" class="box text-center"> 
-              <img src="assets/images/svg/piggy-bank.svg" /> 
-              <p>Cost Free</p> 
-            </div>             
-          </div>           
-        </div>         
-      </div>       
-    </section>     
-    <section class="section gutter sec-partners" data-pg-collapsed> 
-      <div class="container-fluid"> 
-        <div class="row"> 
-          <div> 
-            <div class="border-left  ml-40 section-head"> 
-              <p>Our Partners</p> 
-            </div>             
-          </div>           
-        </div>         
-      </div>       
-      <div class="container"> 
-        <div class="row"> 
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <img src="assets/images/svg/0.svg" /> 
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <img src="assets/images/svg/logo.svg" /> 
-          </div>           
-          <div class="col-md-4 col-sm-4 col-xs-4"> 
-            <a class="btn mt-20 showpform" href="#!" id="showpform">Become A Partner</a> 
-          </div>           
-        </div>         
-      </div>       
+            <div class="form-group"> 
+              <input type="password" class="form-control" id="upass" name="upass" placeholder="Password"> 
+            </div>                                       
+
+            <div class="form-group">                               
+
+              <a class="help-block text-right">Forgot password.</a> 
+            </div>                                                    
+            <button type="submit" class="btn">Sign in</button>             
+          </form>
+        </div>
+      </div>
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="container"> 
@@ -212,12 +139,14 @@
         </div>         
       </div>       
     </footer>
-    <section class="form-section"> 
+    <section class="form-section" data-pg-collapsed> 
       <div class="container"> 
         <div class="row"> 
           <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0"> 
-            <form role="form" class="prod-form" id="prod-form"> 
-              <h3 class="detail-h3"><a href="#"><i class="fa fa-circle fore-color"></i></a>Product Details</h3>
+            <form role="form" class="prod-form" id="prod-form">
+              <h6> 
+    Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6> 
+              <h3>Product Details</h3>
               <div class="prod-cart">
                 <div class="no-item" data-pg-collapsed>
                   <div class="no-item-text text-center" data-pg-collapsed>
@@ -228,7 +157,7 @@
               </div>
               <div class="row" data-pg-collapsed> 
                 <div class="col-xs-12"> 
-                  <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>Add Product</a></h6> 
+                  <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>Add Another Product</a></h6> 
                 </div>                 
               </div>               
               <h3 class="detail-h3"><a href="#"><i class="fa fa-circle fore-color"></i></a>Your Details</h3> 
@@ -268,6 +197,7 @@
                     </div>
                     <div class="checkbox"> 
 </div>
+                    <button type="submit" class="btn">Submit</button>
                   </div>                   
                 </div>
                 <div class="col-md-6"> 
@@ -332,7 +262,7 @@
               </div>               
             </form>             
           </div>
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed> 
+          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0"> 
             <form role="form" class="p-form" id="p-form"> 
               <h3>Partnership Details</h3> 
               <div class="row"> 

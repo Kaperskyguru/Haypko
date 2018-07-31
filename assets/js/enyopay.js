@@ -113,7 +113,6 @@ function enyoUX() {
             });
             let valid = false;
             valid = $("#prod-form").valid();
-            console.log(valid);
             //verify form 
             if(valid===true){
                 //submit from ajax and on return do anim
@@ -192,7 +191,36 @@ function enyoUX() {
 			$(".prod-form").hide();
 			$("#p-form").show();
 			$(".form-section").show(300);
-			$(".#p-form").click(function(e){
+			
+				$("#p-form").validate({
+				rules: {
+					pemail:{
+						required: true,
+						email: true
+					},
+					rname:{
+						required: true
+					},
+					rcnum:{
+						required: true
+					},
+					raddr:{
+						required: true
+					},
+					phone:{
+						required:true,
+						minlength:11,
+						maxlength:11
+					}
+				}
+			});
+		
+			$(".cancel").click(function(){
+				$(".form-section").fadeOut(300);
+			});
+
+
+			$("#p-form").click(function(e){
 				e.stopPropagation();
 			});
 
@@ -219,24 +247,29 @@ function enyoUX() {
 			fuelprize=this.calcfuel(fuel);
 			this.displayHandler(fuelprize,0,null);
 	}
-	this.displayHandler =function(fuelprize,select,display){
+	this.displayHandler = function(fuelprize,select,display){
 		if(select===0){
-			$("#prod-form ").on("input","input[type='number']",function(){
-				console.log(this);
+			$("#prod-form ").on("input",".price",function(){
 				let litre=$(this).parents().eq(1).next().find("input");
-				let prize=$(this).val()>1500?$(this).val():1500;
-				let litreNum=(prize/fuelprize);
-				$(this).val(prize);
+				let prize=$(this).val()>1500?$(this).val():"";
+				let litreNum=Math.round((prize/fuelprize)*100)/100;
+				//$(this).val(prize);
 				litre.val(litreNum);
 		});
 
 		}else if(select===1){
 
-				let litre=display.parents().eq(1).next().find("input");
-				let prize=display.val();
-				let litreNum=(prize/fuelprize);
+				let litre=display.val();
+
+				let prize=display.parents().eq(1).next().find("input").val();
+				let litreNum=Math.round((prize/fuelprize)*100)/100;
 				display.val(prize);
-				console.log(litreNum);
+				if(fuelprize===350){
+					litre.prev().text("Kg");
+				}else{
+					litre.prev().text("Litres");
+				}
+				
 				litre.val(litreNum);
 	
 
@@ -251,9 +284,24 @@ function enyoUX() {
 
 			$("#prod-form").on("change","select",function(){
 			let changefuel=$(this).val();
-			let amtDisplay = $(this).parents().eq(1).next().find("input");
+			let litre = $(this).parents().eq(1).next().find("input");
 			fuelprize=handler.calcfuel(changefuel);
-			handler.displayHandler(fuelprize,1,amtDisplay);
+			handler.displayHandler(fuelprize,1,litre);
+		});
+	}
+	this.litreHandler = function(){
+		//on input select the value of prize and multiply by input and display the amount
+			let handler = this;
+			$("#prod-form").on("input",".litre",function(){
+			//display
+			let display = $(this).parents().eq(1).prev().find("input");
+			//price
+			let fuel = display.parents().eq(1).prev().find("select").val();
+			let fuelprice = handler.calcfuel(fuel);
+			let litre = $(this).val();
+			let amount=litre*fuelprice;
+			display.val(amount);
+
 		});
 	}
 	/*sets active on click menu item*/
@@ -263,37 +311,62 @@ function enyoUX() {
 			$(this).addClass("active");
 		});
 	}
+	let num = 1;
 	this.addprodHandler=function(){
-		let num = 1;
+			let obj= this;
 		$("#addprod").click(function(){
 			//select the row and append a new product row
-			let row=$(this).parents().eq(2).prev();
-			console.log(row);
-		
-			row.after("<div class='row'> <div class='col-md-4'><div class='form-group' data-pg-collapsed>"+
-     		"<label class='control-label' for='products"+num+"'>Product</label> "+    
-      		"<select class='form-control' id='products"+num+"' name='products"+num+"'>"+
-      		"<option value='petrol' selected>Petrol</option>  "+       
-       		" <option value='diesel'>Diesel</option>  "+       
-        	"<option value='gas'>Gas</option>    "+     
-     		" </select>  "+     
-    		"</div>"+     
-  			"</div>"+   
-  			"<div class='col-md-4'>"+ 
-    		"<div class='form-group'>"+
-     		"<label class='control-label' for='price"+num+"'>Amount ( NGN )</label> "+      
-     		"<input type='number' class='form-control' id='price"+num+"' name='price"+num+"' placeholder='Amount'> "+
-   			" </div>"  +  
+			let row=$(".prod-cart");
+			$(".no-item").fadeOut(300);
+			row.append("<div class='single-prod' data-pg-collapsed>"+
+  			"<div class='row' data-pg-collapsed> "+
+   			"<div class='col-md-4'>"+
+     		"<div class='form-group' data-pg-collapsed>"+ 
+        	"<label class='control-label' for='products"+num+"'>Product</label>"+         
+        	"<select class='form-control' id='products"+num+"' name='products"+num+"'>"+ 
+            "<option value='petrol' selected>Petrol</option>"+          
+            "<option value='diesel'>Diesel</option>"+           
+            "<option value='gas'>Gas</option>"+          
+        	"</select>"+         
+      		"</div>"+
+        	"<span class='text-danger r-prod'><i class='fa fa-remove '></i> Remove Product</span>"+ 
+   			"</div>"+         
+    		"<div class='col-md-4' data-pg-collapsed>"+ 
+       		"<div class='form-group'>"+ 
+        	"<label class='control-label' for='litres"+num+"'>Litres</label>"+        
+        	"<input type='number' min='5' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+ 
+      		"</div>"+       
+    		"</div> "+
+    		"<div data-pg-collapsed class='col-md-4'>"+ 
+      		" <div class='form-group'>" +
+        	"<label class='control-label' for='price"+num+"'>Amount ( NGN )</label>"+         
+        	"<input type='number' min='1500' step='5' class='form-control price' id='price"+num+"' name='price"+num+"' placeholder='Amount'>"+ 
+     		" </div>"+       
+    		"</div> "+   
   			"</div>"+
-  			"<div class='col-md-4'> "+
-    		"<div class='form-group' data-pg-collapsed>"+ 
-      		"<label class='control-label' for='litres"+num+"'>Litres</label>"+      
-      		"<input type='number' disabled class='form-control' id='litres"+num+"' name='litres"+num+"' placeholder='Liters'>"+ 
-    		"</div>"+     
-			"</div>" + 
-			"</div>"
-			);
+			"</div>");
+			obj.prizeHandler();
 			num++;
+
+		});
+	}
+	
+	this.removeprodHandler=function(){
+		$(".prod-cart").on("click",".r-prod",function(){
+			num--;
+			let prod=$(this).parents().eq(2);
+				prod.fadeOut(400,function(){
+				prod.remove();
+				if(num===1){
+					$(".no-item").fadeIn(300);
+					}
+					
+				});
+		});
+	}
+	this.signupToggle=function(){
+		$(".check-signup").on("click",function(){
+			$(".signup-box").toggle(300);
 		});
 	}
 }
@@ -303,11 +376,13 @@ $(document).ready(function(){
 	let enyo = new enyoUX();
 	enyo.aosnit();
 	enyo.addprodHandler();
+	enyo.removeprodHandler();
 	enyo.buynow();
 	enyo.formwidgets();
 	enyo.dashActiveHandler();
 	enyo.pformHandler();
 	enyo.prizeHandler();
 	enyo.selectprizeHandler();
-	
+	enyo.signupToggle();
+	enyo.litreHandler();
 });
