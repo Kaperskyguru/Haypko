@@ -2,9 +2,9 @@
     /**
      *
      */
-    class index
+    class user
     {
-        private $id;
+        private $db;
 
         function __construct()
         {

@@ -2,9 +2,9 @@
     /**
      *
      */
-    class index
+    class Station
     {
-        private $id;
+        private $db;
 
         function __construct()
         {

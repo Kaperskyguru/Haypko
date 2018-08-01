@@ -2,9 +2,9 @@
     /**
      *
      */
-    class index
+    class Partner
     {
-        private $id;
+        private $db;
 
         function __construct()
         {

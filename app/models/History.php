@@ -4,7 +4,7 @@
      */
     class History
     {
-        private $id;
+        private $db;
 
         function __construct()
         {
