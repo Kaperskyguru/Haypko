@@ -1,3 +1,5 @@
+
+
 @font-face{
     font-family: nunito-regular;
     src:url('../fonts/nunito-regular-webfont.woff2');
@@ -572,7 +574,7 @@ a.btn:hover
 {
     background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
   	padding-left:35px;
-  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 }
 
 #cardnum
@@ -874,4 +876,91 @@ a:focus
 .navbar-brand img
 {
     width: 90px;
+    margin-top: -10px;
+}
+
+@media (max-width:767px)
+{
+    .m-display
+    {
+        display: block !important;
+    }
+    .m-hide
+    {
+        display: none !important;
+    }
+}
+
+.prod-cart
+{
+    overflow: auto;
+    height: 200px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 1px solid #d8d8d8;
+    position: relative;
+}
+
+.r-prod
+{
+    font-size: 10px;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.single-prod
+{
+}
+
+.control-label
+{
+    font-size: 12px;
+}
+
+.su-label
+{
+    font-size: 12px;
+}
+
+.no-item
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #ffffff;
+}
+
+.no-item-text
+{
+    vertical-align: middle;
+    padding-top: 50px;
+    color: #1e66bf;
+}
+
+.signup-box
+{
+    display: none;
+}
+
+.signin
+{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.main-header {
+    position: fixed;
+    width: 100%;
+
 }

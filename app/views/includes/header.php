@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <title>Haykpo|Fuel Delivery Service</title>
     <!-- Bootstrap core CSS -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo SITEURL; ?>/assets/images/png/icons/android-icon-48x48.png">
     <link href="<?php echo SITEURL; ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo SITEURL; ?>/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="<?php echo SITEURL; ?>/assets/css/jquery-ui.theme.min.css" rel="stylesheet">

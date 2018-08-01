@@ -6,10 +6,9 @@ $(document).ready(function() {
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
-        var litres = $('#litres0').val();
-        var amount = $('#price0').val();
-        var product = $('#products').val();
-
+        var litres = $('#litre1').val();
+        var amount = $('#price1').val();
+        var product = $('#products1').val();
         $.ajax({
             url: 'index',
             method: 'POST',
@@ -61,8 +60,9 @@ $(document).ready(function() {
                 //  store order to DB
                 saveTransaction(id, product, litres, amount, response.reference);
             },
-            onclose: function() {
+            onClose: function() {
                 alert('Transaction cancelled');
+                window.location = "http://localhost/Enyopay/";
             },
 
         });
