@@ -2,7 +2,7 @@
     /**
      *
      */
-    class index
+    class History
     {
         private $id;
 
