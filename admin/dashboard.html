@@ -32,7 +32,7 @@
     <div class="wrapper">
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Haykpo</b></a>
+        <a href="#" class="logo"><b>Haykpo</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -110,17 +110,17 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="treeview" data-pg-collapsed>
-              <a href="#"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+              <a href="#dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
             </li>
             <li data-pg-collapsed>
-              <a href="#"><i class="fa fa-th"></i> <span>Stations</span> </a>
+              <a href="#station"><i class="fa fa-th"></i> <span>Stations</span> </a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-bar-chart-o"></i> History</a>
-              <a href="#"><i class="fa fa-users"></i> Partners</a>
+              <a href="#history"><i class="fa fa-bar-chart-o"></i> History</a>
+              <a href="#partner"><i class="fa fa-users"></i> Partners</a>
             </li>
             <li>
-              <a href="#"><i class="fa  fa-gear"></i> Account Settings</a>
+              <a href="#setting"><i class="fa  fa-gear"></i> Account Settings</a>
             </li>
           </ul>
         </section>
@@ -129,13 +129,112 @@
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header" id="dashboard" data-pg-collapsed>
+          <h1>Dashboard</h1>
+          <ol class="breadcrumb">
+            <li>
+              <a href="#"><i class="fa fa-dashboard"></i> Home</a>
+            </li>
+            <li class="active">Partners</li>
+          </ol>
+        </section>
+
+        <section class="content" data-pg-collapsed>
+          <!-- Small boxes (Stat box) -->
+          <!-- /.row -->
+          <!-- Main row -->
+          <div class="row">
+            <!-- ./col -->
+            <!-- ./col -->
+            <div class="col-sm-8">
+              <div class="box box-success" data-pg-collapsed>
+                <div class="box-header">
+                  <h3 class="box-title"><select> 
+                      <option value="-1" selected>Product Sold</option>                       
+                    </select><sup class="gray">Last 10 days</sup></h3>
+                </div>
+                <h4 class="box-title"><ul class="list-inline"> 
+                    <span><strong>11,000</strong></span>
+                    <sub class="gray">Total</sub>
+                    <li>
+                      <i class="fa fa-circle text-primary"></i> Petrol
+                    </li>
+                    <li>
+                      <i class="fa fa-circle text-yellow"></i> Diesel
+                    </li>
+                    <li>
+                      <i class="fa fa-circle text-red"></i> Diesel
+                    </li>                     
+                  </ul></h4>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- TABLE: LATEST ORDERS -->
+              <!-- /.box -->
+            </div>
+            <div class="col-md-4" data-pg-collapsed> 
+              <div class="ov-box box-shadow">
+                <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
+                <h2><span>N20,000.01</span><img src="../assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                <p class="text-right gray">since yesterday</p>
+              </div>               
+            </div>
+            <div class="col-sm-6">
+              <div class="box box-success" data-pg-collapsed>
+                <div class="box-header">
+                  <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
+                  <h3>N15,000</h3>
+                  <h6 class="gray">Period Jan 1 - Jan 10</h6>
+                </div>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="bar-chart3" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- TABLE: LATEST ORDERS -->
+              <!-- /.box -->
+            </div>
+            <div class="col-sm-6">
+              <div class="box box-success" data-pg-collapsed>
+                <div class="box-header">
+                  <h3 class="box-title"><select> 
+                      <option value="-1" selected>Product Sold</option>                       
+                    </select><sup class="gray">Last 10 days</sup></h3>
+                </div>
+                <h4 class="box-title"><ul class="list-inline"> 
+                    <li>
+                      <i class="fa fa-circle text-primary"></i>
+                      3, 724
+                      <h6 class="gray">New Customers</h6> 
+                    </li>
+                    <li>
+                      <i class="fa fa-circle text-yellow"></i> 5, 788
+                      <h6 class="gray">Recurring Customers</h6>
+                    </li>
+                    <li>
+                      <i class="fa fa-circle text-red"></i>1, 231
+                      <h6 class="gray">Returning Customers</h6>
+                    </li>                     
+                  </ul></h4>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="bar-chart4" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+              </div>               
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row (main row) -->
+        </section>
+        <section class="content-header" id="history">
           <h1>History</h1>
           <ol class="breadcrumb">
             <li>
               <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li class="active">Dashboard</li>
+            <li class="active">history</li>
           </ol>
         </section>
         <section class="content" data-pg-collapsed>
@@ -258,7 +357,7 @@
           </div>
           <!-- /.row (main row) -->
         </section>
-        <section class="content-header" data-pg-collapsed>
+        <section class="content-header" id="partner" data-pg-collapsed>
           <h1>
           Partners</h1>
           <ol class="breadcrumb">
@@ -375,203 +474,9 @@
           </div>
           <!-- /.row (main row) -->
         </section>
-        <section class="content-header" data-pg-collapsed>
-          <h1>Dashboard</h1>
-          <ol class="breadcrumb">
-            <li>
-              <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-            </li>
-            <li class="active">Partners</li>
-          </ol>
-        </section>
-        <section class="content" data-pg-collapsed>
-          <!-- Small boxes (Stat box) -->
-          <!-- /.row -->
-          <!-- Main row -->
-          <div class="row">
-            <!-- ./col -->
-            <!-- ./col -->
-            <div class="col-sm-8">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><select> 
-                      <option value="-1" selected>Product Sold</option>                       
-                    </select><sup class="gray">Last 10 days</sup></h3>
-                </div>
-                <h4 class="box-title"><ul class="list-inline"> 
-                    <span><strong>11,000</strong></span>
-                    <sub class="gray">Total</sub>
-                    <li>
-                      <i class="fa fa-circle text-primary"></i> Petrol
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-yellow"></i> Diesel
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-red"></i> Diesel
-                    </li>                     
-                  </ul></h4>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- TABLE: LATEST ORDERS -->
-              <!-- /.box -->
-            </div>
-            <div class="col-md-4" data-pg-collapsed> 
-              <div class="ov-box box-shadow">
-                <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
-                <h2><span>N20,000.01</span><img src="../assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
-                <p class="text-right gray">since yesterday</p>
-              </div>               
-            </div>
-            <div class="col-sm-6">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
-                  <h3>N15,000</h3>
-                  <h6 class="gray">Period Jan 1 - Jan 10</h6>
-                </div>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart3" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- TABLE: LATEST ORDERS -->
-              <!-- /.box -->
-            </div>
-            <div class="col-sm-6">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><select> 
-                      <option value="-1" selected>Product Sold</option>                       
-                    </select><sup class="gray">Last 10 days</sup></h3>
-                </div>
-                <h4 class="box-title"><ul class="list-inline"> 
-                    <li>
-                      <i class="fa fa-circle text-primary"></i>
-                      3, 724
-                      <h6 class="gray">New Customers</h6> 
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-yellow"></i> 5, 788
-                      <h6 class="gray">Recurring Customers</h6>
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-red"></i>1, 231
-                      <h6 class="gray">Returning Customers</h6>
-                    </li>                     
-                  </ul></h4>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart4" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>               
-            </div>
-            <!-- ./col -->
-          </div>
-          <!-- /.row (main row) -->
-        </section>
-        <section class="content-header" data-pg-collapsed>
-          <h1>Stations</h1>
-          <ol class="breadcrumb">
-            <li>
-              <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-            </li>
-            <li class="active">Stations</li>
-          </ol>
-        </section>
-        <section class="content" data-pg-collapsed>
-          <!-- Small boxes (Stat box) -->
-          <!-- /.row -->
-          <!-- Main row -->
-          <div class="row">
-            <!-- ./col -->
-            <!-- ./col -->
-            <div class="col-sm-8">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><select> 
-                      <option value="-1" selected>Product Sold</option>                       
-                    </select><sup class="gray">Last 10 days</sup></h3>
-                </div>
-                <h4 class="box-title"><ul class="list-inline"> 
-                    <span><strong>11,000</strong></span>
-                    <sub class="gray">Total</sub>
-                    <li>
-                      <i class="fa fa-circle text-primary"></i> Petrol
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-yellow"></i> Diesel
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-red"></i> Diesel
-                    </li>                     
-                  </ul></h4>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart5" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- TABLE: LATEST ORDERS -->
-              <!-- /.box -->
-            </div>
-            <div class="col-md-4" data-pg-collapsed> 
-              <div class="ov-box box-shadow">
-                <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
-                <h2><span>N20,000.01</span><img src="../assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
-                <p class="text-right gray">since yesterday</p>
-              </div>               
-            </div>
-            <div class="col-sm-6">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
-                  <h3>N15,000</h3>
-                  <h6 class="gray">Period Jan 1 - Jan 10</h6>
-                </div>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart6" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- TABLE: LATEST ORDERS -->
-              <!-- /.box -->
-            </div>
-            <div class="col-sm-6">
-              <div class="box box-success" data-pg-collapsed>
-                <div class="box-header">
-                  <h3 class="box-title"><select> 
-                      <option value="-1" selected>Product Sold</option>                       
-                    </select><sup class="gray">Last 10 days</sup></h3>
-                </div>
-                <h4 class="box-title"><ul class="list-inline"> 
-                    <li>
-                      <i class="fa fa-circle text-primary"></i>
-                      3, 724
-                      <h6 class="gray">New Customers</h6> 
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-yellow"></i> 5, 788
-                      <h6 class="gray">Recurring Customers</h6>
-                    </li>
-                    <li>
-                      <i class="fa fa-circle text-red"></i>1, 231
-                      <h6 class="gray">Returning Customers</h6>
-                    </li>                     
-                  </ul></h4>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart7" style="height: 300px;"></div>
-                </div>
-                <!-- /.box-body -->
-              </div>               
-            </div>
-            <!-- ./col -->
-          </div>
-          <!-- /.row (main row) -->
-        </section>
-        <section class="content-header" data-pg-collapsed>
+        
+        
+        <section class="content-header" id="setting" data-pg-collapsed>
           <h1>Account Settings</h1>
           <ol class="breadcrumb">
             <li>

@@ -244,49 +244,83 @@ function enyoUX() {
 			let fuel="";
 			let fuelprize=0;
 			fuel= $("#prod-form select").val();
+			console.log(fuel);
 			fuelprize=this.calcfuel(fuel);
+			console.log(fuelprize);
 			this.displayHandler(fuelprize,0,null);
 	}
 	this.displayHandler = function(fuelprize,select,display){
 		if(select===0){
-			$("#prod-form ").on("input",".price",function(){
-				let litre=$(this).parents().eq(1).next().find("input");
-				let prize=$(this).val()>1500?$(this).val():"";
-				let litreNum=Math.round((prize/fuelprize)*100)/100;
-				//$(this).val(prize);
-				litre.val(litreNum);
+			$("#prod-form ").on("input",".litre",function(){
+			
+				let amount=$(this).parents().eq(1).next().find("input");
+				
+				let litre=$(this).val();
+				console.log(fuelprize);
+				let fuelAmount=litre*fuelprize;
+				amount.val(fuelAmount);
+				if(fuelAmount===0){
+					amount.val("");
+				}
 		});
 
 		}else if(select===1){
-
-				let litre=display.val();
-
-				let prize=display.parents().eq(1).next().find("input").val();
-				let litreNum=Math.round((prize/fuelprize)*100)/100;
-				display.val(prize);
-				if(fuelprize===350){
-					litre.prev().text("Kg");
-				}else{
-					litre.prev().text("Litres");
-				}
+				//get litre value
 				
-				litre.val(litreNum);
+				let litreDisplay=display.parents().eq(1).prev().find("input");
+				let litre=litreDisplay.val();
+				//calc fuel price with prize/litre
+				let litrePrice=Math.round(litre*fuelprize);
+				if(fuelprize===350){
+					litreDisplay.prev().text("Kg");
+				}else{
+					litreDisplay.prev().text("Litres");
+				}
+				//display amount 
+				display.val(litrePrice);
 	
 
+		}else if(select===3){
+
+			$("#prod-form").on("input",".price",function(){
+			
+				let litreDisplay=$(this).parents().eq(1).prev().find("input");
+				
+				let amount=$(this).val();
+				
+				let litres=Math.round((amount/fuelprize)*100)/100;
+				litreDisplay.val(litres);
+				if(litres===0){
+					litreDisplay.val("");
+				}
+			});
+		
 		}
 		
 	}
+
+	this.amountHandler = function(){
+		let fuel="";
+			let fuelprize=0;
+			fuel= $("#prod-form select").val();
+			console.log(fuel);
+			fuelprize=this.calcfuel(fuel);
+			console.log(fuelprize);
+			this.displayHandler(fuelprize,3,null);
+
+	}
+
 	this.selectprizeHandler = function(){
 			let fuel="";
 			let fuelprize=0;
-			/* on change */
+			/* class method*/
 			let handler=this;
 
 			$("#prod-form").on("change","select",function(){
-			let changefuel=$(this).val();
-			let litre = $(this).parents().eq(1).next().find("input");
-			fuelprize=handler.calcfuel(changefuel);
-			handler.displayHandler(fuelprize,1,litre);
+			let fuelvalue=$(this).val();
+			let amountDisplay = $(this).parents().eq(1).next().next().find("input");
+			fuelprize=handler.calcfuel(fuelvalue);
+			handler.displayHandler(fuelprize,1,amountDisplay);
 		});
 	}
 	this.litreHandler = function(){
@@ -346,6 +380,7 @@ function enyoUX() {
   			"</div>"+
 			"</div>");
 			obj.prizeHandler();
+			obj.amountHandler();
 			num++;
 
 		});
@@ -381,7 +416,6 @@ $(document).ready(function(){
 	enyo.formwidgets();
 	enyo.dashActiveHandler();
 	enyo.pformHandler();
-	enyo.prizeHandler();
 	enyo.selectprizeHandler();
 	enyo.signupToggle();
 	enyo.litreHandler();
