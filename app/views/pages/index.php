@@ -30,10 +30,10 @@
               <li>
                 <a href="#">Contact</a>
               </li>
-              <li>
+              <li class="nav-btn">
                 <a href="users/login" class="btn-topnav">Sign In</a>
               </li>
-              <li>
+              <li class="nav-btn">
                 <a href="#" class=" btn-signup showpform">Become A Partner</a>
               </li>
             </ul>

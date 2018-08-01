@@ -50,13 +50,13 @@
 <section class="form-section">
   <div class="container">
     <div class="row">
-        
-        
-        
-        
-        <!-- 
+
+
+
+
+        <!--
                     LAST WORKING!!! LAST WORKING
-        
+
       <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
         <form role="form" class="prod-form" id="prod-form">
           <h6>
@@ -143,12 +143,12 @@ Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
           </div>
         </form>
       </div>
-      
+
       LAST WORKING!!! LAST WORKING!!! LAST WORKING!!! LAST WORKING -->
-      
-      
-      
-      
+
+
+
+
       <!-- NEW NEW NEW -->
       <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
         <form role="form" class="prod-form" id="prod-form">
@@ -213,17 +213,17 @@ Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
           </div>
         </form>
       </div>
-      
+
       <!-- NEW NEW NEW -->
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
+
+
       <!-- <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed>
         <form class="checkout-box " id="cardform">
           <div class="checkout-details">
@@ -368,10 +368,11 @@ Get Fuel Product Delivered at Your Door Step.Fill in the Details to Buy.</h6>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
-              <h3 class="text-right "><span class="btn btn-danger cancel">Cancel</span><button type="submit" class="ml-40 btn">
-                  Submit
-</button></h3>
+            <div class="col-xs-12 clear">
+              <div class="pull-right">
+                <button class="btn btn-danger cancel">Cancel</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
             </div>
           </div>
         </form>

@@ -10,7 +10,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="<?php echo SITEURL ?>">
               <img src="<?php echo SITEURL ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="white-logo m-hide" />
               <img src="<?php echo SITEURL ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="black-logo m-display" />
             </a>
