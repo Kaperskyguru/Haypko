@@ -209,7 +209,7 @@
             <div class="col-xs-12 clear">
               <div class="pull-right">
                 <button class="btn btn-danger cancel">Cancel</button>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button id="register" class="btn btn-primary" type="submit">Submit</button>
               </div>
             </div>
           </div>

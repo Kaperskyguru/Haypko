@@ -115,4 +115,24 @@ $(document).ready(function() {
         });
     }
 
+    $('#register').click(function (e) {
+        // e.preventDefault();
+        alert();
+    });
+
+    function register(name, rcnumber, email, city, state, address, mobile) {
+        $.ajax({
+            url:'',
+            type:'POST',
+            cache:false,
+            data:{register:1, name:name, rcnumber:rcnumber, email:email, city:city, state:state, address:address, mobile:mobile},
+            success:function (data) {
+                alert(data);
+            },
+            onerror:function (err) {
+                alert(err);
+            }
+        });
+    }
+
 });

@@ -73,7 +73,7 @@ function enyoUX() {
 	/*buy now button handler*/
 
 	this.buynow = function(){
-		//handle all buy now process 
+		//handle all buy now process
 		$("#buynow").click(function(){
 			//select,fade in form and apply white overlay to blur the background
 			$(".form-section").fadeIn(400);
@@ -113,7 +113,7 @@ function enyoUX() {
             });
             let valid = false;
             valid = $("#prod-form").valid();
-            //verify form 
+            //verify form
             if(valid===true){
                 //submit from ajax and on return do anim
 
@@ -123,9 +123,9 @@ function enyoUX() {
                     $("#card-form").effect("slide");
                 });
             }
-           
 
-            
+
+
 
 		});
 
@@ -191,7 +191,7 @@ function enyoUX() {
 			$(".prod-form").hide();
 			$("#p-form").show();
 			$(".form-section").show(300);
-			
+
 				$("#p-form").validate({
 				rules: {
 					pemail:{
@@ -214,13 +214,14 @@ function enyoUX() {
 					}
 				}
 			});
-		
+
 			$(".cancel").click(function(){
 				$(".form-section").fadeOut(300);
 			});
 
 
-			$("#p-form").click(function(e){
+			$("#register").click(function(e){
+                alert();
 				e.stopPropagation();
 			});
 
@@ -252,9 +253,9 @@ function enyoUX() {
 	this.displayHandler = function(fuelprize,select,display){
 		if(select===0){
 			$("#prod-form ").on("input",".litre",function(){
-			
+
 				let amount=$(this).parents().eq(1).next().find("input");
-				
+
 				let litre=$(this).val();
 				console.log(fuelprize);
 				let fuelAmount=litre*fuelprize;
@@ -266,7 +267,7 @@ function enyoUX() {
 
 		}else if(select===1){
 				//get litre value
-				
+
 				let litreDisplay=display.parents().eq(1).prev().find("input");
 				let litre=litreDisplay.val();
 				//calc fuel price with prize/litre
@@ -276,27 +277,27 @@ function enyoUX() {
 				}else{
 					litreDisplay.prev().text("Litres");
 				}
-				//display amount 
+				//display amount
 				display.val(litrePrice);
-	
+
 
 		}else if(select===3){
 
 			$("#prod-form").on("input",".price",function(){
-			
+
 				let litreDisplay=$(this).parents().eq(1).prev().find("input");
-				
+
 				let amount=$(this).val();
-				
+
 				let litres=Math.round((amount/fuelprize)*100)/100;
 				litreDisplay.val(litres);
 				if(litres===0){
 					litreDisplay.val("");
 				}
 			});
-		
+
 		}
-		
+
 	}
 
 	this.amountHandler = function(){
@@ -355,28 +356,28 @@ function enyoUX() {
 			row.append("<div class='single-prod' data-pg-collapsed>"+
   			"<div class='row' data-pg-collapsed> "+
    			"<div class='col-md-4'>"+
-     		"<div class='form-group' data-pg-collapsed>"+ 
-        	"<label class='control-label' for='products"+num+"'>Product</label>"+         
-        	"<select class='form-control' id='products"+num+"' name='products"+num+"'>"+ 
-            "<option value='petrol' selected>Petrol</option>"+          
-            "<option value='diesel'>Diesel</option>"+           
-            "<option value='gas'>Gas</option>"+          
-        	"</select>"+         
+     		"<div class='form-group' data-pg-collapsed>"+
+        	"<label class='control-label' for='products"+num+"'>Product</label>"+
+        	"<select class='form-control' id='products"+num+"' name='products"+num+"'>"+
+            "<option value='petrol' selected>Petrol</option>"+
+            "<option value='diesel'>Diesel</option>"+
+            "<option value='gas'>Gas</option>"+
+        	"</select>"+
       		"</div>"+
-        	"<span class='text-danger r-prod'><i class='fa fa-remove '></i> Remove Product</span>"+ 
-   			"</div>"+         
-    		"<div class='col-md-4' data-pg-collapsed>"+ 
-       		"<div class='form-group'>"+ 
-        	"<label class='control-label' for='litres"+num+"'>Litres</label>"+        
-        	"<input type='number' min='5' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+ 
-      		"</div>"+       
+        	"<span class='text-danger r-prod'><i class='fa fa-remove '></i> Remove Product</span>"+
+   			"</div>"+
+    		"<div class='col-md-4' data-pg-collapsed>"+
+       		"<div class='form-group'>"+
+        	"<label class='control-label' for='litres"+num+"'>Litres</label>"+
+        	"<input type='number' min='5' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+
+      		"</div>"+
     		"</div> "+
-    		"<div data-pg-collapsed class='col-md-4'>"+ 
+    		"<div data-pg-collapsed class='col-md-4'>"+
       		" <div class='form-group'>" +
-        	"<label class='control-label' for='price"+num+"'>Amount ( NGN )</label>"+         
-        	"<input type='number' min='1500' step='5' class='form-control price' id='price"+num+"' name='price"+num+"' placeholder='Amount'>"+ 
-     		" </div>"+       
-    		"</div> "+   
+        	"<label class='control-label' for='price"+num+"'>Amount ( NGN )</label>"+
+        	"<input type='number' min='1500' step='5' class='form-control price' id='price"+num+"' name='price"+num+"' placeholder='Amount'>"+
+     		" </div>"+
+    		"</div> "+
   			"</div>"+
 			"</div>");
 			obj.prizeHandler();
@@ -385,7 +386,7 @@ function enyoUX() {
 
 		});
 	}
-	
+
 	this.removeprodHandler=function(){
 		$(".prod-cart").on("click",".r-prod",function(){
 			num--;
@@ -395,7 +396,7 @@ function enyoUX() {
 				if(num===1){
 					$(".no-item").fadeIn(300);
 					}
-					
+
 				});
 		});
 	}
