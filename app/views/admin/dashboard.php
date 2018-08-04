@@ -189,7 +189,7 @@
                   <h6 class="gray">Period Jan 1 - Jan 10</h6>
                 </div>
                 <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart3" style="height: 300px;"></div>
+                  <div class="chart" id="bar-chart1" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
               </div>
@@ -219,7 +219,7 @@
                     </li>
                   </ul></h4>
                 <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart4" style="height: 300px;"></div>
+                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
               </div>
@@ -513,7 +513,7 @@
                     </li>
                   </ul></h4>
                 <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart8" style="height: 300px;"></div>
+                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
               </div>
@@ -535,7 +535,7 @@
                   <h6 class="gray">Period Jan 1 - Jan 10</h6>
                 </div>
                 <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart9" style="height: 300px;"></div>
+                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
               </div>
@@ -565,7 +565,7 @@
                     </li>
                   </ul></h4>
                 <div class="box-body chart-responsive">
-                  <div class="chart" id="bar-chart10" style="height: 300px;"></div>
+                  <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
               </div>
@@ -620,6 +620,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
     <!-- page script -->
+    <!-- <script src="<?php echo SITEURL ?>/assets/dist/js/pages/dashboard.js" type="text/javascript"></script> -->
     <script type="text/javascript">
       $(function () {
         "use strict";
@@ -644,5 +645,33 @@
         });
       });
     </script>
+
+    <script type="text/javascript">
+      $(function () {
+        "use strict";
+        //BAR CHART
+
+      var bar = new Morris.Bar({
+        element: 'bar-chart1',
+        resize: true,
+        data: [
+          {y: '2006', a: 10, b: 90},
+          {y: '2007', a: 75, b: 65},
+          {y: '2008', a: 50, b: 40},
+          {y: '2009', a: 75, b: 65},
+          {y: '2010', a: 50, b: 40},
+          {y: '2011', a: 75, b: 65},
+          {y: '2012', a: 100, b: 90}
+        ],
+        barColors: ['#00a65a', '#f56954'],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['CPU', 'DISK'],
+        hideHover: 'auto'
+      });
+      });
+
+    </script>
+
   </body>
 </html>
