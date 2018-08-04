@@ -1,5 +1,4 @@
 
-
 @font-face{
     font-family: nunito-regular;
     src:url('../../../assets/fonts/nunito-regular-webfont.woff2');
@@ -237,9 +236,9 @@ body
     background: #151d27;
 }
 .skin-blue .main-header .logo {
-    background-color: #151d27;
+    background-color: transparent;
     color: #fff;
-    border-bottom: 0 solid transparent;
+    border-bottom: 0px solid transparent;
 }
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
     background: #151d27;
@@ -251,4 +250,43 @@ body
 .skin-blue .main-header .navbar .nav>li>a:hover, .skin-blue .main-header .navbar .nav>li>a:active, .skin-blue .main-header .navbar .nav>li>a:focus, .skin-blue .main-header .navbar .nav .open>a, .skin-blue .main-header .navbar .nav .open>a:hover, .skin-blue .main-header .navbar .nav .open>a:focus {
     background: #d8d8d8;
     color: #f6f6f6;
+}
+.sections {
+    position: relative;
+    display:none;
+    padding-top: 50px;
+}
+.dash-section{
+    display:block;
+}
+.form-control{
+    padding:20px 30px;
+    font-size:1.5rem;
+    font-weight: 200;
+    border:none;
+    border-bottom: 1px solid #d8d8d8;
+    text-transform: uppercase;
+}
+.content{
+    padding-left: 20px;
+}
+.box{
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+.main-header{
+    position: fixed;
+    width: 100%;
+}
+.main-sidebar{
+    position: fixed;
+    border-right: 1px solid #d8d8d8;
+}
+.price-val{
+    display:none;
+}
+.change{
+    font-size: 1.2rem;
+}
+.price{
+    margin-bottom: 0px;
 }
