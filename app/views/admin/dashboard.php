@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Haykpo | Retailer Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="<?php echo SITEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -269,87 +269,55 @@
                         </tr>
                       </thead>
                       <tbody>
+                    <?php foreach($data['history'] as $customer): ?>
                         <tr>
                           <td>
-                            <a href="#">Jan 13, 2018</a>
+                            <a href="#"><?php echo get_formatted_date($customer->order_date_added)?></a>
                           </td>
-                          <td>Petrol</td>
+                          <td><?php echo $customer->product_name?></td>
                           <td>Enyo Retail</td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
+                            <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $customer->order_litres?> Litres</div>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
+                            <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $customer->order_amount?></div>
                           </td>
                         </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
+                    <?php endforeach?>
                       </tbody>
                     </table>
                   </div>
-                  <!-- /.table-responsive -->
+                  <div class="box-body chart-responsive">
+                    <div class="chart" id="bar-chart8" style="height: 300px;">
+                      <form>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <input type="password" name="password" class="form-control" placeholder="current password">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
+                            </div>
+                          </div>
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <input type="button" class="btn btn-primary text-uppercase" value="update">
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                  <ul class="pagination pull-right" data-pg-collapsed>
-                    <li>
-                      <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
-                    </li>
-                    <li class="active">
-                      <a href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li>
-                      <a href="#">2</a>
-                    </li>
-                    <li>
-                      <a href="#">3</a>
-                    </li>
-                    <li>
-                      <a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
-                    </li>
-                  </ul>
-                  <span class="bottom"> Show: <select name="datesearch">
-                      <option value="-1" selected>10 Results</option>
-                    </select></span>
-                </div>
-                <!-- /.box-footer -->
+                <!-- TABLE: LATEST ORDERS -->
+                <!-- /.box -->
               </div>
               <!-- /.box -->
             </div>
@@ -400,7 +368,7 @@
                     <!-- /.box-header -->
                     <div class="box-body" data-pg-collapsed>
                       <div class="table-responsive">
-                        <table class="table no-margin">
+                        <table id="allPartnerTable" class="table no-margin">
                           <thead>
                             <tr>
                               <th>
@@ -413,19 +381,21 @@
                             </tr>
                           </thead>
                           <tbody>
+                        <?php foreach ($data['partners'] as $partner) { ?>
                             <tr>
                               <td>
                                 <input class="control-label" type="checkbox" value="">
                               </td>
-                              <td><span>Enyo Retail</span></td>
-                              <td><span>Yaba</span></td>
+                              <td><span><?php echo $partner->partner_name ?></span></td>
+                              <td><span><?php echo $partner->partner_location ?></span></td>
                               <td>
-                                <button type="button" class="btn  btn-success">Label</button>
+                                <button id="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-success">Label</button>
                               </td>
                               <td>
-                                <button type="button" class="btn  btn-danger">Label</button>
+                                <button id="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-danger">Label</button>
                               </td>
                             </tr>
+                            <?php }; ?>
                           </tbody>
                         </table>
                       </div>
@@ -629,18 +599,18 @@
           element: 'bar-chart',
           resize: true,
           data: [
-            {y: '2006', a: 100, b: 90},
-            {y: '2007', a: 75, b: 65},
-            {y: '2008', a: 50, b: 40},
-            {y: '2009', a: 75, b: 65},
-            {y: '2010', a: 50, b: 40},
-            {y: '2011', a: 75, b: 65},
-            {y: '2012', a: 100, b: 90}
+            {y: '2006', a: 100, b: 90, c: 90},
+            {y: '2007', a: 75, b: 65, c: 90},
+            {y: '2008', a: 50, b: 40, c: 90},
+            {y: '2009', a: 75, b: 65, c: 90},
+            {y: '2010', a: 50, b: 40, c: 90},
+            {y: '2011', a: 75, b: 65, c: 90},
+            {y: '2012', a: 100, b: 90, c: 90}
           ],
-          barColors: ['#00a65a', '#f56954'],
+          barColors: ['#00a65a', '#f56954', '#f31445'],
           xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['CPU', 'DISK'],
+          ykeys: ['a', 'b', 'c'],
+          labels: ['Petrol', 'Diesel', 'Gas'],
           hideHover: 'auto'
         });
       });
@@ -655,17 +625,17 @@
         element: 'bar-chart1',
         resize: true,
         data: [
-          {y: '2006', a: 10, b: 90},
-          {y: '2007', a: 75, b: 65},
-          {y: '2008', a: 50, b: 40},
-          {y: '2009', a: 75, b: 65},
-          {y: '2010', a: 50, b: 40},
-          {y: '2011', a: 75, b: 65},
-          {y: '2012', a: 100, b: 90}
+          {y: '2006', a: 10, b: 90, c: 90},
+          {y: '2007', a: 75, b: 65, c: 90},
+          {y: '2008', a: 50, b: 40, c: 90},
+          {y: '2009', a: 75, b: 65, c: 90},
+          {y: '2010', a: 50, b: 40, c: 90},
+          {y: '2011', a: 75, b: 65, c: 90},
+          {y: '2012', a: 100, b: 90, c: 90}
         ],
         barColors: ['#00a65a', '#f56954'],
         xkey: 'y',
-        ykeys: ['a', 'b'],
+        ykeys: ['a', 'b', 'c'],
         labels: ['CPU', 'DISK'],
         hideHover: 'auto'
       });
