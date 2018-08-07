@@ -6,9 +6,9 @@
     {
         private $id;
 
-        function __construct()
+        function __construct( Database $db )
         {
-            $this->db = new Database;
+            $this->db = $db;
         }
 
         public function storeCustomerDetails(array $data)

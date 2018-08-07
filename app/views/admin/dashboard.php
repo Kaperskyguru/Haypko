@@ -269,58 +269,21 @@
                         </tr>
                       </thead>
                       <tbody>
+                    <?php foreach($data['history'] as $customer): ?>
                         <tr>
                           <td>
-                            <a href="#">Jan 13, 2018</a>
+                            <a href="#"><?php echo get_formatted_date($customer->order_date_added)?></a>
                           </td>
-                          <td>Petrol</td>
+                          <td><?php echo $customer->product_name?></td>
                           <td>Enyo Retail</td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
+                            <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $customer->order_litres?> Litres</div>
                           </td>
                           <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
+                            <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $customer->order_amount?></div>
                           </td>
                         </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Jan 13, 2018</a>
-                          </td>
-                          <td>Petrol</td>
-                          <td>Enyo Retail</td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">10 Litres</div>
-                          </td>
-                          <td>
-                            <div class="sparkbar" data-color="#00a65a" data-height="20">N15,500</div>
-                          </td>
-                        </tr>
+                    <?php endforeach?>
                       </tbody>
                     </table>
                   </div>
@@ -400,7 +363,7 @@
                     <!-- /.box-header -->
                     <div class="box-body" data-pg-collapsed>
                       <div class="table-responsive">
-                        <table class="table no-margin">
+                        <table id="allPartnerTable" class="table no-margin">
                           <thead>
                             <tr>
                               <th>
@@ -413,19 +376,21 @@
                             </tr>
                           </thead>
                           <tbody>
+                        <?php foreach ($data['partners'] as $partner) { ?>
                             <tr>
                               <td>
                                 <input class="control-label" type="checkbox" value="">
                               </td>
-                              <td><span>Enyo Retail</span></td>
-                              <td><span>Yaba</span></td>
+                              <td><span><?php echo $partner->partner_name ?></span></td>
+                              <td><span><?php echo $partner->partner_location ?></span></td>
                               <td>
-                                <button type="button" class="btn  btn-success">Label</button>
+                                <button id="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-success">Label</button>
                               </td>
                               <td>
-                                <button type="button" class="btn  btn-danger">Label</button>
+                                <button id="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-danger">Label</button>
                               </td>
                             </tr>
+                            <?php }; ?>
                           </tbody>
                         </table>
                       </div>
@@ -629,18 +594,18 @@
           element: 'bar-chart',
           resize: true,
           data: [
-            {y: '2006', a: 100, b: 90},
-            {y: '2007', a: 75, b: 65},
-            {y: '2008', a: 50, b: 40},
-            {y: '2009', a: 75, b: 65},
-            {y: '2010', a: 50, b: 40},
-            {y: '2011', a: 75, b: 65},
-            {y: '2012', a: 100, b: 90}
+            {y: '2006', a: 100, b: 90, c: 90},
+            {y: '2007', a: 75, b: 65, c: 90},
+            {y: '2008', a: 50, b: 40, c: 90},
+            {y: '2009', a: 75, b: 65, c: 90},
+            {y: '2010', a: 50, b: 40, c: 90},
+            {y: '2011', a: 75, b: 65, c: 90},
+            {y: '2012', a: 100, b: 90, c: 90}
           ],
-          barColors: ['#00a65a', '#f56954'],
+          barColors: ['#00a65a', '#f56954', '#f31445'],
           xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['CPU', 'DISK'],
+          ykeys: ['a', 'b', 'c'],
+          labels: ['Petrol', 'Diesel', 'Gas'],
           hideHover: 'auto'
         });
       });
@@ -655,17 +620,17 @@
         element: 'bar-chart1',
         resize: true,
         data: [
-          {y: '2006', a: 10, b: 90},
-          {y: '2007', a: 75, b: 65},
-          {y: '2008', a: 50, b: 40},
-          {y: '2009', a: 75, b: 65},
-          {y: '2010', a: 50, b: 40},
-          {y: '2011', a: 75, b: 65},
-          {y: '2012', a: 100, b: 90}
+          {y: '2006', a: 10, b: 90, c: 90},
+          {y: '2007', a: 75, b: 65, c: 90},
+          {y: '2008', a: 50, b: 40, c: 90},
+          {y: '2009', a: 75, b: 65, c: 90},
+          {y: '2010', a: 50, b: 40, c: 90},
+          {y: '2011', a: 75, b: 65, c: 90},
+          {y: '2012', a: 100, b: 90, c: 90}
         ],
         barColors: ['#00a65a', '#f56954'],
         xkey: 'y',
-        ykeys: ['a', 'b'],
+        ykeys: ['a', 'b', 'c'],
         labels: ['CPU', 'DISK'],
         hideHover: 'auto'
       });

@@ -14,7 +14,11 @@ class Partners
         $data = [
             'partner_name' => 'PMT001',
             'partner_location' => 'Ayobo',
-            'partner_date_created' => time()
+            'partner_state' => 'Lagos',
+            'partner_city' => 'Yaba',
+            'partner_email' => 'solomoneseme@gmail.com',
+            'partner_mobile' => '08145655380',
+            'partner_rc_number' => 'rc334dhj33'
         ];
         $create = $this->partnerModel->createPartner($data);
         if($create) {

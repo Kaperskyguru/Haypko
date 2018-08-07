@@ -6,9 +6,9 @@
     {
         private $db;
 
-        function __construct()
+        function __construct( Database $db )
         {
-            $this->db = new Database;
+            $this->db = $db;
         }
 
         public function login( array $data )
