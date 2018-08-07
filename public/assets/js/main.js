@@ -6,10 +6,9 @@ $(document).ready(function() {
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
-        var litres = $('#litres0').val();
-        var amount = $('#price0').val();
-        var product = $('#products').val();
-
+        var litres = $('#litre1').val();
+        var amount = $('#price1').val();
+        var product = $('#products1').val();
         $.ajax({
             url: 'index',
             method: 'POST',
@@ -61,8 +60,9 @@ $(document).ready(function() {
                 //  store order to DB
                 saveTransaction(id, product, litres, amount, response.reference);
             },
-            onclose: function() {
+            onClose: function() {
                 alert('Transaction cancelled');
+                window.location = "http://localhost/Enyopay/";
             },
 
         });
@@ -110,6 +110,26 @@ $(document).ready(function() {
                 verifyTransaction(id, orderID, reference);
             },
             onerror: function(err) {
+                alert(err);
+            }
+        });
+    }
+
+    $('#register').click(function (e) {
+        // e.preventDefault();
+        alert();
+    });
+
+    function register(name, rcnumber, email, city, state, address, mobile) {
+        $.ajax({
+            url:'',
+            type:'POST',
+            cache:false,
+            data:{register:1, name:name, rcnumber:rcnumber, email:email, city:city, state:state, address:address, mobile:mobile},
+            success:function (data) {
+                alert(data);
+            },
+            onerror:function (err) {
                 alert(err);
             }
         });

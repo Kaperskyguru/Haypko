@@ -1,0 +1,33 @@
+<?php
+    /**
+     *
+     */
+    class Admin extends Controller
+    {
+        private $partnerModel;
+        private $stationModel;
+        private $historyModel;
+
+        public function __construct()
+        {
+            $this->partnerModel = $this->model('Partner');
+            $this->stationModel = $this->model('Station');
+            $this->historyModel = $this->model('History');
+            // $this->customerModel = $this->model('Customer');
+        }
+
+        public function index()
+        {   // Caching here
+            $partners = $this->partnerModel->getPartners();
+            $history = $this->historyModel->getHistories();
+            $stations = $this->stationModel->getStations();
+            // $customer = $this->customerModel->getCustomers();
+            $data = [
+                'partners' => $partners,
+                'stations' => $stations,
+                'history' => $history,
+            ];
+
+            $this->views('admin/dashboard', $data);
+        }
+    }
