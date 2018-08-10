@@ -2,9 +2,8 @@
 <html> 
   <head> 
     <meta charset="UTF-8"> 
-    <title>Haykpo | Dashboard</title>     
+    <title>Haykpo | Retailer Dashboard</title>     
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'> 
-    <meta description="Get fuel delivered to your doorstep"> 
     <!-- Bootstrap 3.3.2 -->     
     <link href="<?php echo SITEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
     <!-- FontAwesome 4.3.0 -->     
@@ -113,12 +112,6 @@
             <li class="treeview" data-pg-collapsed> 
               <a href="#!" class="links dash-link"><i class="fa fa-dashboard"></i><span> Dashboard</span></a> 
             </li>             
-            <!-- <li data-pg-collapsed>
-              <a href="#!" class="links stat-link"><i class="fa fa-th"></i> <span>Stations</span> </a>
-            </li> -->             
-            <li data-pg-collapsed> 
-              <a href="#!" class="links pat-link"><i class="fa fa-users"></i> Partners</a> 
-            </li>             
             <li> 
               <a href="#!" class="links hist-link"><i class="fa fa-bar-chart-o"></i> History</a> 
             </li>             
@@ -203,7 +196,7 @@
                 <div class="box box-success" data-pg-collapsed> 
                   <div class="box-header"> 
                     <h3 class="box-title"><select> 
-                        <option value="-1" selected>Orders Sold</option>                         
+                        <option value="-1" selected>Product Sold</option>                         
                       </select><sup class="gray">Last 10 days</sup></h3> 
                   </div>                   
                   <h4 class="box-title"><ul class="list-inline"> 
@@ -411,7 +404,7 @@
                             <thead> 
                               <tr> 
                                 <th> 
-                                  <input class="control-label all" type="checkbox" value=""> 
+                                  <input class="control-label" type="checkbox" value=""> 
                                 </th>                                 
                                 <th>Partner</th> 
                                 <th>Location</th> 
@@ -427,10 +420,10 @@
                                 <td><span>Enyo Retail</span></td> 
                                 <td><span>Yaba</span></td> 
                                 <td> 
-                                  <button type="button" class="btn  btn-info">view</button>                                   
+                                  <button type="button" class="btn  btn-success">Label</button>                                   
                                 </td>                                 
                                 <td> 
-                                  <button type="button" class="btn  btn-danger">delete</button>                                   
+                                  <button type="button" class="btn  btn-danger">Label</button>                                   
                                 </td>                                 
                               </tr>                               
                             </tbody>                             
@@ -467,7 +460,7 @@
                   <div class="tab-pane" id="tab2"> 
                     <div class="box box-info"> 
                       <div class="box-header with-border"> 
-                        <h3 class="box-title">Recently Added Partners</h3> 
+                        <h3 class="box-title">All Partners</h3> 
                         <div class="box-tools pull-right"> 
                           <button class="btn btn-box-tool" data-widget="collapse"> 
                             <i class="fa fa-minus"></i> 
@@ -497,10 +490,10 @@
                                 <td><span>Enyo Retail</span></td> 
                                 <td><span>Yaba</span></td> 
                                 <td> 
-                                  <button type="button" class="btn  btn-info">view</button>                                   
+                                  <button type="button" class="btn  btn-success">Label</button>                                   
                                 </td>                                 
                                 <td> 
-                                  <button type="button" class="btn  btn-danger">delete</button>                                   
+                                  <button type="button" class="btn  btn-danger">Label</button>                                   
                                 </td>                                 
                               </tr>                               
                             </tbody>                             
@@ -558,8 +551,8 @@
               </li>               
               <li class="active">Account Settings</li>               
             </ol>             
-          </section>
-          <section class="content"> 
+          </section>           
+          <section class="content" data-pg-collapsed> 
             <!-- Small boxes (Stat box) -->             
             <!-- /.row -->             
             <!-- Main row -->             
@@ -567,80 +560,76 @@
               <!-- ./col -->               
               <!-- ./col -->               
               <div class="col-sm-8"> 
-                <div class="box box-success"> 
+                <div class="box box-success" data-pg-collapsed> 
                   <div class="box-header"> 
                     <h3 class="box-title">Change Password</h3> 
-                  </div>                   
+                  </div>
                   <div class="box-body chart-responsive"> 
-                    <form> 
-                      <div class="row"> 
-                        <div class="col-sm-12"> 
-                          <div class="form-group"> 
-                            <input type="password" name="password" class="form-control" placeholder="current password"> 
+                    <div class="chart" id="bar-chart8" style="height: 300px;"> 
+                      <form> 
+                        <div class="row"> 
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="password" name="password" class="form-control" placeholder="current password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password"> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password"> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6 col-sm-push-6"> 
-                          <div class="form-group text-right"> 
-                            <input type="submit" class="btn btn-primary text-uppercase" value="update"> 
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="button" class="btn btn-primary text-uppercase update" value="update"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                    </form>                     
+                      </form>                       
+                    </div>                     
                   </div>                   
+                  <!-- /.box-body -->                   
+                </div>                 
+                <!-- TABLE: LATEST ORDERS -->                 
+                <!-- /.box -->                 
+              </div>
+              <div> 
+                <div class="box box-success" data-pg-collapsed> 
+                  <div class="box-header"> 
+                    <h3 class="box-title">Bank Details</h3> 
+                  </div>
                   <div class="box-body chart-responsive"> 
-                    <form> 
-                      <h2>Product Settings</h2> 
-                      <div class="row"> 
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <label class="control-label"> 
-                              Product
-</label>                             
-                            <h4>Petrol</h4> 
+                    <div class="chart" id="bar-chart8" style="height: 300px;"> 
+                      <form> 
+                        <div class="row"> 
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="text" name="accname" class="form-control" placeholder="account name"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <label class="control-label"> 
-                              price
-</label>
-                            <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per litre</span></h4>
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="number" name="acc-number" class="form-control input-group form-group" placeholder="account number"> 
+                            </div>                             
                           </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4>Diesel</h4> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <select class="form-control input-group form-group">
+                                <option value="-1">Select Bank</option>
+                                <option value="first bank">First Bank</option>
+                              </select>
+                            </div>                             
                           </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per litre</span></h4> 
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4>Gas</h4> 
-                          </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per kg</span></h4>
-                          </div>                           
-                        </div>
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="button" class="btn btn-primary " value="Update"> 
-                          </div>                           
-                        </div>                         
-                      </div>                       
-                    </form>                     
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="button" class="btn btn-primary text-uppercase update pull-left" value="update"> <span class="load-container"><div class="loader"></div></span>
+                            </div>                             
+                          </div>
+                      </form>                       
+                    </div>                     
                   </div>                   
                   <!-- /.box-body -->                   
                 </div>                 
@@ -654,7 +643,7 @@
         </div>         
         <!-- Main content -->         
         <!-- /.content -->         
-      </div>
+      </div>       
       <!-- /.content-wrapper -->       
       <footer class="main-footer"> 
         <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
@@ -662,167 +651,9 @@
       <div class="popup-overlay" data-pg-collapsed> 
         <div class="popup-body box-shadow text-left"> 
           <h2 class="text-center text-capitalize">new order</h2> 
-          <h3>Product</h3> 
-          <ul class="list-unstyled"> 
-            <li>10.4L of Petrol</li>             
-            <li>10L of Diesel</li>             
-          </ul>           
-          <h3>Reciever’s Details</h3> 
-          <ul class="list-unstyled"> 
-            <li> 
-              <strong>Name:</strong> Adegorilla Olumonkey
-            </li>             
-            <li> 
-              <strong>Phone: </strong> 081 234 5678
-            </li>             
-            <li> 
-              <strong>Address:</strong> Blk 83, Plot 4, Herbert
-              Macaulay way, Yaba.
-            </li>             
-          </ul>           
         </div>         
       </div>       
     </div>     
-    <section class="form-section">
-      <div class="container">
-        <div class="row">
-          <!-- NEW NEW NEW -->
-          <!-- NEW NEW NEW -->
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form role="form" class="p-form" id="p-form" data-pg-collapsed>
-              <h2>Add New Retailer</h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rname">Retailers Name</label>
-                    <input type="text" class="form-control" id="rname" name="rname">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rcnum">RC Number</label>
-                    <input type="number" class="form-control" id="rcnum" name="rcnum">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="raddr">Street Address</label>
-                    <input type="text" class="form-control" id="raddr" name="raddr">
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="state">State</label>
-                    <select class="form-control"> name="state" id="state">
-                      <option value="" selected="selected">- Select -</option>
-                      <option value="Abuja FCT">Abuja FCT</option>
-                      <option value="Abia">Abia</option>
-                      <option value="Adamawa">Adamawa</option>
-                      <option value="Akwa Ibom">Akwa Ibom</option>
-                      <option value="Anambra">Anambra</option>
-                      <option value="Bauchi">Bauchi</option>
-                      <option value="Bayelsa">Bayelsa</option>
-                      <option value="Benue">Benue</option>
-                      <option value="Borno">Borno</option>
-                      <option value="Cross River">Cross River</option>
-                      <option value="Delta">Delta</option>
-                      <option value="Ebonyi">Ebonyi</option>
-                      <option value="Edo">Edo</option>
-                      <option value="Ekiti">Ekiti</option>
-                      <option value="Enugu">Enugu</option>
-                      <option value="Gombe">Gombe</option>
-                      <option value="Imo">Imo</option>
-                      <option value="Jigawa">Jigawa</option>
-                      <option value="Kaduna">Kaduna</option>
-                      <option value="Kano">Kano</option>
-                      <option value="Katsina">Katsina</option>
-                      <option value="Kebbi">Kebbi</option>
-                      <option value="Kogi">Kogi</option>
-                      <option value="Kwara">Kwara</option>
-                      <option value="Lagos">Lagos</option>
-                      <option value="Nassarawa">Nassarawa</option>
-                      <option value="Niger">Niger</option>
-                      <option value="Ogun">Ogun</option>
-                      <option value="Ondo">Ondo</option>
-                      <option value="Osun">Osun</option>
-                      <option value="Oyo">Oyo</option>
-                      <option value="Plateau">Plateau</option>
-                      <option value="Rivers">Rivers</option>
-                      <option value="Sokoto">Sokoto</option>
-                      <option value="Taraba">Taraba</option>
-                      <option value="Yobe">Yobe</option>
-                      <option value="Zamfara">Zamfara</option>
-                      <option value="Outside Nigeria">Outside Nigeria</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="city">City</label>
-                    <select class="form-control">
-                      <option value="surulere">surulere</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="phone">Phone Number</label>
-                    <input class="form-control" type="tel" id="phone" name="phone" />
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="pemail">Email</label>
-                    <input class="form-control" id="pemail" name="pemail" />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 clear">
-                  <div class="pull-right">
-                    <button class="btn btn-danger cancel" type="button">Cancel</button>
-                    <button id="next" class="btn btn-primary next" type="button">Next</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form role="form" class="acc-form" id="acc-form">
-              <h2>Bank account Details</h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rname">Bank</label>
-                    <input type="text" class="form-control" id="bname" name="bname">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="accnum">Account Number</label>
-                    <input type="number" class="form-control" id="accnum" name="accnum">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="accname">Account Name</label>
-                    <input type="text" class="form-control" id="accname" name="accname">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 clear">
-                  <div class="pull-right">
-                    <button class="btn btn-danger prev" type="button">previous</button>
-                    <button id="register" class="btn btn-primary" type="button">create</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>     
     <!-- ./wrapper -->     
     <!-- jQuery 2.1.3 -->     
     <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>     
