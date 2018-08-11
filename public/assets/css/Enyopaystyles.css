@@ -59,7 +59,7 @@ body
         top: 0px;
         background-color: #151D26;
         -webkit-clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(37% 0, 100% 0, 100% 100%, 0% 100%);
     }
     .navbar
     {
@@ -556,6 +556,13 @@ a.btn:hover
 .prod-form
 {
     display: block;
+    position: relative;
+}
+.canceler{
+    position: absolute;
+    top:10px;
+    right:20px;
+    cursor: pointer;
 }
 
 @media (min-width:600px)
@@ -570,7 +577,7 @@ a.btn:hover
 {
     background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
   	padding-left:35px;
-  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  	text-transform:uppercase;
 }
 
 #cardnum
@@ -594,7 +601,7 @@ a.btn:hover
 
 .nav-btn {
     margin-top: 2px;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .btn-topnav
@@ -859,12 +866,14 @@ a:focus
 {
     color: #151d27;
 }
-
+.white-logo,.black-logo{
+        width: 100%;
+}
 @media (min-width:768px)
 {
     .white-logo
     {
-        display: none !important;
+        display: block !important;
     }
 }
 
