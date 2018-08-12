@@ -355,16 +355,10 @@ label{
     font-size: 1.3rem;
 }
 
-.priceloader,.passloader,.infoloader{
- display:none;
- line-height: 30px;
+.priceloader,.passloader{
+ /*display:block;*/
 }
-.loader{
-    font-size:10px;
-}
-.middle{
-    vertical-align: middle;
-}
+
 .load-container{
     display: inline-block;
     width: 40px;
@@ -391,33 +385,5 @@ label{
 @media only all and (min-width: 768px){
      .skin-blue .main-header .navbar .sidebar-toggle{
        display:none; 
-    }
-}
-
-@media (min-width:768px)
-{
-    .white-logo
-    {
-        display: block;
-    }
-     .black-logo
-    {
-        display: none ;
-    }
-}
-.white-logo,.black-logo{
-    width: 45%;
-    padding-top: 5px !important; 
-}
-@media (max-width:768px){
-    .white-logo,.black-logo{
-            width: 30%;
-        }
-}
-@media (max-width:767px)
-{
-    .black-logo
-    {
-        display: none !important;
     }
 }

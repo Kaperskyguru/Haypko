@@ -2,9 +2,8 @@
 <html> 
   <head> 
     <meta charset="UTF-8"> 
-    <title>Haykpo | Dashboard</title>     
+    <title>Haykpo | Retailer Dashboard</title>     
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'> 
-    <meta description="Get fuel delivered to your doorstep"> 
     <!-- Bootstrap 3.3.2 -->     
     <link href="<?php echo SITEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
     <!-- FontAwesome 4.3.0 -->     
@@ -33,10 +32,7 @@
     <div class="wrapper"> 
       <header class="main-header"> 
         <!-- Logo -->         
-        <a href="#" class="logo">
-            <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
-            <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" />
-        </a> 
+        <a href="#" class="logo"><b>Haykpo</b></a> 
         <!-- Header Navbar: style can be found in header.less -->         
         <nav class="navbar navbar-static-top" role="navigation"> 
           <!-- Sidebar toggle button-->           
@@ -73,13 +69,33 @@
                     <a href="#">View all</a> 
                   </li>                   
                 </ul>                 
-              </li>    
-              <li class="dropdown notifications-menu"> 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-power-off"></i></a>                  
-              </li>             
+              </li>               
               <!-- Tasks: style can be found in dropdown.less -->               
-              <!-- User Account: style can be found in dropdown.less -->                              
+              <!-- User Account: style can be found in dropdown.less -->               
+              <li class="dropdown user user-menu"> 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                  <img src="<?php echo SITEURL ?>/assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" /> 
+                  <span class="hidden-xs">Alexander Pierce</span> 
+                </a>                 
+                <ul class="dropdown-menu"> 
+                  <!-- User image -->                   
+                  <li class="user-header"> 
+                    <img src="<?php echo SITEURL ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" /> 
+                    <p> 
+                      Alexander Pierce - Web Developer<small>Member since Nov. 2012</small></p> 
+                  </li>                   
+                  <!-- Menu Body -->                   
+                  <!-- Menu Footer-->                   
+                  <li class="user-footer"> 
+                    <div class="pull-left"> 
+                      <a href="#" class="btn btn-default btn-flat">Profile</a> 
+                    </div>                     
+                    <div class="pull-right"> 
+                      <a href="#" class="btn btn-default btn-flat">Sign out</a> 
+                    </div>                     
+                  </li>                   
+                </ul>                 
+              </li>               
             </ul>             
           </div>           
         </nav>         
@@ -94,19 +110,13 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->           
           <ul class="sidebar-menu"> 
             <li class="treeview" data-pg-collapsed> 
-              <a href="#dash" class="links dash-link"><i class="fa fa-dashboard"></i><span> Dashboard</span></a> 
-            </li>             
-            <!-- <li data-pg-collapsed>
-              <a href="#!" class="links stat-link"><i class="fa fa-th"></i> <span>Stations</span> </a>
-            </li> -->             
-            <li data-pg-collapsed> 
-              <a href="#partner" class="links pat-link"><i class="fa fa-users"></i> Partners</a> 
+              <a href="#!" class="links dash-link"><i class="fa fa-dashboard"></i><span> Dashboard</span></a> 
             </li>             
             <li> 
-              <a href="#history" class="links hist-link"><i class="fa fa-bar-chart-o"></i> History</a> 
+              <a href="#!" class="links hist-link"><i class="fa fa-bar-chart-o"></i> History</a> 
             </li>             
             <li> 
-              <a href="#setting" class="links set-link"><i class="fa  fa-gear"></i> Account Settings</a> 
+              <a href="#!" class="links set-link"><i class="fa  fa-gear"></i> Account Settings</a> 
             </li>             
           </ul>           
         </section>         
@@ -120,7 +130,7 @@
             <h1>Dashboard</h1> 
             <ol class="breadcrumb"> 
               <li> 
-                <a href="#dashboard"><i class="fa fa-dashboard"></i> Home</a> 
+                <a href="#"><i class="fa fa-dashboard"></i> Home</a> 
               </li>               
               <li class="active">Partners</li>               
             </ol>             
@@ -160,7 +170,7 @@
                 <!-- TABLE: LATEST ORDERS -->                 
                 <!-- /.box -->                 
               </div>               
-              <div class="col-sm-4" data-pg-collapsed> 
+              <div class="col-md-4" data-pg-collapsed> 
                 <div class="ov-box box-shadow"> 
                   <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5> 
                   <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2> 
@@ -186,7 +196,7 @@
                 <div class="box box-success" data-pg-collapsed> 
                   <div class="box-header"> 
                     <h3 class="box-title"><select> 
-                        <option value="-1" selected>Orders Sold</option>                         
+                        <option value="-1" selected>Product Sold</option>                         
                       </select><sup class="gray">Last 10 days</sup></h3> 
                   </div>                   
                   <h4 class="box-title"><ul class="list-inline"> 
@@ -246,7 +256,7 @@
                   <!-- /.box-header -->                   
                   <div class="box-body" data-pg-collapsed> 
                     <div class="table-responsive"> 
-                      <table class="table history no-margin"> 
+                      <table class="table no-margin"> 
                         <thead> 
                           <tr> 
                             <th>Date</th> 
@@ -318,7 +328,7 @@
                   <div class="box-footer clearfix"> 
                     <ul class="pagination pull-right" data-pg-collapsed> 
                       <li> 
-                        <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp; Prev</a> 
+                        <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a> 
                       </li>                       
                       <li class="active"> 
                         <a href="#">1 <span class="sr-only">(current)</span></a> 
@@ -330,10 +340,12 @@
                         <a href="#">3</a> 
                       </li>                       
                       <li> 
-                        <a href="#">Next &nbsp; <i class="fa fa-long-arrow-right"></i></a> 
+                        <a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a> 
                       </li>                       
                     </ul>                     
-
+                    <span class="bottom"> Show: <select name="datesearch"> 
+                        <option value="-1" selected>10 Results</option>                         
+                      </select></span> 
                   </div>                   
                   <!-- /.box-footer -->                   
                 </div>                 
@@ -388,16 +400,16 @@
                       <!-- /.box-header -->                       
                       <div class="box-body" data-pg-collapsed> 
                         <div class="table-responsive"> 
-                          <table class="table no-margin ptable"> 
+                          <table class="table no-margin"> 
                             <thead> 
                               <tr> 
                                 <th> 
-                                  <input class="control-label selectall" type="checkbox" value=""> 
+                                  <input class="control-label" type="checkbox" value=""> 
                                 </th>                                 
                                 <th>Partner</th> 
                                 <th>Location</th> 
                                 <th>View</th> 
-                                <th><button type="button" class="btn  btn-danger deleteall">delete</button></th> 
+                                <th>Delete</th> 
                               </tr>                               
                             </thead>                             
                             <tbody> 
@@ -408,51 +420,12 @@
                                 <td><span>Enyo Retail</span></td> 
                                 <td><span>Yaba</span></td> 
                                 <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
+                                  <button type="button" class="btn  btn-success">Label</button>                                   
                                 </td>                                 
                                 <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
+                                  <button type="button" class="btn  btn-danger">Label</button>                                   
                                 </td>                                 
-                              </tr> 
-                                <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr>
-                                <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr>
-                                <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr>                              
+                              </tr>                               
                             </tbody>                             
                           </table>                           
                         </div>                         
@@ -478,7 +451,7 @@
                           </li>                           
                         </ul>                         
                         <span class="bottom"> Show: <select name="datesearch"> 
-                            <option value="-1" selected> 10 Results</option>                             
+                            <option value="-1" selected>10 Results</option>                             
                           </select></span> 
                       </div>                       
                       <!-- /.box-footer -->                       
@@ -487,7 +460,7 @@
                   <div class="tab-pane" id="tab2"> 
                     <div class="box box-info"> 
                       <div class="box-header with-border"> 
-                        <h3 class="box-title">Recently Added Partners</h3> 
+                        <h3 class="box-title">All Partners</h3> 
                         <div class="box-tools pull-right"> 
                           <button class="btn btn-box-tool" data-widget="collapse"> 
                             <i class="fa fa-minus"></i> 
@@ -506,7 +479,7 @@
                                 <th>Partner</th> 
                                 <th>Location</th> 
                                 <th>View</th> 
-                                <th><button type="button" class="btn  btn-danger delete">delete</button></th> 
+                                <th>Delete</th> 
                               </tr>                               
                             </thead>                             
                             <tbody> 
@@ -517,49 +490,10 @@
                                 <td><span>Enyo Retail</span></td> 
                                 <td><span>Yaba</span></td> 
                                 <td> 
-                                  <button type="button" class="btn  btn-info view" >view</button>                                   
+                                  <button type="button" class="btn  btn-success">Label</button>                                   
                                 </td>                                 
                                 <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr> 
-                              <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr> 
-                              <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
-                                </td>                                 
-                              </tr> 
-                              <tr> 
-                                <td> 
-                                  <input class="control-label" type="checkbox" value=""> 
-                                </td>                                 
-                                <td><span>Enyo Retail</span></td> 
-                                <td><span>Yaba</span></td> 
-                                <td> 
-                                  <button type="button" class="btn  btn-info view">view</button>                                   
-                                </td>                                 
-                                <td> 
-                                  <button type="button" class="btn  btn-danger delete">delete</button>                                   
+                                  <button type="button" class="btn  btn-danger">Label</button>                                   
                                 </td>                                 
                               </tr>                               
                             </tbody>                             
@@ -617,8 +551,8 @@
               </li>               
               <li class="active">Account Settings</li>               
             </ol>             
-          </section>
-          <section class="content"> 
+          </section>           
+          <section class="content" data-pg-collapsed> 
             <!-- Small boxes (Stat box) -->             
             <!-- /.row -->             
             <!-- Main row -->             
@@ -626,82 +560,76 @@
               <!-- ./col -->               
               <!-- ./col -->               
               <div class="col-sm-8"> 
-                <div class="box box-success"> 
+                <div class="box box-success" data-pg-collapsed> 
                   <div class="box-header"> 
                     <h3 class="box-title">Change Password</h3> 
-                  </div>                   
+                  </div>
                   <div class="box-body chart-responsive"> 
-                    <form> 
-                      <div class="row"> 
-                        <div class="col-sm-12"> 
-                          <div class="form-group"> 
-                            <input type="password" name="password" class="form-control" placeholder="current password"> 
+                    <div class="chart" id="bar-chart8" style="height: 300px;"> 
+                      <form> 
+                        <div class="row"> 
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="password" name="password" class="form-control" placeholder="current password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password"> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password"> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6 col-sm-push-6"> 
-                          <div class="form-group text-right"> 
-                            <input type="button" class="middle btn btn-primary text-uppercase updatepass" value="update"> 
-                            <span class="middle pull-right passloader"><i class="fa fa-pulse fa-2x fa-spinner"></i> </span>
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="button" class="btn btn-primary text-uppercase update" value="update"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                    </form>                     
+                      </form>                       
+                    </div>                     
                   </div>                   
+                  <!-- /.box-body -->                   
+                </div>                 
+                <!-- TABLE: LATEST ORDERS -->                 
+                <!-- /.box -->                 
+              </div>
+              <div> 
+                <div class="box box-success" data-pg-collapsed> 
+                  <div class="box-header"> 
+                    <h3 class="box-title">Bank Details</h3> 
+                  </div>
                   <div class="box-body chart-responsive"> 
-                    <form> 
-                      <h2>Product Settings</h2> 
-                      <div class="row"> 
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <label class="control-label"> 
-                              Product
-</label>                             
-                            <h4>Petrol</h4> 
+                    <div class="chart" id="bar-chart8" style="height: 300px;"> 
+                      <form> 
+                        <div class="row"> 
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="text" name="accname" class="form-control" placeholder="account name"> 
+                            </div>                             
                           </div>                           
-                        </div>                         
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <label class="control-label"> 
-                              price
-</label>
-                            <h4 class="price"><input type="number" max="4" class="change-input" placeholder="price" /><span> per litre</span></h4>
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <input type="number" name="acc-number" class="form-control input-group form-group" placeholder="account number"> 
+                            </div>                             
                           </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4>Diesel</h4> 
+                          <div class="col-sm-6"> 
+                            <div class="form-group"> 
+                              <select class="form-control input-group form-group">
+                                <option value="-1">Select Bank</option>
+                                <option value="first bank">First Bank</option>
+                              </select>
+                            </div>                             
                           </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <h4 class="price"><input type="number" max="4" class="change-input" placeholder="price" /><span> per litre</span></h4> 
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4>Gas</h4> 
-                          </div>                           
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed> 
-                          <div class="form-group"> 
-                            <h4 class="price"><input type="number" max="4" class="change-input" placeholder="price" /><span> per kg</span></h4>
-                          </div>                           
-                        </div>
-                        <div class="col-sm-6"> 
-                          <div class="form-group"> 
-                            <input type="button" class="btn btn-primary updateprice" value="Update">
-                            <span class="priceloader pull-right"><i class="fa fa-pulse fa-2x  fa-spinner"></i></span> 
-                          </div>                           
-                        </div>                         
-                      </div>                       
-                    </form>                     
+                          <div class="col-sm-12"> 
+                            <div class="form-group"> 
+                              <input type="button" class="btn btn-primary text-uppercase update pull-left" value="update"> <span class="load-container"><div class="loader"></div></span>
+                            </div>                             
+                          </div>
+                      </form>                       
+                    </div>                     
                   </div>                   
                   <!-- /.box-body -->                   
                 </div>                 
@@ -715,142 +643,17 @@
         </div>         
         <!-- Main content -->         
         <!-- /.content -->         
-      </div>
+      </div>       
       <!-- /.content-wrapper -->       
       <footer class="main-footer"> 
         <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
       </footer>       
       <div class="popup-overlay" data-pg-collapsed> 
-        <div class="popup-body box-shadow text-left">
-          <i class="fa fa-check-circle text-success fa-4x"></i>
-          <h2>Account Created</h2>
-          <p>Username </p>
-          <h4>Enyopay</h4>
-          <p>Password </p>
-          <h4>Enyo1244</h4>
-          <input type="button" class="btn btn-info" name="send" value="send">        
+        <div class="popup-body box-shadow text-left"> 
+          <h2 class="text-center text-capitalize">new order</h2> 
         </div>         
       </div>       
     </div>     
-    <section class="form-section">
-      <div class="container">
-        <div class="row">
-          <!-- NEW NEW NEW -->
-          <!-- NEW NEW NEW -->
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form role="form" class="p-form" id="p-form" data-pg-collapsed>
-              <h2>Add New Retailer</h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rname">Retailers Name</label>
-                    <input type="text" class="form-control" id="rname" name="rname">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rcnum">RC Number</label>
-                    <input type="number" class="form-control" id="rcnum" name="rcnum">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="raddr">Street Address</label>
-                    <input type="text" class="form-control" id="raddr" name="raddr">
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="state">State</label>
-                    <select class="form-control"> name="state" id="state">
-                      <option value="" selected="selected"> Select  State</option>
-                      <option value="Lagos">Lagos</option>
-                    </select>
-                  </div>   
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="city">City</label>
-                    <select class="form-control">
-                      <option value="-1">Select City</option>
-                      <option value="yaba">yaba</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="phone">Phone Number</label>
-                    <input class="form-control" type="tel" id="phone" name="phone" />
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="pemail">Email</label>
-                    <input class="form-control" id="pemail" name="pemail" />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 clear">
-                  <div class="pull-right">
-                    <button class="btn btn-danger cancel" type="button">Cancel</button>
-                    <button id="next" class="btn btn-primary next" type="button">Next</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form role="form" class="acc-form" id="acc-form">
-              <h2>Bank account Details</h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="rname">Bank</label>
-                    <input type="text" class="form-control" id="bname" name="bname">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="accnum">Account Number</label>
-                    <input type="number" class="form-control" id="accnum" name="accnum">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="accname">Account Name</label>
-                    <input type="text" class="form-control" id="accname" name="accname">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 clear">
-                  <div class="pull-right">
-                    <button class="btn btn-danger prev" type="button">previous</button>
-                    <button id="register" class="btn btn-primary" type="button">create</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>    
-    <div class="view-overlay"> 
-      <div class="view-box">
-            <div class="row">
-              <div class="col-sm-12">
-                  <div class="text-center">
-                      <i class="fa fa-users fa-3x"></i>
-                  </div>
-                  <h2>View Account</h2>
-                  <p>Username :<span>Enyopay</span></p>
-                  <p>Password :<span>EnyoOnline</span></p>
-                  <p>Location :<span>Yaba</span></p>
-              </div>
-            </div>
-      </div>
-    </div> 
     <!-- ./wrapper -->     
     <!-- jQuery 2.1.3 -->     
     <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>     
@@ -887,51 +690,7 @@
           barColors: ['#00a65a', '#f56954'],
           xkey: 'y',
           ykeys: ['a', 'b'],
-          labels: ['Petrol', 'Diesel'],
-          hideHover: 'auto'
-        });
-      });
-       $(function () {
-        "use strict";
-        //BAR CHART
-        var bar = new Morris.Bar({
-          element: 'bar-chart4',
-          resize: true,
-          data: [
-            {y: '2006', a: 100, b: 90},
-            {y: '2007', a: 75, b: 65},
-            {y: '2008', a: 50, b: 40},
-            {y: '2009', a: 75, b: 65},
-            {y: '2010', a: 50, b: 40},
-            {y: '2011', a: 75, b: 65},
-            {y: '2012', a: 100, b: 90}
-          ],
-          barColors: ['#00a65a', '#f56954'],
-          xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['Petrol', 'Diesel'],
-          hideHover: 'auto'
-        });
-      });
-        $(function () {
-        "use strict";
-        //BAR CHART
-        var bar = new Morris.Bar({
-          element: 'bar-chart3',
-          resize: true,
-          data: [
-            {y: '2006', a: 100, b: 90},
-            {y: '2007', a: 75, b: 65},
-            {y: '2008', a: 50, b: 40},
-            {y: '2009', a: 75, b: 65},
-            {y: '2010', a: 50, b: 40},
-            {y: '2011', a: 75, b: 65},
-            {y: '2012', a: 100, b: 90}
-          ],
-          barColors: ['#00a65a', '#f56954'],
-          xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['Petrol', 'Diesel'],
+          labels: ['CPU', 'DISK'],
           hideHover: 'auto'
         });
       });

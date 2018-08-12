@@ -79,16 +79,9 @@ function dashboard(){
     this.showpassLoader = function(){
       $(".passloader").show();
     }
-    //shows price loader a
     this.showpriceLoader = function(){
-      alert();
       $(".priceloader").show();
     }
-    //shows price loader a
-    this.showinfoLoader = function(){
-      $(".infoloader").show();
-    }
-    //checkes all checkboxes
     this.checkAllPartners = function(element){
       elements=$(element).parents().eq(2).next().find("input[type='checkbox']");
       if($(element).prop("checked")===true){
@@ -167,33 +160,23 @@ $(document).ready(function(){
   $(".updatepass").click(function(){
       enyodashboard.showpassLoader();
   });
-   //update bank info button
-  $(".updateinfo").click(function(){
-      enyodashboard.showinfoLoader();
-  });
-  //update price button handler
   $(".updateprice").click(function(){
       enyodashboard.showpriceLoader();
   });
-  //delete button handler
   $(".ptable").on("click",".delete",function(){
     let element = $(this);
     enyodashboard.deletePartners(element);
   });
-
-  //deleteall button handler
   $(".deleteall").click(function(){
     enyodashboard.deleteAllpartners(this);
   });
-  //register button  handler
   $("#register").click(function(){
     enyodashboard.createPartner();
   });
-  // select all button handler
   $(".selectall").click(function(){
     enyodashboard.checkAllPartners(this);
   });
-  // view partners button handler
+
   $(".ptable").on("click",".view",function(){
     enyodashboard.viewPartners(this);
   });

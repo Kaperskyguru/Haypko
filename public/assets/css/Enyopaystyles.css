@@ -58,8 +58,8 @@ body
         right: 0px;
         top: 0px;
         background-color: #151D26;
-        -webkit-clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(37% 0, 100% 0, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
     }
     .navbar
     {
@@ -77,7 +77,7 @@ body
     {
         padding-left: 10px;
         font-style: normal;
-        font-size: 20px;
+        font-size: 1.5rem;
         text-transform: uppercase;
         margin: 100px 0px 0px;
         padding-top: 10px;
@@ -175,6 +175,7 @@ img
 .footer ul li a
 {
     color: #c9c9c9;
+    font-size:1.5rem;
 }
 
 .navbar-default .navbar-nav li a:hover
@@ -558,12 +559,6 @@ a.btn:hover
     display: block;
     position: relative;
 }
-.canceler{
-    position: absolute;
-    top:10px;
-    right:20px;
-    cursor: pointer;
-}
 
 @media (min-width:600px)
 {
@@ -577,7 +572,7 @@ a.btn:hover
 {
     background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
   	padding-left:35px;
-  	text-transform:uppercase;
+  	text-transform:uppercase;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 }
 
 #cardnum
@@ -601,7 +596,7 @@ a.btn:hover
 
 .nav-btn {
     margin-top: 2px;
-    margin-left: 0px;
+    margin-left: 10px;
 }
 
 .btn-topnav
@@ -805,7 +800,7 @@ a:focus
 {
     .hero-heading
     {
-        font-size: 60px;
+        font-size: 5rem;
     }
 }
 
@@ -866,14 +861,12 @@ a:focus
 {
     color: #151d27;
 }
-.white-logo,.black-logo{
-        width: 100%;
-}
+
 @media (min-width:768px)
 {
     .white-logo
     {
-        display: block !important;
+        display: none !important;
     }
 }
 
@@ -975,4 +968,10 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     position: fixed;
     width: 100%;
 
+}
+.canceler{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
 }
