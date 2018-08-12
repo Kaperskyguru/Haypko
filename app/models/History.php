@@ -78,18 +78,19 @@
             return true;
         }
 
-        // public function generateUsername(string $name, int $id): string
-        // {
-        //     $names = explode(' ', $name);
-        //     $username = $names[0] . $names[1];
-        //     $row = $this->getHistory( $id );
-        //     if ( !is_null( $row[ 'username' ] ) ) {
-        //         if (in_array($username, $row['username'])) {
-        //             $count = 0;
-        //             while (in_array( ($username. ''. ++$count) , $row['username']) );
-        //             $username = $username. '' .$count;
-        //         }
-        //     }
-        //     return $username;
-        // }
+
+        public function generateUsername(string $name, int $id): string
+        {
+            $names = explode(' ', $name);
+            $username = $names[0] . $names[1];
+            $row = $this->getHistory( $id );
+            if ( !is_null( $row[ 'username' ] ) ) {
+                if (in_array($username, $row['username'])) {
+                    $count = 0;
+                    while (in_array( ($username. ''. ++$count) , $row['username']) );
+                    $username = $username. '' .$count;
+                }
+            }
+            return $username;
+        }
 }

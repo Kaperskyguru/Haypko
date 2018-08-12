@@ -1,4 +1,3 @@
-
 <!DOCTYPE html> 
 <html> 
   <head> 
@@ -28,7 +27,6 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<<<<<<< HEAD
     <![endif]-->     
   </head>   
   <body class="skin-blue"> 
@@ -664,6 +662,8 @@
                 <!-- TABLE: LATEST ORDERS -->                 
                 <!-- /.box -->                 
 =======
+=======
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
     <![endif]-->
   </head>
   <body class="skin-blue">
@@ -808,6 +808,8 @@
                   <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
                 <!-- /.box-body -->
+<<<<<<< HEAD
+=======
               </div>
               <!-- TABLE: LATEST ORDERS -->
               <!-- /.box -->
@@ -835,6 +837,32 @@
               <!-- TABLE: LATEST ORDERS -->
               <!-- /.box -->
             </div>
+<<<<<<< HEAD
+            <div class="col-md-4" data-pg-collapsed>
+              <div class="ov-box box-shadow">
+                <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
+                <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                <p class="text-right gray">since yesterday</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="box box-success" data-pg-collapsed>
+                <div class="box-header">
+                  <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
+                  <h3>N15,000</h3>
+                  <h6 class="gray">Period Jan 1 - Jan 10</h6>
+                </div>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="bar-chart1" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
+              </div>
+              <!-- TABLE: LATEST ORDERS -->
+              <!-- /.box -->
+            </div>
+=======
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
             <div class="col-sm-6">
               <div class="box box-success" data-pg-collapsed>
                 <div class="box-header">
@@ -927,6 +955,7 @@
                     </table>
                   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of f104cd0... added cancel button to popup on the front end, fixed dashboard logo, added loader to the update button
                   <div class="box-body chart-responsive"> 
@@ -960,6 +989,8 @@
                               <span class="infoloader pull-right"><i class="fa fa-pulse fa-3x middle fa-spinner"></i></span> 
                             </div>                             
 =======
+=======
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
                   <div class="box-body chart-responsive">
                     <div class="chart" id="bar-chart8" style="height: 300px;">
                       <form>
@@ -968,6 +999,7 @@
                             <div class="form-group">
                               <input type="password" name="password" class="form-control" placeholder="current password">
                             </div>
+<<<<<<< HEAD
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
@@ -977,6 +1009,16 @@
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
+=======
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
                               <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
                             </div>
                           </div>
@@ -1223,6 +1265,7 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
+<<<<<<< HEAD
         <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
       </footer>
       <div class="popup-overlay" data-pg-collapsed>
@@ -1455,6 +1498,50 @@
     <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript">
     </script>     
 >>>>>>> parent of f104cd0... added cancel button to popup on the front end, fixed dashboard logo, added loader to the update button
+=======
+        <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
+      </footer>
+      <div class="popup-overlay" data-pg-collapsed>
+        <div class="popup-body box-shadow text-left">
+          <h2 class="text-center text-capitalize">new order</h2>
+          <h3>Product</h3>
+          <ul class="list-unstyled">
+            <li>10.4L of Petrol</li>
+            <li>10L of Diesel</li>
+          </ul>
+          <h3>Reciever’s Details</h3>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Name:</strong> Adegorilla Olumonkey
+            </li>
+            <li>
+              <strong>Phone: </strong> 081 234 5678
+            </li>
+            <li>
+              <strong>Address:</strong> Blk 83, Plot 4, Herbert
+              Macaulay way, Yaba.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 2.1.3 -->
+    <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="<?php echo SITEURL ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='<?php echo SITEURL ?>/assets/plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo SITEURL ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
+    <!-- page script -->
+    <!-- <script src="<?php echo SITEURL ?>/assets/dist/js/pages/dashboard.js" type="text/javascript"></script> -->
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
     <script type="text/javascript">
       $(function () {
         "use strict";
@@ -1470,6 +1557,7 @@
             {y: '2010', a: 50, b: 40, c: 90},
             {y: '2011', a: 75, b: 65, c: 90},
             {y: '2012', a: 100, b: 90, c: 90}
+<<<<<<< HEAD
           ],
           barColors: ['#00a65a', '#f56954', '#f31445'],
           xkey: 'y',
@@ -1497,9 +1585,12 @@
             {y: '2010', a: 50, b: 40},
             {y: '2011', a: 75, b: 65},
             {y: '2012', a: 100, b: 90}
+=======
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
           ],
-          barColors: ['#00a65a', '#f56954'],
+          barColors: ['#00a65a', '#f56954', '#f31445'],
           xkey: 'y',
+<<<<<<< HEAD
           ykeys: ['a', 'b'],
           labels: ['Petrol', 'Diesel'],
           hideHover: 'auto'
@@ -1527,6 +1618,13 @@
           hideHover: 'auto'
         });
       });
+=======
+          ykeys: ['a', 'b', 'c'],
+          labels: ['Petrol', 'Diesel', 'Gas'],
+          hideHover: 'auto'
+        });
+      });
+>>>>>>> 73f717e6eca06606724b80a84ac3ddef971138fc
     </script>
 
     <script type="text/javascript">
