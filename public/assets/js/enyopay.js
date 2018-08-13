@@ -405,6 +405,10 @@ function enyoUX() {
 			$(".signup-box").toggle(300);
 		});
 	}
+
+	this.hideForm= function(){
+		$(".form-section").fadeOut(300);
+	}
 }
 
 
@@ -420,4 +424,8 @@ $(document).ready(function(){
 	enyo.selectprizeHandler();
 	enyo.signupToggle();
 	enyo.litreHandler();
+
+	$(".canceler").on("click",function(){
+		enyo.hideForm();
+	});
 });

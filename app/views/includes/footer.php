@@ -83,7 +83,23 @@
               <div class="form-group"> 
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email"> 
               </div>               
+            </div>  
+            <div class="col-xs-12 col-sm-6" data-pg-collapsed> 
+              <div class="form-group"> 
+                <select class="form-control" >
+                    <option value="-1">Select State</option>
+                    <option value="Lagos">Lagos</option>
+                </select> 
+              </div>               
             </div>             
+            <div class="col-xs-12 col-sm-6" data-pg-collapsed> 
+              <div class="form-group"> 
+                 <select class="form-control" >
+                    <option value="-1">Select City</option>
+                    <option value="Lagos">Yaba</option>
+                </select>
+              </div>               
+            </div>            
             <div class="col-xs-12" data-pg-collapsed> 
               <div class="form-group"> 
                 <input type="text" class="form-control" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address"> 
@@ -111,7 +127,8 @@
                   <i class="fa fa-fw fa-long-arrow-right"></i> 
                 </button></h5> 
             </div>             
-          </div>           
+          </div>
+          <span class=" canceler"><i class="fa fa-2x fa-remove"></i></span>           
         </form>         
       </div>       
       <!-- NEW NEW NEW -->       
@@ -207,7 +224,7 @@
           <div class="row"> 
             <div class="col-xs-12 clear"> 
               <div class="pull-right"> 
-                <button class="btn btn-danger cancel">Cancel</button>                 
+                <button  type="button" class="btn btn-danger cancel">Cancel</button>                 
                 <button id="register" class="btn btn-primary" type="button">Submit</button>                 
               </div>               
             </div>             

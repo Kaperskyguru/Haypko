@@ -78,6 +78,7 @@
             return true;
         }
 
+
         public function generateUsername(string $name, int $id): string
         {
             $names = explode(' ', $name);
