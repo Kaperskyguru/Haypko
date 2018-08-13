@@ -590,58 +590,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
     <!-- page script -->
-    <!-- <script src="<?php echo SITEURL ?>/assets/dist/js/pages/dashboard.js" type="text/javascript"></script> -->
-    <script type="text/javascript">
-      $(function () {
-        "use strict";
-        //BAR CHART
-        var bar = new Morris.Bar({
-          element: 'bar-chart',
-          resize: true,
-          data: [
-            {y: '2006', a: 100, b: 90, c: 90},
-            {y: '2007', a: 75, b: 65, c: 90},
-            {y: '2008', a: 50, b: 40, c: 90},
-            {y: '2009', a: 75, b: 65, c: 90},
-            {y: '2010', a: 50, b: 40, c: 90},
-            {y: '2011', a: 75, b: 65, c: 90},
-            {y: '2012', a: 100, b: 90, c: 90}
-          ],
-          barColors: ['#00a65a', '#f56954', '#f31445'],
-          xkey: 'y',
-          ykeys: ['a', 'b', 'c'],
-          labels: ['Petrol', 'Diesel', 'Gas'],
-          hideHover: 'auto'
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(function () {
-        "use strict";
-        //BAR CHART
-
-      var bar = new Morris.Bar({
-        element: 'bar-chart1',
-        resize: true,
-        data: [
-          {y: '2006', a: 10, b: 90, c: 90},
-          {y: '2007', a: 75, b: 65, c: 90},
-          {y: '2008', a: 50, b: 40, c: 90},
-          {y: '2009', a: 75, b: 65, c: 90},
-          {y: '2010', a: 50, b: 40, c: 90},
-          {y: '2011', a: 75, b: 65, c: 90},
-          {y: '2012', a: 100, b: 90, c: 90}
-        ],
-        barColors: ['#00a65a', '#f56954'],
-        xkey: 'y',
-        ykeys: ['a', 'b', 'c'],
-        labels: ['CPU', 'DISK'],
-        hideHover: 'auto'
-      });
-      });
-
-    </script>
+    <script src="<?php echo SITEURL ?>/assets/js/charts.js" type="text/javascript"></script>
 
   </body>
 </html>
