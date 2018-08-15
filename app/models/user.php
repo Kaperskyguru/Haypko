@@ -15,4 +15,9 @@
         {
 
         }
+
+        public function getCustomers()
+        {
+            // code...
+        }
 }

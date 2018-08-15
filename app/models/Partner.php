@@ -14,8 +14,8 @@
 
         public function createPartner(array $data)
         {
-            $query = "INSERT INTO {$this->table} (partner_name, partner_location, partner_state, partner_city, partner_email, partner_mobile, partner_rc_number) VALUES
-            (:partner_name, :partner_location, :partner_state, :partner_city, :partner_email, :partner_mobile, :partner_rc_number)";
+            $query = "INSERT INTO {$this->table} (partner_name, partner_location, partner_state, partner_city, partner_email, partner_mobile, partner_rc_number, partner_account_number, partner_account_name, partner_bank_name) VALUES
+            (:partner_name, :partner_location, :partner_state, :partner_city, :partner_email, :partner_mobile, :partner_rc_number, :partner_account_number, :partner_account_name, :partner_bank_name)";
             $this->db->query($query);
             $this->db->bind(':partner_name', $data['partner_name']);
             $this->db->bind(':partner_location', $data['partner_location']);
@@ -24,6 +24,9 @@
             $this->db->bind(':partner_email', $data['partner_email']);
             $this->db->bind(':partner_mobile', $data['partner_mobile']);
             $this->db->bind(':partner_rc_number', $data['partner_rc_number']);
+            $this->db->bind(':partner_account_number', $data['partner_account_number']);
+            $this->db->bind(':partner_account_name', $data['partner_account_name']);
+            $this->db->bind(':partner_bank_name', $data['partner_bank_name']);
             if ($this->db->execute()) {
                 return true;
             }

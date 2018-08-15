@@ -41,7 +41,7 @@ function dashboard(){
     this.prevForm = function(){
     	$(".acc-form").fadeOut();
     	$(".p-form").fadeIn(300);
-    	
+
     }
     this.popup = function(title,message){
     	$(".popup-overlay").fadeIn(300);
@@ -58,7 +58,7 @@ function dashboard(){
 $(document).ready(function(){
 
 	enyodashboard = new dashboard();
-	//get links 
+	//get links
 	let links=$(".links");
 	enyodashboard.navHandler(links);
 	//add a retailer button
@@ -68,11 +68,16 @@ $(document).ready(function(){
 	//next button
 	$(".next").click(function(){
 		enyodashboard.nextForm();
-	});  
+	});
+    //register button
+    $(".register").click(function(){
+        alert();
+    });
+
 	$(".prev").click(function(){
 		enyodashboard.prevForm();
 	});
-	setTimeout(function(){ 
+	setTimeout(function(){
 		enyodashboard.popup("New Order","<h5 class='text-center'><strong>Name:</strong> Agunbiade adedeji</h5>"+
       "<h5 class='text-center'><strong>Product:</strong> 10L of Petrol</h5>");
 	},1000);
