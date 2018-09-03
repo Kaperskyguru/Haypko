@@ -232,11 +232,11 @@ function enyoUX() {
 	/*prize and litres handler*/
 	this.calcfuel=function(fuel){
 		let fuelprize = 0;
-		if(fuel==="petrol"){
+		if(fuel==="Petrol"){
 				fuelprize=145;
-			}else if(fuel==="diesel"){
+			}else if(fuel==="Diesel"){
 				fuelprize=235;
-			}else if(fuel==="gas"){
+			}else if(fuel==="Gas"){
 				fuelprize=350;
 			}
 			return fuelprize;
@@ -359,9 +359,9 @@ function enyoUX() {
      		"<div class='form-group' data-pg-collapsed>"+
         	"<label class='control-label' for='products"+num+"'>Product</label>"+
         	"<select class='form-control' id='products"+num+"' name='products"+num+"'>"+
-            "<option value='petrol' selected>Petrol</option>"+
-            "<option value='diesel'>Diesel</option>"+
-            "<option value='gas'>Gas</option>"+
+            "<option value='Petrol' selected>Petrol</option>"+
+            "<option value='Diesel'>Diesel</option>"+
+            "<option value='Gas'>Gas</option>"+
         	"</select>"+
       		"</div>"+
         	"<span class='text-danger r-prod'><i class='fa fa-remove '></i> Remove Product</span>"+
@@ -405,6 +405,10 @@ function enyoUX() {
 			$(".signup-box").toggle(300);
 		});
 	}
+
+	this.hideForm= function(){
+		$(".form-section").fadeOut(300);
+	}
 }
 
 
@@ -420,4 +424,8 @@ $(document).ready(function(){
 	enyo.selectprizeHandler();
 	enyo.signupToggle();
 	enyo.litreHandler();
+
+	$(".canceler").on("click",function(){
+		enyo.hideForm();
+	});
 });

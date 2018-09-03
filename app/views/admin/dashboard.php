@@ -1,43 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Haykpo | Dashboard</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <meta description="Get fuel delivered to your doorstep">
-    <!-- Bootstrap 3.3.2 -->
-    <link href="<?php echo SITEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- FontAwesome 4.3.0 -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons 2.0.0 -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<?php echo SITEURL ?>/assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link href="<?php echo SITEURL ?>/assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="<?php echo SITEURL ?>/assets/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="<?php echo SITEURL ?>/assets/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- enyodashboard Theme style -->
-    <link href="<?php echo SITEURL ?>/assets/dist/css/enyodashboard.css" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/r-2.2.2/sl-1.2.6/datatables.min.css"/>
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<?php require_once 'inc/header.php'?>
   <body class="skin-blue">
     <div class="wrapper">
       <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo"><b>Haykpo</b></a>
+        <a href="#" class="logo">
+          <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
+          <!-- <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" /> -->
+        </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -75,32 +44,12 @@
                   </li>
                 </ul>
               </li>
+              <li class="dropdown notifications-menu">
+                <a href="<?php echo SITEURL; ?>/users/logout/<?php echo $_SESSION['user_id'] ?>"> <!--class="dropdown-toggle" data-toggle="dropdown">-->
+                  <i class="fa fa-power-off"></i></a>
+              </li>
               <!-- Tasks: style can be found in dropdown.less -->
               <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<?php echo SITEURL ?>/assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                  <span class="hidden-xs">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="<?php echo SITEURL ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer<small>Member since Nov. 2012</small></p>
-                  </li>
-                  <!-- Menu Body -->
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
             </ul>
           </div>
         </nav>
@@ -158,57 +107,63 @@
                   <div class="box-header">
                     <h3 class="box-title"><select>
                         <option value="-1" selected>Product Sold</option>
-                      </select><sup class="gray">Last 10 days</sup></h3>
+                      </select>
+                      <!-- <sup class="gray">Last 10 days</sup> -->
+                  </h3>
                   </div>
                   <h4 class="box-title"><ul class="list-inline">
                       <span><strong>11,000</strong></span>
                       <sub class="gray">Total</sub>
                       <li>
-                        <i class="fa fa-circle text-primary"></i> Petrol
+                        <i class="fa fa-circle text-success"></i> Petrol
                       </li>
                       <li>
                         <i class="fa fa-circle text-yellow"></i> Diesel
                       </li>
                       <li>
-                        <i class="fa fa-circle text-red"></i> Diesel
+                        <i class="fa fa-circle text-red"></i> Gas
                       </li>
                     </ul></h4>
                   <div class="box-body chart-responsive">
-                    <div class="chart" id="bar-chart" style="height: 300px;"></div>
+                    <div class="chart" id="productSoldChart" style="height: 300px;"></div>
                   </div>
                   <!-- /.box-body -->
                 </div>
                 <!-- TABLE: LATEST ORDERS -->
                 <!-- /.box -->
               </div>
-              <div class="col-md-4" data-pg-collapsed>
+              <div class="col-sm-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
                   <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
                   <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                   <p class="text-right gray">since yesterday</p>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-7">
                 <div class="box box-success" data-pg-collapsed>
                   <div class="box-header">
-                    <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
+                    <h3 class="box-title"><span>Revenues</span>
+                        <!-- <span class="gray">Last 10 days</span> -->
+                    </h3>
                     <h3>N15,000</h3>
-                    <h6 class="gray">Period Jan 1 - Jan 10</h6>
+                    <!-- <h6 class="gray">Period Jan 1 - Jan 10</h6> -->
                   </div>
                   <div class="box-body chart-responsive">
-                    <div class="chart" id="bar-chart3" style="height: 300px;"></div>
+                    <div class="chart" id="revenueChart" style="height: 300px;"></div>
                   </div>
                   <!-- /.box-body -->
                 </div>
                 <!-- TABLE: LATEST ORDERS -->
                 <!-- /.box -->
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <div class="box box-success" data-pg-collapsed>
                   <div class="box-header">
                     <h3 class="box-title"><select>
                         <option value="-1" selected>Orders Sold</option>
-                      </select><sup class="gray">Last 10 days</sup></h3>
+                      </select>
+                      <!-- <sup class="gray">Last 10 days</sup> -->
+                  </h3>
                   </div>
                   <h4 class="box-title"><ul class="list-inline">
                       <li>
@@ -217,16 +172,12 @@
                         <h6 class="gray">New Customers</h6>
                       </li>
                       <li>
-                        <i class="fa fa-circle text-yellow"></i> 5, 788
-                        <h6 class="gray">Recurring Customers</h6>
-                      </li>
-                      <li>
                         <i class="fa fa-circle text-red"></i>1, 231
                         <h6 class="gray">Returning Customers</h6>
                       </li>
                     </ul></h4>
                   <div class="box-body chart-responsive">
-                    <div class="chart" id="bar-chart4" style="height: 300px;"></div>
+                    <div class="chart" id="customerChart" style="height: 300px;"></div>
                   </div>
                   <!-- /.box-body -->
                 </div>
@@ -267,7 +218,7 @@
                   <!-- /.box-header -->
                   <div class="box-body" data-pg-collapsed>
                     <div class="table-responsive">
-                      <table id="historyTable" class="table no-margin">
+                      <table id="historyTable" class="table history no-margin">
                         <thead>
                           <tr>
                             <th>Date</th>
@@ -302,7 +253,7 @@
                   <!-- <div class="box-footer clearfix">
                     <ul class="pagination pull-right" data-pg-collapsed>
                       <li>
-                        <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
+                        <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp; Prev</a>
                       </li>
                       <li class="active">
                         <a href="#">1 <span class="sr-only">(current)</span></a>
@@ -314,12 +265,10 @@
                         <a href="#">3</a>
                       </li>
                       <li>
-                        <a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#">Next &nbsp; <i class="fa fa-long-arrow-right"></i></a>
                       </li>
                     </ul>
-                    <span class="bottom"> Show: <select name="datesearch">
-                        <option value="-1" selected>10 Results</option>
-                      </select></span>
+
                   </div> -->
                   <!-- /.box-footer -->
                 </div>
@@ -374,63 +323,40 @@
                       <!-- /.box-header -->
                       <div class="box-body" data-pg-collapsed>
                         <div class="table-responsive">
-                          <table id="partnerTable" class="table no-margin">
+                          <table id="partnerTable" class="table no-margin ptable">
                             <thead>
                               <tr>
                                 <th>
-                                  <input class="control-label all" type="checkbox" value="">
+                                  <input class="control-label selectall" type="checkbox" value="">
                                 </th>
                                 <th>Partner</th>
                                 <th>Location</th>
                                 <th>View</th>
-                                <th>Delete</th>
+                                <th><button type="button" class="btn  btn-danger deleteall">delete</button></th>
                               </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($data['partners'] as $partner): ?>
-                              <tr>
-                                <td>
-                                  <input class="control-label" type="checkbox" value="">
-                                </td>
-                                <td><span><?php echo $partner->partner_name ?></span></td>
-                                <td><span><?php echo $partner->partner_location ?></span></td>
-                                <td>
-                                  <button pid="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-info">view</button>
-                                </td>
-                                <td>
-                                  <button id="deletePartner" pid="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-danger">delete</button>
-                                </td>
-                              </tr>
+                                <?php foreach ($data['partners'] as $partner): ?>
+                                  <tr pid="<?php echo $partner->id ?>">
+                                    <td>
+                                      <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $partner->partner_id ?>" type="checkbox" value="">
+                                    </td>
+                                    <td><span><?php echo $partner->partner_name ?></span></td>
+                                    <td><span><?php echo $partner->partner_location ?></span></td>
+                                    <td>
+                                      <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-info view">view</button>
+                                    </td>
+                                    <td>
+                                      <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-danger delete">delete</button>
+                                    </td>
+                                  </tr>
                               <?php endforeach ?>
                             </tbody>
                           </table>
                         </div>
                         <!-- /.table-responsive -->
                       </div>
-                      <!-- /.box-body -->
-                      <!-- <div class="box-footer clearfix">
-                        <ul class="pagination pull-right" data-pg-collapsed>
-                          <li>
-                            <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
-                          </li>
-                          <li class="active">
-                            <a href="#">1 <span class="sr-only">(current)</span></a>
-                          </li>
-                          <li>
-                            <a href="#">2</a>
-                          </li>
-                          <li>
-                            <a href="#">3</a>
-                          </li>
-                          <li>
-                            <a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
-                          </li>
-                        </ul>
-                        <span class="bottom"> Show: <select name="datesearch">
-                            <option value="-1" selected>10 Results</option>
-                          </select></span>
-                      </div> -->
-                      <!-- /.box-footer -->
+
                     </div>
                   </div>
                   <div class="tab-pane" id="tab2">
@@ -455,7 +381,7 @@
                                 <th>Partner</th>
                                 <th>Location</th>
                                 <th>View</th>
-                                <th>Delete</th>
+                                <th><button type="button" class="btn  btn-danger deleteall">delete</button></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -467,42 +393,19 @@
                                 <td><span><?php echo $partner->partner_name ?></span></td>
                                 <td><span><?php echo $partner->partner_location ?></span></td>
                                 <td>
-                                  <button pid="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-info">view</button>
+                                  <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-info view">view</button>
                                 </td>
                                 <td>
-                                  <button pid="<?php echo $partner->partner_id ?>" type="button" class="btn  btn-danger">delete</button>
+                                  <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-danger delete">delete</button>
                                 </td>
                               </tr>
-                          <?php endforeach ?>
+                              <?php endforeach ?>
                             </tbody>
                           </table>
                         </div>
                         <!-- /.table-responsive -->
                       </div>
-                      <!-- /.box-body -->
-                      <!-- <div class="box-footer clearfix">
-                        <ul class="pagination pull-right" data-pg-collapsed>
-                          <li>
-                            <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
-                          </li>
-                          <li class="active">
-                            <a href="#">1 <span class="sr-only">(current)</span></a>
-                          </li>
-                          <li>
-                            <a href="#">2</a>
-                          </li>
-                          <li>
-                            <a href="#">3</a>
-                          </li>
-                          <li>
-                            <a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
-                          </li>
-                        </ul>
-                        <span class="bottom"> Show: <select name="datesearch">
-                            <option value="-1" selected>10 Results</option>
-                          </select></span>
-                      </div> -->
-                      <!-- /.box-footer -->
+
                     </div>
                   </div>
                   <div class="tab-pane" id="tab3">
@@ -538,122 +441,135 @@
               <!-- ./col -->
               <!-- ./col -->
               <div class="col-sm-8">
-                <div class="box box-success">
-                  <div class="box-header">
-                    <h3 class="box-title">Change Password</h3>
-                  </div>
-                  <div class="box-body chart-responsive">
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="current password">
-                          </div>
+                    <div class="box box-success">
+                        <div class="box-header">
+                          <h3 class="box-title">Change Password</h3>
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input type="password" name="cpassword" class="form-control input-group form-group" placeholder="new password">
-                          </div>
+                        <div class="box-body chart-responsive">
+                          <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="form-group">
+                                    <input type="password" id="cpassword" name="password" class="form-control" placeholder="current password">
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <input type="password" id="npassword" name="npassword" class="form-control input-group form-group" placeholder="new password">
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                      <i class="text-red" id="e"></i>
+                                    <input type="password" id="conpass" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
+                                  </div>
+                                </div>
+                                <div class="col-sm-6 col-sm-push-6">
+                                  <div class="form-group text-right">
+                                    <input type="button" uid="<?php echo $_SESSION['user_id']; ?>" class="btn btn-primary text-uppercase updatepass" value="update">
+                                    <span class="passloader"><i class="fa fa-pulse fa-2x  fa-spinner"></i> </span>
+                                  </div>
+                                </div>
+                            </div>
+                          </form>
                         </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input type="password" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-sm-push-6">
-                          <div class="form-group text-right">
-                            <input type="submit" class="btn btn-primary text-uppercase" value="update">
-                          </div>
-                        </div>
-                    </form>
-                  </div>
-                  <div class="box-body chart-responsive">
-                    <form>
-                      <h2>Product Settings</h2>
-                      <div class="row">
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <div class="form-group">
-                            <label class="control-label">
-                              Product
-</label>
-                            <h4>Petrol</h4>
-                          </div>
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <div class="form-group">
-                            <label class="control-label">
-                              price
-</label>
-                            <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per litre</span></h4>
-                          </div>
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <div class="form-group">
-                            <h4>Diesel</h4>
-                          </div>
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per litre</span></h4>
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <div class="form-group">
-                            <h4>Gas</h4>
-                          </div>
-                        </div>
-                        <div class="col-sm-6" data-pg-collapsed>
-                          <div class="form-group">
-                            <h4 class="price"><input type="number" class="change-input" placeholder="price" /><span> per kg</span></h4>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input type="button" class="btn btn-primary " value="Update">
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-                <!-- TABLE: LATEST ORDERS -->
-                <!-- /.box -->
+                    </div>
               </div>
-              <!-- ./col -->
             </div>
-            <!-- /.row (main row) -->
+                <div class="row">
+                  <!-- ./col -->
+                  <!-- ./col -->
+                  <div class="col-sm-8">
+                        <div class="box box-success">
+                              <div class="box-header">
+                                <h3 class="box-title">Product Settings</h3>
+                              </div>
+                              <div class="box-body chart-responsive">
+                                    <form>
+                                        <?php foreach ($data['products'] as $product): ?>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                              <h2><?php echo $product->product_name ?></h2>
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="pull-right">
+                                                  <h2><span><?php echo $product->product_price ?></span> per litre</h2>
+
+                                              </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach ?>
+                                    <div class="col-sm-12">
+                                      <div class="pull-right">
+                                          <span class="pull-right text-primary change">Change</span>
+                                      </div>
+                                    </div>
+                                    </form>
+                                 </div>
+                         </div>
+                    </div>
+              </div>
+            </div>
           </section>
         </div>
-        <!-- Main content -->
-        <!-- /.content -->
       </div>
-      <!-- /.content-wrapper -->
+        <!-- /.content-wrapper -->
       <footer class="main-footer">
         <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
       </footer>
-      <!-- <div class="popup-overlay" data-pg-collapsed>
-        <div class="popup-body box-shadow text-left">
-          <h2 class="text-center text-capitalize">new order</h2>
-          <h3>Product</h3>
-          <ul class="list-unstyled">
-            <li>10.4L of Petrol</li>
-            <li>10L of Diesel</li>
-          </ul>
-          <h3>Reciever’s Details</h3>
-          <ul class="list-unstyled">
-            <li>
-              <strong>Name:</strong> Adegorilla Olumonkey
-            </li>
-            <li>
-              <strong>Phone: </strong> 081 234 5678
-            </li>
-            <li>
-              <strong>Address:</strong> Blk 83, Plot 4, Herbert
-              Macaulay way, Yaba.
-            </li>
-          </ul>
+
+      <div class="popup-overlay" data-pg-collapsed>
+        <div class="popup-body box-shadow text-center">
+        <div class="text-center"><i class="fa fa-check-circle fa-3x text-success"></i></div>
+          <h2 class="text-center text-capitalize">Partner Created</h2>
+          <div id="newPartner">
+
+          </div>
         </div>
       </div>
-    </div> -->
+
+      <div class="change-overlay" data-pg-collapsed>
+        <div class="change-body box-shadow ">
+            <form>
+              <h2>Update Price</h2>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Petrol</label>
+                      <input type="number" id="petrolprice" class="form-control" name="petrolprice">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Diesel</label>
+                      <input type="number" id="dieselprice" class="form-control" name="dieselprice">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Petrol</label>
+                      <input type="number" id="gasprice" class="form-control" name="gasprice">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <input type="button" id="update" class="btn btn-primary" value="Update" >
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="view-overlay" data-pg-collapsed>
+        <div class="view-box box-shadow text-center">
+        <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
+          <h2 class="text-center text-capitalize">View Partner</h2>
+          <div id="partnerDetails">
+
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="form-section">
       <div class="container">
         <div class="row">
@@ -661,7 +577,7 @@
           <!-- NEW NEW NEW -->
           <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
             <form role="form" class="p-form" id="p-form" data-pg-collapsed>
-              <h2>Add New Retailer</h2>
+              <h2>Add New Partner</h2>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group" data-pg-collapsed>
@@ -685,52 +601,18 @@
                   <div class="form-group" data-pg-collapsed>
                     <label class="control-label" for="state">State</label>
                     <select class="form-control" name="state" id="state">
-                      <option value="" selected="selected">- Select -</option>
-                      <option value="Abuja FCT">Abuja FCT</option>
-                      <option value="Abia">Abia</option>
-                      <option value="Adamawa">Adamawa</option>
-                      <option value="Akwa Ibom">Akwa Ibom</option>
-                      <option value="Anambra">Anambra</option>
-                      <option value="Bauchi">Bauchi</option>
-                      <option value="Bayelsa">Bayelsa</option>
-                      <option value="Benue">Benue</option>
-                      <option value="Borno">Borno</option>
-                      <option value="Cross River">Cross River</option>
-                      <option value="Delta">Delta</option>
-                      <option value="Ebonyi">Ebonyi</option>
-                      <option value="Edo">Edo</option>
-                      <option value="Ekiti">Ekiti</option>
-                      <option value="Enugu">Enugu</option>
-                      <option value="Gombe">Gombe</option>
-                      <option value="Imo">Imo</option>
-                      <option value="Jigawa">Jigawa</option>
-                      <option value="Kaduna">Kaduna</option>
-                      <option value="Kano">Kano</option>
-                      <option value="Katsina">Katsina</option>
-                      <option value="Kebbi">Kebbi</option>
-                      <option value="Kogi">Kogi</option>
-                      <option value="Kwara">Kwara</option>
+                      <option value="" selected="selected"> Select State</option>
+
                       <option value="Lagos">Lagos</option>
-                      <option value="Nassarawa">Nassarawa</option>
-                      <option value="Niger">Niger</option>
-                      <option value="Ogun">Ogun</option>
-                      <option value="Ondo">Ondo</option>
-                      <option value="Osun">Osun</option>
-                      <option value="Oyo">Oyo</option>
-                      <option value="Plateau">Plateau</option>
-                      <option value="Rivers">Rivers</option>
-                      <option value="Sokoto">Sokoto</option>
-                      <option value="Taraba">Taraba</option>
-                      <option value="Yobe">Yobe</option>
-                      <option value="Zamfara">Zamfara</option>
-                      <option value="Outside Nigeria">Outside Nigeria</option>
+
                     </select>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group" data-pg-collapsed>
                     <label class="control-label" for="city">City</label>
-                    <select id="city" class="form-control">
+                    <select class="form-control" name="city" id="city">
+                      <option value="-1">Select City</option>
                       <option value="surulere">surulere</option>
                     </select>
                   </div>
@@ -785,7 +667,7 @@
                 <div class="col-xs-12 clear">
                   <div class="pull-right">
                     <button class="btn btn-danger prev" type="button">previous</button>
-                    <button id="register" class="btn btn-primary register" type="button">create</button>
+                    <button id="register" class="btn btn-primary" type="button">create</button>
                   </div>
                 </div>
               </div>
@@ -795,7 +677,19 @@
       </div>
     </section>
     <!-- ./wrapper -->
-    <!-- jQuery 2.1.3 -->
+
+    <?php
+        $dat = file_get_contents('http://localhost/Enyopay/api/chart');
+        $mydata = json_decode($dat);
+
+        $orderData = file_get_contents('http://localhost/Enyopay/api/orders');
+        $orders = json_decode($orderData);
+
+        $soldData = file_get_contents('http://localhost/Enyopay/api/sold');
+        $sold = json_decode($soldData);
+     ?>
+
+  <!-- jQuery 2.1.3 -->
     <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -808,61 +702,58 @@
     <script src="<?php echo SITEURL ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
-    <!-- page script -->
+
     <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
-    <!-- dataTables -->
-    <!-- <script src='<?php echo SITEURL ?>/assets/plugins/datatables/dataTables.bootstrap.js'></script> -->
+
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 
-
-
+    <!-- page script -->
+    <!-- <script src="<?php echo SITEURL ?>/assets/dist/js/pages/dashboard.js" type="text/javascript"></script> -->
     <script type="text/javascript">
-
-
-          $('#partnerTable').dataTable();
-          $('#recentPartnerTable').dataTable();
-          $('#historyTable').dataTable();
-
+    $('#partnerTable').dataTable();
+    $('#recentPartnerTable').dataTable();
+    $('#historyTable').dataTable();
       $(function () {
         "use strict";
         //BAR CHART
-        var bar = new Morris.Bar({
-          element: 'bar-chart',
-          resize: true,
-          data: [
-            {y: '2006', a: 100, b: 90},
-            {y: '2007', a: 75, b: 65},
-            {y: '2008', a: 50, b: 40},
-            {y: '2009', a: 75, b: 65},
-            {y: '2010', a: 50, b: 40},
-            {y: '2011', a: 75, b: 65},
-            {y: '2012', a: 100, b: 90}
-          ],
-          barColors: ['#00a65a', '#f56954'],
-          xkey: 'y',
-          ykeys: ['a', 'b'],
-          labels: ['CPU', 'DISK'],
-          hideHover: 'auto'
-        });
+
+      var bar = new Morris.Bar({
+        element: 'productSoldChart',
+        resize: true,
+        data: [
+          <?php echo $sold; ?>
+        ],
+        barColors: ['#00a65a', '#dd4b39', '#f39c12'],
+        xkey: 'Month',
+        ykeys: ['Petrol', 'Gas', 'Diesel'],
+        labels: ['Petrol', 'Gas', 'Diesel'],
+        hideHover: 'auto'
       });
 
-    </script>
+      var bar2 = new Morris.Bar({
+        element: 'revenueChart',
+        resize: true,
+        data: [ <?php echo $mydata; ?>],
+        barColors: ['#00a65a', '#f39c12', '#dd4b39'],
+        xkey: 'Month',
+        ykeys: ['Petrol', 'Gas', 'Diesel'],
+        labels: ['Petrol', 'Gas', 'Diesel'],
+        hideHover: 'auto'
+      });
 
-    <script>
-        $(document).ready(function() {
-            $('body').delegate("#register", "click", function(){
-                alert();
-            });
-        });
+      var bar3 = new Morris.Bar({
+        element: 'customerChart',
+        resize: true,
+        data: [ <?php echo $orders ?> ],
+        barColors: ['#337ab7', '#dd4b39'],
+        xkey: 'Month',
+        ykeys: ['New', 'Returning'],
+        labels: ['New', 'Returning'],
+        hideHover: 'auto'
+      });
 
-        $('body').delegate('#deletePartner', 'click', function () {
-            var pid = $(this).attr('pid');
-            $.ajax({
-                method: "post",
-                url :"admin"
-                processData: true,
-            });
-        });
+    });
+
     </script>
-  </body>
 </html>

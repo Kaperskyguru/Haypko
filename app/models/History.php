@@ -32,7 +32,7 @@
 
         public function getHistories()
         {
-            $this->db->query("SELECT * FROM {$this->table}");
+            $this->db->query("SELECT * FROM {$this->table} ORDER BY order_id DESC");
             $row = $this->db->resultSet();
             if (!$row) {
                 return null;
@@ -40,11 +40,21 @@
             return $row;
         }
 
-        public function getTotalAmountOfProduct(string $product_name)
+        public function getRevenues()
         {
-            $this->db->query("SELECT product_name, SUM(order_amount) AS amount FROM {$this->table} WHERE product_name = :product_name");
+            $this->db->query("SELECT Petrol, Gas, Diesel, Month FROM revenue");
+            $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
+        public function getMonthOfProduct(string $product_name)
+        {
+            $this->db->query("SELECT product_name, SUM(order_amount) AS amount, MONTH(order_date_added) AS month FROM {$this->table} GROUP BY order_amount, month");
             $this->db->bind(':product_name', $product_name);
-            $row = $this->db->single();
+            $row = $this->db->resultSet();
             if (!$row) {
                 return null;
             }

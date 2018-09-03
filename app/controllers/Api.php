@@ -6,6 +6,8 @@
         function __construct()
         {
             $this->historyModel = $this->model('History');
+            $this->indexModel = $this->model('index');
+            $this->productModel = $this->model('product');
         }
 
         public function index()
@@ -16,15 +18,19 @@
 
         public function chart()
         {
-            $gasAmount = $this->historyModel->getTotalAmountOfProduct('gas');
-            $petrolAmount = $this->historyModel->getTotalAmountOfProduct('petrol');
-            $dieselAmount = $this->historyModel->getTotalAmountOfProduct('diesel');
+            $revenue = $this->historyModel->getRevenues();
+            $this->views('api/chart', $revenue);
+        }
 
-            $data = [
-                $gasAmount,
-                $petrolAmount,
-                $dieselAmount,
-            ];
-            $this->views('api/chart', $data);
+        public function orders()
+        {
+            $orders = $this->indexModel->getCustomerStatistics();
+            $this->views('api/orders', $orders);
+        }
+
+        public function sold()
+        {
+            $products = $this->productModel->getProductSold();
+            $this->views('api/sold', $products);
         }
     }

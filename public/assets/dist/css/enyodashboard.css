@@ -7,10 +7,39 @@
 body
 {
     font-family: nunito-regular;
-    font-size: 18px;
+    font-size: 100%;
     font-weight: normal;
 }
+.view-box{
+    position: fixed;
+    top:50%;
+    left:50%;
+    padding: 20px 15px;
+    min-width:350px;
+    width:350px;
+    border-radius: 5px;
+    background: white;
+    font-size:1.5rem;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.view-overlay{
+    background:rgba(0,0,0,0.5);
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display:none;
+    position:fixed;
+    z-index:1500;
+}
 
+.skin-blue .sidebar-menu>li>a {
+    font-size:1.4rem;
+}
+.skin-blue .main-header .navbar .nav>li>a {
+    font-size:2.0rem;
+}
 .skin-yellow .main-header .logo
 {
     background-color: #151d27;
@@ -109,6 +138,7 @@ body
 {
     padding-top: 20px;
     padding-bottom: 20px;
+    font-size: 1.5rem;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
@@ -124,8 +154,10 @@ body
 .add-btn
 {
     border: none;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right:20px;
+    padding-left:20px;
+    padding-top:4px;
+    padding-bottom:4px;
 }
 
 .box-title select
@@ -186,38 +218,64 @@ body
 
 .box-shadow
 {
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 
-.popup-overlay
+.popup-overlay,.view-overlay,.change-overlay
 {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     text-align: center;
-    z-index: 1000;
+    overflow: auto;
+    z-index: 2000;
     display: none;
 }
-
+.change-body{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding:30px;
+    max-width: 400px;
+    background: white;
+    text-align: left;
+    border-radius:5px;
+}
+.change-body h2{
+    margin-bottom:10px;
+}
 .popup-body
 {
     max-width: 300px;
-    margin: 200px auto;
+    margin: 100px auto;
     background-color: white;
     padding: 20px;
+    border-radius: 5px;
+}
+.view-box h4 {
+    margin-top: 5px;
+    font-weight:bold;
+    color: black;
+}
+.view-box p {
+    font-size:1.5rem;
 }
 
 .popup-body ul
 {
     padding-left: 20px;
 }
+.change{
+    cursor: pointer;
 
+}
 .popup-body h2
 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .no-print{
@@ -240,6 +298,9 @@ body
     background-color: transparent;
     color: #fff;
     border-bottom: 0px solid transparent;
+}
+.skin-blue .main-header .logo img{
+    width:50%;
 }
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
     background: #151d27;
@@ -280,7 +341,7 @@ body
 }
 .main-sidebar{
     position: fixed;
-    border-right: 1px solid #d8d8d8;
+    border-right: 0px solid #d8d8d8;
 }
 .price-val{
     display:none;
@@ -297,10 +358,10 @@ body
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(0,0,0,0.6);
     display: none;
     overflow: auto;
-    z-index: 50;
+    z-index: 2000;
 }
 .form-section form {
     margin-top: 80px;
@@ -308,6 +369,7 @@ body
     padding: 60px;
     box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
     background-color: white;
+    min-width: 400px;
 }
 .change-input{
     width: 100px;
@@ -322,6 +384,25 @@ label{
     font-size: 1.3rem;
 }
 
+.accloader,.passloader{
+ display:none;
+ margin-left: 10px;
+}
+
+.load-container{
+    display: inline-block;
+    width: 40px;
+    margin: 5px 10px;
+}
+.prev,.next,.cancel{
+    margin-right:5px;
+}
+@-webkit-keyframes spin {
+    0%{
+            transform:rotate(360deg);
+    }
+}
+
 @media only all and (max-width: 768px ){
     .skin-blue .main-header .logo{
         background-color: #151d27;
@@ -330,4 +411,21 @@ label{
     .sections{
         margin-top:50px;
     }
+    .skin-blue .main-header .logo .black-logo{
+        display:none;
+    }
+     .skin-blue .main-header .logo {
+        width: 40%;
+    }
+
+}
+@media only all and (min-width: 768px){
+     .skin-blue .main-header .navbar .sidebar-toggle{
+       display:none; 
+    }
+    .skin-blue .main-header .logo .black-logo{
+        display:none;
+    }
+
+
 }

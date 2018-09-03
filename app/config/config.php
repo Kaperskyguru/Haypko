@@ -11,6 +11,11 @@ define('SITEURL', 'http://localhost/Enyopay');
 
 define('SITENAME', 'Haykpo');
 
+define('USER_TYPE', 'partner');
+
+define('ADMIN_TYPE', 'admin');
+
+
 define('PK', 'pk_test_58ab90adc79aae5a3580784b716109a1c5a8c307');
 
 define('SK', 'sk_test_d0f6e2672fd5d1b7b9da7efdd9ce3974a7cb1ec5');
