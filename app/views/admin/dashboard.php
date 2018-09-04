@@ -694,7 +694,7 @@
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Morris.js charts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="<?php echo SITEURL ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
     <!-- FastClick -->
     <script src='<?php echo SITEURL ?>/assets/plugins/fastclick/fastclick.min.js'></script>

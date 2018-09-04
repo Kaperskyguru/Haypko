@@ -156,7 +156,8 @@
         private function createUserSession(int $id)
         {
             try {
-                if ($this->userModel->storeSession($id)) {
+                $cookie = bin2hex(random_bytes(16));
+                if ($this->userModel->storeSession($id, $cookie)) {
                     setcookie(self::COOKIE_NAME, $cookie, time() + self::SESSION_TIME, "/");
                     $_COOKIE[self::COOKIE_NAME] = $cookie;
                     return true;

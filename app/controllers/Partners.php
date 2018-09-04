@@ -18,14 +18,14 @@ class Partners extends Controller
             $data = [
                 'history' => $history,
             ];
-            $d = [
-                'id' =>1,
-                'password'=>'aksnsa',
-                'username'=>'askjaj',
-                'email'=>'solomoneseme@gmail.com'
-            ];
-
-            mailer($d);
+            // $d = [
+            //     'id' =>1,
+            //     'password'=>'aksnsa',
+            //     'username'=>'askjaj',
+            //     'email'=>'solomoneseme@gmail.com'
+            // ];
+            //
+            // mailer($d);
             $this->views('partner/partner', $data);
         } else {
             redirector( 'users/login');

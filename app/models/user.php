@@ -70,9 +70,8 @@
             return true;
         }
 
-        public function storeSession(int $id)
+        public function storeSession(int $id, $cookie)
         {
-            $cookie = bin2hex(random_bytes(16));
             $query = "INSERT INTO sessions (session_cookie, session_user_id, session_start) VALUES (:session_cookie, :session_user_id, NOW())";
             $stmt = $this->db->query($query);
             $this->db->bind(":session_cookie", md5($cookie));
