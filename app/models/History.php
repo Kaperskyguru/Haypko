@@ -61,7 +61,6 @@
             return $row;
         }
 
-
         public function getHistory(int $id)
         {
             $this->db->query("SELECT * FROM {$this->table} WHERE history_id = :history_id");
