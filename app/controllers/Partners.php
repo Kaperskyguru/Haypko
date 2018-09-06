@@ -18,14 +18,7 @@ class Partners extends Controller
             $data = [
                 'history' => $history,
             ];
-            // $d = [
-            //     'id' =>1,
-            //     'password'=>'aksnsa',
-            //     'username'=>'askjaj',
-            //     'email'=>'solomoneseme@gmail.com'
-            // ];
-            //
-            // mailer($d);
+
             $this->views('partner/partner', $data);
         } else {
             redirector( 'users/login');
@@ -35,9 +28,11 @@ class Partners extends Controller
     public function add() {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
             $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $password = generateRandomPassword();
             $data = [
                 'partner_name' => $_POST['name'],
                 'username' => $this->partnerModel->generateUsername($_POST['name']),
+                'password' => generateHashes($password),
                 'partner_location' => $_POST['address'],
                 'partner_state' => $_POST['state'],
                 'partner_city' => $_POST['city'],
@@ -50,7 +45,16 @@ class Partners extends Controller
             ];
             $create = $this->partnerModel->createPartner($data);
             if($create != false) {
-                echo "Partner Created/".$create;
+                $data = [
+                    'password'=> $password,
+                    'username'=> $data['username'],
+                    'email'=> $data['partner_email']
+                ];
+                if(mailer($data)) {
+                    echo "Partner Created/".$create;
+                } else {
+                    echo "We could not send mail";
+                }
             } else {
                 echo "Partner Not Created";
             }
@@ -83,10 +87,20 @@ class Partners extends Controller
 
     public function sendDetails()
     {
-
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
             $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
-
+            $data = [
+                'password'=> $_POST['p'],
+                'username'=> $_POST['u'],
+                'email'=> $_POST['email']
+            ];
+            if(mailer($data)) {
+                echo "Email Sent successfully";
+            } else {
+                echo "We could not send mail";
+            }
+        } else {
+            redirector('');
         }
     }
 
@@ -96,12 +110,17 @@ class Partners extends Controller
             $password = generateRandomPassword();
             if ($this->storeGeneratedPassword($password, $_POST['id'])) {
                 $partner = $this->partnerModel->getPartner($_POST['id']);
+                $url = SITEURL;
                 echo "
                 <p>Username</p>
                 <h3>$partner->username</h3>
                 <p>Password</p>
                 <h3>$password</h3>
-                <button type='button' pid='$partner->id' class='btn btn-primary'>Send </button>
+                <form action='$url/partners/sendDetails' method='post'>
+                    <input type='hidden' value='$partner->username' name='u' />
+                    <input type='hidden' value='$password' name='p' />
+                    <button type='submit' pid='$partner->id' class='btn btn-primary'>Send </button>
+                </form>
                 ";
             } else {
                 echo "

@@ -267,18 +267,20 @@ function mailer($data)
 
 function pretty_mail($to, $title, $msg, $typeof)
 {
-    //header parameters
-    $headers = "MIME-VERSION:1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From:" . "Haykpo.com" . "\r\n";
-    $headers .= "Cc: info@haykpo.com";
+        // Create the Transport
+    $transport = (new Swift_SmtpTransport('YOUR MAIL SERVER', 25))
+    ->setUsername('YOUR USERNAME')
+    ->setPassword('YOUR PASSWORD');
 
-    //Regular variables
-    $txt = "";
-    if (isset($to) and isset($msg)) {
-        $txt .= $msg . '<br />';
-    }
+    // Create the Mailer using your created Transport
+    $mailer = new Swift_Mailer($transport);
 
-    //send the Goddamn mail bitch! something is wrong here
-    mail($to, $title, $txt, $headers);
+    // Create a message
+    $message = (new Swift_Message($title))
+    ->setFrom(['info@haypko.com' => 'Admin'])
+    ->setTo([$to, 'info@haypko.com'])
+    ->setBody($msg, 'text/html');
+
+    // Send the message
+    return $result = $mailer->send($message);
 }
