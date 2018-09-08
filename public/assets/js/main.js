@@ -22,7 +22,6 @@ $(document).ready(function() {
             success: function(data) {
 
                 var arr = data.split('ID:');
-                // alert(arr[1]);
                 document.querySelector('.hero').classList.add('spinner-2');
                 if (arr[0].trim() == key.trim()) {
                     setTimeout(() => {
@@ -32,7 +31,6 @@ $(document).ready(function() {
                 } else {
                     document.querySelector('.hero').classList.remove('spinner-2');
                     alert(data);
-                    // alert('All fields are required');
                     window.location = "http://localhost/Enyopay/";
                 }
             },
@@ -41,7 +39,6 @@ $(document).ready(function() {
             }
         });
     });
-
 
     function payWithPaystack(id, email, amount, product, Phone, litres) {
         var handler = PaystackPop.setup({
@@ -60,10 +57,7 @@ $(document).ready(function() {
                 }, ],
             },
             callback: function(response) {
-                //  store order to DB
-
                 saveTransaction(id, product, litres, amount, response.reference);
-                // saveInformations();
             },
             onClose: function() {
                 alert('Transaction cancelled');
@@ -85,14 +79,7 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(data) {
-                $('.footer').html(data);
-                // document.querySelector('.hero').classList.add('spinner-2');
-                // setTimeout(() => {
-                //     document.querySelector('.hero').classList.remove('spinner-2');
-                //     window.location = "http://localhost/Enyopay/";
-                // }, 1000);
-
-
+                window.location = "http://localhost/Enyopay/"
             },
             onerror: function(err) {
                 alert(err);
@@ -101,7 +88,6 @@ $(document).ready(function() {
     }
 
     function saveTransaction(id, product, litres, amount, reference) {
-        alert(id);
         $.ajax({
             method: 'POST',
             url: 'Pages/save',
@@ -115,8 +101,6 @@ $(document).ready(function() {
             cache: false,
             success: function(data) {
                 var arr = data.split('/')
-                // alert(arr[1]);
-                // var orderID = data.slice(4,data.length);
                 verifyTransaction(id, arr[1], reference);
             },
             onerror: function(err) {
@@ -124,11 +108,6 @@ $(document).ready(function() {
             }
         });
     }
-
-    $('#register').click(function (e) {
-        // e.preventDefault();
-        alert();
-    });
 
     function register(name, rcnumber, email, city, state, address, mobile) {
         $.ajax({
@@ -145,16 +124,15 @@ $(document).ready(function() {
         });
     }
 
-    $('#login').click(function (e) {
-        e.preventDefault();
-        let type = $('#').val();
-        let username = $('#').val();
-        let pass = $('#').val();
-        login(type, username, pass);
-    });
+    // $('#login').click(function (e) {
+    //     e.preventDefault();
+    //     let type = $('#').val();
+    //     let username = $('#').val();
+    //     let pass = $('#').val();
+    //     login(type, username, pass);
+    // });
 
     function login(type, username, pass) {
-
         $.ajax({
             url:'http://localhost/Enyopay/users/login',
             method:'POST',

@@ -11,6 +11,7 @@
         {
             $this->customerModel = $this->model('index');
             $this->productModel = $this->model('product');
+            $this->notifModel = $this->model('notify');
         }
 
         public function verify()
@@ -169,6 +170,11 @@
                         'year' =>  getYear($tranx->data->paid_at),
                     ];
                     $this->customerModel->updateProductSold($data);
+                    $notif = [
+                        'partner_id' => $customer_id,
+                        'content' => 'New order made',
+                    ];
+                    $this->notifModel->add_notification($notif);
                     echo 'Your payment was Successfully recieved';
                 } else {
                     //Log

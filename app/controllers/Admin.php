@@ -16,6 +16,7 @@
             $this->historyModel = $this->model('History');
             $this->customerModel = $this->model('user');
             $this->productModel = $this->model('product');
+            $this->notifModel = $this->model('notify');
         }
 
         public function index()
@@ -38,6 +39,17 @@
             } else {
                 redirector( 'users/login');
             }
+    }
 
+    public function notify()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'content' => $_POST['content'],
+                'partner_id' => $_POST['partner_id']
+            ];
+            $this->notifModel->add_notification($data);
+        }
     }
 }
