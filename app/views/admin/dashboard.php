@@ -16,27 +16,17 @@
               <!-- Messages: style can be found in dropdown.less-->
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger">10</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notify']))?></span></a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have 10 notifications</li>
+                  <li class="header">You have <?php echo $escaper->escapeHtml(count($data['notify'])) ?> notifications</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
+                        <?php foreach($data['notify'] as $notif): ?>
                       <li>
-                        <a href="#"><i class="fa fa-users text-aqua"></i> 5 new members joined today</a>
+                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> <?php echo $escaper->escapeHtml($notif->notif_content);?></a>
                       </li>
-                      <li>
-                        <a href="#"><i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-users text-red"></i> 5 new members joined</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> 25 sales made</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-user text-red"></i> You changed your username</a>
-                      </li>
+                    <?php endforeach ?>
                     </ul>
                   </li>
                   <li class="footer">
@@ -232,15 +222,15 @@
                         <?php foreach($data['history'] as $customer): ?>
                           <tr>
                             <td>
-                              <a href="#"><?php echo get_formatted_date($customer->order_date_added)?></a>
+                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($customer->order_date_added))?></a>
                             </td>
-                            <td><?php echo $customer->product_name?></td>
+                            <td><?php echo $escaper->escapeHtml($customer->product_name)?></td>
                             <td>Enyo Retail</td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $customer->order_litres?> Litres</div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($customer->order_litres)?> Litres</div>
                             </td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $customer->order_amount?></div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml($customer->order_amount)?></div>
                             </td>
                           </tr>
                           <?php endforeach?>
@@ -249,28 +239,7 @@
                     </div>
                     <!-- /.table-responsive -->
                   </div>
-                  <!-- /.box-body -->
-                  <!-- <div class="box-footer clearfix">
-                    <ul class="pagination pull-right" data-pg-collapsed>
-                      <li>
-                        <a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp; Prev</a>
-                      </li>
-                      <li class="active">
-                        <a href="#">1 <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li>
-                        <a href="#">2</a>
-                      </li>
-                      <li>
-                        <a href="#">3</a>
-                      </li>
-                      <li>
-                        <a href="#">Next &nbsp; <i class="fa fa-long-arrow-right"></i></a>
-                      </li>
-                    </ul>
 
-                  </div> -->
-                  <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
               </div>
@@ -337,12 +306,12 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($data['partners'] as $partner): ?>
-                                  <tr pid="<?php echo $partner->id ?>">
+                                  <tr pid="<?php echo $escaper->escapeHtml( $partner->id ) ?>">
                                     <td>
-                                      <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $partner->partner_id ?>" type="checkbox" value="">
+                                      <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $escaper->escapeHtml($partner->partner_id) ?>" type="checkbox" value="">
                                     </td>
-                                    <td><span><?php echo $partner->partner_name ?></span></td>
-                                    <td><span><?php echo $partner->partner_location ?></span></td>
+                                    <td><span><?php echo $escaper->escapeHtml($partner->partner_name) ?></span></td>
+                                    <td><span><?php echo $escaper->escapeHtml($partner->partner_location) ?></span></td>
                                     <td>
                                       <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-info view">view</button>
                                     </td>
@@ -390,8 +359,8 @@
                                 <td>
                                   <input class="control-label" type="checkbox" value="">
                                 </td>
-                                <td><span><?php echo $partner->partner_name ?></span></td>
-                                <td><span><?php echo $partner->partner_location ?></span></td>
+                                <td><span><?php echo $escaper->escapeHtml($partner->partner_name) ?></span></td>
+                                <td><span><?php echo $escaper->escapeHtml($partner->partner_location) ?></span></td>
                                 <td>
                                   <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-info view">view</button>
                                 </td>
@@ -489,11 +458,11 @@
                                         <?php foreach ($data['products'] as $product): ?>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                              <h2><?php echo $product->product_name ?></h2>
+                                              <h2><?php echo $escaper->escapeHtml( $product->product_name )?></h2>
                                             </div>
                                             <div class="col-sm-6">
                                               <div class="pull-right">
-                                                  <h2><span><?php echo $product->product_price ?></span> per litre</h2>
+                                                  <h2><span><?php echo $escaper->escapeHtml($product->product_price )?></span> per litre</h2>
 
                                               </div>
                                             </div>
@@ -679,13 +648,13 @@
     <!-- ./wrapper -->
 
     <?php
-        $dat = file_get_contents('http://localhost/Enyopay/api/chart');
+        $dat = file_get_contents(SITEURL.'/api/chart');
         $mydata = json_decode($dat);
 
-        $orderData = file_get_contents('http://localhost/Enyopay/api/orders');
+        $orderData = file_get_contents(SITEURL.'/api/orders');
         $orders = json_decode($orderData);
 
-        $soldData = file_get_contents('http://localhost/Enyopay/api/sold');
+        $soldData = file_get_contents(SITEURL.'/api/sold');
         $sold = json_decode($soldData);
      ?>
 

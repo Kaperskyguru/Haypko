@@ -11,6 +11,10 @@ class ComposerStaticInitdb5ba1c09b81e48b3820bc6c9bb5c9f0
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\Escaper\\' => 13,
+        ),
         'Y' => 
         array (
             'Yabacon\\' => 8,
@@ -31,6 +35,10 @@ class ComposerStaticInitdb5ba1c09b81e48b3820bc6c9bb5c9f0
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
+        ),
         'Yabacon\\' => 
         array (
             0 => __DIR__ . '/..' . '/yabacon/paystack-php/src',

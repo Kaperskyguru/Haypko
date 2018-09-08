@@ -5,7 +5,8 @@
     "require": {
         "monolog/monolog": "^1.23",
         "yabacon/paystack-php": "^2.1",
-        "swiftmailer/swiftmailer": "^6.0"
+        "swiftmailer/swiftmailer": "^6.0",
+        "zendframework/zend-escaper": "^2.6"
 
     }
 }

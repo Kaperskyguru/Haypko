@@ -26,12 +26,12 @@
                 $history = $this->historyModel->getHistories();
                 $stations = $this->stationModel->getStations();
                 $product = $this->productModel->getProducts();
-                // $amount = $this->historyModel->getTotalAmountOfProduct('gas');
+                $notify = $this->notifModel->get_notifications();
                 $data = [
                     'partners' => $partners,
                     'stations' => $stations,
                     'history' => $history,
-                    // 'amount' =>  $amount,
+                    'notify' =>  $notify,
                     'products' => $product,
                 ];
 

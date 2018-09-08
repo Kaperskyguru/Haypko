@@ -53,10 +53,10 @@ class notify
         }
     }
 
-    public function get_notifications_by_user_id($user_id, $length)
+    public function get_notifications_by_user_id($user_id)
     {
         try {
-            $query = "SELECT * FROM notifications WHERE notif_partner_id = :user_id ORDER BY notif_date DESC LIMIT $length";
+            $query = "SELECT * FROM notifications WHERE notif_partner_id = :user_id ORDER BY notif_date DESC";
             $this->query($query);
             $this->bind(":user_id", $user_id);
             $stmt = $this->single();
@@ -73,10 +73,10 @@ class notify
         $stmt = self::get_notifications_by_user_id();
     }
 
-    public function get_notification($length)
+    public function get_notifications()
     {
         try {
-            $query = "SELECT * FROM notifications WHERE notif_status = 5 LIMIT $length";
+            $query = "SELECT * FROM notifications WHERE notif_status = 1";
             $this->db->query($query);
             $stmt = $this->db->resultSet();
             return $stmt;

@@ -13,27 +13,17 @@
               <!-- Messages: style can be found in dropdown.less-->
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger">10</span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notify']))?></span></a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have 10 notifications</li>
+                  <li class="header">You have <?php echo $escaper->escapeHtml(count($data['notify']))?> notifications</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
+                        <?php foreach($data['notify'] as $notif): ?>
                       <li>
-                        <a href="#"><i class="fa fa-users text-aqua"></i> 5 new members joined today</a>
+                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> <?php echo $escaper->escapeHtml($notif->notif_content);?></a>
                       </li>
-                      <li>
-                        <a href="#"><i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-users text-red"></i> 5 new members joined</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> 25 sales made</a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fa fa-user text-red"></i> You changed your username</a>
-                      </li>
+                      <?php endforeach ?>
                     </ul>
                   </li>
                   <li class="footer">
@@ -44,7 +34,7 @@
               <!-- Tasks: style can be found in dropdown.less -->
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="<?php echo SITEURL; ?>/users/logout/<?php echo $_SESSION['user_id'] ?>" >
+                <a href="<?php echo $escaper->escapeHtmlAttr( SITEURL ); ?>/users/logout/<?php echo $_SESSION['user_id'] ?>" >
                   <i class="fa fa-power-off"></i></a>
               </li>
             </ul>
@@ -124,7 +114,7 @@
               <div class="col-md-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
                   <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
-                  <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                  <h2><span>N20,000.01</span><img src="<?php echo $escaper->escapeHtmlAttr( $escaper->escapeHtmlAttr( SITEURL ) ) ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                   <p class="text-right gray">since yesterday</p>
                 </div>
               </div>
@@ -221,15 +211,15 @@
                             <?php foreach($data['history'] as $order): ?>
                           <tr>
                             <td>
-                              <a href="#"><?php echo get_formatted_date($order->order_date_added)?></a>
+                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($order->order_date_added))?></a>
                             </td>
-                            <td><?php echo $order->product_name?></td>
-                            <td><?php echo $order->order_station_id?></td>
+                            <td><?php echo $escaper->escapeHtml($order->product_name)?></td>
+                            <td><?php echo $escaper->escapeHtml($order->order_station_id)?></td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $order->order_litres?> Litres</div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($order->order_litres)?> Litres</div>
                             </td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $order->order_amount?></div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml($order->order_amount)?></div>
                             </td>
                           </tr>
                             <?php endforeach?>
@@ -554,20 +544,20 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 2.1.3 -->
-    <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Morris.js charts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<?php echo SITEURL ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='<?php echo SITEURL ?>/assets/plugins/fastclick/fastclick.min.js'></script>
+    <script src='<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
-    <script src="<?php echo SITEURL ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/dist/js/demo.js" type="text/javascript"></script>
     <!-- page script -->
-    <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
+    <script src="<?php echo $escaper->escapeHtmlAttr( SITEURL ) ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 

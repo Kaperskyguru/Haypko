@@ -9,14 +9,17 @@ class Partners extends Controller
     {
         $this->partnerModel = $this->model(  'Partner'  );
         $this->historyModel = $this->model('History');
+        $this->notifModel = $this->model('notify');
     }
 
     public function index()
     {   // Caching here
         if (isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] === USER_TYPE) {
             $history = $this->historyModel->getHistories();
+            $notif = $this->notifModel->get_notifications_by_user_id($_SESSION['user_id']);
             $data = [
                 'history' => $history,
+                'notif' => $notif,
             ];
 
             $this->views('partner/partner', $data);
