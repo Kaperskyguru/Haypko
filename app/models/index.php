@@ -27,9 +27,10 @@
 
         public function saveTransaction(array $data)
         {
-            $query = "INSERT INTO orders (product_name, order_litres, order_amount, order_customer_id, order_reference_id) VALUES (:name, :litres, :amount, :customer_id, :ref_id)";
+            $query = "INSERT INTO orders (product_name, order_partner_id, order_litres, order_amount, order_customer_id, order_reference_id) VALUES (:name, :partner_id, :litres, :amount, :customer_id, :ref_id)";
             $this->db->query($query);
             $this->db->bind(':name', $data['product']);
+            $this->db->bind(':partner_id', $data['partner_id']);
             $this->db->bind(':litres', $data['litres']);
             $this->db->bind(':amount', $data['amount']);
             $this->db->bind(':customer_id', $data['id']);
@@ -204,8 +205,18 @@
 
         public function getCustomerStatistics()
         {
-            $this->db->query("SELECT new, returning, month FROM customerstatistics");
+            $this->db->query("SELECT new, returning, month FROM customerstatistics ORDER BY MONTH(month) DESC");
             $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
+        public function getTotalCustomers()
+        {
+            $this->db->query("SELECT SUM(returning) AS old, SUM(new) AS new FROM customerstatistics");
+            $row = $this->db->single();
             if (!$row) {
                 return null;
             }

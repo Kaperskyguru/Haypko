@@ -1,6 +1,7 @@
 <?php if (!isset($_SESSION['user_id'])):
     //redirector('users/login');
- endif; ?>
+ endif;
+ $escaper = new Zend\Escaper\Escaper('utf-8');?>
 <!DOCTYPE html>
 <html>
   <head>

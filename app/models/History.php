@@ -40,10 +40,31 @@
             return $row;
         }
 
+        public function getHistoriesByUserId(int $id)
+        {
+            $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id ORDER BY order_id DESC");
+            $this->db->bind(':id', $id);
+            $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
         public function getRevenues()
         {
             $this->db->query("SELECT Petrol, Gas, Diesel, Month FROM revenue");
             $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
+        public function getTotalRevenues()
+        {
+            $this->db->query("SELECT SUM(Petrol) AS petrol, SUM(Gas) AS gas, SUM(Diesel) AS diesel FROM revenue");
+            $row = $this->db->single();
             if (!$row) {
                 return null;
             }

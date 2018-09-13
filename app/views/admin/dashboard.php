@@ -98,11 +98,10 @@
                     <h3 class="box-title"><select>
                         <option value="-1" selected>Product Sold</option>
                       </select>
-                      <!-- <sup class="gray">Last 10 days</sup> -->
                   </h3>
                   </div>
                   <h4 class="box-title"><ul class="list-inline">
-                      <span><strong>11,000</strong></span>
+                      <span><strong><?php echo $escaper->escapeHtml($data['totalProductSold']); ?></strong></span>
                       <sub class="gray">Total</sub>
                       <li>
                         <i class="fa fa-circle text-success"></i> Petrol
@@ -124,9 +123,9 @@
               </div>
               <div class="col-sm-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
-                  <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
+                  <h5 class="text-left">Order Value <sup class="gray">September</sup></h5>
                   <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
-                  <p class="text-right gray">since yesterday</p>
+                  <p class="text-right gray">since last month</p>
                 </div>
               </div>
               <div class="col-sm-7">
@@ -135,7 +134,7 @@
                     <h3 class="box-title"><span>Revenues</span>
                         <!-- <span class="gray">Last 10 days</span> -->
                     </h3>
-                    <h3>N15,000</h3>
+                    <h3>N<?php echo $escaper->escapeHtml($data['totalRevenue'])?></h3>
                     <!-- <h6 class="gray">Period Jan 1 - Jan 10</h6> -->
                   </div>
                   <div class="box-body chart-responsive">
@@ -158,11 +157,12 @@
                   <h4 class="box-title"><ul class="list-inline">
                       <li>
                         <i class="fa fa-circle text-primary"></i>
-                        3, 724
+                        <?php echo $escaper->escapeHtml($data['total']->new) ?>
                         <h6 class="gray">New Customers</h6>
                       </li>
                       <li>
-                        <i class="fa fa-circle text-red"></i>1, 231
+                        <i class="fa fa-circle text-red"></i>
+                        <?php echo $escaper->escapeHtml($data['total']->old) ?>
                         <h6 class="gray">Returning Customers</h6>
                       </li>
                     </ul></h4>
@@ -377,12 +377,12 @@
 
                     </div>
                   </div>
-                  <div class="tab-pane" id="tab3">
+                  <!-- <div class="tab-pane" id="tab3">
                     <p>Tab 3 content goes here...</p>
                   </div>
                   <div class="tab-pane" id="tab4">
                     <p>Tab 4 content goes here...</p>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- TABLE: LATEST ORDERS -->
                 <!-- /.box -->

@@ -13,13 +13,13 @@
               <!-- Messages: style can be found in dropdown.less-->
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notify']))?></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notif']))?></span></a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have <?php echo $escaper->escapeHtml(count($data['notify']))?> notifications</li>
+                  <li class="header">You have <?php echo $escaper->escapeHtml(count($data['notif']))?> notifications</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
-                        <?php foreach($data['notify'] as $notif): ?>
+                        <?php foreach($data['notif'] as $notif): ?>
                       <li>
                         <a href="#"><i class="fa fa-shopping-cart text-green"></i> <?php echo $escaper->escapeHtml($notif->notif_content);?></a>
                       </li>
@@ -88,7 +88,9 @@
                   <div class="box-header">
                     <h3 class="box-title"><select>
                         <option value="-1" selected>Product Sold</option>
-                      </select><sup class="gray">Last 10 days</sup></h3>
+                      </select>
+                      <!-- <sup class="gray">Last 10 days</sup> -->
+                  </h3>
                   </div>
                   <h4 class="box-title"><ul class="list-inline">
                       <span><strong>11,000</strong></span>
@@ -113,15 +115,17 @@
               </div>
               <div class="col-md-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
-                  <h5 class="text-left">Order Value <sup class="gray">Today</sup></h5>
-                  <h2><span>N20,000.01</span><img src="<?php echo $escaper->escapeHtmlAttr( $escaper->escapeHtmlAttr( SITEURL ) ) ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
-                  <p class="text-right gray">since yesterday</p>
+                  <h5 class="text-left">Order Value <sup class="gray">Jan</sup></h5>
+                  <h2><span>N20,000.01</span><img src="<?php echo  SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                  <p class="text-right gray">since last month</p>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="box box-success" data-pg-collapsed>
                   <div class="box-header">
-                    <h3 class="box-title"><span>Revenues</span> <span class="gray">Last 10 days</span></h3>
+                    <h3 class="box-title"><span>Revenues</span>
+                        <!-- <span class="gray">Last 10 days</span> -->
+                    </h3>
                     <h3>N15,000</h3>
                     <h6 class="gray">Period Jan 1 - Jan 10</h6>
                   </div>
@@ -138,17 +142,15 @@
                   <div class="box-header">
                     <h3 class="box-title"><select>
                         <option value="-1" selected>Product Sold</option>
-                      </select><sup class="gray">Last 10 days</sup></h3>
+                      </select>
+                      <!-- <sup class="gray">Last 10 days</sup> -->
+                  </h3>
                   </div>
                   <h4 class="box-title"><ul class="list-inline">
                       <li>
                         <i class="fa fa-circle text-primary"></i>
                         3, 724
                         <h6 class="gray">New Customers</h6>
-                      </li>
-                      <li>
-                        <i class="fa fa-circle text-yellow"></i> 5, 788
-                        <h6 class="gray">Recurring Customers</h6>
                       </li>
                       <li>
                         <i class="fa fa-circle text-red"></i>1, 231
@@ -407,12 +409,12 @@
                       <!-- /.box-footer -->
                     </div>
                   </div>
-                  <div class="tab-pane" id="tab3">
+                  <!-- <div class="tab-pane" id="tab3">
                     <p>Tab 3 content goes here...</p>
                   </div>
                   <div class="tab-pane" id="tab4">
                     <p>Tab 4 content goes here...</p>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- TABLE: LATEST ORDERS -->
                 <!-- /.box -->
@@ -584,6 +586,34 @@
           labels: ['CPU', 'DISK'],
           hideHover: 'auto'
         });
+
+        var bar = new Morris.Donut({
+          element: 'bar-chart3',
+          data: [
+            {label: "Petrol", value: 12},
+            {label: "Gas", value: 30},
+            {label: "Diesel", value: 20}
+        ],
+        colors: ['#00a65a', '#337ab7', '#82CAFA'],
+        });
+
+        Morris.Line({
+          element: 'bar-chart4',
+          data: [
+            { y: '2006', a: 100, b: 90 },
+            { y: '2007', a: 75,  b: 65 },
+            { y: '2008', a: 50,  b: 40 },
+            { y: '2009', a: 75,  b: 65 },
+            { y: '2010', a: 50,  b: 40 },
+            { y: '2011', a: 75,  b: 65 },
+            { y: '2012', a: 100, b: 90 }
+          ],
+          lineColors: ['#337ab7', '#dd4b39'],
+          xkey: 'y',
+          ykeys: ['a', 'b'],
+          labels: ['Series A', 'Series B']
+        });
+
       });
     </script>
   </body>

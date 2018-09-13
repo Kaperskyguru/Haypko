@@ -17,6 +17,7 @@
             $this->customerModel = $this->model('user');
             $this->productModel = $this->model('product');
             $this->notifModel = $this->model('notify');
+            $this->indexModel = $this->model('index');
         }
 
         public function index()
@@ -27,12 +28,19 @@
                 $stations = $this->stationModel->getStations();
                 $product = $this->productModel->getProducts();
                 $notify = $this->notifModel->get_notifications();
+                $totalProductSold = $this->productModel->get_total_Product_sold();
+                $total = $this->indexModel->getTotalCustomers();
+                $totalRevenueObj = $this->historyModel->getTotalRevenues();
+                $totalRevenue = $totalRevenueObj->petrol + $totalRevenueObj->diesel + $totalRevenueObj->gas;
                 $data = [
                     'partners' => $partners,
                     'stations' => $stations,
                     'history' => $history,
                     'notify' =>  $notify,
                     'products' => $product,
+                    'total' => $total,
+                    'totalProductSold' => $totalProductSold,
+                    'totalRevenue' => $totalRevenue,
                 ];
 
                 $this->views('admin/dashboard', $data);

@@ -32,6 +32,16 @@
             return $row;
         }
 
+        public function get_total_Product_sold()
+        {
+            $this->db->query("SELECT SUM(Petrol) AS petrol, SUM(Gas) AS gas, SUM(Diesel) AS diesel FROM productsold");
+            $row = $this->db->single();
+            if (!$row) {
+                return null;
+            }
+            return $row->petrol + $row->gas + $row->diesel;
+        }
+
         public function getProduct($id)
         {
             $this->db->query("SELECT * FROM {$this->table} WHERE product_id = :id");

@@ -84,9 +84,22 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">
               </div>
             </div>
-            <div class="col-xs-12" data-pg-collapsed>
+            <div class="col-xs-12 col-sm-6" data-pg-collapsed>
               <div class="form-group">
-                <input type="text" class="form-control" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address">
+                  <textarea class="form-control" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address"> </textarea>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6" data-pg-collapsed>
+              <div class="form-group">
+                  <select class="form-control">
+                      <option value="0"> Select district </option>
+                      <option value="1"> Enyo Pay </option>
+                      <option value="1"> Enyo Pay </option>
+                      <option value="1"> Enyo Pay </option>
+                      <option value="1"> Enyo Pay </option>
+                      <option value="1"> Enyo Pay </option>
+                      <option value="1"> Enyo Pay </option>
+                  </select>
               </div>
             </div>
           </div>

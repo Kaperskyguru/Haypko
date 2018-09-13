@@ -37,7 +37,7 @@
                     'product' => trim($_POST['product']),
                     'amount' => trim($_POST['amount']),
                     'litres' => trim($_POST['litres']),
-                    'fullname_err' => '',
+                    'partner_id' => trim($_POST['partner_id']),
                     'tel_err' => '',
                     'deliveryadd_err' => '',
                     'price_err' => '',

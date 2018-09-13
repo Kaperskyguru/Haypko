@@ -57,9 +57,9 @@ class notify
     {
         try {
             $query = "SELECT * FROM notifications WHERE notif_partner_id = :user_id ORDER BY notif_date DESC";
-            $this->query($query);
-            $this->bind(":user_id", $user_id);
-            $stmt = $this->single();
+            $this->db->query($query);
+            $this->db->bind(":user_id", $user_id);
+            $stmt = $this->db->resultSet();
             return $stmt;
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();
@@ -94,7 +94,7 @@ class notify
             $query = "SELECT * FROM notifications WHERE notif_status = 5 AND id = :id";
             $this->db->query($query);
             $this->db->bind(':id', $id);
-            $stmt = $this->db->single();
+            $stmt = $this->db->resultSet();
             return $stmt;
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();

@@ -9,6 +9,7 @@ $(document).ready(function() {
         var litres = $('#litre1').val();
         var amount = $('#price1').val();
         var product = $('#products1').val();
+        var district = $('#partner_id').val();
         $.ajax({
             url: 'index',
             method: 'POST',
@@ -26,7 +27,7 @@ $(document).ready(function() {
                 if (arr[0].trim() == key.trim()) {
                     setTimeout(() => {
                         document.querySelector('.hero').classList.remove('spinner-2');
-                        payWithPaystack(arr[1].trim(), email, parseInt(amount * 100), product, Phone, litres);
+                        payWithPaystack(arr[1].trim(), email, parseInt(amount * 100), product, Phone, litres, district);
                     }, 1000);
                 } else {
                     document.querySelector('.hero').classList.remove('spinner-2');
@@ -40,7 +41,7 @@ $(document).ready(function() {
         });
     });
 
-    function payWithPaystack(id, email, amount, product, Phone, litres) {
+    function payWithPaystack(id, email, amount, product, Phone, litres, district) {
         var handler = PaystackPop.setup({
             key: key,
             email: email,
@@ -57,7 +58,7 @@ $(document).ready(function() {
                 }, ],
             },
             callback: function(response) {
-                saveTransaction(id, product, litres, amount, response.reference);
+                saveTransaction(id, product, litres, amount, response.reference, district);
             },
             onClose: function() {
                 alert('Transaction cancelled');
@@ -87,7 +88,7 @@ $(document).ready(function() {
         });
     }
 
-    function saveTransaction(id, product, litres, amount, reference) {
+    function saveTransaction(id, product, litres, amount, reference, district) {
         $.ajax({
             method: 'POST',
             url: 'Pages/save',
@@ -97,6 +98,7 @@ $(document).ready(function() {
                 product:product,
                 amount:amount,
                 litres:litres,
+                partner_id:district,
             },
             cache: false,
             success: function(data) {
