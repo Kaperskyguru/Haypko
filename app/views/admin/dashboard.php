@@ -124,7 +124,7 @@
               <div class="col-sm-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
                   <h5 class="text-left">Order Value <sup class="gray">September</sup></h5>
-                  <h2><span>N20,000.01</span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                  <h2><span>N<?php echo formatNumber($data['totalRevenueByMonth'])?></span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                   <p class="text-right gray">since last month</p>
                 </div>
               </div>
@@ -134,7 +134,7 @@
                     <h3 class="box-title"><span>Revenues</span>
                         <!-- <span class="gray">Last 10 days</span> -->
                     </h3>
-                    <h3>N<?php echo $escaper->escapeHtml($data['totalRevenue'])?></h3>
+                    <h3>N<?php echo $escaper->escapeHtml(formatNumber($data['totalRevenue']))?></h3>
                     <!-- <h6 class="gray">Period Jan 1 - Jan 10</h6> -->
                   </div>
                   <div class="box-body chart-responsive">
@@ -658,6 +658,7 @@
         $sold = json_decode($soldData);
      ?>
 
+
   <!-- jQuery 2.1.3 -->
     <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
@@ -672,8 +673,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
 
-    <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
-
+ <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 

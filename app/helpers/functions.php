@@ -26,3 +26,8 @@ function getYear($time)
     $year = date("Y",$time);
     return $year;
 }
+
+function formatNumber($val)
+{
+    return number_format($val);
+}

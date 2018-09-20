@@ -15,6 +15,9 @@ define('USER_TYPE', 'partner');
 
 define('ADMIN_TYPE', 'admin');
 
+if (!defined('TODAY')) {
+    define('TODAY', (new DateTime('today'))->format('m/d/Y'));
+}
 
 define('PK', 'pk_test_58ab90adc79aae5a3580784b716109a1c5a8c307');
 

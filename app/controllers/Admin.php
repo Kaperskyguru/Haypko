@@ -12,12 +12,12 @@
         public function __construct()
         {
             $this->partnerModel = $this->model('Partner');
-            $this->stationModel = $this->model('Station');
             $this->historyModel = $this->model('History');
             $this->customerModel = $this->model('user');
-            $this->productModel = $this->model('product');
+            $this->productModel = $this->model('Product');
             $this->notifModel = $this->model('notify');
             $this->indexModel = $this->model('index');
+            $this->revenueModel = $this->model('Revenue');
         }
 
         public function index()
@@ -25,22 +25,22 @@
             if (isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] === ADMIN_TYPE) {
                 $partners = $this->partnerModel->getPartners();
                 $history = $this->historyModel->getHistories();
-                $stations = $this->stationModel->getStations();
                 $product = $this->productModel->getProducts();
                 $notify = $this->notifModel->get_notifications();
                 $totalProductSold = $this->productModel->get_total_Product_sold();
                 $total = $this->indexModel->getTotalCustomers();
-                $totalRevenueObj = $this->historyModel->getTotalRevenues();
-                $totalRevenue = $totalRevenueObj->petrol + $totalRevenueObj->diesel + $totalRevenueObj->gas;
+                $totalRevenue = $this->revenueModel->getTotalRevenues();
+                $totalRevenueByMonth = $this->revenueModel->getTotalRevenuesByMonth(getMonth(TODAY));
+
                 $data = [
                     'partners' => $partners,
-                    'stations' => $stations,
                     'history' => $history,
                     'notify' =>  $notify,
                     'products' => $product,
                     'total' => $total,
                     'totalProductSold' => $totalProductSold,
-                    'totalRevenue' => $totalRevenue,
+                    'totalRevenue' => doubleval($totalRevenue)/100,
+                    'totalRevenueByMonth' => doubleval($totalRevenueByMonth)/100,
                 ];
 
                 $this->views('admin/dashboard', $data);

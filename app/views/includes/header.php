@@ -1,3 +1,4 @@
+<?php $escaper = new Zend\Escaper\Escaper('utf-8'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

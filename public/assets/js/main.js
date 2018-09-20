@@ -69,14 +69,15 @@ $(document).ready(function() {
         handler.openIframe();
     }
 
-    function verifyTransaction(id, orderID, res) {
+    function verifyTransaction(district, id, orderID, res) {
         $.ajax({
             method: "POST",
             url: "Pages/verify",
             data: {
                 response: res,
                 id: id,
-                orderID:orderID
+                orderID:orderID,
+                partner_id:district,
             },
             cache: false,
             success: function(data) {
@@ -98,12 +99,11 @@ $(document).ready(function() {
                 product:product,
                 amount:amount,
                 litres:litres,
-                partner_id:district,
             },
             cache: false,
             success: function(data) {
                 var arr = data.split('/')
-                verifyTransaction(id, arr[1], reference);
+                verifyTransaction(district, id, arr[1], reference);
             },
             onerror: function(err) {
                 alert(err);

@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
+    '' => array($vendorDir . '/netresearch/jsonmapper/src'),
 );

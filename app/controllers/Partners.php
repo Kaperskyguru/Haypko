@@ -1,28 +1,38 @@
 <?php
 /**
- *
- */
+*
+*/
 class Partners extends Controller
 {
     private $partnerModel;
     function __construct()
     {
-        $this->partnerModel = $this->model(  'Partner'  );
+        $this->partnerModel = $this->model( 'Partner' );
         $this->historyModel = $this->model('History');
         $this->notifModel = $this->model('notify');
         $this->indexModel = $this->model('index');
+        $this->revenueModel = $this->model('Revenue');
+        $this->productModel = $this->model('Product');
+
     }
 
     public function index()
     {   // Caching here
         if (isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] === USER_TYPE) {
             $history = $this->historyModel->getHistoriesByUserId($_SESSION['user_id']);
+            $recentHistory = $this->historyModel->getRecentHistoriesByUserId($_SESSION['user_id']);
             $notif = $this->notifModel->get_notifications_by_user_id($_SESSION['user_id']);
-            // $total = $this->indexModel->getTotalCustomers();
+            $totalProductSold = $this->productModel->get_total_Product_sold($_SESSION['user_id']);
+            $totalRevenue = $this->revenueModel->getPartnerTotalRevenues($_SESSION['user_id']);
+            $totalRevenueByMonth = $this->revenueModel->getPartnerTotalRevenuesByMonth(getMonth(TODAY), $_SESSION['user_id']);
+
             $data = [
+                'recentHistory' => $recentHistory,
                 'history' => $history,
                 'notif' => $notif,
-                // 'total' => $total,
+                'totalRevenue' => $totalRevenue,
+                'totalRevenue' => $totalRevenue,
+                'totalRevenueByMonth' => $totalRevenueByMonth
             ];
 
             $this->views('partner/partner', $data);
@@ -123,9 +133,9 @@ class Partners extends Controller
                 <p>Password</p>
                 <h3>$password</h3>
                 <form action='$url/partners/sendDetails' method='post'>
-                    <input type='hidden' value='$partner->username' name='u' />
-                    <input type='hidden' value='$password' name='p' />
-                    <button type='submit' pid='$partner->id' class='btn btn-primary'>Send </button>
+                <input type='hidden' value='$partner->username' name='u' />
+                <input type='hidden' value='$password' name='p' />
+                <button type='submit' pid='$partner->id' class='btn btn-primary'>Send </button>
                 </form>
                 ";
             } else {
@@ -198,11 +208,28 @@ class Partners extends Controller
                 $delete = $this->partnerModel->deletePartner($id);
             } else {
                 $delete = $this->partnerModel->deletePartners($_POST['emp_id']);
-               if(!$delete) {
-                   echo "Partner Not Deleted";
-               } else {
-                   echo "Partner Deleted";
-               }
+                if(!$delete) {
+                    echo "Partner Not Deleted";
+                } else {
+                    echo "Partner Deleted";
+                }
+            }
+        } else {
+            redirector('');
+        }
+    }
+
+    public function delivered($id)
+    {
+        if ("POST" == $_SERVER['REQUEST_METHOD']) {
+            $data = [
+                'order_status' => 1
+            ];
+            $update = $this->historyModel->updateOrder($id, $data);
+            if($update) {
+                echo "Delivered";
+            } else {
+                echo "Error occured";
             }
         } else {
             redirector('');

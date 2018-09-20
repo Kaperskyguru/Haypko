@@ -6,7 +6,8 @@
         "monolog/monolog": "^1.23",
         "yabacon/paystack-php": "^2.1",
         "swiftmailer/swiftmailer": "^6.0",
-        "zendframework/zend-escaper": "^2.6"
+        "zendframework/zend-escaper": "^2.6",
+        "infobip/infobip-api-php-client": "dev-master"
 
     }
 }

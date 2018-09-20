@@ -91,14 +91,11 @@
             </div>
             <div class="col-xs-12 col-sm-6" data-pg-collapsed>
               <div class="form-group">
-                  <select class="form-control">
+                  <select name="partner_id" id="partner_id" class="form-control">
                       <option value="0"> Select district </option>
-                      <option value="1"> Enyo Pay </option>
-                      <option value="1"> Enyo Pay </option>
-                      <option value="1"> Enyo Pay </option>
-                      <option value="1"> Enyo Pay </option>
-                      <option value="1"> Enyo Pay </option>
-                      <option value="1"> Enyo Pay </option>
+                    <?php foreach($data['partners'] as $partner): ?>
+                      <option value="<?php echo $escaper->escapeHtmlAttr($partner->id); ?>"> <?php echo $escaper->escapeHtml($partner->partner_name); ?> </option>
+                    <?php endforeach?>
                   </select>
               </div>
             </div>
