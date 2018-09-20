@@ -115,6 +115,74 @@
         ]
     },
     {
+        "name": "infobip/infobip-api-php-client",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/infobip/infobip-api-php-client.git",
+            "reference": "fa80d9b6791971b2c0d84616dda67d73bca846f7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/infobip/infobip-api-php-client/zipball/fa80d9b6791971b2c0d84616dda67d73bca846f7",
+            "reference": "fa80d9b6791971b2c0d84616dda67d73bca846f7",
+            "shasum": ""
+        },
+        "require": {
+            "netresearch/jsonmapper": "0.9.0"
+        },
+        "time": "2018-07-11T06:13:40+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "infobip\\": "infobip/",
+                "infobip\\api\\": "infobip/api/",
+                "infobip\\api\\client\\": "infobip/api/client/",
+                "infobip\\api\\configuration\\": "infobip/api/configuration/",
+                "infobip\\api\\model\\": "infobip/api/model/",
+                "infobip\\api\\model\\account\\": "infobip/api/model/account/",
+                "infobip\\api\\model\\conversion\\": "infobip/api/model/conversion/",
+                "infobip\\api\\model\\nc\\": "infobip/api/model/nc/",
+                "infobip\\api\\model\\nc\\logs\\": "infobip/api/model/nc/logs/",
+                "infobip\\api\\model\\nc\\notify\\": "infobip/api/model/nc/notify/",
+                "infobip\\api\\model\\nc\\query\\": "infobip/api/model/nc/query/",
+                "infobip\\api\\model\\sms\\": "infobip/api/model/sms/",
+                "infobip\\api\\model\\sms\\mo\\": "infobip/api/model/sms/mo/",
+                "infobip\\api\\model\\sms\\mo\\logs\\": "infobip/api/model/sms/mo/logs/",
+                "infobip\\api\\model\\sms\\mo\\reports\\": "infobip/api/model/sms/mo/reports/",
+                "infobip\\api\\model\\sms\\mt\\": "infobip/api/model/sms/mt/",
+                "infobip\\api\\model\\sms\\mt\\bulks\\": "infobip/api/model/sms/mt/bulks/",
+                "infobip\\api\\model\\sms\\mt\\bulks\\status\\": "infobip/api/model/sms/mt/bulks/status/",
+                "infobip\\api\\model\\sms\\mt\\logs\\": "infobip/api/model/sms/mt/logs/",
+                "infobip\\api\\model\\sms\\mt\\reports\\": "infobip/api/model/sms/mt/reports/",
+                "infobip\\api\\model\\sms\\mt\\send\\": "infobip/api/model/sms/mt/send/",
+                "infobip\\api\\model\\sms\\mt\\send\\binary\\": "infobip/api/model/sms/mt/send/binary/",
+                "infobip\\api\\model\\sms\\mt\\send\\preview\\": "infobip/api/model/sms/mt/send/preview/",
+                "infobip\\api\\model\\sms\\mt\\send\\textual\\": "infobip/api/model/sms/mt/send/textual/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "email": "libraries@infobip.com"
+            }
+        ],
+        "description": "Infobip SMS library for PHP",
+        "homepage": "http://dev.infobip.com",
+        "keywords": [
+            "Infobip",
+            "api",
+            "hlr",
+            "msisdn",
+            "sms"
+        ]
+    },
+    {
         "name": "monolog/monolog",
         "version": "1.23.0",
         "version_normalized": "1.23.0.0",
@@ -195,6 +263,47 @@
         ]
     },
     {
+        "name": "netresearch/jsonmapper",
+        "version": "v0.9.0",
+        "version_normalized": "0.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cweiske/jsonmapper.git",
+            "reference": "1c3803fa6d1be7bd083fb853f1c6af56f96d1833"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/1c3803fa6d1be7bd083fb853f1c6af56f96d1833",
+            "reference": "1c3803fa6d1be7bd083fb853f1c6af56f96d1833",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.2.*",
+            "squizlabs/php_codesniffer": "~1.5"
+        },
+        "time": "2015-08-14T14:07:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "OSL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Christian Weiske",
+                "email": "christian.weiske@netresearch.de",
+                "homepage": "http://www.netresearch.de/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Map nested JSON structures onto PHP classes"
+    },
+    {
         "name": "psr/log",
         "version": "1.0.2",
         "version_normalized": "1.0.2.0",
@@ -245,17 +354,17 @@
     },
     {
         "name": "swiftmailer/swiftmailer",
-        "version": "v6.1.2",
-        "version_normalized": "6.1.2.0",
+        "version": "v6.1.3",
+        "version_normalized": "6.1.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8"
+            "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
-            "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8ddcb66ac10c392d3beb54829eef8ac1438595f4",
+            "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4",
             "shasum": ""
         },
         "require": {
@@ -270,7 +379,7 @@
             "ext-intl": "Needed to support internationalized email addresses",
             "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
         },
-        "time": "2018-07-13T07:04:35+00:00",
+        "time": "2018-09-11T07:12:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

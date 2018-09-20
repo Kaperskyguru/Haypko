@@ -12,18 +12,18 @@
             $this->db = new Database;
         }
 
-        public function createHistory(array $data)
+        public function createOrder(array $data)
         {
-            $query = "INSERT INTO {$this->table} (history_name, history_location, history_state, history_city, history_email, history_mobile, history_rc_number) VALUES
-            (:history_name, :history_location, :history_state, :history_city, :history_email, :history_mobile, :history_rc_number)";
+            $query = "INSERT INTO {$this->table} (Order_name, order_location, order_state, order_city, order_email, order_mobile, order_rc_number) VALUES
+            (:order_name, :order_location, :order_state, :order_city, :order_email, :order_mobile, :order_rc_number)";
             $this->db->query($query);
-            $this->db->bind(':history_name', $data['name']);
-            $this->db->bind(':history_location', $data['address']);
-            $this->db->bind(':history_state', $data['state']);
-            $this->db->bind(':history_city', $data['city']);
-            $this->db->bind(':history_email', $data['email']);
-            $this->db->bind(':history_mobile', $data['mobile']);
-            $this->db->bind(':history_rc_number', $data['rcnumber']);
+            $this->db->bind(':order_name', $data['name']);
+            $this->db->bind(':order_location', $data['address']);
+            $this->db->bind(':order_state', $data['state']);
+            $this->db->bind(':order_city', $data['city']);
+            $this->db->bind(':order_email', $data['email']);
+            $this->db->bind(':order_mobile', $data['mobile']);
+            $this->db->bind(':order_rc_number', $data['rcnumber']);
             if ($this->db->execute()) {
                 return true;
             }
@@ -51,9 +51,10 @@
             return $row;
         }
 
-        public function getRevenues()
+        public function getRecentHistoriesByUserId(int $id)
         {
-            $this->db->query("SELECT Petrol, Gas, Diesel, Month FROM revenue");
+            $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id AND order_status = 0 ORDER BY order_id DESC");
+            $this->db->bind(':id', $id);
             $row = $this->db->resultSet();
             if (!$row) {
                 return null;
@@ -61,15 +62,6 @@
             return $row;
         }
 
-        public function getTotalRevenues()
-        {
-            $this->db->query("SELECT SUM(Petrol) AS petrol, SUM(Gas) AS gas, SUM(Diesel) AS diesel FROM revenue");
-            $row = $this->db->single();
-            if (!$row) {
-                return null;
-            }
-            return $row;
-        }
 
         public function getMonthOfProduct(string $product_name)
         {
@@ -82,10 +74,10 @@
             return $row;
         }
 
-        public function getHistory(int $id)
+        public function getOrder(int $id)
         {
-            $this->db->query("SELECT * FROM {$this->table} WHERE history_id = :history_id");
-            $this->db->bind(':history_id', $id);
+            $this->db->query("SELECT * FROM {$this->table} WHERE order_id = :order_id");
+            $this->db->bind(':order_id', $id);
             $row = $this->db->single();
             if (!$row) {
                 return null;
@@ -93,45 +85,30 @@
             return $row;
         }
 
-        public function updateHistory(int $int, array $data)
+        public function updateOrder(int $int, array $data)
         {
             $paramsArray = [];
             foreach($data as $key => $value) {
                 array_push($paramsArray, $key." = :".$key);
             }
             $params = implode(', ', $paramsArray);
-            $this->db->query("UPDATE {$this->table} SET {$params} WHERE history_id = :history_id");
+            $this->db->query("UPDATE {$this->table} SET {$params} WHERE order_id = :order_id");
             foreach($data as $column => $value) {
                 $this->db->bind(":".$column, $value);
             }
-            $this->db->bind(":history_id", $int);
+            $this->db->bind(":order_id", $int);
             if(!$this->db->execute()) {
                 return false;
             }
             return true;
         }
 
-        public function deleteHistory(int $id) {
-            $this->db->query("DELETE FROM {$this->table} WHERE history_id = :history_id");
-            $this->db->bind(':history_id', $id);
+        public function deleteOrder(int $id) {
+            $this->db->query("DELETE FROM {$this->table} WHERE order_id = :order_id");
+            $this->db->bind(':order_id', $id);
             if(!$this->db->execute()) {
                 return false;
             }
             return true;
-        }
-
-        public function generateUsername(string $name, int $id): string
-        {
-            $names = explode(' ', $name);
-            $username = $names[0] . $names[1];
-            $row = $this->getHistory( $id );
-            if ( !is_null( $row[ 'username' ] ) ) {
-                if (in_array($username, $row['username'])) {
-                    $count = 0;
-                    while (in_array( ($username. ''. ++$count) , $row['username']) );
-                    $username = $username. '' .$count;
-                }
-            }
-            return $username;
         }
 }

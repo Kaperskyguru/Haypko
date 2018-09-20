@@ -33,7 +33,7 @@
             $this->db->bind(':partner_id', $data['partner_id']);
             $this->db->bind(':litres', $data['litres']);
             $this->db->bind(':amount', $data['amount']);
-            $this->db->bind(':customer_id', $data['id']);
+            $this->db->bind(':customer_id', $data['customer_id']);
             $this->db->bind(':ref_id', $data['reference']);
             if ($this->db->execute()) {
                 return $this->db->getLastInsertedID();

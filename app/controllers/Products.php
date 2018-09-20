@@ -6,7 +6,7 @@
 
         public function __construct(    )
         {
-            $this->productModel = $this->model(  'product'  );
+            $this->productModel = $this->model( 'Product' );
         }
 
         public function update($id = 0)
@@ -27,5 +27,18 @@
                 redirector( '' );
             }
 
+        }
+
+        public function prices()
+        {
+            if ("POST" == $_SERVER['REQUEST_METHOD']) {
+                if ($price = $this->productModel->getPrice($_POST['product'])){
+                    echo intval($price);
+                } else {
+                    echo intval('0');
+                }
+            } else {
+                redirector( '' );
+            }
         }
     }

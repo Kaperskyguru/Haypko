@@ -22,9 +22,42 @@
             return $row;
         }
 
+        public function getPrice($product)
+        {
+            $this->db->query("SELECT product_price FROM {$this->table} WHERE product_name = :name");
+            $this->db->bind(':name', $product);
+            $row = $this->db->single();
+            if (!$row) {
+                return null;
+            }
+            return $row->product_price;
+        }
+
+        public function getPrices()
+        {
+            $this->db->query("SELECT product_price, product_name, product_date_added FROM {$this->table}");
+            $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
         public function getProductSold()
         {
             $this->db->query("SELECT Petrol, Gas, Diesel, month FROM productsold");
+            $row = $this->db->resultSet();
+            if (!$row) {
+                return null;
+            }
+            return $row;
+        }
+
+        public function getClientProductSold($id)
+        {
+
+            $this->db->query("SELECT Petrol, Gas, Diesel, month FROM clientProductSold WHERE partner_id = :id");
+            $this->db->bind(':id', $id);
             $row = $this->db->resultSet();
             if (!$row) {
                 return null;
