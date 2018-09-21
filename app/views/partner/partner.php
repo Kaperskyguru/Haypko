@@ -393,7 +393,6 @@
         <div id="orderDetails">
 
         </div>
-      </div>
     </div>
 </div>
 <?php
