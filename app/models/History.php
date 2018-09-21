@@ -42,7 +42,7 @@
 
         public function getHistoriesByUserId(int $id)
         {
-            $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id ORDER BY order_id DESC");
+            $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id ORDER BY order_status");
             $this->db->bind(':id', $id);
             $row = $this->db->resultSet();
             if (!$row) {

@@ -13,6 +13,7 @@ class Partners extends Controller
         $this->indexModel = $this->model('index');
         $this->revenueModel = $this->model('Revenue');
         $this->productModel = $this->model('Product');
+        $this->addressModel = $this->model('Address');
 
     }
 
@@ -31,7 +32,7 @@ class Partners extends Controller
                 'history' => $history,
                 'notif' => $notif,
                 'totalRevenue' => $totalRevenue,
-                'totalRevenue' => $totalRevenue,
+                'totalProductSold' => $totalProductSold,
                 'totalRevenueByMonth' => $totalRevenueByMonth
             ];
 
@@ -96,6 +97,29 @@ class Partners extends Controller
             <h4>$partner->partner_account_number</h4>
             <p>$partner->partner_bank_name</p>
             ";
+        } else {
+            redirector('');
+        }
+    }
+
+    public function viewOrder() {
+        if ("POST" == $_SERVER['REQUEST_METHOD']) {
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $order = $this->historyModel->getOrder($_POST['id']);
+            ?>
+            <p>Product</p>
+            <h4><?php echo $order->product_name ?></h4>
+            <p>Quantity</p>
+            <h4><?php echo $order->order_litres ?> Litres</h4>
+            <p>Address</p>
+            <h4><?php echo $this->addressModel->getAddressByCustomerId($order->order_customer_id) ?></h4>
+            <p>Price</p>
+            <h4><?php echo $order->order_amount ?></h4>
+            <p>Trasaction ID</p>
+            <h4><?php echo $order->order_reference_id ?></h4>
+            <p>Status</p>
+            <p> <?php echo ($order->order_status ==0) ? 'Pending':'Delivered'?></p>
+            <?php ;
         } else {
             redirector('');
         }

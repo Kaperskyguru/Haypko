@@ -188,6 +188,30 @@ function dashboard(){
 
     }
 
+    this.viewOrders = function(element){
+
+        let id  = element.attr('oid');
+
+        $.ajax({
+           type: "POST",
+           url: url + "/Partners/viewOrder",
+           cache:false,
+           data: {id:id},
+           success: function(response) {
+                $('#orderDetails').html(response);
+                $(".view-overlay").fadeIn(300);
+                $(".view-overlay").click(function(){
+                   $(this).fadeOut(300);
+                });
+                $(".view-box").click(function(e){
+                  e.stopPropagation();
+                });
+           }
+       });
+
+
+    }
+
     this.deleteAllpartners = function(element){
          let content = $(element).parents().eq(2).next().find("tr");
          elements=$(element).parents().eq(2).next().find("input[type='checkbox']");
@@ -378,6 +402,12 @@ $(document).ready(function(){
   $("body").delegate(".view","click",function(){
       let element = $(this);
     enyodashboard.viewPartners(element);
+  });
+
+  //on view clicked
+  $("body").delegate("#viewOrder","click",function(){
+      let element = $(this);
+    enyodashboard.viewOrders(element);
   });
   //change price on click
   $(".change").click(function(){
