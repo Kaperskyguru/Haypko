@@ -109,15 +109,15 @@
                                                         <td><?php echo $escaper->escapeHtml($order->product_name)?></td>
                                                         <td><?php echo $escaper->escapeHtml($order->order_litres)?> Litres</td>
                                                         <td>
-                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml($order->order_amount)?></div>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml(formatNumber($order->order_amount))?></div>
                                                         </td>
                                                         <td>
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo ($order->order_status == 0)?'Pending':'Delivered'?></div>
                                                         </td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <button oid="<?php echo $order->order_id ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
 
-                                                        </td>
+                                                        </td> -->
                                                         <td>
                                                             <button oid="<?php echo $order->order_id ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
                                                         </td>
@@ -132,8 +132,8 @@
                             </div>
                             <div class="col-md-4" data-pg-collapsed>
                                 <div class="ov-box box-shadow">
-                                    <h5 class="text-left">Order Value <sup class="gray">Jan</sup></h5>
-                                    <h2><span>N<?php echo formatNumber(20000)?></span><img src="<?php echo  SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                                    <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY)?></sup></h5>
+                                    <h2><span>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenueByMonth'])); ?></span><img src="<?php echo  SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                                     <p class="text-right gray">since last month</p>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                     <div class="box-header">
                                         <h3 class="box-title"><span>Revenues</span>
                                         </h3>
-                                        <h3>N<?php echo formatNumber(15000)?></h3>
+                                        <h3>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenue'])); ?></h3>
                                     </div>
                                     <div class="box-body chart-responsive">
                                         <div class="chart" id="revenueChart" style="height: 300px;"></div>
@@ -162,7 +162,7 @@
                                     </h3>
                                 </div>
                                 <h4 class="box-title"><ul class="list-inline">
-                                    <span><strong>11,000</strong></span>
+                                    <span><strong><?php echo $escaper->escapeHtml(number_format($data['totalProductSold'])); ?></strong></span>
                                     <sub class="gray">Total</sub>
                                     <li>
                                         <i class="fa fa-circle text-primary"></i> Petrol
@@ -226,7 +226,6 @@
                                                     <th>Price</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
-                                                    <th>View</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -241,14 +240,14 @@
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($order->order_litres)?> Litres</div>
                                                         </td>
                                                         <td>
-                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml($order->order_amount)?></div>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml(formatNumber($order->order_amount))?></div>
                                                         </td>
                                                         <td>
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo ($order->order_status == 0)?'Pending':'Delivered'?></div>
                                                         </td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <button oid="<?php echo $order->order_id; ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
-                                                        </td>
+                                                        </td> -->
                                                         <td>
                                                             <button oid="<?php echo $order->order_id; ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
                                                         </td>
@@ -267,168 +266,6 @@
                     <!-- /.row (main row) -->
                 </section>
             </div>
-
-            <!-- <div class="sections p-section" id="partner">
-            <section class="content-header" data-pg-collapsed>
-            <h1>
-            Partners</h1>
-            <ol class="breadcrumb">
-            <li>
-            <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-        </li>
-        <li class="active">Partners</li>
-    </ol>
-</section>
-<div class="row">
-<div class="col-sm-12">
-<ul class="nav nav-tabs" data-pg-collapsed>
-<li class="active">
-<a href="#tab1" data-toggle="tab">All</a>
-</li>
-<li>
-<a href="#tab2" data-toggle="tab">Recently Added</a>
-</li>
-<li class="pull-right">
-<button class="btn btn-primary add-btn">Add New</button>
-</li>
-</ul>
-<div class="tab-content">
-<div class="tab-pane active" id="tab1">
-<div class="box box-info">
-<div class="box-header with-border">
-<h3 class="box-title">All Partners</h3>
-<div class="box-tools pull-right">
-<button class="btn btn-box-tool" data-widget="collapse">
-<i class="fa fa-minus"></i>
-</button>
-</div>
-</div>
-<div class="box-body" data-pg-collapsed>
-<div class="table-responsive">
-<table class="table no-margin">
-<thead>
-<tr>
-<th>
-<input class="control-label" type="checkbox" value="">
-</th>
-<th>Partner</th>
-<th>Location</th>
-<th>View</th>
-<th>Delete</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<input class="control-label" type="checkbox" value="">
-</td>
-<td><span>Enyo Retail</span></td>
-<td><span>Yaba</span></td>
-<td>
-<button type="button" class="btn  btn-success">Label</button>
-</td>
-<td>
-<button type="button" class="btn  btn-danger">Label</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="box-footer clearfix">
-<ul class="pagination pull-right" data-pg-collapsed>
-<li>
-<a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
-</li>
-<li class="active">
-<a href="#">1 <span class="sr-only">(current)</span></a>
-</li>
-<li>
-<a href="#">2</a>
-</li>
-<li>
-<a href="#">3</a>
-</li>
-<li>
-<a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
-</li>
-</ul>
-<span class="bottom"> Show: <select name="datesearch">
-<option value="-1" selected>10 Results</option>
-</select></span>
-</div>
-</div>
-</div>
-<div class="tab-pane" id="tab2">
-<div class="box box-info">
-<div class="box-header with-border">
-<h3 class="box-title">All Partners</h3>
-<div class="box-tools pull-right">
-<button class="btn btn-box-tool" data-widget="collapse">
-<i class="fa fa-minus"></i>
-</button>
-</div>
-</div>
-<div class="box-body" data-pg-collapsed>
-<div class="table-responsive">
-<table class="table no-margin">
-<thead>
-<tr>
-<th>
-<input class="control-label" type="checkbox" value="">
-</th>
-<th>Partner</th>
-<th>Location</th>
-<th>View</th>
-<th>Delete</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<input class="control-label" type="checkbox" value="">
-</td>
-<td><span>Enyo Retail</span></td>
-<td><span>Yaba</span></td>
-<td>
-<button type="button" class="btn  btn-success">Label</button>
-</td>
-<td>
-<button type="button" class="btn  btn-danger">Label</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="box-footer clearfix">
-<ul class="pagination pull-right" data-pg-collapsed>
-<li>
-<a href="#"><i class="fa fa-long-arrow-left"></i> &nbsp;Prev</a>
-</li>
-<li class="active">
-<a href="#">1 <span class="sr-only">(current)</span></a>
-</li>
-<li>
-<a href="#">2</a>
-</li>
-<li>
-<a href="#">3</a>
-</li>
-<li>
-<a href="#">Next &nbsp;<i class="fa fa-long-arrow-right"></i></a>
-</li>
-</ul>
-<span class="bottom"> Show: <select name="datesearch">
-<option value="-1" selected>10 Results</option>
-</select></span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div> -->
 <div class="sections set-section" id="setting">
     <section class="content-header" data-pg-collapsed>
         <h1>Account Settings</h1>
@@ -541,12 +378,22 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
+        <strong>Copyright &copy; Haykpo  <?php echo getYear(TODAY)?></strong> All rights reserved.
     </footer>
     <div class="popup-overlay" data-pg-collapsed>
         <div class="popup-body box-shadow text-left">
             <h2 class="text-center text-capitalize">new order</h2>
         </div>
+    </div>
+
+    <div class="view-overlay" data-pg-collapsed>
+      <div class="view-box box-shadow text-center">
+      <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
+        <h2 class="text-center text-capitalize">View Order</h2>
+        <div id="orderDetails">
+
+        </div>
+      </div>
     </div>
 </div>
 <?php

@@ -219,18 +219,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($data['history'] as $customer): ?>
+                        <?php foreach($data['history'] as $order): ?>
                           <tr>
                             <td>
-                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($customer->order_date_added))?></a>
+                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($order->order_date_added))?></a>
                             </td>
-                            <td><?php echo $escaper->escapeHtml($customer->product_name)?></td>
+                            <td><?php echo $escaper->escapeHtml($order->product_name)?></td>
                             <td>Enyo Retail</td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($customer->order_litres)?> Litres</div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($order->order_litres)?> Litres</div>
                             </td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml($customer->order_amount)?></div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml(formatNumber($order->order_amount))?></div>
                             </td>
                           </tr>
                           <?php endforeach?>
@@ -484,7 +484,7 @@
       </div>
         <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; Haykpo  2018</strong> All rights reserved.
+        <strong>Copyright &copy; Haykpo  <?php echo getYear(TODAY)?></strong> All rights reserved.
       </footer>
 
       <div class="popup-overlay" data-pg-collapsed>

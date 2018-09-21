@@ -13,6 +13,7 @@ class Pages extends Controller
         $this->productModel = $this->model('Product');
         $this->notifModel = $this->model('notify');
         $this->partnerModel = $this->model('Partner');
+        $this->addressModel = $this->model('Address');
     }
 
     public function verify()
@@ -118,7 +119,9 @@ class Pages extends Controller
                 $this->updateCustomerStat($this->productModel->getProductId($data['product_name']), date("Y-m-d H:i:s"), $data['customer_email'], $data['customer_phone']);
 
                 if ($this->customer_id = $this->customerModel->storeCustomerDetails($data)) {
-                    echo PK. 'ID:'.$this->customer_id;
+                    if ($this->addressModel->createAddress($this->customer_id, $data['customer_address'])) {
+                        echo PK. 'ID:'.$this->customer_id;
+                    }
                 }
 
             } else {

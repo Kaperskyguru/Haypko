@@ -41,6 +41,18 @@
             return 0;
         }
 
+        public function getCustomerAddressById($id)
+        {
+            $query = "SELECT address_text FROM addresses WHERE address_customer_id = :id";
+            $this->db->query($query);
+            $this->db->bind(':year', $id);
+            $row = $this->db->single();
+            if ($row) {
+                return null;
+            }
+            return $row->address_text;
+        }
+
         public function getReferenceId($cust_id, $order_id)
         {
             $query = "SELECT order_reference_id FROM orders WHERE order_customer_id = :cust_id AND order_id = :id";
