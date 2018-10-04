@@ -1,3 +1,4 @@
+
 <footer class="footer" data-pg-collapsed>
   <div class="container">
     <div class="row">
@@ -47,6 +48,15 @@
     </div>
   </div>
 </footer>
+<div class="popup-overlay" data-pg-collapsed>
+  <div class="popup-body box-shadow text-center">
+  <div class="text-center"><i class="fa fa-check-circle fa-3x text-success"></i></div>
+    <h2 class="text-center text-capitalize">Partner Created</h2>
+    <div id="newPartner">
+
+    </div>
+  </div>
+</div>
 <section class="form-section">
   <div class="container">
     <div class="row">
@@ -126,7 +136,7 @@
       </div>
       <!-- NEW NEW NEW -->
       <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed>
-        <form role="form" action="<?php echo SITEURL?>/partners/add" method="post" class="p-form" id="p-form">
+        <form role="form" action="" method="post" class="p-form" id="p-form">
           <h3>Partnership Details</h3>
           <div class="row">
             <div class="col-md-6">
@@ -196,7 +206,7 @@
             <div class="col-md-3">
               <div class="form-group" data-pg-collapsed>
                 <label class="control-label" for="city">City</label>
-                <select class="form-control" name="city">
+                <select class="form-control" id="city" name="city">
                   <option value="surulere">surulere</option>
                 </select>
               </div>
@@ -218,7 +228,7 @@
             <div class="col-xs-12 clear">
               <div class="pull-right">
                 <button type="button" class="btn btn-danger cancel">Cancel</button>
-                <button id="regiter" class="btn btn-primary" type="submit">Submit</button>
+                <button id="register" class="btn btn-primary" type="submit">Submit</button>
               </div>
             </div>
           </div>

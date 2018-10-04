@@ -651,7 +651,7 @@
         $dat = file_get_contents(SITEURL.'/api/chart');
         $mydata = json_decode($dat);
 
-        $orderData = file_get_contents(SITEURL.'/api/orders');
+        $orderData = file_get_contents(SITEURL.'/api/chartOrders');
         $orders = json_decode($orderData);
 
         $soldData = file_get_contents(SITEURL.'/api/sold');

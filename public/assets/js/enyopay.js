@@ -56,6 +56,7 @@ break;case U[1]-1:I+=" ui-datepicker-group-last",T=" ui-corner-"+(B?"left":"righ
 /enyo js */
 function enyoUX() {
     /*start aos animation***/
+    let url = 'http://localhost/Enyopay';
     this.aosnit = function(){
         AOS.init({
             easing:"ease-out",
@@ -224,10 +225,58 @@ function enyoUX() {
 
 
             $("#register").click(function(e){
-                alert();
+                e.preventDefault();
+                let name = $('#name').val();
+                let address = $('#raddr').val();
+                let state = $('#state').val();
+                let city = $('#city').val();
+                let email = $('#pemail').val();
+                let mobile = $('#phone').val();
+                let rcnumber = $('#rcnum').val();
+                register(name,rcnumber,email,city,state,address,mobile);
                 e.stopPropagation();
             });
 
+        });
+
+    }
+
+    function register(name, rcnumber, email, city, state, address, mobile) {
+        $.ajax({
+            url: url + '/Partners/add',
+            type:'POST',
+            cache:false,
+            data:{register:1, name:name, rcnum:rcnumber, email:email, city:city, state:state, address:address, phone:mobile},
+            success: function (response) {
+                let arr = response.split('/');
+                if (arr[0] == "Partner Created") {
+                    alert('Account created successfully, Check your mail for details');
+                }
+            },
+            onerror:function (err) {
+                alert(err);
+            }
+        });
+    }
+
+    //call this function to create pop up
+    function popup(id){
+
+        $.ajax({
+            type: "POST",
+            url: url + "/Partners/showDetails",
+            cache:false,
+            data: {id:id},
+            success: function(response) {
+                $('#newPartner').html(response);
+                $(".popup-overlay").fadeIn(300);
+                $(".popup-overlay").click(function(){
+                    $(this).fadeOut(300);
+                });
+                $(".popup-body").click(function(e){
+                    e.stopPropagation();
+                });
+            }
         });
 
     }
@@ -376,6 +425,7 @@ function enyoUX() {
         let obj= this;
         $("#addprod").click(function(){
             //select the row and append a new product row
+            if(num != 4){
             let row=$(".prod-cart");
             $(".no-item").fadeOut(300);
             row.append("<div class='single-prod' data-pg-collapsed>"+
@@ -405,9 +455,11 @@ function enyoUX() {
             "</div> "+
             "</div>"+
             "</div>");
+
             obj.prizeHandler();
             obj.amountHandler();
             num++;
+            }
 
         });
     }

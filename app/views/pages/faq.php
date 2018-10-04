@@ -117,55 +117,7 @@ Sabo, Yaba, Lagos.</h3>
         </div>
       </div>
     </section>
-    <footer class="footer" data-pg-collapsed>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <h3>Haykpo</h3>
-            <p>Short description about EnyoPay and its value to customers.</p>
-            <ul class="list-unstyled list-inline">
-              <li>
-                <i class="fa fa-facebook-square fa-2x"></i>
-              </li>
-              <li>
-                <i class="fa fa-twitter fa-2x"></i>
-              </li>
-              <li>
-                <i class="fa fa-instagram fa-2x"></i>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h3>Products</h3>
-            <ul class="list-unstyled">
-              <li>
-                <a>Petrol</a>
-              </li>
-              <li>
-                <a>Diesel</a>
-              </li>
-              <li>
-                <a>Gas</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h3>Company</h3>
-            <ul class="list-unstyled">
-              <li>
-                <a>About</a>
-              </li>
-              <li>
-                <a>Contact</a>
-              </li>
-              <li>
-                <a>Terms and Conditions</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php require_once APPROOT.'/views/includes/footer.php';?>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

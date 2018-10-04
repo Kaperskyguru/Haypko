@@ -67,7 +67,7 @@ class Partners extends Controller
                     'username'=> $data['username'],
                     'email'=> $data['partner_email']
                 ];
-                if(mailer($data)) {
+                if($create) {
                     echo "Partner Created/".$create;
                 } else {
                     echo "We could not send mail";
@@ -125,24 +125,24 @@ class Partners extends Controller
         }
     }
 
-    public function sendDetails()
-    {
-        if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
-            $data = [
-                'password'=> $_POST['p'],
-                'username'=> $_POST['u'],
-                'email'=> $_POST['email']
-            ];
-            if(mailer($data)) {
-                echo "Email Sent successfully";
-            } else {
-                echo "We could not send mail";
-            }
-        } else {
-            redirector('');
-        }
-    }
+    // public function sendDetails()
+    // {
+    //     if ("POST" == $_SERVER['REQUEST_METHOD']) {
+    //         $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+    //         $data = [
+    //             'password'=> $_POST['p'],
+    //             'username'=> $_POST['u'],
+    //             'email'=> $_POST['email']
+    //         ];
+    //         if(mailer($data)) {
+    //             echo "Email Sent successfully";
+    //         } else {
+    //             echo "We could not send mail";
+    //         }
+    //     } else {
+    //         redirector('');
+    //     }
+    // }
 
     public function showDetails() {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
@@ -156,10 +156,10 @@ class Partners extends Controller
                 <h3>$partner->username</h3>
                 <p>Password</p>
                 <h3>$password</h3>
-                <form action='$url/partners/sendDetails' method='post'>
+                <form action='' method='post'>
                 <input type='hidden' value='$partner->username' name='u' />
                 <input type='hidden' value='$password' name='p' />
-                <button type='submit' pid='$partner->id' class='btn btn-primary'>Send </button>
+                <button type='button' class='btn btn-primary cancel'>Close </button>
                 </form>
                 ";
             } else {
@@ -232,11 +232,11 @@ class Partners extends Controller
                 $delete = $this->partnerModel->deletePartner($id);
             } else {
                 $delete = $this->partnerModel->deletePartners($_POST['emp_id']);
-                if(!$delete) {
-                    echo "Partner Not Deleted";
-                } else {
-                    echo "Partner Deleted";
-                }
+            }
+            if(!$delete) {
+                echo "Partner Not Deleted";
+            } else {
+                echo "Partner Deleted";
             }
         } else {
             redirector('');

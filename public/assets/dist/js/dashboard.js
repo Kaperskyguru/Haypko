@@ -58,6 +58,7 @@ function dashboard(){
     	$(".p-form").show("slide");
 
     }
+
     //call this function to create pop up
     this.popup = function(id){
         $.ajax({
@@ -313,7 +314,6 @@ function dashboard(){
         } else if ( phone == null || phone.length === 0) {
             alert("Phone is required");
         } else {
-
          $.ajax({
             type: "POST",
             url: url + "/partners/add",
@@ -324,7 +324,6 @@ function dashboard(){
                 if (arr[0] == "Partner Created") {
                     enyodashboard.popup(arr[1]);
                 }
-
             }
          });
         }
