@@ -11,7 +11,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo SITEURL; ?>">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
               <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" />
             </a>
@@ -22,13 +22,13 @@
                 <a href="<?php echo SITEURL ?>">Home</a>
               </li>
               <li>
-                <a href="#">About </a>
+                <a href="pages/about">About </a>
               </li>
               <li>
                 <a href="pages/faq">FAQ</a>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="pages/contact">Contact</a>
               </li>
               <li class="nav-btn">
                 <a href="users/login" class="btn-topnav">Sign In</a>

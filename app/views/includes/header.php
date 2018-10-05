@@ -19,6 +19,8 @@
     <!--<link href="css/inputmask.css" rel="stylesheet"> -->
     <!-- Custom styles for this template -->
     <link href="<?php echo SITEURL; ?>/assets/css/Enyopaystyles.css" rel="stylesheet">
+
+    <link href="<?php echo SITEURL; ?>/assets/css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

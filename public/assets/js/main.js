@@ -6,9 +6,19 @@ $(document).ready(function() {
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
+
         var litres = $('#litre1').val();
         var amount = $('#price1').val();
         var product = $('#products1').val();
+
+        // var litres2 = $('#litre2').val();
+        // var amount2 = $('#price2').val();
+        // var product2 = $('#products2').val();
+        //
+        // var litres3 = $('#litre3').val();
+        // var amount3 = $('#price3').val();
+        // var product3 = $('#products3').val();
+
         var district = $('#partner_id').val();
         $.ajax({
             url: 'index',
@@ -110,13 +120,6 @@ $(document).ready(function() {
             }
         });
     }
-    // $('#login').click(function (e) {
-    //     e.preventDefault();
-    //     let type = $('#').val();
-    //     let username = $('#').val();
-    //     let pass = $('#').val();
-    //     login(type, username, pass);
-    // });
 
     function login(type, username, pass) {
         $.ajax({

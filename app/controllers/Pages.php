@@ -41,9 +41,19 @@ class Pages extends Controller
             $data = [
                 'reference' => trim($_POST['reference']),
                 'customer_id' => trim($_POST['id']),
+
                 'product' => trim($_POST['product']),
                 'amount' => doubleval($_POST['amount'])/100,
                 'litres' => trim($_POST['litres']),
+
+                // 'product2' => trim($_POST['product2']),
+                // 'amount2' => doubleval($_POST['amount2'])/100,
+                // 'litres2' => trim($_POST['litres2']),
+                //
+                // 'product3' => trim($_POST['product3']),
+                // 'amount3' => doubleval($_POST['amount3'])/100,
+                // 'litres3' => trim($_POST['litres3']),
+
                 'partner_id' => trim($_POST['partner_id']),
                 'tel_err' => '',
                 'deliveryadd_err' => '',
@@ -66,6 +76,21 @@ class Pages extends Controller
     public function faq()
     {
         $this->views('pages/faq');
+    }
+
+    public function about()
+    {
+        $this->views('pages/about');
+    }
+
+    public function contact()
+    {
+        $this->views('pages/contact');
+    }
+
+    public function terms()
+    {
+        $this->views('pages/termsandconditions');
     }
 
     public function index()
