@@ -152,6 +152,9 @@ class Partners extends Controller
                 $partner = $this->partnerModel->getPartner($_POST['id']);
                 $url = SITEURL;
                 echo "
+                <div class='text-center'><i class='fa fa-check-circle fa-3x text-success'></i></div>
+                <h2 class='text-center text-capitalize'>Partner Created</h2>
+                <div id='newPartnerItems'>
                 <p>Username</p>
                 <h3>$partner->username</h3>
                 <p>Password</p>
@@ -161,6 +164,7 @@ class Partners extends Controller
                 <input type='hidden' value='$password' name='p' />
                 <button type='button' class='btn btn-primary cancel'>Close </button>
                 </form>
+                </div>
                 ";
             } else {
                 echo "

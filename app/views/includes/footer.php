@@ -35,13 +35,13 @@
         <h3>Company</h3>
         <ul class="list-unstyled">
           <li>
-            <a>About</a>
+            <a href="<?php echo SITEURL;?>/pages/about ">About</a>
           </li>
           <li>
-            <a>Contact</a>
+            <a href="<?php echo SITEURL;?>/pages/contact ">Contact</a>
           </li>
           <li>
-            <a>Terms and Conditions</a>
+            <a href="<?php echo SITEURL;?>/pages/terms">Terms and Conditions</a>
           </li>
         </ul>
       </div>
@@ -49,12 +49,8 @@
   </div>
 </footer>
 <div class="popup-overlay" data-pg-collapsed>
-  <div class="popup-body box-shadow text-center">
-  <div class="text-center"><i class="fa fa-check-circle fa-3x text-success"></i></div>
-    <h2 class="text-center text-capitalize">Partner Created</h2>
-    <div id="newPartner">
+  <div class="popup-body box-shadow text-center" id="newPartner">
 
-    </div>
   </div>
 </div>
 <section class="form-section">
