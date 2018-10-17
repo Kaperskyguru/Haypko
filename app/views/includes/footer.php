@@ -59,7 +59,7 @@
       <!-- NEW NEW NEW -->
       <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
         <form role="form" class="prod-form" id="prod-form">
-          <h3 class="detail-h3"><a href="#"><i class="fa fa-circle fore-color"></i></a>Product Details</h3>
+          <h3 class="detail-h3">Product Details</h3>
           <div class="prod-cart">
             <div class="no-item" data-pg-collapsed>
               <div class="no-item-text text-center" data-pg-collapsed>
@@ -70,10 +70,10 @@
           </div>
           <div class="row" data-pg-collapsed>
             <div class="col-xs-12">
-              <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>Add Product</a></h6>
+              <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>Add to Cart</a></h6>
             </div>
           </div>
-          <h3 class="detail-h3"><a href="#"><i class="fa fa-circle fore-color"></i></a>Your Details</h3>
+          <h3 class="detail-h3">Your Details</h3>
           <div class="row" data-pg-collapsed>
             <div class="col-xs-12" data-pg-collapsed>
               <div class="form-group">
@@ -119,15 +119,17 @@
                   <input type="password" class="form-control" id="conpassword" name="conpassword" placeholder="Confirm Password">
                 </div>
                 <div class="checkbox">
-</div>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <h5 class="text-right">Proceed to Checkout<button id="checkout" type="submit" class="checkout-btn">
-                  <i class="fa fa-fw fa-long-arrow-right"></i>
-                </button></h5>
-            </div>
           </div>
+        <div class="row">
+           <div class="col-md-12">
+              <h5 class="purchase-footer"><span class="text-left back-btn-two"><i class="fa fa-2x fa-long-arrow-left"></i></span><span >Proceed to Checkout<button id="checkout" type="submit" class="checkout-btn ">
+                  <i class="fa fa-fw fa-long-arrow-right"></i>
+                </button><span></h5>
+            </div>
+        </div>
         </form>
       </div>
       <!-- NEW NEW NEW -->

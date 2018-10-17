@@ -41,8 +41,8 @@ $(document).ready(function() {
                     }, 1000);
                 } else {
                     document.querySelector('.hero').classList.remove('spinner-2');
-                    alert(data);
-                    window.location = "http://localhost/Enyopay/";
+                    // alert(data);
+                    // window.location = "http://localhost/Enyopay/";
                 }
             },
             onerror: function(err) {

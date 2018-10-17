@@ -31,7 +31,7 @@ class Driver
 
     public function getDrivers()
     {
-        $this->db->query("SELECT id, name, username, location, email, partner_id ,mobile FROM {$this->table} ORDER BY id DESC");
+        $this->db->query("SELECT id, name, username, location_id, email, partner_id ,mobile FROM {$this->table} ORDER BY id DESC");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;
@@ -51,7 +51,7 @@ class Driver
 
     public function getDriver(int $id)
     {
-        $this->db->query("SELECT id, name, username, location, email, partner_id, mobile FROM {$this->table} WHERE id = :id");
+        $this->db->query("SELECT id, name, username, location_id, email, partner_id, mobile FROM {$this->table} WHERE id = :id");
         $this->db->bind(':id', $id);
         $row = $this->db->single();
         if (!$row) {
@@ -104,5 +104,22 @@ class Driver
             return false;
         }
         return true;
+    }
+
+    public function driverLogin( array $data )
+    {
+        try {
+            $query = "SELECT * FROM {$this->table} WHERE username = :user_name";
+            $stmt = $this->db->query($query);
+            $this->db->bind(":user_name", $data['username']);
+            $res = $this->db->single();
+            if (password_verify($data['password'], $res->password)) {
+                return $res->id;
+            }
+            return 0;
+        } catch (Error $e) {
+            $_SESSION['error'] = $e->getMessage();
+            return 0;
+        }
     }
 }

@@ -40,7 +40,7 @@
           </div>
         </div>
       </nav>
-      <img data-aos="slide-left" class="hero-img" src="<?php echo SITEURL; ?>/assets/images/png/fuel_PNG31.png" />
+      <img data-aos="fade-in" class="hero-img" src="<?php echo SITEURL; ?>/assets/images/png/fuel_PNG31.png" />
       <div data-aos="fade-down" class="  ml-40 hero-text-body">
         <p class="border-left hero-subtext">Get Fuel Delivered to your door step with</p>
       </div>
@@ -61,19 +61,19 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/log-in.svg" />
               <p>Log on to Enyopay</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" data-aos-delay="300" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/rectangle-tool.svg" />
               <p>Fill in the necessary details</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" data-aos-delay="600" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/oil.svg" />
               <p>Sit while your fuel comes to meet you</p>
@@ -94,19 +94,19 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/tap.svg" />
               <p>Easy to Use</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" data-aos-delay="300" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/png/runer-silhouette-running-fast.png" class="icon" />
               <p>Fast Delivery</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <div data-aos="fade-up" data-aos-delay="600" class="box text-center">
               <img src="<?php echo SITEURL; ?>/assets/images/svg/piggy-bank.svg" />
               <p>Cost Free</p>
@@ -127,13 +127,13 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <img src="<?php echo SITEURL; ?>/assets/images/svg/0.svg" />
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <img src="<?php echo SITEURL; ?>/assets/images/svg/logo.svg" />
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="col-md-4 col-sm-4 col-xs-12">
             <a class="btn mt-20 showpform" href="#!" id="showpform">Become A Partner</a>
           </div>
         </div>

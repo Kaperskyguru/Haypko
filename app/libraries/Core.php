@@ -36,8 +36,8 @@ class Core
 
     public function getURL()
     {
-        $url = $_GET['url'];
-        $url = rtrim($_GET['url'], '/');
+        $url = isset($_GET['url'])?$_GET['url']:"";
+        $url = rtrim($url, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
         return $url;

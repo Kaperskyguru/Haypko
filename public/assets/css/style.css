@@ -330,19 +330,11 @@ a.btn:hover
     }
 }
 
-@media (max-width:767px)
+/*@media (max-width:767px)
 {
-    .navbar
-    {
-        color: white;
-        background-color: #151729;
-    }
-    .navbar-default .navbar-brand
-    {
-        color: white;
-    }
-}
-
+   
+}*/
+/*
 @media (max-width:599px)
 {
     .row>div
@@ -350,6 +342,7 @@ a.btn:hover
         width: 100%;
     }
 }
+*/
 
 @media (min-width:768px) and (max-width:991px)
 {
@@ -854,13 +847,9 @@ a:focus
 {
     width: 30px;
     height: 30px;
-    text-align: center;
-    vertical-align: middle;
-    margin-left: -40px;
-    margin-right: 10px;
-    padding: 10px;
+    margin-right: 50px;
+    background-color:#151d27 !important;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    border-radius: 50%;
 }
 
 .fore-color
@@ -908,7 +897,7 @@ a:focus
     height: 200px;
     border-radius: 10px;
     padding: 10px 15px;
-    border: 1px solid #d8d8d8;
+    border: 1px solid #f0f0f0;
     position: relative;
 }
 
@@ -1068,3 +1057,87 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     }
 }
 
+@media (max-width: 480px){
+    .control-label{
+        font-size:10px;
+    }
+    .r-prod{
+        font-size:8px;
+    }
+    .form-control{
+        padding:5px;
+        font-size:12px;
+    }
+    .prod-cart{
+        height: 250px;
+    }
+    
+
+    .form-section form:first-of-type{
+        padding: 10px !important;
+    }
+}
+
+@media (max-width:767px)
+{
+    .btn
+    {
+        font-size: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .btn-topnav{
+        background-color: #d8d8d8;
+        border-radius: 5px;
+    }
+    .navbar-default .navbar-nav li a{
+        color:#151d27 ;
+    }
+    .white-logo{
+        display: none !important;
+    }
+    .navbar-default .navbar-toggle .icon-bar{
+
+        background-color: #151d27 ;
+    }
+    
+     .navbar
+    {
+        color: #151729;
+        background-color:white ;
+        border-color: white;
+    }
+    .navbar-default .navbar-brand
+    {
+        color: white;
+    }
+
+    .form-section form:first-of-type{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+
+}
+
+
+
+h3.detail-h3::before{
+    content:"";
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border:5px solid white;
+    background-color: #151d27;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.purchase-footer{
+    display: flex;
+    justify-content: space-between;
+}
+.back-btn-two{
+    display: flex;
+    align-items: center;
+}

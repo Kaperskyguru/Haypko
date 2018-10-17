@@ -53,7 +53,7 @@ class History
 
     public function getAllHistoryDetails(int $id)
     {
-        $query = "SELECT orders.product_name AS product, orders.order_litres AS quantity,orders.order_amount AS amount, orders.order_reference_id AS reference_id,orders.order_date_added AS order_date, customers.customer_name AS name,customers.customer_email AS email,customers.customer_phone AS phone, partners.partner_name AS partner, addresses.address_text AS address, orders.order_status AS status FROM {$this->table} JOIN customers JOIN partners JOIN addresses ON orders.order_customer_id = customers.id AND orders.order_partner_id = :id AND customers.id = addresses.address_customer_id AND orders.order_partner_id = partners.id ORDER BY order_status";
+        $query = "SELECT orders.order_id, orders.product_name AS product, orders.order_litres AS quantity,orders.order_amount AS amount, orders.order_reference_id AS reference_id,orders.order_date_added AS order_date, customers.customer_name AS name,customers.customer_email AS email,customers.customer_phone AS phone, partners.partner_name AS partner, addresses.address_text AS address, orders.order_status AS status FROM {$this->table} JOIN customers JOIN partners JOIN addresses ON orders.order_customer_id = customers.id AND orders.order_partner_id = :id AND customers.id = addresses.address_customer_id AND orders.order_partner_id = partners.id ORDER BY order_status";
         $this->db->query($query);
         $this->db->bind(':id', $id);
         $row = $this->db->resultSet();
