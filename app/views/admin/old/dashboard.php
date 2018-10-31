@@ -65,11 +65,6 @@
             <li>
               <a href="#!" class="links hist-link"><i class="fa fa-bar-chart-o"></i> History</a>
             </li>
-            <!-- added delivery link -->
-             <li>
-              <a href="#!" class="links delv-link"><i class="fa fa-bar-chart-o"></i> Delivery</a>
-            </li>
-            <!-- delivery link ends here -->
             <li>
               <a href="#!" class="links set-link"><i class="fa  fa-gear"></i> Account Settings</a>
             </li>
@@ -397,97 +392,6 @@
             <!-- /.row (main row) -->
           </section>
         </div>
-        <!-- added delivery section -->
-        <div class="sections delivery-section" id="delivery">
-          <section class="content-header" data-pg-collapsed>
-            <h1>
-                Delivery</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-              </li>
-              <li class="active">Delivery</li>
-            </ol>
-          </section>
-          <section class="content" data-pg-collapsed>
-            <!-- Small boxes (Stat box) -->
-            <!-- /.row -->
-            <!-- Main row -->
-            <div class="row">
-              <!-- ./col -->
-              <!-- ./col -->
-              <div class="col-sm-12">
-                <ul class="nav nav-tabs" data-pg-collapsed>
-                  <li class="active">
-                    <a href="#tab1" data-toggle="tab">All</a>
-                  </li>
-                  <!-- <li>
-                    <a href="#tab2" data-toggle="tab">Recently Added</a>
-                  </li> -->
-                  <li class="pull-right">
-                    <button class="btn btn-primary " id="add-delivery-guy">Add New</button>
-                  </li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="tab1">
-                    <div class="box box-info">
-                      <div class="box-header with-border">
-                        <h3 class="box-title">All Delivery Agents</h3>
-                        <div class="box-tools pull-right">
-                          <button class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body" data-pg-collapsed>
-                        <div class="table-responsive">
-                          <table id="driverTable" class="table no-margin ptable">
-                            <thead>
-                              <tr>
-                                <th>
-                                  <input class="control-label selectall" type="checkbox" value="">
-                                </th>
-                                <th>Delivery Agents</th>
-                                <th>Location</th>
-                                <th>View</th>
-                                <th><button type="button" class="btn  btn-danger deleteall">delete</button></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($data['drivers'] as $driver): ?>
-                                  <tr pid="<?php echo $escaper->escapeHtml( $driver->id ) ?>">
-                                    <td>
-                                      <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $escaper->escapeHtml($driver->id) ?>" type="checkbox" value="">
-                                    </td>
-                                    <td><span><?php echo $escaper->escapeHtml($driver->name) ?></span></td>
-                                    <td><span><?php echo $escaper->escapeHtml($driver->location_id) ?></span></td>
-                                    <td>
-                                      <button aid="<?php echo $driver->id ?>" id="viewDeliverAgent" type="button" class="btn  btn-info">view</button>
-                                    </td>
-                                    <td>
-                                      <button pid="<?php echo $driver->id ?>" type="button" class="btn  btn-danger delete">delete</button>
-                                    </td>
-                                  </tr>
-                              <?php endforeach ?>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- TABLE: LATEST ORDERS -->
-                <!-- /.box -->
-              </div>
-              <!-- ./col -->
-            </div>
-            <!-- /.row (main row) -->
-          </section>
-        </div>
-        <!-- devlivery section ends here -->
         <div class="sections set-section" id="setting">
           <section class="content-header" data-pg-collapsed>
             <h1>Account Settings</h1>
@@ -625,7 +529,7 @@
             </form>
         </div>
       </div>
-      <div class="view-overlay" id="partner-view-overlay" data-pg-collapsed>
+      <div class="view-overlay" data-pg-collapsed>
         <div class="view-box box-shadow text-center">
         <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
           <h2 class="text-center text-capitalize">View Partner</h2>
@@ -634,15 +538,6 @@
           </div>
         </div>
       </div>
-
-      <div class="view-overlay" id="agent-view-overlay" data-pg-collapsed>
-          <div class="view-box box-shadow text-center">
-              <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
-              <h2 class="text-center text-capitalize">View Delivery Agent</h2>
-              <div id="agentDetails"></div>
-          </div>
-      </div>
-
     </div>
     <section class="form-section">
       <div class="container">
@@ -714,8 +609,6 @@
               </div>
             </form>
           </div>
-
-
           <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
             <form role="form" class="acc-form" id="acc-form">
               <h2>Bank account Details</h2>
@@ -749,61 +642,9 @@
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </section>
-    <!-- started adding the delivery form section from here -->
-    <section class="delv-form-section">
-      <div class="container">
-        <div class="row">
-          <!-- add new delivery guy -->
-          <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
-            <form role="form" class="devl-form" id="devlivery-form" data-pg-collapsed>
-              <h2>Add Delivery Agent </h2>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="dname">Name</label>
-                    <input type="text" class="form-control" id="dname" name="dname">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="dpnum">Phone Number</label>
-                    <input type="number" class="form-control" id="dpnum" name="dpnum">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="demail">Email</label>
-                    <input type="email" class="form-control" id="demail" name="demail">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" data-pg-collapsed>
-                    <label class="control-label" for="daddr">Address</label>
-                    <input type="text" class="form-control" id="daddr" name="raddr">
-                  </div>
-                </div>
-
-
-              </div>
-              <div class="row">
-                <div class="col-xs-12 clear">
-                  <div class="pull-right mt-30">
-                    <button class="btn btn-danger delv-cancel" type="button">Cancel</button>
-                    <button id="createDeliveryGuy" pid="admin" class="btn btn-primary create" type="button">Create</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-    </section>
-    <!-- ended the delivery form section -->
     <!-- ./wrapper -->
 
     <?php
@@ -842,7 +683,6 @@
     $('#partnerTable').dataTable();
     $('#recentPartnerTable').dataTable();
     $('#historyTable').dataTable();
-    $('#driverTable').dataTable();
       $(function () {
         "use strict";
         //BAR CHART

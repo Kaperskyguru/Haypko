@@ -14,11 +14,13 @@ class Driver
 
     public function createDriver(array $data)
     {
-        $query = "INSERT INTO {$this->table} (name, partner_id, username, location_id, email, mobile) VALUES
-        (:name, :partner_id, :username, :location, :email, :mobile)";
+        $query = "INSERT INTO {$this->table} (name, password, partner_id, admin_id, username, location_id, email, mobile) VALUES
+        (:name, :password, :partner_id, :admin_id, :username, :location, :email, :mobile)";
         $this->db->query($query);
         $this->db->bind(':name', $data['name']);
+        $this->db->bind(':password', $data['password']);
         $this->db->bind(':partner_id', $data['partner_id']);
+        $this->db->bind(':admin_id', $data['admin_id']);
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':location', $data['location']);
         $this->db->bind(':email', $data['email']);
@@ -38,6 +40,29 @@ class Driver
         }
         return $row;
     }
+
+    public function getDriversByPartnerId(int $id)
+    {
+        $this->db->query("SELECT id, name, username, location_id, email, partner_id ,mobile FROM {$this->table} WHERE partner_id = :id ORDER BY id DESC");
+        $this->db->bind(':id', $id);
+        $row = $this->db->resultSet();
+        if (!$row) {
+            return null;
+        }
+        return $row;
+    }
+
+    public function getDriversByAdminId(int $id)
+    {
+        $this->db->query("SELECT id, name, username, location_id, email, partner_id ,mobile FROM {$this->table} WHERE admin_id = :id ORDER BY id DESC");
+        $this->db->bind(':id', $id);
+        $row = $this->db->resultSet();
+        if (!$row) {
+            return null;
+        }
+        return $row;
+    }
+
 
     public function getDriversName()
     {
@@ -122,4 +147,23 @@ class Driver
             return 0;
         }
     }
+
+    public function generateUsername(string $name): string
+    {
+        //generate username from name
+        $names = explode(' ', $name);
+        $username = $names[0] . $names[1];
+        $rows = $this->getDrivers();
+        foreach ($rows as $row) {
+            $r[] = $row->username;
+        }
+        if (in_array($username, $r)) {
+            $count = 0;
+            while (in_array( ($username. ''. ++$count) , $r) );
+            $username = $username. '' .$count;
+
+        }
+        return $username;
+    }
+
 }

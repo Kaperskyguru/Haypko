@@ -56,6 +56,11 @@
                         <li>
                             <a href="#!" class="links hist-link"><i class="fa fa-bar-chart-o"></i> History</a>
                         </li>
+                        <!-- added delivery link -->
+                        <li>
+                            <a href="#!" class="links delv-link"><i class="fa fa-bar-chart-o"></i> Delivery</a>
+                        </li>
+                        <!-- delivery link ends here -->
                         <li>
                             <a href="#!" class="links set-link"><i class="fa  fa-gear"></i> Account Settings</a>
                         </li>
@@ -115,65 +120,70 @@
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo ($order->order_status == 0)?'Pending':'Delivered'?></div>
                                                         </td>
                                                         <!-- <td>
-                                                            <button oid="<?php echo $order->order_id ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
+                                                        <button oid="<?php echo $order->order_id ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
 
-                                                        </td> -->
-                                                        <td>
-                                                            <button oid="<?php echo $order->order_id ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <!-- TABLE: LATEST ORDERS -->
-                                <!-- /.box -->
-                            </div>
-                            <div class="col-md-4" data-pg-collapsed>
-                                <div class="ov-box box-shadow">
-                                    <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY)?></sup></h5>
-                                    <h2><span>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenueByMonth'])); ?></span><img src="<?php echo  SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
-                                    <p class="text-right gray">since last month</p>
+                                                    </td> -->
+                                                    <td>
+                                                        <button oid="<?php echo $order->order_id ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="box box-success" data-pg-collapsed>
-                                    <div class="box-header">
-                                        <h3 class="box-title"><span>Revenues</span>
-                                        </h3>
-                                        <h3>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenue'])); ?></h3>
-                                    </div>
-                                    <div class="box-body chart-responsive">
-                                        <div class="chart" id="revenueChart" style="height: 300px;"></div>
-                                    </div>
-                                    <!-- /.box-body -->
-                                </div>
-                                <!-- TABLE: LATEST ORDERS -->
-                                <!-- /.box -->
+                            <!-- TABLE: LATEST ORDERS -->
+                            <!-- /.box -->
+                        </div>
+                        <div class="col-md-4" data-pg-collapsed>
+                            <div class="ov-box box-shadow">
+                                <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY)?></sup></h5>
+                                <h2><span>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenueByMonth'])); ?></span><img src="<?php echo  SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                                <p class="text-right gray">since last month</p>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="box box-success" data-pg-collapsed>
-                                    <div class="box-header">
-                                        <h3 class="box-title"><select>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="box box-success" data-pg-collapsed>
+                                <div class="box-header">
+                                    <h3 class="box-title"><span>Revenues</span>
+                                    </h3>
+                                    <h3>N<?php echo $escaper->escapeHtml(number_format($data['totalRevenue'])); ?></h3>
+                                </div>
+                                <div class="box-body chart-responsive">
+                                    <div class="chart" id="revenueChart" style="height: 300px;"></div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- TABLE: LATEST ORDERS -->
+                            <!-- /.box -->
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="box box-success" data-pg-collapsed>
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        <select>
                                             <option value="-1" selected>Product Sold</option>
                                         </select>
                                         <!-- <sup class="gray">Last 10 days</sup> -->
                                     </h3>
                                 </div>
-                                <h4 class="box-title"><ul class="list-inline">
-                                    <span><strong><?php echo $escaper->escapeHtml(number_format($data['totalProductSold'])); ?></strong></span>
-                                    <sub class="gray">Total</sub>
-                                    <li>
-                                        <i class="fa fa-circle text-primary"></i> Petrol
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle" style="color:#dd4b39"></i> Diesel
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle text-red"></i> Diesel
-                                    </li>
-                                </ul></h4>
+                                <h4 class="box-title">
+                                    <ul class="list-inline">
+                                        <span>
+                                            <strong><?php echo $escaper->escapeHtml(number_format($data['totalProductSold'])); ?></strong>
+                                        </span>
+                                        <sub class="gray">Total</sub>
+                                        <li>
+                                            <i class="fa fa-circle text-primary"></i> Petrol
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle" style="color:#dd4b39"></i> Diesel
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-red"></i> Diesel
+                                        </li>
+                                    </ul>
+                                </h4>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="productSoldChart" style="height: 300px;"></div>
                                 </div>
@@ -246,19 +256,110 @@
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo ($order->order_status == 0)?'Pending':'Delivered'?></div>
                                                         </td>
                                                         <!-- <td>
-                                                            <button oid="<?php echo $order->order_id; ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
-                                                        </td> -->
-                                                        <td>
-                                                            <button oid="<?php echo $order->order_id; ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
+                                                        <button oid="<?php echo $order->order_id; ?>" href="#" id="orderStatus" <?php echo ($order->order_status == 0)?'':'disabled'?> class="btn btn-danger"> Delivered </button>
+                                                    </td> -->
+                                                    <td>
+                                                        <button oid="<?php echo $order->order_id; ?>" href="#" id="viewOrder" class="btn btn-primary"> View </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach?>
+                                        </tbody>
+                                    </table>
                                 </div>
+                                <!-- /.table-responsive -->
                             </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row (main row) -->
+            </section>
+        </div>
+        <!-- added delivery section -->
+        <div class="sections delivery-section" id="delivery">
+            <section class="content-header" data-pg-collapsed>
+                <h1>
+                    Delivery</h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard"></i> Home</a>
+                        </li>
+                        <li class="active">Delivery</li>
+                    </ol>
+                </section>
+                <section class="content" data-pg-collapsed>
+                    <!-- Small boxes (Stat box) -->
+                    <!-- /.row -->
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- ./col -->
+                        <!-- ./col -->
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs" data-pg-collapsed>
+                                <li class="active">
+                                    <a href="#tab1" data-toggle="tab">All</a>
+                                </li>
+
+                                <li class="pull-right">
+                                    <button class="btn btn-primary " id="add-delivery-guy">Add New</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <div class="box box-info">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">All Delivery Agents</h3>
+                                            <div class="box-tools pull-right">
+                                                <button class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body" data-pg-collapsed>
+                                            <div class="table-responsive">
+                                                <table id="deliveryTable" class="table no-margin ptable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <input class="control-label selectall" type="checkbox" value="">
+                                                            </th>
+                                                            <th>Delivery Agents</th>
+                                                            <th>Username</th>
+                                                            <th>Location</th>
+                                                            <th>View</th>
+                                                            <th><button type="button" class="btn  btn-danger deleteallagent">delete</button></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($data['drivers'] as $driver): ?>
+                                                            <tr pid="<?php echo $escaper->escapeHtml( $driver->id ) ?>">
+                                                                <td>
+                                                                    <input class="control-label" class="partner_checkbox" data-agent-id="<?php echo $escaper->escapeHtml($driver->id) ?>" type="checkbox" value="">
+                                                                </td>
+                                                                <td><span><?php echo $escaper->escapeHtml($driver->name) ?></span></td>
+                                                                <td><span><?php echo $escaper->escapeHtml($driver->username) ?></span></td>
+                                                                <td><span><?php echo $escaper->escapeHtml($driver->location_id) ?></span></td>
+                                                                <td>
+                                                                    <button aid="<?php echo $driver->id ?>" id="viewDeliverAgent" type="button" class="btn  btn-info view">view</button>
+                                                                </td>
+                                                                <td>
+                                                                    <button pid="<?php echo $driver->id ?>" type="button" class="btn  btn-danger deleteAgent">delete</button>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /.table-responsive -->
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- TABLE: LATEST ORDERS -->
                             <!-- /.box -->
                         </div>
                         <!-- ./col -->
@@ -266,98 +367,102 @@
                     <!-- /.row (main row) -->
                 </section>
             </div>
-<div class="sections set-section" id="setting">
-    <section class="content-header" data-pg-collapsed>
-        <h1>Account Settings</h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#"><i class="fa fa-dashboard"></i> Home</a>
-            </li>
-            <li class="active">Account Settings</li>
-        </ol>
-    </section>
-    <section class="content" data-pg-collapsed>
-        <!-- Small boxes (Stat box) -->
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-            <!-- ./col -->
-            <!-- ./col -->
-            <div class="col-sm-8">
-                <div class="box box-success" data-pg-collapsed>
-                    <div class="box-header">
-                        <h3 class="box-title">Change Password</h3>
-                    </div>
-                    <div class="box-body chart-responsive">
-                        <div class="chart" id="bar-chart8" style="height: 300px;">
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="password" id="cpassword" name="password" class="form-control" placeholder="current password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="password" id="npassword" name="cpassword" class="form-control input-group form-group" placeholder="new password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <i class="text-red" id="e"></i>
-                                            <input type="password" id="conpass" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="button" uid="<?php echo $_SESSION['user_id'] ?>" class="btn btn-primary text-uppercase updatePartnerPass" value="update" />
-                                            <span class="passloader">
-                                                <i class="fa fa-pulse fa-2x  fa-spinner"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
+            <!-- devlivery section ends here -->
+            <div class="sections set-section" id="setting">
+                <section class="content-header" data-pg-collapsed>
+                    <h1>Account Settings</h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard"></i> Home</a>
+                        </li>
+                        <li class="active">Account Settings</li>
+                    </ol>
+                </section>
+                <section class="content" data-pg-collapsed>
+                    <!-- Small boxes (Stat box) -->
+                    <!-- /.row -->
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- ./col -->
+                        <!-- ./col -->
+                        <div class="col-sm-8">
+                            <div class="box box-success" data-pg-collapsed>
+                                <div class="box-header">
+                                    <h3 class="box-title">Change Password</h3>
+                                </div>
                             </div>
+                            <div class="box-body chart-responsive">
+                                <div class="chart" id="bar-chart8" style="height: 300px;">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input type="password" id="cpassword" name="password" class="form-control" placeholder="current password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="password" id="npassword" name="cpassword" class="form-control input-group form-group" placeholder="new password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <i class="text-red" id="e"></i>
+                                                    <input type="password" id="conpass" name="conpass" class="form-control input-group form-group" placeholder="confirm password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input type="button" uid="<?php echo $_SESSION['user_id'] ?>" class="btn btn-primary text-uppercase updatePartnerPass" value="update" />
+                                                    <span class="passloader">
+                                                        <i class="fa fa-pulse fa-2x  fa-spinner"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box-body -->
+                        <!-- TABLE: LATEST ORDERS -->
+                        <!-- /.box -->
                     </div>
-                    <!-- TABLE: LATEST ORDERS -->
-                    <!-- /.box -->
-                </div>
-                <div>
-                    <div class="box box-success" data-pg-collapsed>
-                        <div class="box-header">
-                            <h3 class="box-title">Bank Details</h3>
-                        </div>
-                        <div class="box-body chart-responsive">
-                            <div class="chart" id="bar-chart8" style="height: 300px;">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <input type="text" id="Paccname" name="accname" class="form-control" placeholder="account name">
+                    <div>
+                        <div class="box box-success" data-pg-collapsed>
+                            <div class="box-header">
+                                <h3 class="box-title">Bank Details</h3>
+                            </div>
+                            <div class="box-body chart-responsive">
+                                <div class="chart" id="bar-chart8" style="height: 300px;">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input type="text" id="Paccname" name="accname" class="form-control" placeholder="account name">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="number" id="Paccnum" name="acc-number" class="form-control input-group form-group" placeholder="account number">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="number" id="Paccnum" name="acc-number" class="form-control input-group form-group" placeholder="account number">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select id="Pbankname" class="form-control input-group form-group">
-                                                    <option value="-1">Select Bank</option>
-                                                    <option value="First Bank">First Bank</option>
-                                                    <option value="GT Bank">GT Bank</option>
-                                                </select>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <select id="Pbankname" class="form-control input-group form-group">
+                                                        <option value="-1">Select Bank</option>
+                                                        <option value="First Bank">First Bank</option>
+                                                        <option value="GT Bank">GT Bank</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <input type="button" uid="<?php echo $_SESSION['user_id']; ?>" class="btn btn-primary text-uppercase updatePartnerAccount pull-left" value="update" />
-                                                <span class="accloader">
-                                                    <i class="fa fa-pulse fa-2x  fa-spinner"></i>
-                                                </span>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <input type="button" uid="<?php echo $_SESSION['user_id']; ?>" class="btn btn-primary text-uppercase updatePartnerAccount pull-left" value="update" />
+                                                    <span class="accloader">
+                                                        <i class="fa fa-pulse fa-2x  fa-spinner"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -386,15 +491,80 @@
         </div>
     </div>
 
-    <div class="view-overlay" data-pg-collapsed>
-      <div class="view-box box-shadow text-center">
-      <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
-        <h2 class="text-center text-capitalize">View Order</h2>
-        <div id="orderDetails">
+    <div class="view-overlay" id="agent-view-overlay" data-pg-collapsed>
+        <div class="view-box box-shadow text-center">
+            <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
+            <h2 class="text-center text-capitalize">View Delivery Agent</h2>
+            <div id="agentDetails"></div>
+        </div>
+    </div>
+
+    <div class="view-overlay" id="order-view-overlay" data-pg-collapsed>
+        <div class="view-box box-shadow text-center">
+            <div class="text-center"><i class="fa fa-users fa-3x text-success"></i></div>
+            <h2 class="text-center text-capitalize">View Order</h2>
+            <div id="orderDetails"></div>
+        </div>
+    </div>
+
+<div class="popup-overlay" id="driver-popup-overlay" data-pg-collapsed>
+    <div class="popup-body box-shadow text-center">
+        <div id="newPartner">
 
         </div>
     </div>
 </div>
+
+<!-- started adding the delivery form section from here -->
+<section class="delv-form-section">
+    <div class="container">
+        <div class="row">
+            <!-- add new delivery guy -->
+            <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
+                <form role="form" class="devl-form" id="devlivery-form" data-pg-collapsed>
+                    <h2>Add New Delivery Agent </h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" data-pg-collapsed>
+                                <label class="control-label" for="dname">Name</label>
+                                <input type="text" class="form-control" id="dname" name="dname">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" data-pg-collapsed>
+                                <label class="control-label" for="dpnum">Phone Number</label>
+                                <input type="number" class="form-control" id="dpnum" name="dpnum">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" data-pg-collapsed>
+                                <label class="control-label" for="demail">Email</label>
+                                <input type="email" class="form-control" id="demail" name="demail">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" data-pg-collapsed>
+                                <label class="control-label" for="daddr">Address</label>
+                                <input type="text" class="form-control" id="daddr" name="raddr">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 clear">
+                            <div class="pull-right mt-30">
+                                <button class="btn btn-danger delv-cancel" type="button">Cancel</button>
+                                <button id="createDeliveryGuy" pid="partner" class="btn btn-primary create" type="button">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ended the delivery form section -->
 <?php
 $mydata = '';
 $dat = file_get_contents(SITEURL.'/api/clientRevenue/'.$_SESSION['user_id']);
@@ -405,28 +575,28 @@ $orderData = file_get_contents(SITEURL.'/api/products/'.$_SESSION['user_id']);
 $orders = json_decode($orderData);
 
 ?>
-  <!-- jQuery 2.1.3 -->
-    <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<?php echo SITEURL ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='<?php echo SITEURL ?>/assets/plugins/fastclick/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo SITEURL ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
+<!-- jQuery 2.1.3 -->
+<script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="<?php echo SITEURL ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="<?php echo SITEURL ?>/assets/plugins/morris/morris.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src='<?php echo SITEURL ?>/assets/plugins/fastclick/fastclick.min.js'></script>
+<!-- AdminLTE App -->
+<script src="<?php echo SITEURL ?>/assets/dist/js/app.min.js" type="text/javascript"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo SITEURL ?>/assets/dist/js/demo.js" type="text/javascript"></script>
 
- <script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
+<script src="<?php echo SITEURL ?>/assets/dist/js/dashboard.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 <script type="text/javascript">
 // $('#recentOrders').dataTable();
 
 $('#partnerHistory').dataTable();
-
+$('#deliveryTable').dataTable();
 $(function () {
     "use strict";
 

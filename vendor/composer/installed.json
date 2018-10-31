@@ -116,8 +116,8 @@
     },
     {
         "name": "infobip/infobip-api-php-client",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/infobip/infobip-api-php-client.git",

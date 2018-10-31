@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>Fully featured textual message</title>
@@ -195,4 +195,35 @@
     ?>
 </div>
 </body>
-</html>
+</html> -->
+
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "http://xn95g.api.infobip.com/sms/2/text/single",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{ \"from\":\"InfoSMS\", \"to\":\"2348145655380\", \"text\":\"Test SMS.\" }",
+  CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+    "content-type: application/json"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}

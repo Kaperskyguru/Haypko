@@ -105,7 +105,7 @@ class Pages extends Controller
                 'customer_name' => trim($_POST['Name']),
                 'customer_phone' => trim($_POST['Phone']),
                 'customer_address' => trim($_POST['address']),
-                'product_name' => trim($_POST['product']),
+                'products' => $_POST['products'],
                 'email_err' => '',
                 'fullname_err' => '',
                 'tel_err' => '',
@@ -115,7 +115,12 @@ class Pages extends Controller
                 'product_err' => '',
                 'partners' => $partners,
             ];
-
+            // $i = 0;
+            // foreach($data['products'] as $product) {
+            //     $i++;
+            //     echo($product['name']);
+            // }
+            // die();
             // validate customer email
             if (empty($data['customer_email'])) {
                 $data['email_err'] = 'This field is required.';
@@ -139,10 +144,9 @@ class Pages extends Controller
                 $data['tel_err'] = 'This field is required.';
                 $err_code = 1;
             }
-            // var_dump($data);
+            // TODO:: Remove Product ID from table
             if ($err_code == 0) {
-                $this->updateCustomerStat($this->productModel->getProductId($data['product_name']), date("Y-m-d H:i:s"), $data['customer_email'], $data['customer_phone']);
-
+                $this->updateCustomerStat($this->productModel->getProductId($product['name']), date("Y-m-d H:i:s"), $data['customer_email'], $data['customer_phone']);
                 if ($this->customer_id = $this->customerModel->storeCustomerDetails($data)) {
                     if ($this->addressModel->createAddress($this->customer_id, $data['customer_address'])) {
                         echo PK. 'ID:'.$this->customer_id;
@@ -190,6 +194,7 @@ class Pages extends Controller
                 'order_id' => $verifyData['order_id'],
             ];
             if( $this->verifyReferenceID($verifyRefData,  $tranx) ) {
+                print_r($this->sms($tranx->data->metadata->custom_fields[0]->value, trim($tranx->data->reference)));
                 // Update Revenue
                 $revenueData = [
                     'amount' => doubleval($tranx->data->amount)/100,
@@ -247,5 +252,17 @@ class Pages extends Controller
             'phone' => $phone,
         ];
         $this->customerModel->updateCustomerStat($data);
+    }
+
+    public function sms(string $phone, string $ref)
+    {
+
+        $client = new infobip\api\client\SendSingleTextualSms(new infobip\api\configuration\BasicAuthConfiguration(USERNAME, PASSWORD));
+        $requestBody = new infobip\api\model\sms\mt\send\textual\SMSTextualRequest();
+        $requestBody->setFrom('Haypko');
+        $requestBody->setTo([$phone]);
+        $requestBody->setText("Thank you for using Haypko platform. Your Product code is : ".$ref);
+        return $response = $client->execute($requestBody);
+        // $this->views('api/v1/charts/smstest', $response);
     }
 }

@@ -16,10 +16,7 @@ function dashboard(){
 		    	}else if($(this).hasClass("set-link")){
 		    		$(".sections").hide();
 		    		$(".set-section").fadeIn(1000);
-		    	}else if($(this).hasClass('delv-link')){
-            $(".sections").hide();
-            $(".delivery-section").fadeIn(1000);
-          }
+		    	}
     	});
     }
     //update price
@@ -31,45 +28,6 @@ function dashboard(){
     	$(".change-body").click(function(e){
     		e.stopPropagation();
     	});
-    }
-
-    // handle delivery form display
-    this.addDelivery = ()=>{
-      $('.delv-form-section').fadeIn();
-
-      //handle cancel
-      $(".delv-cancel").click(function(){
-        $('.delv-form-section').fadeOut();
-
-      });
-
-      //handle Add Delivery Agent
-      $("#createDeliveryGuy").click(function(){
-          var name = $('#dname').val();
-          var phone = $('#dpnum').val();
-          var email = $('#demail').val();
-          var address = $('#daddr').val();
-          var type = $(this).attr('pid');
-          $.ajax({
-             type: "POST",
-             url: url + "/Drivers/add",
-             cache:false,
-             data: {name:name, phone:phone, email:email, address:address, type:type},
-             success: function(response) {
-                 if(response == 'All fields required'){
-                     alert('All fields required');
-                 } else {
-                     let arr = response.split('/');
-                     if (arr[0] == "Driver Created") {
-                         $('.delv-form-section').fadeOut(300);
-                         enyodashboard.driverPopup(arr[1]);
-                     }
-                 }
-             }
-         });
-
-      });
-
     }
 
     //handle add partner form display
@@ -116,28 +74,6 @@ function dashboard(){
                 $(this).fadeOut(300);
               });
               $(".popup-body").click(function(e){
-                e.stopPropagation();
-              });
-           }
-       });
-
-    }
-
-    //call this function to Delivery pop up
-    this.driverPopup = function(id){
-        $.ajax({
-           type: "POST",
-           url: url + "/Drivers/showDetails",
-           cache:false,
-           data: {id:id},
-           success: function(response) {
-                $('#newPartner').html(response);
-
-                $("#driver-popup-overlay").fadeIn(300);
-              $("#driver-popup-overlay").click(function(){
-                $(this).fadeOut(300);
-              });
-              $("popup-body").click(function(e){
                 e.stopPropagation();
               });
            }
@@ -240,8 +176,8 @@ function dashboard(){
            data: {id:id},
            success: function(response) {
                 $('#partnerDetails').html(response);
-                $("#partner-view-overlay").fadeIn(300);
-                $("#partner-view-overlay").click(function(){
+                $(".view-overlay").fadeIn(300);
+                $(".view-overlay").click(function(){
                    $(this).fadeOut(300);
                 });
                 $(".view-box").click(function(e){
@@ -264,8 +200,8 @@ function dashboard(){
            data: {id:id},
            success: function(response) {
                 $('#orderDetails').html(response);
-                $("#order-view-overlay").fadeIn(300);
-                $("#order-view-overlay").click(function(){
+                $(".view-overlay").fadeIn(300);
+                $(".view-overlay").click(function(){
                    $(this).fadeOut(300);
                 });
                 $(".view-box").click(function(e){
@@ -275,80 +211,6 @@ function dashboard(){
        });
 
 
-    }
-
-    this.viewDeliverAgent = function(element){
-
-        let id  = element.attr('aid');
-        $.ajax({
-           type: "POST",
-           url: url + "/Drivers/viewDriver",
-           cache:false,
-           data: {id:id},
-           success: function(response) {
-                $('#agentDetails').html(response);
-                $("#agent-view-overlay").fadeIn(300);
-                $("#agent-view-overlay").click(function(){
-                   $(this).fadeOut(300);
-                });
-                $(".view-box").click(function(e){
-                  e.stopPropagation();
-                });
-           }
-       });
-
-
-    }
-
-    this.deleteAllDeliveryAgent = function(element){
-         let content = $(element).parents().eq(2).next().find("tr");
-         elements=$(element).parents().eq(2).next().find("input[type='checkbox']");
-         let sure = confirm("are you sure you want to delete all Delivery Agents ?");
-         var agents = [];
-         elements.prop('checked', true);
-         elements1=$(element).parents().eq(2).next().find("input:checked");
-         $(elements1).each(function () {
-           agents.push($(this).data('agent-id'));
-         });
-         if(sure===true){
-             let selected_values = agents.join(",");
-             $.ajax({
-                type: "POST",
-                url: url + "/Drivers/delete",
-                cache:false,
-                data: 'emp_id='+selected_values,
-                success: function(response) {
-                    // remove deleted employee rows
-                     content.fadeOut(1000).remove();
-                }
-            });
-         }
-    }
-
-    this.deleteDeliveryAgent = function(element){
-      //check if check box is check
-      let content = $(element).parents().eq(1);
-      let checkbox=$(element).parents().eq(1).find("input[type='checkbox']");
-      console.log(checkbox);
-      let id = $(element).attr('pid');
-      if(checkbox.prop("checked")===true){
-        let sure = confirm("are you sure you want to delete all Delivery Agents ?");
-        if(sure===true){
-            $.ajax({
-               type: "POST",
-               url: url + "/Drivers/delete/"+id,
-               cache:false,
-               data: 'id='+id,
-               success: function(response) {
-                   // remove deleted employee rows
-                    content.fadeOut().remove();
-               }
-           });
-
-        }
-      }else{
-        alert("Pls select item to delete");
-      }
     }
 
     this.deleteAllpartners = function(element){
@@ -375,7 +237,6 @@ function dashboard(){
             });
          }
     }
-
     this.deletePartners = function(element){
       //check if check box is check
       let content = $(element).parents().eq(1);
@@ -478,13 +339,6 @@ $(document).ready(function(){
 	//get links
 	let links=$(".links");
 	enyodashboard.navHandler(links);
-
-  //edited here
-  // add delivery button
-  $('#add-delivery-guy').on('click',function(){
-    enyodashboard.addDelivery();
-  });
-
 	//add a retailer button
 	$(".add-btn").click(function(){
 		enyodashboard.addPartner();
@@ -554,24 +408,6 @@ $(document).ready(function(){
       let element = $(this);
     enyodashboard.viewOrders(element);
   });
-
-  //on view clicked
-  $("body").delegate("#viewDeliverAgent","click",function(){
-      let element = $(this);
-    enyodashboard.viewDeliverAgent(element);
-  });
-
-  //on deleteall agent clicked
-  $('body').on('click', ".deleteallagent", () => {
-    enyodashboard.deleteAllDeliveryAgent(this);
-  });
-
-
-  //on delete agent clicked
-  $('body').on('click', ".deleteAgent", () => {
-    enyodashboard.deleteDeliveryAgent(this);
-  });
-
   //change price on click
   $(".change").click(function(){
   	enyodashboard.updateprice();

@@ -268,9 +268,9 @@ function mailer($data)
 function pretty_mail($to, $title, $msg, $typeof)
 {
         // Create the Transport
-    $transport = (new Swift_SmtpTransport('YOUR MAIL SERVER', 25))
-    ->setUsername('YOUR USERNAME')
-    ->setPassword('YOUR PASSWORD');
+    $transport = (new Swift_SmtpTransport('mail.haypko.com', 25))
+    ->setUsername('haypkoco')
+    ->setPassword('Mobileboyz');
 
     // Create the Mailer using your created Transport
     $mailer = new Swift_Mailer($transport);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64570297844fbcc83f5df7abaed448e6",
+    "content-hash": "5be0c13b23e2bed935654f9d3cddd244",
     "packages": [
         {
             "name": "doctrine/lexer",
@@ -119,7 +119,7 @@
         },
         {
             "name": "infobip/infobip-api-php-client",
-            "version": "dev-master",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infobip/infobip-api-php-client.git",
@@ -524,9 +524,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "infobip/infobip-api-php-client": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

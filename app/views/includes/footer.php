@@ -3,17 +3,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h3>Haykpo</h3>
-        <p>Short description about EnyoPay and its value to customers.</p>
+        <h3>Haypko</h3>
+        <p>Haypko helps you order for petroleum products such as Premium motor spirit (petrol), Automated gas oil (diesel), and Liquefied Petroleum Gas from the comfort of your home, office or on the move. You can either request for a home delivery service or for a third party pick-up service.</p>
         <ul class="list-unstyled list-inline">
           <li>
-            <i class="fa fa-facebook-square fa-2x"></i>
+            <a href="https://www.facebook.com/Haypko"><i class="fa fa-facebook-square fa-2x"></i></a>
           </li>
           <li>
-            <i class="fa fa-twitter fa-2x"></i>
+            <a href="https://www.twitter.com/Haypko"><i class="fa fa-twitter fa-2x"></i></a>
           </li>
           <li>
-            <i class="fa fa-instagram fa-2x"></i>
+            <a href="https://www.instagram.com/Haypko"><i class="fa fa-instagram fa-2x"></i></a>
           </li>
         </ul>
       </div>
@@ -53,6 +53,8 @@
 
   </div>
 </div>
+
+
 <section class="form-section">
   <div class="container">
     <div class="row">
@@ -232,6 +234,38 @@
           </div>
         </form>
       </div>
+
+<!-- NEW NEW NEW NEW -->
+      <div class="fo col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" data-pg-collapsed>
+        <form class="checkout-box " id="card-form">
+          <div class="checkout-details">
+            <h3 class="text-center">Price Summary</h3>
+            <ul class="list-unstyled prod-list" data-pg-collapsed>
+              <li>
+                <span>10.4L of Petrol</span>
+                <span class="summary-price">N1,500</span>
+              </li>
+              <li>
+                <span>10.4L of Petrol</span>
+                <span class="summary-price">N1,500</span>
+              </li>
+              <li>
+                <span>10.4L of Petrol</span>
+                <span class="summary-price">N1,500</span>
+              </li>
+            </ul>
+            <div class="summ-total text-center">
+              <span>Total:</span>
+              <h1>N1,500</h1>
+            </div>
+            <div class="detail-footer">
+                <button type="submit" class="btn-white"> Proceed to Payment</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- NEW NEW NEW NEW -->
+
     </div>
   </div>
 </section>

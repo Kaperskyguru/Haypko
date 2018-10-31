@@ -15,7 +15,21 @@
             </div>
           </div>
           <div class="col-sm-10 col-sm-offset-1">
-            <p class="about-text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p class="about-text">At Haypko, we believe technology is a tool that can help humans improve its culture, products and services. We have leveraged the same to improve the downstream value chain of the petroleum industry in Nigeria. Home delivery service isn’t a new phenomenon; we have only sought ways of improving the experience and boosting the purchase power for you, our customers, as the numero uno in our agenda. </p>
+            <p class="about-text">
+            Haypko helps you order for petroleum products such as Premium motor spirit (petrol), Automated gas oil (diesel), and Liquefied Petroleum Gas from the comfort of your home, office or on the move. You can either request for a home delivery service or for a third party pick-up service. </p>
+
+            <p class="about-text">
+            <strong>VISION:</strong> Energy for all; big or small.
+            </p>
+            <p class="about-text">
+            <strong>MISSION:</strong> To be at the forefront of technology and innovation in offering disruptive services in the energy industry.</p>
+            <p class="about-text">
+            We are propelled by a need to serve distinctively.
+            </p>
+            <p class="about-text">
+            Follow us on our social media handles @Haypko
+            </p>
           </div>
         </div>
         <div class="row">
@@ -31,14 +45,14 @@
                 <div class="text-center bio-placeholder">
                   <img src="<?php echo SITEURL; ?>/assets/images/png/avatar.png" />
                   <h3>David haykpo</h3>
-                  <p>Ceo,Co-fouder</p>
+                  <p>Ceo, Co-fouder</p>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="text-center bio-placeholder">
                   <img src="<?php echo SITEURL; ?>/assets/images/png/avatar.png" />
-                  <h3>David haykpo</h3>
-                  <p>Ceo,Co-fouder</p>
+                  <h3>Solomon Eseme</h3>
+                  <p>CTO, Co-fouder</p>
                 </div>
               </div>
               <div class="col-sm-4">

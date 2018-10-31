@@ -1,0 +1,998 @@
+
+
+@font-face{
+    font-family: nunito-regular;
+    src:url('../fonts/nunito-regular-webfont.woff2');
+}
+
+@keyframes bounce{
+ 0%{
+   		transform:translateY(10px);
+  }
+  50%{
+    	transform:translateY(0px);
+  }
+  100%{
+  	transform:translateY(10px);
+  }
+}
+
+body
+{
+    font-family: nunito-regular;
+    font-size: 16px;
+    font-weight: normal;
+    color: #151D26;
+}
+
+.navbar-brand
+{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.navbar-default .navbar-brand
+{
+    color: #151D26;
+}
+
+.navbar-default .navbar-nav li a
+{
+    color: white;
+    font-size: 13px;
+}
+
+@media (min-width:768px)
+{
+    .hero
+    {
+        height: 100vh;
+        position: relative;
+    }
+    .hero-inner-shape
+    {
+        display: inline-block;
+        width: 70%;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        background-color: #151D26;
+        -webkit-clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    .navbar
+    {
+        margin: 0px;
+        border-radius: 0px;
+        background-color: transparent;
+        border: none;
+        padding: 30px;
+    }
+    .border-left
+    {
+        border-left: 5px solid #151D26;
+    }
+    .hero-subtext
+    {
+        padding-left: 10px;
+        font-style: normal;
+        font-size: 20px;
+        text-transform: uppercase;
+        margin: 100px 0px 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+}
+
+.ml-40
+{
+    margin-left: 40px;
+}
+
+@media (min-width:768px)
+{
+    .hero-heading
+    {
+        font-weight: 600;
+        margin-left: 40px;
+        font-size: 45px;
+    }
+}
+
+.section
+{
+    padding-top: 90px;
+    padding-bottom: 120px;
+}
+
+.section-head
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 100px;
+}
+
+.section-head p
+{
+    margin-bottom: 0px;
+}
+
+.box
+{
+    padding: 20px;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.10);
+    font-size: 100%;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 220px;
+    height: 250px;
+    background-color: white;
+}
+
+.box img
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.box p
+{
+    font-size: 150%;
+}
+
+.section-head p
+{
+    text-transform: uppercase;
+    font-size: 120%;
+}
+
+img
+{
+    max-width: 100%;
+}
+
+.btn
+{
+    font-size: 110%;
+    font-weight: 600;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    transition: all .5s;
+    background-color: #151d26;
+    color: white;
+}
+
+.footer
+{
+    background-color: #151D26;
+    color: white;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.footer ul li a
+{
+    color: #c9c9c9;
+}
+
+.navbar-default .navbar-nav li a:hover
+{
+    color: #c9c9c9;
+}
+
+.footer ul li
+{
+    padding-bottom: 10px;
+}
+
+.hero-img
+{
+    position: absolute;
+    right: 0;
+    width: 600px;
+}
+
+.icon
+{
+    width: 90px;
+}
+
+.gutter
+{
+    padding-bottom: 120px;
+}
+
+.white-overlay
+{
+    position: fixed;
+    background-color: rgba(255, 251, 251, 0.69);
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 50;
+    display: none;
+}
+
+.form-section
+{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(255,255,255,0.6);
+    display: none;
+    overflow: auto;
+}
+
+.form-section form:first-of-type
+{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 60px;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.checkout-btn
+{
+    border-radius: 50%;
+    color: white;
+    background-color: #151d26;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 10px 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
+
+a.btn:hover
+{
+    background-color: white;
+    color: #151D26;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.10);
+}
+
+@media (max-width:767px)
+{
+    .hero-img
+    {
+        width: 50%;
+    }
+    .hero
+    {
+        height: 600px;
+    }
+    .hero-subtext
+    {
+        text-align: center;
+    }
+    .hero-text-body
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+        text-align: center;
+        margin-top: 170px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .hero-heading
+    {
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .hero-btn-body
+    {
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .section-head
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .box
+    {
+        margin-bottom: 50px;
+        background-color: white;
+    }
+}
+
+.guide
+{
+    background-color: #f5f5f5;
+}
+
+@media (max-width:479px)
+{
+    .sec-partners
+    {
+        text-align: center;
+    }
+    .sec-partners img
+    {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width:767px)
+{
+    .navbar
+    {
+        color: white;
+        background-color: #151729;
+    }
+    .navbar-default .navbar-brand
+    {
+        color: white;
+    }
+}
+
+@media (max-width:599px)
+{
+    .row>div
+    {
+        width: 100%;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+    .navbar-default .navbar-nav li a
+    {
+        font-size: 10px;
+        padding: 10px;
+    }
+}
+
+@media (min-width:480px) and (max-width:599px)
+{
+    .hero-heading
+    {
+        font-size: 50px;
+    }
+}
+
+@media (min-width:480px) and (max-width:991px)
+{
+    .hero-subtext
+    {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width:767px)
+{
+    .btn
+    {
+        font-size: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (min-width:480px) and (max-width:767px)
+{
+    .hero-text-body
+    {
+        margin-top: 220px;
+    }
+}
+
+/*started editing here*/
+
+.checkout-details
+{
+    color: white;
+    background-color: #151729;
+    float: left;
+    top: 0px;
+    bottom: 0px;
+    width:100%;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.checkout-box
+{
+    position: relative;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    z-index: 10000;
+    padding: 0px !important;
+    display: none;
+    margin: 60px auto;
+    width: 80%;
+
+}
+.btn-white{
+    background-color: white;
+    color: #151d27;
+    border-radius: 5px;
+    border:none;
+    padding: 5px 10px;
+}
+
+.detail-footer{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    bottom: 30px;
+
+}
+.detail-footer .btn-white{
+  
+}
+
+@media  and (max-width: 400px) {
+
+    .prod-list {
+        font-size: 12px;
+    }
+    .btn-white{
+        font-size: 12px;
+    }
+}
+/*stopped here*/
+
+.bounce
+{
+    animation: bounce;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.checkout-form-body
+{
+    display: inline-block;
+    padding: 40px;
+    background-color: white;
+    width: 60%;
+}
+
+.summary-price
+{
+    float: right;
+}
+
+.checkout-details ul li
+{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.checkout-details h3
+{
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.summ-total
+{
+    margin: 60px auto 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.summ-total h2
+{
+    font-size: 36px;
+    text-align: center;
+}
+
+.alert
+{
+}
+
+@media (min-width:768px) and (max-width:1199px)
+{
+    .hero-subtext
+    {
+        padding-right: 200px;
+        font-size: 12px;
+        margin-top: 30px;
+    }
+}
+
+.round-btn
+{
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    background-color: white;
+    color: #151729;
+    border-radius: 50%;
+}
+
+.prod-list
+{
+    font-size: 18px;
+}
+
+.summ-total h1
+{
+    font-size: 36px;
+    margin-top: 5px;
+}
+
+.push-buttom
+{
+    margin-top: 60px;
+}
+
+.corner-btn
+{
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    padding: 10px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #151d26;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.mt-20
+{
+    margin-top: 20px;
+}
+
+@media (max-width:767px)
+{
+    .section
+    {
+        text-align: center;
+    }
+}
+
+@media (max-width:599px)
+{
+    .checkout-details
+    {
+        width: 100%;
+    }
+    .checkout-box
+    {
+        width: 80%;
+        height: 500px;
+    }
+}
+
+@media (max-width:479px)
+{
+    .checkout-form-body
+    {
+        width: 100%;
+    }
+}
+
+.error
+{
+    color: #d31919;
+}
+
+.prod-form
+{
+    display: block;
+}
+
+@media (min-width:600px)
+{
+    .checkout-box
+    {
+        height: 600px;
+    }
+}
+
+#ccv
+{
+    background: url('../images/png/credit-card%20(1).png') no-repeat scroll 7px 7px;
+  	padding-left:35px;
+  	text-transform:uppercase;
+  }
+
+#cardnum
+{
+    background: url('../images/png/credit-card.png') no-repeat scroll 7px 7px;
+    padding-left: 50px;
+}
+
+.swal-overlay
+{
+    background-color: rgba(255,255,255,0.5);
+}
+
+@media (max-width:767px)
+{
+    .navbar-brand img
+    {
+        width: 60px;
+    }
+}
+
+.btn-topnav
+{
+    color: #151d27 !important;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+.btn-signup
+{
+    color: white;
+    background-color: #151d27;
+    border-radius: 4px;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+.navbar-nav ul li a
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-topnav:hover
+{
+    color: white !important;
+    border: 1px solid white;
+}
+
+.faq-section
+{
+}
+
+.faq-section h2
+{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.search-widget
+{
+    border: 2px solid #efefef;
+    margin: 0px auto;
+    padding: 10px 50px 10px 10px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+.panel-body
+{
+    font-size: 16px;
+    border-color: #d8d8d8;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    margin-bottom: 20px;
+}
+
+.panel-default>.panel-heading
+{
+    background-color: white;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+    border: 0px;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
+.faq-container
+{
+}
+
+.faq-container .panel-heading h2 a:hover
+{
+    color: #3c3c3c;
+}
+
+.faq-container .panel-heading h2 a
+{
+    display: block;
+}
+
+.panel.panel-default
+{
+    border: 0px;
+    margin-bottom: 50px;
+}
+
+.colored-nav
+{
+    color: white;
+    background-color: #151d27;
+}
+
+.white-brand
+{
+    color: white !important;
+}
+
+.search-widget + button
+{
+    border-radius: 50px;
+    margin-left: -50px;
+    border: none;
+    background-color: #efa632;
+}
+
+@media (max-width:767px)
+{
+    .btn-signup
+    {
+        margin-left: 0px;
+        border: none;
+    }
+    .btn-topnav
+    {
+        border-radius: 0px;
+    }
+}
+
+.navbar-toggle
+{
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
+{
+    background-color: white;
+    color: #151d27;
+}
+
+.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar
+{
+    background-color: #151d27;
+}
+
+a:focus
+{
+    outline: none;
+    color: #cbcbcb !important;
+}
+
+@media (max-width:767px)
+{
+    .search-widget
+    {
+        max-width: 250px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px)
+{
+    .navbar-default .navbar-nav li a
+    {
+        font-size: 10px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+    .hero-inner-shape
+    {
+        -webkit-clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px)
+{
+    .hero-inner-shape
+    {
+        -webkit-clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 10% 100%);
+    }
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+    .btn-signup
+    {
+        margin-left: 5px;
+        margin-right: -10px;
+    }
+}
+
+@media (min-width:1200px)
+{
+    .hero-heading
+    {
+        font-size: 60px;
+    }
+}
+
+#p-form input
+{
+}
+
+.btn-danger
+{
+    background-color: #ff4d4d;
+}
+
+.btn.btn-danger:hover
+{
+    color: white;
+    background-color: #fd3131;
+}
+
+.navbar-default .navbar-nav li a.btn-signup:hover
+{
+    color: #151d27;
+    background-color: white;
+}
+
+.p-form
+{
+    display: none;
+}
+
+#addprod .fa
+{
+    margin-right: 5px;
+}
+
+#addprod:focus
+{
+    color: #226eaf !important;
+}
+
+.detail-h3
+{
+}
+
+.detail-h3 a
+{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: -40px;
+    margin-right: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border-radius: 50%;
+}
+
+.fore-color
+{
+    color: #151d27;
+}
+
+@media (min-width:768px)
+{
+    .white-logo
+    {
+        display: none !important;
+    }
+}
+
+@media (max-width:767px)
+{
+    .black-logo
+    {
+        display: none !important;
+    }
+}
+
+.navbar-brand img
+{
+    width: 90px;
+    margin-top: -10px;
+}
+
+@media (max-width:767px)
+{
+    .m-display
+    {
+        display: block !important;
+    }
+    .m-hide
+    {
+        display: none !important;
+    }
+}
+
+.prod-cart
+{
+    overflow: auto;
+    height: 200px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 1px solid #d8d8d8;
+    position: relative;
+}
+
+.r-prod
+{
+    font-size: 10px;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.single-prod
+{
+}
+
+.control-label
+{
+    font-size: 12px;
+}
+
+.su-label
+{
+    font-size: 12px;
+}
+
+.no-item
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #ffffff;
+}
+
+.no-item-text
+{
+    vertical-align: middle;
+    padding-top: 50px;
+    color: #1e66bf;
+}
+
+.signup-box
+{
+    display: none;
+}
+
+.signin
+{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.main-header {
+    position: fixed;
+    width: 100%;
+
+}

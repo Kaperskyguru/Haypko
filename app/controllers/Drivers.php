@@ -13,20 +13,11 @@ class Drivers extends Controller
     public function index()
     {   // Caching here
         if (isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] === USER_TYPE) {
-            $history = $this->historyModel->getHistoriesByUserId($_SESSION['user_id']);
-            $recentHistory = $this->historyModel->getRecentHistoriesByUserId($_SESSION['user_id']);
-            $notif = $this->notifModel->get_notifications_by_user_id($_SESSION['user_id']);
-            $totalProductSold = $this->productModel->get_total_Product_sold($_SESSION['user_id']);
-            $totalRevenue = $this->revenueModel->getPartnerTotalRevenues($_SESSION['user_id']);
-            $totalRevenueByMonth = $this->revenueModel->getPartnerTotalRevenuesByMonth(getMonth(TODAY), $_SESSION['user_id']);
+            $drivers = $this->driverModel->getDriversByPartnerId($_SESSION['user_id']);
 
             $data = [
-                'recentHistory' => $recentHistory,
-                'history' => $history,
-                'notif' => $notif,
-                'totalRevenue' => $totalRevenue,
-                'totalProductSold' => $totalProductSold,
-                'totalRevenueByMonth' => $totalRevenueByMonth
+                'drivers' => $drivers,
+
             ];
 
             $this->views('partner/partner', $data);
@@ -39,28 +30,67 @@ class Drivers extends Controller
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
             $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $password = generateRandomPassword();
+            $err_code = 0;
             $data = [
                 'name' => $_POST['name'],
-                'username' => $_POST['username'],
+                'username' => $this->driverModel->generateUsername($_POST['name']),
                 'password' => generateHashes($password),
                 'location' => $_POST['address'],
                 'email' => $_POST['email'],
-                'mobile' => $_POST['phone']
+                'admin_id' => ($_POST['type'] == 'admin') ? $_SESSION['user_id']:0,
+                'mobile' => $_POST['phone'],
+                'partner_id' => ($_POST['type'] == 'partner') ? $_SESSION['user_id']:0,
+
+                'name_err' => '',
+                'location_err' => '',
+                'email_err' => '',
+                'mobile_err' => '',
             ];
-            $create = $this->driverModel->createDriver($data);
-            if($create != false) {
-                $data = [
+
+            // validate name
+            if (  empty(  $data[ 'name' ]  )  ) {
+                $data[ 'name_err' ] = 'Please enter a name';
+                $err_code = 1;
+            }
+
+            // validate location
+            if (  empty(  $data[ 'location']  )  ) {
+                $data[ 'location_err' ] = 'Please enter location';
+                $err_code = 1;
+            }
+
+            // validate email
+            if (  empty(  $data[ 'email']  )  ) {
+                $data[ 'email_err' ] = 'Please enter email';
+                $err_code = 1;
+            }
+
+            // validate mobile
+            if (  empty(  $data[ 'mobile']  )  ) {
+                $data[ 'mobile_err' ] = 'Please enter Mobile Phone';
+                $err_code = 1;
+            }
+
+            if ( $err_code == 0  ) {
+
+                $mailData = [
                     'password'=> $password,
                     'username'=> $data['username'],
                     'email'=> $data['email']
                 ];
-                if(mailer($data)) {
-                    echo "Driver Created/".$create;
+
+                if(mailer($mailData)){
+                    $create = $this->driverModel->createDriver($data);
+                    if($create) {
+                        echo "Driver Created/".$create;
+                    } else {
+                        echo "Driver Not Created";
+                    }
                 } else {
                     echo "We could not send mail";
                 }
             } else {
-                echo "Driver Not Created";
+                echo 'All fields required';
             }
         } else {
             redirector('');
@@ -76,6 +106,53 @@ class Drivers extends Controller
             return true;
         }
         return false;
+    }
+
+    public function showDetails() {
+        if ("POST" == $_SERVER['REQUEST_METHOD']) {
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            if ($driver = $this->driverModel->getDriver($_POST['id'])) {
+                $url = SITEURL;
+                echo "
+                <div class='text-center'><i class='fa fa-check-circle fa-3x text-success'></i></div>
+                <h2 class='text-center text-capitalize'>Partner Created</h2>
+                <div id='newPartnerItems'>
+                <p>Username</p>
+                <h3>$driver->username</h3>
+                <p>Password</p>
+                <h3>Mailed</h3>
+                <button type='button' class='btn btn-primary cancel'>Close </button>
+                </div>
+                ";
+            } else {
+                echo "
+                <p>Something happened, try again</p>
+                ";
+            }
+        } else {
+            redirector('');
+        }
+    }
+
+    public function viewDriver() {
+        if ("POST" == $_SERVER['REQUEST_METHOD']) {
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $driver = $this->driverModel->getDriver($_POST['id']);
+            ?>
+            <p>Delivery Agent Name</p>
+            <h4><?php echo $driver->name ?></h4>
+            <p>Delivery Agent Email</p>
+            <h4><?php echo $driver->email ?> Litres</h4>
+            <p>Location</p>
+            <h4><?php echo $driver->location_id ?></h4>
+            <p>Delivery Agent Mobile</p>
+            <h4><?php echo $driver->mobile ?></h4>
+            <p>Date Created</p>
+            <h4><?php echo get_formatted_date($driver->date_created) ?></h4>
+            <?php ;
+        } else {
+            redirector('');
+        }
     }
 
     public function updatePass()

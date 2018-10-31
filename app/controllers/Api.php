@@ -1,4 +1,6 @@
 <?php
+define('USERNAME', 'Owumi2244');
+define('PASSWORD', 'Dtdcchub1');
 //TODO Change the endpoints to unique characters
 class Api extends Controller
 {
@@ -79,8 +81,14 @@ class Api extends Controller
 
     public function sms()
     {
-        // $prices = $this->productModel->getPrices();
-        $this->views('api/v1/charts/smstest', $data = []);
+
+        $client = new infobip\api\client\SendSingleTextualSms(new infobip\api\configuration\BasicAuthConfiguration(USERNAME, PASSWORD));
+        $requestBody = new infobip\api\model\sms\mt\send\textual\SMSTextualRequest();
+        $requestBody->setFrom('Solomon');
+        $requestBody->setTo(['2348145655380', '2349052477213']);
+        $requestBody->setText("Thank you very much for using Haypko platform. Your Product code is : 29384923h239fHh.");
+        $response = $client->execute($requestBody);
+        $this->views('api/v1/charts/smstest', $response);
     }
 
     public function login()

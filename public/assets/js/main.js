@@ -1,12 +1,41 @@
 $(document).ready(function() {
     var key = 'pk_test_58ab90adc79aae5a3580784b716109a1c5a8c307';
 
+    var getProduct = {
+
+     	getChoosenProducts :function(){
+        	//array of products
+        	let prod = [];
+        	$('.single-prod').each(function(index){
+        			//grab the value of the item
+        			let id = index+1;
+        			prodName = $('select#products'+id).val();
+        			litreValue= $('.single-prod #litre'+id).val();
+        			priceValue= $('.single-prod #price'+id).val();
+
+        			//create product
+        			let product = {
+        				name:prodName,
+        				litre:litreValue,
+        				price:priceValue,
+        			}
+        			// console.log(product);
+        			prod.push(product);
+        		});
+        		return prod ;
+        	}
+
+     }
+
     $('#checkout').click(function() {
+        // $(".fo").fadeIn(400);
         var email = $('#email').val();
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
 
+        console.log(getProduct.getChoosenProducts());
+        //
         var litres = $('#litre1').val();
         var amount = $('#price1').val();
         var product = $('#products1').val();
@@ -28,10 +57,10 @@ $(document).ready(function() {
                 Name: Name,
                 Phone: Phone,
                 address: address,
-                product: product,
+                products: getProduct.getChoosenProducts(),
             },
             success: function(data) {
-
+                alert(data);
                 var arr = data.split('ID:');
                 document.querySelector('.hero').classList.add('spinner-2');
                 if (arr[0].trim() == key.trim()) {
@@ -91,7 +120,8 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(data) {
-                window.location = "http://localhost/Enyopay/"
+                $('.footer').html(data);
+                // window.location = "http://localhost/Enyopay/"
             },
             onerror: function(err) {
                 alert(err);
@@ -112,6 +142,7 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(data) {
+                alert(data);
                 var arr = data.split('/')
                 verifyTransaction(district, id, arr[1], reference);
             },

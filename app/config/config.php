@@ -5,6 +5,9 @@ define('DB_USER', 'root');
 define('DB_PASS', 'Changeless11!');
 define('DB_NAME', 'haykpodb');
 
+define('USERNAME', 'Owumi2244');
+define('PASSWORD', 'Dtdcchub1');
+
 define('APPROOT', dirname(dirname(__FILE__)));
 
 define('SITEURL', 'http://localhost/Enyopay');

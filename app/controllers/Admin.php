@@ -18,6 +18,7 @@
             $this->notifModel = $this->model('notify');
             $this->indexModel = $this->model('index');
             $this->revenueModel = $this->model('Revenue');
+            $this->driverModel = $this->model('Driver');
         }
 
         public function index()
@@ -26,6 +27,7 @@
                 $partners = $this->partnerModel->getPartners();
                 $history = $this->historyModel->getHistories();
                 $product = $this->productModel->getProducts();
+                $drivers = $this->driverModel->getDriversByAdminId($_SESSION['user_id']);
                 $notify = $this->notifModel->get_notifications();
                 $totalProductSold = $this->productModel->get_total_Product_sold();
                 $total = $this->indexModel->getTotalCustomers();
@@ -33,6 +35,7 @@
                 $totalRevenueByMonth = $this->revenueModel->getTotalRevenuesByMonth(getMonth(TODAY));
 
                 $data = [
+                    'drivers' => $drivers,
                     'partners' => $partners,
                     'history' => $history,
                     'notify' =>  $notify,

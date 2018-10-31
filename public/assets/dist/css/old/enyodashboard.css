@@ -429,31 +429,3 @@ label{
 
 
 }
-/* started adding css from here */
-
-.delv-form-section{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background-color: rgba(255,255,255,0.5);
-    z-index: 5000;
-    display: none;
-    padding-top:30px; 
-
-}
-
-.delv-form-section form{
-    background-color: white;
-    padding:30px;
-    border-radius: 5px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-    margin-top:50px;
-}
-.delv-form-section form h2 {
-    margin-bottom:20px;
-}
-.mt-30{
-    margin-top: 30px;
-}

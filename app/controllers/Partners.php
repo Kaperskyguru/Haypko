@@ -14,6 +14,7 @@ class Partners extends Controller
         $this->revenueModel = $this->model('Revenue');
         $this->productModel = $this->model('Product');
         $this->addressModel = $this->model('Address');
+        $this->driverModel = $this->model('Driver');
 
     }
 
@@ -26,8 +27,10 @@ class Partners extends Controller
             $totalProductSold = $this->productModel->get_total_Product_sold($_SESSION['user_id']);
             $totalRevenue = $this->revenueModel->getPartnerTotalRevenues($_SESSION['user_id']);
             $totalRevenueByMonth = $this->revenueModel->getPartnerTotalRevenuesByMonth(getMonth(TODAY), $_SESSION['user_id']);
+            $drivers = $this->driverModel->getDriversByPartnerId($_SESSION['user_id']);
 
             $data = [
+                'drivers' => $drivers,
                 'recentHistory' => $recentHistory,
                 'history' => $history,
                 'notif' => $notif,
@@ -60,20 +63,20 @@ class Partners extends Controller
                 'partner_account_name' => $_POST['accname'],
                 'partner_bank_name' => $_POST['bankname'],
             ];
-            $create = $this->partnerModel->createPartner($data);
-            if($create != false) {
-                $data = [
-                    'password'=> $password,
-                    'username'=> $data['username'],
-                    'email'=> $data['partner_email']
-                ];
+            $mailData = [
+                'password'=> $password,
+                'username'=> $data['username'],
+                'email'=> $data['partner_email']
+            ];
+            if(mailer($mailData)){
+                $create = $this->partnerModel->createPartner($data);
                 if($create) {
                     echo "Partner Created/".$create;
                 } else {
-                    echo "We could not send mail";
+                    echo "Partner Not Created";
                 }
             } else {
-                echo "Partner Not Created";
+                echo "We could not send mail";
             }
         } else {
             redirector('');
