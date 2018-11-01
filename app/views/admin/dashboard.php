@@ -128,7 +128,7 @@
               </div>
               <div class="col-sm-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
-                  <h5 class="text-left">Order Value <sup class="gray">September</sup></h5>
+                  <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY)?></sup></h5>
                   <h2><span>N<?php echo formatNumber($data['totalRevenueByMonth'])?></span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                   <p class="text-right gray">since last month</p>
                 </div>

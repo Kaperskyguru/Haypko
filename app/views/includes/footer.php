@@ -59,7 +59,7 @@
   <div class="container">
     <div class="row">
       <!-- NEW NEW NEW -->
-      <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0">
+      <div class="col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-0" id="ca">
         <form role="form" class="prod-form" id="prod-form">
           <h3 class="detail-h3">Product Details</h3>
           <div class="prod-cart">
@@ -72,7 +72,7 @@
           </div>
           <div class="row" data-pg-collapsed>
             <div class="col-xs-12">
-              <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>Add to Cart</a></h6>
+              <h6 class="text-right"><a href="#" id="addprod"><i class="fa fa-cart-plus"></i>More Products</a></h6>
             </div>
           </div>
           <h3 class="detail-h3">Your Details</h3>
@@ -240,26 +240,10 @@
         <form class="checkout-box " id="card-form">
           <div class="checkout-details">
             <h3 class="text-center">Price Summary</h3>
-            <ul class="list-unstyled prod-list" data-pg-collapsed>
-              <li>
-                <span>10.4L of Petrol</span>
-                <span class="summary-price">N1,500</span>
-              </li>
-              <li>
-                <span>10.4L of Petrol</span>
-                <span class="summary-price">N1,500</span>
-              </li>
-              <li>
-                <span>10.4L of Petrol</span>
-                <span class="summary-price">N1,500</span>
-              </li>
-            </ul>
-            <div class="summ-total text-center">
-              <span>Total:</span>
-              <h1>N1,500</h1>
-            </div>
+            <ul class="list-unstyled cart prod-list" data-pg-collapsed> </ul>
+
             <div class="detail-footer">
-                <button type="submit" class="btn-white"> Proceed to Payment</button>
+                <button type="submit" id="cart" class="btn-white"> Proceed to Payment</button>
             </div>
           </div>
         </form>

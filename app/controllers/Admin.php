@@ -42,8 +42,8 @@
                     'products' => $product,
                     'total' => $total,
                     'totalProductSold' => $totalProductSold,
-                    'totalRevenue' => doubleval($totalRevenue)/100,
-                    'totalRevenueByMonth' => doubleval($totalRevenueByMonth)/100,
+                    'totalRevenue' => doubleval($totalRevenue),
+                    'totalRevenueByMonth' => doubleval($totalRevenueByMonth),
                 ];
 
                 $this->views('admin/dashboard', $data);

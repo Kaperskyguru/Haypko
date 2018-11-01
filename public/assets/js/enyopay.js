@@ -171,56 +171,12 @@ function enyoUX() {
             $("#prod-form").effect("slide");
             $("#card-form").effect("drop");
         });
-
-        $("#card-form").submit(function(e){
-            e.preventDefault();
-
-            $(this).validate({
-                rules:{
-                    cardnum:{
-                        required:true
-                    },
-                    ccv:{
-                        required:true,
-                        minlength:3,
-                        maxlength:3
-                    },
-                    holdersname:{
-                        required:true
-                    },
-                    expdate:{
-                        required:true
-                    }
-
-                }
-            });
-            let cardvalid = false;
-            cardvalid =$(this).validate({
-                rules:{
-                    cardnum:{
-                        required:true
-                    },
-                    ccv:{
-                        required:true,
-                        minlength:3,
-                        maxlength:3
-                    },
-                    holdersname:{
-                        required:true
-                    },
-                    expdate:{
-                        required:true
-                    }
-
-                }
-            });
-            cardvalid=$(this).valid()
-            console.log(cardvalid);
-            if(cardvalid==true){
-                swal("Payment Successful","An invoice has been sent to the mail given."+
-                "Your Order Code is KQJC23 Copy It!","success");
-            }
-        });
+        //
+        // $("#card-form").submit(function(e){
+        //     e.preventDefault();
+        //
+        //     alert()
+        // });
     }
 
     /*handler for Partners form */
@@ -321,7 +277,7 @@ function enyoUX() {
     this.calcfuel=function(fuel){
         var fuelprize = 0;
         if(fuel==="Petrol"){
-            fuelprize=322;
+            fuelprize = 322;
             // fuelprize=this.ajaxCall(fuel);
         }else if(fuel==="Diesel"){
             fuelprize = 400

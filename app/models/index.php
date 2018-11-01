@@ -27,14 +27,13 @@
 
         public function saveTransaction(array $data)
         {
-            $query = "INSERT INTO orders (product_name, order_partner_id, order_litres, order_amount, order_customer_id, order_reference_id) VALUES (:name, :partner_id, :litres, :amount, :customer_id, :ref_id)";
+            $query = "INSERT INTO orders (order_partner_id, order_amount, order_customer_id, order_reference_id, product_group_code) VALUES (:partner_id, :amount, :customer_id, :ref_id, :group_code)";
             $this->db->query($query);
-            $this->db->bind(':name', $data['product']);
             $this->db->bind(':partner_id', $data['partner_id']);
-            $this->db->bind(':litres', $data['litres']);
             $this->db->bind(':amount', $data['amount']);
             $this->db->bind(':customer_id', $data['customer_id']);
             $this->db->bind(':ref_id', $data['reference']);
+            $this->db->bind(':group_code', $data['group_code']);
             if ($this->db->execute()) {
                 return $this->db->getLastInsertedID();
             }
@@ -237,11 +236,11 @@
 
         public function updateProductSold($data)
         {
-            if ($this->getProductSoldYear($data['year']) && $this->getProductSoldMonth($data['month'])) {
+            if ($this->getProductSoldYear($data['Year']) && $this->getProductSoldMonth($data['Month'])) {
                 $this->db->query("UPDATE productsold SET {$data['col']} = {$data['col']} + :val WHERE month = :month AND year = :year");
                 $this->db->bind(":val", 1);
-                $this->db->bind(":month", $data['month']);
-                $this->db->bind(":year", $data['year']);
+                $this->db->bind(":month", $data['Month']);
+                $this->db->bind(":year", $data['Year']);
                 if(!$this->db->execute()) {
                     return false;
                 }
@@ -250,8 +249,8 @@
                 $query = "INSERT INTO productsold ( {$data['col']}, month, year) VALUES ( :col, :month, :year)";
                 $this->db->query($query);
                 $this->db->bind(':col', 1);
-                $this->db->bind(':month', $data['month']);
-                $this->db->bind(':year', $data['year']);
+                $this->db->bind(':month', $data['Month']);
+                $this->db->bind(':year', $data['Year']);
                 if ($this->db->execute()) {
                     return true;
                 }

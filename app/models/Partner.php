@@ -216,12 +216,12 @@ class Partner
     public function updateClientProductSold($data)
     {
 
-        if ($this->getClientProductSoldYear($data['year']) && $this->getClientProductSoldPartnerId($data['partner_id']) && $this->getClientProductSoldMonth($data['month'])) {
+        if ($this->getClientProductSoldYear($data['Year']) && $this->getClientProductSoldPartnerId($data['partner_id']) && $this->getClientProductSoldMonth($data['Month'])) {
             $this->db->query("UPDATE clientProductSold SET {$data['col']} = {$data['col']} + :val WHERE month = :month AND partner_id = :id AND year = :year");
             $this->db->bind(":val", 1);
-            $this->db->bind(":month", $data['month']);
+            $this->db->bind(":month", $data['Month']);
             $this->db->bind(":id", $data['partner_id']);
-            $this->db->bind(":year", $data['year']);
+            $this->db->bind(":year", $data['Year']);
             if(!$this->db->execute()) {
                 return false;
             }
@@ -231,8 +231,8 @@ class Partner
             $this->db->query($query);
             $this->db->bind(':col', 1);
             $this->db->bind(':partner_id', $data['partner_id']);
-            $this->db->bind(':month', $data['month']);
-            $this->db->bind(':year', $data['year']);
+            $this->db->bind(':month', $data['Month']);
+            $this->db->bind(':year', $data['Year']);
             if ($this->db->execute()) {
                 return true;
             }

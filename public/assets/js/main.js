@@ -3,52 +3,47 @@ $(document).ready(function() {
 
     var getProduct = {
 
-     	getChoosenProducts :function(){
-        	//array of products
-        	let prod = [];
-        	$('.single-prod').each(function(index){
-        			//grab the value of the item
-        			let id = index+1;
-        			prodName = $('select#products'+id).val();
-        			litreValue= $('.single-prod #litre'+id).val();
-        			priceValue= $('.single-prod #price'+id).val();
+        getChoosenProducts :function(){
+            //array of products
+            let prod = [];
+            $('.single-prod').each(function(index){
+                //grab the value of the item
+                let id = index+1;
+                prodName = $('select#products'+id).val();
+                litreValue= $('.single-prod #litre'+id).val();
+                priceValue= $('.single-prod #price'+id).val();
 
-        			//create product
-        			let product = {
-        				name:prodName,
-        				litre:litreValue,
-        				price:priceValue,
-        			}
-        			// console.log(product);
-        			prod.push(product);
-        		});
-        		return prod ;
-        	}
+                //create product
+                let product = {
+                    name:prodName,
+                    litre:litreValue,
+                    price:priceValue,
+                }
+                prod.push(product);
+            });
+            return prod ;
+        }
+    }
 
-     }
+    $('#cart').click(function(e) {
+        e.preventDefault();
+        $('.fo').fadeOut(400);
+        var id = $('#customer_id').val();
+        var amount = $('#amount').val();
+        var email = $('#email').val();
+        var phone = $('#Mobile_number').val();
+        var product = $('#code').val();
+        var district = $('#district').val();
+        payWithPaystack(id, email, parseInt(amount * 100), phone, district, product);
+    });
 
     $('#checkout').click(function() {
-        // $(".fo").fadeIn(400);
         var email = $('#email').val();
         var Name = $('#fullname').val();
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
-
-        console.log(getProduct.getChoosenProducts());
-        //
-        var litres = $('#litre1').val();
-        var amount = $('#price1').val();
-        var product = $('#products1').val();
-
-        // var litres2 = $('#litre2').val();
-        // var amount2 = $('#price2').val();
-        // var product2 = $('#products2').val();
-        //
-        // var litres3 = $('#litre3').val();
-        // var amount3 = $('#price3').val();
-        // var product3 = $('#products3').val();
-
         var district = $('#partner_id').val();
+        alert(Phone);
         $.ajax({
             url: 'index',
             method: 'POST',
@@ -57,30 +52,17 @@ $(document).ready(function() {
                 Name: Name,
                 Phone: Phone,
                 address: address,
+                district: district,
                 products: getProduct.getChoosenProducts(),
             },
             success: function(data) {
-                alert(data);
-                var arr = data.split('ID:');
-                document.querySelector('.hero').classList.add('spinner-2');
-                if (arr[0].trim() == key.trim()) {
-                    setTimeout(() => {
-                        document.querySelector('.hero').classList.remove('spinner-2');
-                        payWithPaystack(arr[1].trim(), email, parseInt(amount * 100), product, Phone, litres, district);
-                    }, 1000);
-                } else {
-                    document.querySelector('.hero').classList.remove('spinner-2');
-                    // alert(data);
-                    // window.location = "http://localhost/Enyopay/";
-                }
-            },
-            onerror: function(err) {
-                alert(err);
+                $('.cart').html(data);
+                $(".fo").fadeIn(400);
             }
         });
     });
 
-    function payWithPaystack(id, email, amount, product, Phone, litres, district) {
+    function payWithPaystack(id, email, amount, Phone, district, product) {
         var handler = PaystackPop.setup({
             key: key,
             email: email,
@@ -97,7 +79,7 @@ $(document).ready(function() {
                 }, ],
             },
             callback: function(response) {
-                saveTransaction(id, product, litres, amount, response.reference, district);
+                saveTransaction(id, product, amount, response.reference, district);
             },
             onClose: function() {
                 alert('Transaction cancelled');
@@ -120,8 +102,8 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(data) {
-                $('.footer').html(data);
-                // window.location = "http://localhost/Enyopay/"
+                // $('.footer').html(data);
+                window.location = "http://localhost/Enyopay/"
             },
             onerror: function(err) {
                 alert(err);
@@ -129,7 +111,7 @@ $(document).ready(function() {
         });
     }
 
-    function saveTransaction(id, product, litres, amount, reference, district) {
+    function saveTransaction(id, product, amount, reference, district) {
         $.ajax({
             method: 'POST',
             url: 'Pages/save',
@@ -138,11 +120,10 @@ $(document).ready(function() {
                 id: id,
                 product:product,
                 amount:amount,
-                litres:litres,
+                partner_id:district
             },
             cache: false,
             success: function(data) {
-                alert(data);
                 var arr = data.split('/')
                 verifyTransaction(district, id, arr[1], reference);
             },
