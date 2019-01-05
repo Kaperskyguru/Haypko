@@ -1,6 +1,6 @@
 <?php
-define('USERNAME', 'Owumi2244');
-define('PASSWORD', 'Dtdcchub1');
+// define('USERNAME', 'Owumi2244');
+// define('PASSWORD', 'Dtdcchub1');
 //TODO Change the endpoints to unique characters
 class Api extends Controller
 {
@@ -149,7 +149,7 @@ class Api extends Controller
             $data = [
                 'order_status' => trim($_POST[ 'status_id' ]),
             ];
-            if ($this->historyModel->updateOrder($_POST['order_id'], $data)) {
+            if ($this->historyModel->updateOrder($_POST['order_id'], $data)){//} && $this->historyModel->updateBulkOrder($_POST['code'], $data)) {
                 $response["error"] = false;
                 $response["message"] = "Order delivered successfully";
                 echo json_encode($response);

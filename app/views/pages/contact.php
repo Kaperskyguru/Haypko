@@ -19,7 +19,8 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <form role="form" class="contact-form">
+              <?php flash('contact_message'); ?>
+            <form role="form" class="contact-form" method="post" action=<?php echo SITEURL?>/pages/contact>
               <div class="form-group">
                 <label class="control-label" for="fullname">Full Name</label>
                 <input type="text" class="form-control" id="fullname" name="fullname">
@@ -34,30 +35,22 @@
               </div>
               <div class="form-group">
                 <label class="control-label">How may we help you ?</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
                 <div class="error">
 </div>
               </div>
-              <button type="submit" class="btn">Send</button>
+              <button type="submit" class="btn" id="contact">Send</button>
             </form>
           </div>
           <div class="col-sm-6">
             <div class="desc">
               <h3>Haypko</h3>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
+              <p>Haypko helps you order for petroleum products such as Premium motor spirit (petrol), Automated gas oil (diesel), and Liquefied Petroleum Gas from the comfort of your home, office or on the move. You can either request for a home delivery service or for a third party pick-up service.</p>
           </div>
         </div>
       </div>
     </section>
     <!-- footer starts here -->
     <?php require_once APPROOT.'/views/includes/footer.php';?>
-    <!-- Bootstrap core JavaScript
-================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

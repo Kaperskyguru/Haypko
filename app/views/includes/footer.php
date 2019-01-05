@@ -94,7 +94,8 @@
             </div>
             <div class="col-xs-12 col-sm-6" data-pg-collapsed>
               <div class="form-group">
-                  <textarea class="form-control" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address"> </textarea>
+                  <label for="deliveryAdd"> Address</label>
+                  <textarea class="form-control" placeholder="Address" id="deliveryadd" name="deliveryadd" placeholder="Delivery Address"> </textarea>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6" data-pg-collapsed>
@@ -111,7 +112,7 @@
           <div class="row">
             <div class="col-md-6">
               <label class="su-label">
-                <input class="control-label check-signup" type="checkbox" value=""> Sign up to get purchase history
+                <!--<input class="control-label check-signup" type="checkbox" value=""> Sign up to get purchase history-->
               </label>
               <div class="signup-box">
                 <div class="form-group">
@@ -127,9 +128,16 @@
           </div>
         <div class="row">
            <div class="col-md-12">
-              <h5 class="purchase-footer"><span class="text-left back-btn-two"><i class="fa fa-2x fa-long-arrow-left"></i></span><span >Proceed to Checkout<button id="checkout" type="submit" class="checkout-btn ">
-                  <i class="fa fa-fw fa-long-arrow-right"></i>
-                </button><span></h5>
+              <h5 class="purchase-footer">
+                  <span class="text-left back-btn-two">
+                      <i class="fa fa-2x fa-long-arrow-left"></i>
+                  </span>
+                  <span class="text-right">Proceed to Checkout
+                        <button id="checkout" type="submit" class="checkout-btn ">
+                          <i class="fa fa-fw fa-long-arrow-right"></i>
+                        </button>
+                  <span>
+                </h5>
             </div>
         </div>
         </form>
@@ -256,8 +264,8 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="<?php echo SITEURL; ?>/assets/js/enyopay.js" type="text/javascript"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="<?php echo SITEURL; ?>/assets/js/enyopay.js" type="text/javascript"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?php echo SITEURL; ?>/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="<?php echo SITEURL; ?>/assets/js/main.js"></script>

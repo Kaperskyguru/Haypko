@@ -79,7 +79,7 @@ public function save()
             'litres_err' => '',
             'product_err' => '',
         ];
-        echo $this->order_id = $this->customerModel->saveTransaction($data);
+        $this->order_id = $this->customerModel->saveTransaction($data);
         if ($this->order_id > 0)
         {
             echo 'true/'.$this->order_id;
@@ -188,9 +188,13 @@ private function verifyTransaction(array $verifyData)
         $code = $tranx->data->metadata->custom_fields[1]->value;
         $phone = $tranx->data->metadata->custom_fields[0]->value;
         $totalAmountPaid = $tranx->data->amount/100;
-
+        
+        $data = [
+            'ref_id' => trim($tranx->data->reference)
+        ];
+        
         $products = $this->productModel->getOrderGroupByGroupCode($code);
-
+        $this->productModel->updateProductGroupRef($data, $code);
         $verifyRefData = [
             'cust_id' => $verifyData['customer_id'],
             'order_id' => $verifyData['order_id'],
@@ -210,6 +214,7 @@ private function verifyTransaction(array $verifyData)
                         'Diesel' => ($product->product_name == 'Diesel')?doubleval($product->product_amount):0,
                         'partner_id' => $verifyData['partner_id'],
                     ];
+                    
                     $this->customerModel->updateRevenue($revenueData);
                     $this->partnerModel->updateClientRevenue($revenueData);
                     $this->customerModel->updateProductSold($revenueData);
@@ -292,7 +297,50 @@ private function updateCustomerStat($id,$time,$email,$phone)
 
     public function contact()
     {
-        $this->views('pages/contact');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitizing Input values
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $valid = true;
+            $errors = array();
+            if (empty($_POST['fullname'])) {
+                $valid = false;
+                $errors['fullname'] = "You must enter your name.";
+                // echo $errors['fullname'];
+            }
+            if (empty($_POST['email'])) {
+                $valid = false;
+                $errors['email'] = "You must enter your email address.";
+            } elseif (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
+                $valid = false;
+                $errors['email'] = "You must enter a valid email address.";
+            }
+            if (empty($_POST['message'])) {
+                $valid = false;
+                $errors['message'] = "You must enter a message.";
+            }
+        
+            if($valid) {
+                
+                $data = [
+                    'name' => trim($_POST['fullname']),
+                    'from' => trim($_POST['email']),
+                    'message' => trim($_POST['message']),
+                    'title' => 'Contact Form Submission'
+                ];
+                
+                if (contactMail($data)) {
+                    flash('contact_message','Message sent successfully');
+                } else {
+                    flash('contact_message', "Message could not be sent");
+                }
+                $this->views('pages/contact');
+            } else {
+                // var_dump($errors);
+                $this->views('pages/contact', $errors);
+            }
+        } else {
+            $this->views('pages/contact');
+        }
     }
 
     public function terms()

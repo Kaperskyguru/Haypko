@@ -5,6 +5,11 @@
 // require_once 'vendor/autoload.php';
 //require_once 'Mail.php';
 
+function contactMail($data){
+    
+    return contact_mail('solomoneseme@gmail.com', $data['title'], $data['message'], $data['from'], $data['name']);
+}
+
 function mailer($data)
 {
     $msg = '
@@ -257,7 +262,7 @@ function mailer($data)
     </html>';
 
     $title = "ACCOUNT DETAILS";
-    if (pretty_mail($data['email'], $title, $msg, 'null')) {
+    if (pretty_mail($data['email'], $title, $msg)) {
 
         return true;
     }
@@ -265,7 +270,7 @@ function mailer($data)
     return false;
 }
 
-function pretty_mail($to, $title, $msg, $typeof)
+function pretty_mail($to, $title, $msg)
 {
         // Create the Transport
     $transport = (new Swift_SmtpTransport('mail.haypko.com', 25))
@@ -277,10 +282,37 @@ function pretty_mail($to, $title, $msg, $typeof)
 
     // Create a message
     $message = (new Swift_Message($title))
-    ->setFrom(['info@haypko.com' => 'Admin'])
+    ->setFrom(['info@haypko.com' => 'Info'])
     ->setTo([$to, 'info@haypko.com'])
     ->setBody($msg, 'text/html');
 
     // Send the message
-    return $result = $mailer->send($message);
+    return $mailer->send($message);
 }
+
+function contact_mail($to, $title, $msg, $from, $name)
+{
+    $mailbody = "The contact form has been filled out.\n\n"
+          . "Name: " . $name . "\n"
+          . "Email: " . $from. "\n"
+          . "Message:\n" . $msg;
+          
+        // Create the Transport
+    $transport = (new Swift_SmtpTransport('mail.haypko.com', 25))
+    ->setUsername('haypkoco')
+    ->setPassword('Mobileboyz');
+
+    // Create the Mailer using your created Transport
+    $mailer = new Swift_Mailer($transport);
+    
+    // Create a message
+    $message = (new Swift_Message($title))
+    ->setFrom(['info@haypko.com' => 'Info'])
+    ->setTo('solomoneseme@gmail.com')
+    ->setReplyTo(array($from => $name))
+    ->setBody($mailbody, 'text/html');
+
+    // Send the message
+    return $mailer->send($message);
+}
+

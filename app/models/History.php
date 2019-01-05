@@ -30,19 +30,21 @@ class History
         return false;
     }
 
+    //COPY
     public function getHistories()
     {
-        $this->db->query("SELECT * FROM {$this->table} ORDER BY order_id DESC");
+        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group WHERE partner_id = :id ORDER BY id DESC");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;
         }
         return $row;
     }
-
+    
+    //COPY
     public function getHistoriesByUserId(int $id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id ORDER BY order_status");
+        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group WHERE partner_id = :id ORDER BY status_id");
         $this->db->bind(':id', $id);
         $row = $this->db->resultSet();
         if (!$row) {
@@ -51,9 +53,10 @@ class History
         return $row;
     }
 
+    //COPY
     public function getAllHistoryDetails(int $id)
     {
-        $query = "SELECT orders.order_id, orders.product_name AS product, orders.order_litres AS quantity,orders.order_amount AS amount, orders.order_reference_id AS reference_id,orders.order_date_added AS order_date, customers.customer_name AS name,customers.customer_email AS email,customers.customer_phone AS phone, partners.partner_name AS partner, addresses.address_text AS address, orders.order_status AS status FROM {$this->table} JOIN customers JOIN partners JOIN addresses ON orders.order_customer_id = customers.id AND orders.order_partner_id = :id AND customers.id = addresses.address_customer_id AND orders.order_partner_id = partners.id ORDER BY order_status";
+        $query = "SELECT order_group.id AS order_id, order_group.product_group_id AS code, order_group.product_name AS product, order_group.litres AS quantity,order_group.product_amount AS amount, order_group.reference_id AS reference_id, order_group.date_added AS order_date, customers.customer_name AS name,customers.customer_email AS email,customers.customer_phone AS phone, partners.partner_name AS partner, addresses.address_text AS address, order_group.status_id AS status FROM order_group JOIN customers JOIN partners JOIN addresses ON order_group.customer_id = customers.id AND order_group.partner_id = :id AND customers.id = addresses.address_customer_id AND order_group.partner_id = partners.id ORDER BY status_id";
         $this->db->query($query);
         $this->db->bind(':id', $id);
         $row = $this->db->resultSet();
@@ -64,10 +67,10 @@ class History
     }
 
 
-
+    //COPY
     public function getRecentHistoriesByUserId(int $id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE order_partner_id = :id AND order_status = 0 ORDER BY order_id DESC LIMIT 4");
+        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group WHERE partner_id = :id ORDER BY id DESC LIMIT 4");
         $this->db->bind(':id', $id);
         $row = $this->db->resultSet();
         if (!$row) {
@@ -88,10 +91,11 @@ class History
         return $row;
     }
 
+    //COPY
     public function getOrder(int $id)
     {
-        $this->db->query("SELECT * FROM {$this->table} WHERE order_id = :order_id");
-        $this->db->bind(':order_id', $id);
+        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group WHERE id = :id");
+        $this->db->bind(':id', $id);
         $row = $this->db->single();
         if (!$row) {
             return null;
@@ -106,7 +110,7 @@ class History
             array_push($paramsArray, $key." = :".$key);
         }
         $params = implode(', ', $paramsArray);
-        $this->db->query("UPDATE {$this->table} SET {$params} WHERE order_id = :order_id");
+        $this->db->query("UPDATE order_group SET {$params} WHERE id = :order_id");
         foreach($data as $column => $value) {
             $this->db->bind(":".$column, $value);
         }
@@ -117,8 +121,27 @@ class History
         return true;
     }
 
+    public function updateBulkOrder(string $code, array $data)
+    {
+        $paramsArray = [];
+        foreach($data as $key => $value) {
+            array_push($paramsArray, $key." = :".$key);
+        }
+        $params = implode(', ', $paramsArray);
+        $this->db->query("UPDATE orders SET {$params} WHERE product_group_code = :code AND order_status = 0");
+        foreach($data as $column => $value) {
+            $this->db->bind(":".$column, $value);
+        }
+        $this->db->bind(":code", $code);
+        if(!$this->db->execute()) {
+            return false;
+        }
+        return true;
+    }
+    
+
     public function deleteOrder(int $id) {
-        $this->db->query("DELETE FROM {$this->table} WHERE order_id = :order_id");
+        $this->db->query("DELETE FROM order_group WHERE id = :order_id");
         $this->db->bind(':order_id', $id);
         if(!$this->db->execute()) {
             return false;

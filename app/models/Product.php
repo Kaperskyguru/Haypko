@@ -140,17 +140,28 @@ class product
         }
         return true;
     }
+    
+    public function updateProductGroupRef(array $data, string $coude){
+         $this->db->query("UPDATE order_group SET reference_id = :ref_id WHERE product_group_id = :code");
+            $this->db->bind(':ref_id', $data['ref_id']);
+            $this->db->bind(':code', $code);
+            if($this->db->execute()) {
+                return true;
+            }
+            return false;
+    }
 
     public function addProductGroup(array $data, int $customer_id)
     {
         $group_id = $this->generateUsername(generateRandomPassword());
-        $query = "INSERT INTO order_group (product_name, litres, product_amount, customer_id, product_group_id) VALUES (:name, :litres, :amount, :id, :group_id)";
+        $query = "INSERT INTO order_group (product_name, litres, product_amount, customer_id, reference_id, product_group_id) VALUES (:name, :litres, :amount, :id, :ref_id, :group_id)";
         $this->db->query($query);
         foreach ($data['products'] as $product) {
             $this->db->bind(':name', $product['name']);
             $this->db->bind(':litres', $product['litre']);
             $this->db->bind(':amount', $product['price']);
             $this->db->bind(':id', $customer_id);
+            $this->db->bind(':ref_id', $product['ref_id']);
             $this->db->bind(':group_id', $group_id);
             $this->db->execute();
         }
