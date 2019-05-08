@@ -34,7 +34,7 @@ class product
 
     public function getPrices()
     {
-        $this->db->query("SELECT product_price, product_name, product_date_added FROM {$this->table}");
+        $this->db->query("SELECT product_price FROM {$this->table}");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;

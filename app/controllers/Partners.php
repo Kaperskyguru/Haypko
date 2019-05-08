@@ -1,13 +1,13 @@
 <?php
 /**
-*
-*/
+ *
+ */
 class Partners extends Controller
 {
     private $partnerModel;
-    function __construct()
+    public function __construct()
     {
-        $this->partnerModel = $this->model( 'Partner' );
+        $this->partnerModel = $this->model('Partner');
         $this->historyModel = $this->model('History');
         $this->notifModel = $this->model('notify');
         $this->indexModel = $this->model('index');
@@ -19,15 +19,18 @@ class Partners extends Controller
     }
 
     public function index()
-    {   // Caching here
-        if (isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] === USER_TYPE) {
-            $history = $this->historyModel->getHistoriesByUserId($_SESSION['user_id']);
-            $recentHistory = $this->historyModel->getRecentHistoriesByUserId($_SESSION['user_id']);
-            $notif = $this->notifModel->get_notifications_by_user_id($_SESSION['user_id']);
-            $totalProductSold = $this->productModel->get_total_Product_sold($_SESSION['user_id']);
-            $totalRevenue = $this->revenueModel->getPartnerTotalRevenues($_SESSION['user_id']);
-            $totalRevenueByMonth = $this->revenueModel->getPartnerTotalRevenuesByMonth(getMonth(TODAY), $_SESSION['user_id']);
-            $drivers = $this->driverModel->getDriversByPartnerId($_SESSION['user_id']);
+    { // Caching here
+        $user_id = $_SESSION['user_id'];
+        $user_type = $_SESSION['user_type'];
+
+        if (isset($user_id) && isset($user_type) && $user_type === USER_TYPE) {
+            $history = $this->historyModel->getHistoriesByUserId($user_id);
+            $recentHistory = $this->historyModel->getRecentHistoriesByUserId($user_id);
+            $notif = $this->notifModel->get_notifications_by_user_id($user_id);
+            $totalProductSold = $this->productModel->get_total_Product_sold($user_id);
+            $totalRevenue = $this->revenueModel->getPartnerTotalRevenues($user_id);
+            $totalRevenueByMonth = $this->revenueModel->getPartnerTotalRevenuesByMonth(getMonth(TODAY), $user_id);
+            $drivers = $this->driverModel->getDriversByPartnerId($user_id);
 
             $data = [
                 'drivers' => $drivers,
@@ -36,18 +39,21 @@ class Partners extends Controller
                 'notif' => $notif,
                 'totalRevenue' => $totalRevenue,
                 'totalProductSold' => $totalProductSold,
-                'totalRevenueByMonth' => $totalRevenueByMonth
+                'totalRevenueByMonth' => $totalRevenueByMonth,
+                'clientRevenueChartData' => $this->clientRevenueChartData($user_id),
+                'clientSoldChartdata' => $this->clientSoldChartdata($user_id),
             ];
 
             $this->views('partner/partner', $data);
         } else {
-            redirector( 'users/login');
+            redirector('users/login');
         }
     }
 
-    public function add() {
+    public function add()
+    {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $password = generateRandomPassword();
             $data = [
                 'partner_name' => $_POST['name'],
@@ -64,14 +70,14 @@ class Partners extends Controller
                 'partner_bank_name' => $_POST['bankname'],
             ];
             $mailData = [
-                'password'=> $password,
-                'username'=> $data['username'],
-                'email'=> $data['partner_email']
+                'password' => $password,
+                'username' => $data['username'],
+                'email' => $data['partner_email'],
             ];
-            if(mailer($mailData)){
+            if (mailer($mailData)) {
                 $create = $this->partnerModel->createPartner($data);
-                if($create) {
-                    echo "Partner Created/".$create;
+                if ($create) {
+                    echo "Partner Created/" . $create;
                 } else {
                     echo "Partner Not Created";
                 }
@@ -83,9 +89,10 @@ class Partners extends Controller
         }
     }
 
-    public function viewPartner() {
+    public function viewPartner()
+    {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $partner = $this->partnerModel->getPartner($_POST['id']);
             echo "
             <p>Name</p>
@@ -105,9 +112,10 @@ class Partners extends Controller
         }
     }
 
-    public function viewOrder() {
+    public function viewOrder()
+    {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $order = $this->historyModel->getOrder($_POST['id']);
             ?>
             <p>Product</p>
@@ -121,7 +129,7 @@ class Partners extends Controller
             <p>Trasaction ID</p>
             <h4><?php echo $order->order_reference_id ?></h4>
             <p>Status</p>
-            <p> <?php echo ($order->order_status ==0) ? 'Pending':'Delivered'?></p>
+            <p> <?php echo ($order->order_status == 0) ? 'Pending' : 'Delivered' ?></p>
             <?php ;
         } else {
             redirector('');
@@ -147,9 +155,10 @@ class Partners extends Controller
     //     }
     // }
 
-    public function showDetails() {
+    public function showDetails()
+    {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $password = generateRandomPassword();
             if ($this->storeGeneratedPassword($password, $_POST['id'])) {
                 $partner = $this->partnerModel->getPartner($_POST['id']);
@@ -193,7 +202,7 @@ class Partners extends Controller
     public function updatePass()
     {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'password' => generateHashes($_POST['npassword']),
             ];
@@ -207,40 +216,41 @@ class Partners extends Controller
                 echo "Current password not match";
             }
 
-        }  else {
+        } else {
             redirector('');
         }
 
     }
 
-
-    public function updateAccount() {
+    public function updateAccount()
+    {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'partner_account_number' => $_POST['accnum'],
                 'partner_account_name' => $_POST['accname'],
                 'partner_bank_name' => $_POST['bankname'],
             ];
             $update = $this->partnerModel->updatePartner($_POST['uid'], $data);
-            if($update) {
+            if ($update) {
                 echo "Partner Account Updated";
             } else {
                 echo "Partner Account Failed to Update";
             }
-        }  else {
+        } else {
             redirector('');
         }
     }
 
-    public function delete($id = 0) {
+    public function delete($id = 0)
+    {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
             if ($id != 0) {
                 $delete = $this->partnerModel->deletePartner($id);
             } else {
                 $delete = $this->partnerModel->deletePartners($_POST['emp_id']);
             }
-            if(!$delete) {
+            if (!$delete) {
                 echo "Partner Not Deleted";
             } else {
                 echo "Partner Deleted";
@@ -254,10 +264,10 @@ class Partners extends Controller
     {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
             $data = [
-                'order_status' => 1
+                'order_status' => 1,
             ];
             $update = $this->historyModel->updateOrder($id, $data);
-            if($update) {
+            if ($update) {
                 echo "Delivered";
             } else {
                 echo "Error occured";
@@ -265,6 +275,28 @@ class Partners extends Controller
         } else {
             redirector('');
         }
+    }
+
+    private function clientRevenueChartData($id)
+    {
+        $revenues = $this->partnerModel->getClientRevenues($id);
+        $chartData = '';
+        foreach ($revenues as $row) {
+            $chartData .= "{label: 'Petrol', value: $row->petrol},";
+            $chartData .= "{label: 'Gas', value: $row->gas},";
+            $chartData .= "{label: 'Diesel', value: $row->diesel}";
+        }
+        return json_encode($chartData);
+    }
+
+    private function clientSoldChartdata($id)
+    {
+        $products = $this->productModel->getClientProductSold($id);
+        $chartData = '';
+        foreach ($products as $row) {
+            $chartData .= "{Month:'" . $row->month . "', Petrol:" . $row->Petrol . ", Gas:" . $row->Gas . ", Diesel:" . $row->Diesel . "  },";
+        }
+        return json_encode($chartData);
     }
 
 }

@@ -566,13 +566,13 @@
 </section>
 <!-- ended the delivery form section -->
 <?php
-$mydata = '';
-$dat = file_get_contents(SITEURL.'/api/clientRevenue/'.$_SESSION['user_id']);
-$mydata = json_decode($dat);
+// $mydata = '';
+// $dat = file_get_contents(SITEURL.'/api/clientRevenue/'.$_SESSION['user_id']);
+// $mydata = json_decode($dat);
 
-$orders = "";
-$orderData = file_get_contents(SITEURL.'/api/products/'.$_SESSION['user_id']);
-$orders = json_decode($orderData);
+// $orders = "";
+// $orderData = file_get_contents(SITEURL.'/api/products/'.$_SESSION['user_id']);
+// $orders = json_decode($orderData);
 
 ?>
 <!-- jQuery 2.1.3 -->
@@ -603,7 +603,7 @@ $(function () {
     var bar = new Morris.Donut({
         element: 'revenueChart',
         data: [
-            <?php echo $mydata;?>
+            <?php echo json_decode($data['clientRevenueChartData']);?>
         ],
         colors: ['#00a65a', '#337ab7', '#82CAFA'],
     });
@@ -611,7 +611,7 @@ $(function () {
     Morris.Bar({
         element: 'productSoldChart',
         data: [
-            <?php echo $orders; ?>
+            <?php echo json_decode($data['clientSoldChartdata']); ?>
         ],
         lineColors: ['#337ab7', '#dd4b39', '#db4b79'],
         xkey: 'Month',

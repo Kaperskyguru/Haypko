@@ -3,7 +3,7 @@
     <div class="wrapper">
       <header class="main-header">
         <!-- Logo -->
-        <a href="<?php echo SITEURL;?>" class="logo">
+        <a href="<?php echo SITEURL; ?>" class="logo">
           <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
           <!-- <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" /> -->
         </a>
@@ -16,17 +16,17 @@
               <!-- Messages: style can be found in dropdown.less-->
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notify']))?></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="label label-danger"><?php echo $escaper->escapeHtml(count($data['notify'])) ?></span></a>
                 <ul class="dropdown-menu">
                   <li class="header">You have <?php echo $escaper->escapeHtml(count($data['notify'])) ?> notifications</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
-                        <?php foreach($data['notify'] as $notif): ?>
+                        <?php foreach ($data['notify'] as $notif): ?>
                       <li>
-                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> <?php echo $escaper->escapeHtml($notif->notif_content);?></a>
+                        <a href="#"><i class="fa fa-shopping-cart text-green"></i> <?php echo $escaper->escapeHtml($notif->notif_content); ?></a>
                       </li>
-                    <?php endforeach ?>
+                    <?php endforeach?>
                     </ul>
                   </li>
                   <li class="footer">
@@ -128,8 +128,8 @@
               </div>
               <div class="col-sm-4" data-pg-collapsed>
                 <div class="ov-box box-shadow">
-                  <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY)?></sup></h5>
-                  <h2><span>N<?php echo formatNumber($data['totalRevenueByMonth'])?></span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
+                  <h5 class="text-left">Order Value <sup class="gray"><?php echo getMonth(TODAY) ?></sup></h5>
+                  <h2><span>N<?php echo formatNumber($data['totalRevenueByMonth']) ?></span><img src="<?php echo SITEURL ?>/assets/images/svg/Arrow%20(2).svg"><span class="green">43%</span></h2>
                   <p class="text-right gray">since last month</p>
                 </div>
               </div>
@@ -139,7 +139,7 @@
                     <h3 class="box-title"><span>Revenues</span>
                         <!-- <span class="gray">Last 10 days</span> -->
                     </h3>
-                    <h3>N<?php echo $escaper->escapeHtml(formatNumber($data['totalRevenue']))?></h3>
+                    <h3>N<?php echo $escaper->escapeHtml(formatNumber($data['totalRevenue'])) ?></h3>
                     <!-- <h6 class="gray">Period Jan 1 - Jan 10</h6> -->
                   </div>
                   <div class="box-body chart-responsive">
@@ -224,18 +224,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($data['history'] as $order): ?>
+                        <?php foreach ($data['history'] as $order): ?>
                           <tr>
                             <td>
-                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($order->order_date_added))?></a>
+                              <a href="#"><?php echo $escaper->escapeHtml(get_formatted_date($order->order_date_added)) ?></a>
                             </td>
-                            <td><?php echo $escaper->escapeHtml($order->product_name)?></td>
+                            <td><?php echo $escaper->escapeHtml($order->product_name) ?></td>
                             <td>Enyo Retail</td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($order->order_litres)?> Litres</div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20"><?php echo $escaper->escapeHtml($order->order_litres) ?> Litres</div>
                             </td>
                             <td>
-                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml(formatNumber($order->order_amount))?></div>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">N<?php echo $escaper->escapeHtml(formatNumber($order->order_amount)) ?></div>
                             </td>
                           </tr>
                           <?php endforeach?>
@@ -311,7 +311,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($data['partners'] as $partner): ?>
-                                  <tr pid="<?php echo $escaper->escapeHtml( $partner->id ) ?>">
+                                  <tr pid="<?php echo $escaper->escapeHtml($partner->id) ?>">
                                     <td>
                                       <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $escaper->escapeHtml($partner->partner_id) ?>" type="checkbox" value="">
                                     </td>
@@ -324,7 +324,7 @@
                                       <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-danger delete">delete</button>
                                     </td>
                                   </tr>
-                              <?php endforeach ?>
+                              <?php endforeach?>
                             </tbody>
                           </table>
                         </div>
@@ -373,7 +373,7 @@
                                   <button pid="<?php echo $partner->id ?>" type="button" class="btn  btn-danger delete">delete</button>
                                 </td>
                               </tr>
-                              <?php endforeach ?>
+                              <?php endforeach?>
                             </tbody>
                           </table>
                         </div>
@@ -456,7 +456,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($data['drivers'] as $driver): ?>
-                                  <tr pid="<?php echo $escaper->escapeHtml( $driver->id ) ?>">
+                                  <tr pid="<?php echo $escaper->escapeHtml($driver->id) ?>">
                                     <td>
                                       <input class="control-label" class="partner_checkbox" data-partner-id="<?php echo $escaper->escapeHtml($driver->id) ?>" type="checkbox" value="">
                                     </td>
@@ -469,7 +469,7 @@
                                       <button pid="<?php echo $driver->id ?>" type="button" class="btn  btn-danger delete">delete</button>
                                     </td>
                                   </tr>
-                              <?php endforeach ?>
+                              <?php endforeach?>
                             </tbody>
                           </table>
                         </div>
@@ -554,16 +554,16 @@
                                         <?php foreach ($data['products'] as $product): ?>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                              <h2><?php echo $escaper->escapeHtml( $product->product_name )?></h2>
+                                              <h2><?php echo $escaper->escapeHtml($product->product_name) ?></h2>
                                             </div>
                                             <div class="col-sm-6">
                                               <div class="pull-right">
-                                                  <h2><span><?php echo $escaper->escapeHtml($product->product_price )?></span> per litre</h2>
+                                                  <h2><span><?php echo $escaper->escapeHtml($product->product_price) ?></span> per litre</h2>
 
                                               </div>
                                             </div>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php endforeach?>
                                     <div class="col-sm-12">
                                       <div class="pull-right">
                                           <span class="pull-right text-primary change">Change</span>
@@ -580,7 +580,7 @@
       </div>
         <!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; Haykpo  <?php echo getYear(TODAY)?></strong> All rights reserved.
+        <strong>Copyright &copy; Haykpo  <?php echo getYear(TODAY) ?></strong> All rights reserved.
       </footer>
 
       <div class="popup-overlay" data-pg-collapsed>
@@ -806,17 +806,6 @@
     <!-- ended the delivery form section -->
     <!-- ./wrapper -->
 
-    <?php
-        $dat = file_get_contents(SITEURL.'/api/chart');
-        $mydata = json_decode($dat);
-
-        $orderData = file_get_contents(SITEURL.'/api/chartOrders');
-        $orders = json_decode($orderData);
-
-        $soldData = file_get_contents(SITEURL.'/api/sold');
-        $sold = json_decode($soldData);
-     ?>
-
 
   <!-- jQuery 2.1.3 -->
     <script src="<?php echo SITEURL ?>/assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
@@ -851,7 +840,7 @@
         element: 'productSoldChart',
         resize: true,
         data: [
-          <?php echo $sold; ?>
+          <?php echo json_decode($data['soldChartdata']); ?>
         ],
         barColors: ['#00a65a', '#dd4b39', '#f39c12'],
         xkey: 'Month',
@@ -863,7 +852,7 @@
       var bar2 = new Morris.Bar({
         element: 'revenueChart',
         resize: true,
-        data: [ <?php echo $mydata; ?>],
+        data: [ <?php echo json_decode($data['revenueChartData']); ?>],
         barColors: ['#00a65a', '#f39c12', '#dd4b39'],
         xkey: 'Month',
         ykeys: ['Petrol', 'Gas', 'Diesel'],
@@ -874,7 +863,7 @@
       var bar3 = new Morris.Bar({
         element: 'customerChart',
         resize: true,
-        data: [ <?php echo $orders ?> ],
+        data: [ <?php echo json_decode($data['ordersChartdata']); ?> ],
         barColors: ['#337ab7', '#dd4b39'],
         xkey: 'Month',
         ykeys: ['New', 'Returning'],

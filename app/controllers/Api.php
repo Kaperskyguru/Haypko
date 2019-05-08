@@ -27,29 +27,17 @@ class Api extends Controller
         $this->views('api/v1/charts/partners', $partner);
     }
 
-    public function products($id)
-    {
-        $productSoldData = $this->productModel->getClientProductSold($id);
-        $this->views('api/v1/charts/clientdata', $productSoldData);
-    }
+    // public function products($id)
+    // {
+    //     $productSoldData = $this->productModel->getClientProductSold($id);
+    //     $this->views('api/v1/charts/clientdata', $productSoldData);
+    // }
 
-    public function clientRevenue($id)
-    {
-        $revenue1 = $this->partnerModel->getClientRevenues($id);
-        $this->views('api/v1/charts/clientrevenue', $revenue1);
-    }
-
-    public function chart()
-    {
-        $revenue = $this->revenueModel->getRevenues();
-        $this->views('api/v1/charts/chart', $revenue);
-    }
-
-    public function chartOrders()
-    {
-        $orders = $this->indexModel->getCustomerStatistics();
-        $this->views('api/v1/charts/orders', $orders);
-    }
+    // public function clientRevenue($id)
+    // {
+    //     $revenue1 = $this->partnerModel->getClientRevenues($id);
+    //     $this->views('api/v1/charts/clientrevenue', $revenue1);
+    // }
 
     public function orders(int $id)
     {
@@ -65,12 +53,6 @@ class Api extends Controller
 
         }
         $this->views('api/v1/mobile/orders', $response);
-    }
-
-    public function sold()
-    {
-        $products = $this->productModel->getProductSold();
-        $this->views('api/v1/charts/sold', $products);
     }
 
     public function prices()

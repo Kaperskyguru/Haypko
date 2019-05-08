@@ -82,7 +82,7 @@ var getProduct = {
  }
 function enyoUX() {
     /*start aos animation***/
-    let url = 'http://localhost/Enyopay';
+    let url = 'https://haypko.com';
 
     this.aosnit = function(){
         AOS.init({
@@ -215,32 +215,46 @@ function enyoUX() {
 
 
             $("#register").click(function(e){
+                alert();
                 e.preventDefault();
-                let name = $('#name').val();
-                let address = $('#raddr').val();
-                let state = $('#state').val();
-                let city = $('#city').val();
-                let email = $('#pemail').val();
-                let mobile = $('#phone').val();
-                let rcnumber = $('#rcnum').val();
-                register(name,rcnumber,email,city,state,address,mobile);
-                e.stopPropagation();
+                if (grecaptcha === undefined) {
+            		alert('Recaptcha not defined'); 
+            		return; 
+	            } else {
+    	            var response = grecaptcha.getResponse();
+                    if (!response) {
+                		alert('Coud not get recaptcha response'); 
+                		return; 
+                	} else {
+                        let name = $('#name').val();
+                        let address = $('#raddr').val();
+                        let state = $('#state').val();
+                        let city = $('#city').val();
+                        let email = $('#pemail').val();
+                        let mobile = $('#phone').val();
+                        let rcnumber = $('#rcnum').val();
+                        register(name,rcnumber,email,city,state,address,mobile, response);
+                        e.stopPropagation();
+                	}
+	            }
             });
 
         });
 
     }
 
-    function register(name, rcnumber, email, city, state, address, mobile) {
+    function register(name, rcnumber, email, city, state, address, mobile, response) {
         $.ajax({
             url: url + '/Partners/add',
             type:'POST',
             cache:false,
-            data:{register:1, name:name, rcnum:rcnumber, email:email, city:city, state:state, address:address, phone:mobile},
+            data:{register:1, name:name, rcnum:rcnumber, email:email, city:city, state:state, address:address, phone:mobile, captcha:response},
             success: function (response) {
                 let arr = response.split('/');
                 if (arr[0] == "Partner Created") {
                     alert('Account created successfully, Check your mail for details');
+                } else {
+                    alert(response);
                 }
             },
             onerror:function (err) {
@@ -271,39 +285,24 @@ function enyoUX() {
 
     }
 
-    // TODO: Let fuelprice from Database
+    // TODO: Load fuelprice from Database
 
     /*prize and litres handler*/
     this.calcfuel=function(fuel){
         var fuelprize = 0;
         if(fuel==="Petrol"){
-            fuelprize = 322;
-            // fuelprize=this.ajaxCall(fuel);
+            // fuelprize = 322;
+            fuelprize = window.fuelPrice;
         }else if(fuel==="Diesel"){
-            fuelprize = 400
-            // fuelprize=this.ajaxCall(fuel);
+            // fuelprize = 400
+            fuelprize = window.desielPrice;
         }else if(fuel==="Gas"){
-            fuelprize = 350;
+            fuelprize = window.gasPrice;
         }
         return fuelprize;
     }
 
-    this.ajaxCall = function (fuel) {
-        // alert(fuel);
-        $.ajax({
-            type: 'post',
-            url: 'Products/prices',
-            cache:true,
-            data: {product:fuel},
-            success: function (data) {
-                alert(data);
-                return data;
-            },
-            onerror: function (err) {
-                return err;
-            }
-        });
-    }
+
 
     this.prizeHandler=function (){
         let fuel="";
@@ -319,7 +318,6 @@ function enyoUX() {
                 let amount=$(this).parents().eq(1).next().find("input");
 
                 let litre=$(this).val();
-                console.log(fuelprize);
                 let fuelAmount=litre*fuelprize;
                 amount.val(fuelAmount);
                 if(fuelAmount===0){
@@ -366,9 +364,7 @@ function enyoUX() {
         let fuel="";
         let fuelprize=0;
         fuel= $("#prod-form select").val();
-        console.log(fuel);
         fuelprize=this.calcfuel(fuel);
-        console.log(fuelprize);
         this.displayHandler(fuelprize,3,null);
 
     }
@@ -435,13 +431,13 @@ function enyoUX() {
             "<div class='col-xs-4' data-pg-collapsed>"+
             "<div class='form-group'>"+
             "<label class='control-label' for='litres"+num+"'>Litres</label>"+
-            "<input type='number' min='5' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+
+            "<input type='number' min='1' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+
             "</div>"+
             "</div> "+
             "<div  class='col-xs-4'>"+
             " <div class='form-group'>" +
             "<label class='control-label' for='price"+num+"'>Amount &#8358; </label>"+
-            "<input type='number' min='1500' step='5' class='form-control price' id='price"+num+"' name='price"+num+"' placeholder='Amount'>"+
+            "<input type='number' class='form-control price' id='price"+num+"' name='price"+num+"' placeholder='Amount'>"+
             " </div>"+
             "</div> "+
             "</div>"+
@@ -450,7 +446,6 @@ function enyoUX() {
             obj.prizeHandler();
             obj.amountHandler();
             num++;
-            console.log(row);
             }
 
         });
@@ -478,11 +473,35 @@ function enyoUX() {
     this.hideForm= function(){
         $(".form-section").fadeOut(300);
     }
-}
+    
+    
+    this.getProductPrices = function(fuel) {
+        $.ajax({
+            type: 'post',
+            url: 'Products/prices',
+            cache:true,
+            data: {product:fuel},
+            dataType: 'json',
+            success: function (data) {
+                window.fuelPrice = data.Petrol;
+                window.gasPrice = data.Gas;
+                window.desielPrice = data.Diesel;
 
+                return;
+            },
+            error: function (err) {
+                console.log(err);
+                return;
+            }
+        });
+    }
+    
+   
+}
 
 $(document).ready(function(){
     let enyo = new enyoUX();
+    enyo.getProductPrices('');
     enyo.aosnit();
     enyo.addprodHandler();
     enyo.removeprodHandler();
@@ -498,4 +517,6 @@ $(document).ready(function(){
     $(".canceler").on("click",function(){
         enyo.hideForm();
     });
+    
+
 });

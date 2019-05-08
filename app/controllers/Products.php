@@ -32,10 +32,17 @@
         public function prices()
         {
             if ("POST" == $_SERVER['REQUEST_METHOD']) {
-                if ($price = $this->productModel->getPrice($_POST['product'])){
-                    echo intval($price);
+                if ($products = $this->productModel->getProducts()){
+                    
+                    $arr = array();
+                    
+                    foreach($products as $product){
+                        $arr[$product->product_name] = $product->product_price;
+                    }
+                    
+                    echo json_encode($arr);
                 } else {
-                    echo intval('0');
+                    echo json_encode(null);
                 }
             } else {
                 redirector( '' );

@@ -33,7 +33,7 @@ class History
     //COPY
     public function getHistories()
     {
-        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group WHERE partner_id = :id ORDER BY id DESC");
+        $this->db->query("SELECT id AS order_id, product_name, customer_id AS order_customer_id, date_added AS order_date_added, litres AS order_litres, product_amount AS order_amount, partner_id AS order_partner_id, reference_id AS order_reference_id, status_id AS order_status FROM order_group ORDER BY id DESC");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;
