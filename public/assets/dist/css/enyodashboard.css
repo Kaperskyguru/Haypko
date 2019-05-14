@@ -384,7 +384,7 @@ label{
     font-size: 1.3rem;
 }
 
-.accloader,.passloader{
+.accloader,.passloader, .passloaderD, .passloaderM{
  display:none;
  margin-left: 10px;
 }

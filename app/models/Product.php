@@ -1,13 +1,13 @@
 <?php
 /**
-*
-*/
+ *
+ */
 class product
 {
     private $db;
     private $table = "products";
 
-    function __construct( Database $db )
+    public function __construct(Database $db)
     {
         $this->db = $db;
     }
@@ -131,24 +131,51 @@ class product
 
     public function updateAll(array $data)
     {
-        for ($i = 1; $i<= count($data); $i++) {
+        for ($i = 1; $i <= count($data); $i++) {
             $this->db->query("UPDATE {$this->table} SET product_price = {$data[$i]} WHERE product_id = :product_id");
             $this->db->bind(':product_id', $i);
-            if(!$this->db->execute()) {
+            if (!$this->db->execute()) {
                 return false;
             }
         }
         return true;
     }
-    
-    public function updateProductGroupRef(array $data, string $coude){
-         $this->db->query("UPDATE order_group SET reference_id = :ref_id WHERE product_group_id = :code");
-            $this->db->bind(':ref_id', $data['ref_id']);
-            $this->db->bind(':code', $code);
-            if($this->db->execute()) {
-                return true;
+
+    public function updateProductDeliveryPrice(array $data)
+    {
+        for ($i = 1; $i <= count($data); $i++) {
+            $this->db->query("UPDATE {$this->table} SET product_delivery_price = {$data[$i]} WHERE product_id = :product_id");
+            $this->db->bind(':product_id', $i);
+            if (!$this->db->execute()) {
+                return false;
             }
-            return false;
+            continue;
+        }
+        return true;
+    }
+
+    public function updateProductMinimumQuantity(array $data)
+    {
+        for ($i = 1; $i <= count($data); $i++) {
+            $this->db->query("UPDATE {$this->table} SET product_minimum_quantity = {$data[$i]} WHERE product_id = :product_id");
+            $this->db->bind(':product_id', $i);
+            if (!$this->db->execute()) {
+                return false;
+            }
+            continue;
+        }
+        return true;
+    }
+
+    public function updateProductGroupRef(array $data, string $coude)
+    {
+        $this->db->query("UPDATE order_group SET reference_id = :ref_id WHERE product_group_id = :code");
+        $this->db->bind(':ref_id', $data['ref_id']);
+        $this->db->bind(':code', $code);
+        if ($this->db->execute()) {
+            return true;
+        }
+        return false;
     }
 
     public function addProductGroup(array $data, int $customer_id)
@@ -179,10 +206,35 @@ class product
         }
         if (in_array($username, $r)) {
             $count = 0;
-            while (in_array( ($username. ''. ++$count) , $r) );
-            $username = $username. '' .$count;
+            while (in_array(($username . '' . ++$count), $r));
+            $username = $username . '' . $count;
 
         }
         return $username;
+    }
+
+    public function getDeliveryPrice()
+    {
+        // Fix Delivery Price here
+
+        $this->db->query("SELECT product_delivery_price FROM products WHERE product_id = :id");
+        $this->db->bind(':id', 1);
+        $row = $this->db->single();
+        if (!$row) {
+            return null;
+        }
+        return $row->product_delivery_price;
+    }
+
+    public function getMinimumQuanity()
+    {
+        // Fix Delivery Price here
+        
+        $this->db->query("SELECT product_minimum_quantity FROM products");
+        $row = $this->db->resultSet();
+        if (!$row) {
+            return null;
+        }
+        return $row;
     }
 }

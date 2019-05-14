@@ -290,6 +290,8 @@ function enyoUX() {
     /*prize and litres handler*/
     this.calcfuel=function(fuel){
         var fuelprize = 0;
+        
+        
         if(fuel==="Petrol"){
             // fuelprize = 322;
             fuelprize = window.fuelPrice;
@@ -304,13 +306,12 @@ function enyoUX() {
 
 
 
-    this.prizeHandler=function (){
-        let fuel="";
-        let fuelprize=0;
-        fuel= $("#prod-form select").val();
-        fuelprize=this.calcfuel(fuel);
+    this.prizeHandler=function (num){
+        let fuel = $("#prod-form #products"+num +" " ).val();
+        let fuelprize=this.calcfuel(fuel);
         this.displayHandler(fuelprize,0,null);
     }
+
     this.displayHandler = function(fuelprize,select,display){
         if(select===0){
             $("#prod-form ").on("input",".litre",function(){
@@ -329,7 +330,8 @@ function enyoUX() {
             //get litre value
 
             let litreDisplay=display.parents().eq(1).prev().find("input");
-            let litre=litreDisplay.val();
+            let litre=litreDisplay.val() == "" ? 1 : litreDisplay.val();
+
             //calc fuel price with prize/litre
             let litrePrice=Math.round(litre*fuelprize);
             if(fuelprize===350){
@@ -360,11 +362,9 @@ function enyoUX() {
 
     }
 
-    this.amountHandler = function(){
-        let fuel="";
-        let fuelprize=0;
-        fuel= $("#prod-form select").val();
-        fuelprize=this.calcfuel(fuel);
+    this.amountHandler = function(num){
+        let fuel= $("#prod-form #products"+num).val();
+        let fuelprize=this.calcfuel(fuel);
         this.displayHandler(fuelprize,3,null);
 
     }
@@ -378,10 +378,17 @@ function enyoUX() {
         $("#prod-form").on("change","select",function(){
             let fuelvalue=$(this).val();
             let amountDisplay = $(this).parents().eq(1).next().next().find("input");
+            fuelprize = 0;
+
+            
+            
             fuelprize=handler.calcfuel(fuelvalue);
+            
+            fuelvalue="";
             handler.displayHandler(fuelprize,1,amountDisplay);
         });
     }
+    
     this.litreHandler = function(){
         //on input select the value of prize and multiply by input and display the amount
         let handler = this;
@@ -411,6 +418,8 @@ function enyoUX() {
         let products= [];
 
         $("#addprod").click(function(){
+            // console.log(window.mQuantity.Petrol);
+            
             //select the row and append a new product row
             if(num != 4){
             let row=$(".prod-cart");
@@ -431,7 +440,7 @@ function enyoUX() {
             "<div class='col-xs-4' data-pg-collapsed>"+
             "<div class='form-group'>"+
             "<label class='control-label' for='litres"+num+"'>Litres</label>"+
-            "<input type='number' min='1' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+
+            "<input type='number' min='"+window.mQuantity.Petrol+"' class='form-control litre' id='litre"+num+"' name='litre"+num+"' placeholder='litres'>"+
             "</div>"+
             "</div> "+
             "<div  class='col-xs-4'>"+
@@ -443,8 +452,8 @@ function enyoUX() {
             "</div>"+
             "</div>");
 
-            obj.prizeHandler();
-            obj.amountHandler();
+            obj.prizeHandler(num);
+            obj.amountHandler(num);
             num++;
             }
 
@@ -483,9 +492,11 @@ function enyoUX() {
             data: {product:fuel},
             dataType: 'json',
             success: function (data) {
+                console.log(data);
                 window.fuelPrice = data.Petrol;
                 window.gasPrice = data.Gas;
                 window.desielPrice = data.Diesel;
+                window.mQuantity = data.Quantities;
 
                 return;
             },

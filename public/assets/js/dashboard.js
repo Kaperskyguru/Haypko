@@ -1,5 +1,5 @@
 
-function dashboard {
+function dashboard (){
     this.navHandler = function(click_link){
     	click_link.on("click",function(){
 		    		if($(this).hasClass("dash-link")){

@@ -35,6 +35,7 @@ class Admin extends Controller
             $totalRevenue = $this->revenueModel->getTotalRevenues();
             $totalRevenueByMonth = $this->revenueModel->getTotalRevenuesByMonth(getMonth(TODAY));
 
+            // var_dump($product);
             $data = [
                 'drivers' => $drivers,
                 'partners' => $partners,
