@@ -43,7 +43,7 @@ $(document).ready(function() {
         var Phone = $('#tel').val();
         var address = $('#deliveryadd').val();
         var district = $('#partner_id').val();
-        alert(Phone);
+        // alert(Phone);
         $.ajax({
             url: 'index',
             method: 'POST',

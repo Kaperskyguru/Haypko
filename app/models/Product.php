@@ -226,15 +226,16 @@ class product
         return $row->product_delivery_price;
     }
 
-    public function getMinimumQuanity()
+    public function getMinimumQuantity(string $name)
     {
         // Fix Delivery Price here
-        
-        $this->db->query("SELECT product_minimum_quantity FROM products");
-        $row = $this->db->resultSet();
+
+        $this->db->query("SELECT product_minimum_quantity FROM products WHERE product_name = :name");
+        $this->db->bind(':name', $name);
+        $row = $this->db->single();
         if (!$row) {
             return null;
         }
-        return $row;
+        return $row->product_minimum_quantity;
     }
 }

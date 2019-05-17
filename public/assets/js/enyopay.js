@@ -160,10 +160,6 @@ function enyoUX() {
                     $("#card-form").effect("slide");
                 });
             }
-            // console.log(getProduct.getChoosenProducts());
-
-
-
 
         });
 
@@ -171,12 +167,7 @@ function enyoUX() {
             $("#prod-form").effect("slide");
             $("#card-form").effect("drop");
         });
-        //
-        // $("#card-form").submit(function(e){
-        //     e.preventDefault();
-        //
-        //     alert()
-        // });
+
     }
 
     /*handler for Partners form */
@@ -215,7 +206,6 @@ function enyoUX() {
 
 
             $("#register").click(function(e){
-                alert();
                 e.preventDefault();
                 if (grecaptcha === undefined) {
             		alert('Recaptcha not defined'); 
@@ -285,7 +275,6 @@ function enyoUX() {
 
     }
 
-    // TODO: Load fuelprice from Database
 
     /*prize and litres handler*/
     this.calcfuel=function(fuel){
@@ -293,10 +282,8 @@ function enyoUX() {
         
         
         if(fuel==="Petrol"){
-            // fuelprize = 322;
             fuelprize = window.fuelPrice;
         }else if(fuel==="Diesel"){
-            // fuelprize = 400
             fuelprize = window.desielPrice;
         }else if(fuel==="Gas"){
             fuelprize = window.gasPrice;
@@ -305,16 +292,20 @@ function enyoUX() {
     }
 
 
-
     this.prizeHandler=function (num){
-        let fuel = $("#prod-form #products"+num +" " ).val();
+        let fuel = $("#prod-form #products"+num).val();
         let fuelprize=this.calcfuel(fuel);
-        this.displayHandler(fuelprize,0,null);
+        this.displayHandler(fuelprize,0,null, num);
     }
 
-    this.displayHandler = function(fuelprize,select,display){
+    this.displayHandler = function(fuelprize,select,display, num){
+        console.log(select, fuelprize);
+        handler = this;
         if(select===0){
-            $("#prod-form ").on("input",".litre",function(){
+            $("#prod-form ").on("input","#litre"+num,function(){
+
+                let fuel = $("#prod-form #products"+num).val();
+                let fuelprize=handler.calcfuel(fuel);
 
                 let amount=$(this).parents().eq(1).next().find("input");
 
@@ -327,7 +318,6 @@ function enyoUX() {
             });
 
         }else if(select===1){
-            //get litre value
 
             let litreDisplay=display.parents().eq(1).prev().find("input");
             let litre=litreDisplay.val() == "" ? 1 : litreDisplay.val();
@@ -345,7 +335,10 @@ function enyoUX() {
 
         }else if(select===3){
 
-            $("#prod-form").on("input",".price",function(){
+            $("#prod-form").on("input","#price"+num,function(){
+
+                let fuel = $("#prod-form #products"+num).val();
+                let fuelprize=handler.calcfuel(fuel);
 
                 let litreDisplay=$(this).parents().eq(1).prev().find("input");
 
@@ -365,7 +358,7 @@ function enyoUX() {
     this.amountHandler = function(num){
         let fuel= $("#prod-form #products"+num).val();
         let fuelprize=this.calcfuel(fuel);
-        this.displayHandler(fuelprize,3,null);
+        this.displayHandler(fuelprize,3,null, num);
 
     }
 
@@ -379,31 +372,32 @@ function enyoUX() {
             let fuelvalue=$(this).val();
             let amountDisplay = $(this).parents().eq(1).next().next().find("input");
             fuelprize = 0;
-
-            
             
             fuelprize=handler.calcfuel(fuelvalue);
             
             fuelvalue="";
-            handler.displayHandler(fuelprize,1,amountDisplay);
+            handler.displayHandler(fuelprize,1,amountDisplay, 0);
         });
+
     }
     
-    this.litreHandler = function(){
-        //on input select the value of prize and multiply by input and display the amount
-        let handler = this;
-        $("#prod-form").on("input",".litre",function(){
-            //display
-            let display = $(this).parents().eq(1).prev().find("input");
-            //price
-            let fuel = display.parents().eq(1).prev().find("select").val();
-            let fuelprice = handler.calcfuel(fuel);
-            let litre = $(this).val();
-            let amount=litre*fuelprice;
-            display.val(amount);
+    // this.litreHandler = function(){
+    //     //on input select the value of prize and multiply by input and display the amount
+    //     let handler = this;
+    //     $("#prod-form").on("input",".litre",function(){
+    //         //display
+    //         let display = $(this).parents().eq(1).prev().find("input");
+    //         //price
+    //         let fuel = display.parents().eq(1).prev().find("select").val();
+    //         let fuelprice = handler.calcfuel(fuel);
+    //         let litre = $(this).val();
+    //         let amount=litre*fuelprice;
+    //         display.val(amount);
 
-        });
-    }
+    //     });
+    // }
+
+
     /*sets active on click menu item*/
     this.dashActiveHandler=function (){
         $(".nav-sidebar li ").click(function(){
@@ -411,7 +405,7 @@ function enyoUX() {
             $(this).addClass("active");
         });
     }
-    let num = 1;
+    let num = 1, n=1;
     this.addprodHandler=function(){
         let obj= this;
         //product array
@@ -421,7 +415,8 @@ function enyoUX() {
             // console.log(window.mQuantity.Petrol);
             
             //select the row and append a new product row
-            if(num != 4){
+            if(n != 4){
+
             let row=$(".prod-cart");
             $(".no-item").hide();
             row.append("<div class='single-prod'>"+
@@ -455,18 +450,22 @@ function enyoUX() {
             obj.prizeHandler(num);
             obj.amountHandler(num);
             num++;
+            n++;
+            
             }
+
+            
 
         });
     }
 
     this.removeprodHandler=function(){
         $(".prod-cart").on("click",".r-prod",function(){
-            num--;
+            n--;
             let prod=$(this).parents().eq(2);
             prod.fadeOut(400,function(){
                 prod.remove();
-                if(num===1){
+                if(n===1){
                     $(".no-item").fadeIn(300);
                 }
 
@@ -522,7 +521,7 @@ $(document).ready(function(){
     enyo.pformHandler();
     enyo.selectprizeHandler();
     enyo.signupToggle();
-    enyo.litreHandler();
+    // enyo.litreHandler();
     enyo.back();
 
     $(".canceler").on("click",function(){

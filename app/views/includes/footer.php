@@ -156,7 +156,7 @@
             <div class="col-md-6">
               <div class="form-group" data-pg-collapsed>
                 <label class="control-label" for="rcnum">RC Number</label>
-                <input type="number" class="form-control" id="rcnum" name="rcnum">
+                <input type="text" class="form-control" id="rcnum" name="rcnum">
               </div>
             </div>
             <div class="col-md-12">
@@ -215,7 +215,26 @@
               <div class="form-group" data-pg-collapsed>
                 <label class="control-label" for="city">City</label>
                 <select class="form-control" id="city" name="city">
-                  <option value="surulere">surulere</option>
+                  <option value="surulere">Surulere</option>
+                  <option value="agege">Agege</option>
+                  <option value="ajeromiifelodun">Ajeromi Ifelodun</option>
+                  <option value="alimosho">Alimosho</option>
+                  <option value="amuwoodofin">Amuwo Odofin</option>
+                  <option value="apapa">Apapa</option>
+                  <option value="badagry">Badagry</option>
+                  <option value="kosofe">Kosofe</option>
+                  <option value="mushin">Mushin</option>
+                  <option value="oshodiisolo">Oshodi Isolo</option>
+                  <option value="ojo">Ojo</option>
+                  <option value="ikorodu">Ikorodu</option>
+                  <option value="ifako-ijaye">Ifako-Ijaye</option>
+                  <option value="shomolu">Shomolu</option>
+                  <option value="lagosmainland">Lagos Mainland</option>
+                  <option value="ikeja">Ikeja</option>
+                  <option value="eti-osa">Eti-osa</option>
+                  <option value="lagosisland">Lagos Island</option>
+                  <option value="epe">Epe</option>
+                  <option value="ibejulekki">Ibeju Lekki</option>
                 </select>
               </div>
             </div>

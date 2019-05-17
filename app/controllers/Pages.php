@@ -116,15 +116,74 @@ $prices += $product['price'];
                 'price_err' => '',
                 'litres_err' => '',
                 'product_err' => '',
+                'petrol_quantity_err',
+                'gas_quantity_err',
+                'diesel_quantity_err',
                 'partners' => $partners,
             ];
 
-                
-            // // validate Quantity
-            // if (empty($data['products'])) {
-            //     $data['email_err'] = 'This field is required.';
-            //     $err_code = 1;
-            // }
+            // validate Quantities for each products
+            foreach ($data['products'] as $product) {
+                // print_r($product);
+                // die();
+                if ($product['name'] == "Petrol") {
+
+                    $product_litre = $product['litre'];
+                    $quantity = $this->getMinimumQuantity($product['name']);
+                    if (!($product_litre >= $quantity)) {
+                        $data['petrol_quantity_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        $err_code = 1;
+                    }
+
+                    $product_price = $product['price'];
+                    $total_price = $this->getProductTotalPrice($product['name'], $quantity);
+                    if (!($product_price == $total_price)) {
+                        $product['price'] = $total_price;
+                        // $data['petrol_price_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        // $err_code = 1;
+                    }
+
+                } else if ($product['name'] == "Gas") {
+
+                    $quantity = $this->getMinimumQuantity($product['name']);
+                    $product_litre = $product['litre'];
+                    if (!($product_litre >= $quantity)) {
+                        $data['gas_quantity_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        $err_code = 1;
+                    }
+
+                    $product_price = $product['price'];
+                    $total_price = $this->getProductTotalPrice($product['name'], $quantity);
+                    if (!($product_price == $total_price)) {
+                        $product['price'] = $total_price;
+                        // $data['petrol_price_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        // $err_code = 1;
+                    }
+
+                } else if ($product['name'] >= "Diesel") {
+
+                    $quantity = $this->getMinimumQuantity($product['name']);
+                    $product_litre = $product['litre'];
+                    if (!($product_litre >= $quantity)) {
+                        $data['diesel_quantity_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        $err_code = 1;
+                    }
+
+                    $product_price = $product['price'];
+                    $total_price = $this->getProductTotalPrice($product['name'], $quantity);
+                    if (!($product_price == $total_price)) {
+                        $product['price'] = $total_price;
+                        // $data['petrol_price_err'] = 'You can only order minimum of ' . $quantity . ' Litres';
+                        // $err_code = 1;
+                    }
+
+                } else {
+                    $data['product_err'] = 'Product not found';
+                    $err_code = 1;
+                }
+            }
+            // die();
+            // Validate the total prices by quantities for each products
 
             // validate customer email
             if (empty($data['customer_email'])) {
@@ -362,5 +421,16 @@ $prices += $product['price'];
     private function getDeliveryPrice()
     {
         return $this->productModel->getDeliveryPrice();
+    }
+
+    private function getMinimumQuantity(string $product)
+    {
+        return $this->productModel->getMinimumQuantity($product);
+    }
+
+    private function getProductTotalPrice($name, $quantity)
+    {
+        $price = $this->productModel->getPrice($name);
+        return $price * $quantity;
     }
 }
