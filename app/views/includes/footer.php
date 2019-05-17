@@ -127,17 +127,19 @@
             </div>
           </div>
         <div class="row">
-           <div class="col-md-12">
+           <div class="col-md-6">
               <h5 class="purchase-footer">
                   <span class="text-left back-btn-two">
                       <i class="fa fa-2x fa-long-arrow-left"></i>
                   </span>
-                  <span class="text-right">Proceed to Checkout
-                        <button id="checkout" type="submit" class="checkout-btn ">
+                </h5>
+            </div>
+            <div class="col-md-6">
+                <span class="text-right">Proceed to Checkout
+                        <button id="checkout" type="submit" class="checkout-btn text-right">
                           <i class="fa fa-fw fa-long-arrow-right"></i>
                         </button>
-                  <span>
-                </h5>
+                 </span>
             </div>
         </div>
         </form>
@@ -213,7 +215,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group" data-pg-collapsed>
-                <label class="control-label" for="city">City</label>
+                <label class="control-label" for="city">District</label>
                 <select class="form-control" id="city" name="city">
                   <option value="surulere">Surulere</option>
                   <option value="agege">Agege</option>

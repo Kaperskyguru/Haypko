@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default colored-nav" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" data-pg-collapsed>
@@ -8,8 +8,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo SITEURL; ?>">
-              <img src="<?php echo SITEURL;?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="white-logo" />
-              <img src="<?php echo SITEURL;?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="black-logo" />
+              <!--<img src="<?php echo SITEURL;?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />-->
+              <img src="<?php echo SITEURL;?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" />
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

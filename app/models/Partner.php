@@ -36,7 +36,7 @@ class Partner
 
     public function getPartners()
     {
-        $this->db->query("SELECT id, partner_name, username, partner_location, partner_rc_number, partner_email, partner_state,partner_city,partner_mobile, partner_account_number, partner_account_name, partner_bank_name FROM {$this->table} ORDER BY id DESC");
+        $this->db->query("SELECT id, partner_status, partner_name, username, partner_location, partner_rc_number, partner_email, partner_state,partner_city,partner_mobile, partner_account_number, partner_account_name, partner_bank_name FROM {$this->table} ORDER BY id DESC");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;

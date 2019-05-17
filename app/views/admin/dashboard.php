@@ -5,8 +5,8 @@
         <header class="main-header">
             <!-- Logo -->
             <a href="<?php echo SITEURL; ?>" class="logo">
-                <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" />
-                <!-- <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" /> -->
+                <!-- <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-black.svg" class="black-logo" /> -->
+                <img src="<?php echo SITEURL; ?>/assets/images/svg/Grouphaykpo-logo-white.svg" class="white-logo" />
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -325,6 +325,7 @@
                                                             <th>Partner</th>
                                                             <th>Location</th>
                                                             <th>View</th>
+                                                            <th>Approve</th>
                                                             <th><button type="button"
                                                                     class="btn  btn-danger deleteall">delete</button>
                                                             </th>
@@ -345,6 +346,10 @@
                                                             <td>
                                                                 <button pid="<?php echo $partner->id ?>" type="button"
                                                                     class="btn  btn-info view">view</button>
+                                                            </td>
+                                                            <td>
+                                                                <button pid="<?php echo $partner->id ?>" type="button"
+                                                                    class="btn  btn-success approve"><?php echo ($partner->partner_status == 1) ? "Disapprove" : "Approve" ?></button>
                                                             </td>
                                                             <td>
                                                                 <button pid="<?php echo $partner->id ?>" type="button"
@@ -382,6 +387,7 @@
                                                             <th>Partner</th>
                                                             <th>Location</th>
                                                             <th>View</th>
+                                                            <th>Approve</th>
                                                             <th><button type="button"
                                                                     class="btn  btn-danger deleteall">delete</button>
                                                             </th>
@@ -400,6 +406,10 @@
                                                             <td>
                                                                 <button pid="<?php echo $partner->id ?>" type="button"
                                                                     class="btn  btn-info view">view</button>
+                                                            </td>
+                                                              <td>
+                                                                <button pid="<?php echo $partner->id ?>" type="button"
+                                                                    class="btn  btn-success approve"><?php echo ($partner->partner_status == 1) ? "Disapprove" : "Approve" ?></button>
                                                             </td>
                                                             <td>
                                                                 <button pid="<?php echo $partner->id ?>" type="button"

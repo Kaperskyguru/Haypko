@@ -242,6 +242,24 @@ class Partners extends Controller
         }
     }
 
+    public function update()
+    {
+        if ('POST' == $_SERVER['REQUEST_METHOD']) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'partner_status' => $_POST['status'],
+            ];
+            $update = $this->partnerModel->updatePartner($_POST['id'], $data);
+            if ($update) {
+                echo "Partner Account Updated";
+            } else {
+                echo "Partner Account Failed to Update";
+            }
+        } else {
+            redirector('');
+        }
+    }
+
     public function delete($id = 0)
     {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {

@@ -578,11 +578,53 @@ function dashboard() {
     }
   }
 
+  this.updateOrderStatus = function (id) {
+    $.ajax({
+      type: "POST",
+      url: url + "/partners/delivered/" + id,
+      cache: false,
+      data: {},
+      success: function (response) {
+        alert(response);
+      }
+    });
+  }
+
+  this.enableOrDisablePartner = function (element) {
+    let id = $(element).attr('pid');
+    let statustext = $(element).html();
+    let status = 0;
+    if (statustext === "Approve") {
+      status = 1;
+    } else {
+      status = 2;
+    }
+    $.ajax({
+      type: "POST",
+      url: url + "/partners/update/",
+      cache: false,
+      data: {
+        id: id,
+        status: status
+      },
+      success: function (response) {
+        if(response == "Partner Account Updated"){
+          if(status == 1){
+            element.html("Disapprove");
+          }
+          else{
+            element.html("Approve");
+          }
+        }
+        alert(response);
+      }
+    });
+  }
+
 
 }
 
 $(document).ready(function () {
-  let url = 'http://localhost/Enyopay';
 
   enyodashboard = new dashboard();
   //get links
@@ -704,15 +746,13 @@ $(document).ready(function () {
 
   $('body').delegate('#orderStatus', 'click', function () {
     let id = $(this).attr('oid');
-    $.ajax({
-      type: "POST",
-      url: url + "/partners/delivered/" + id,
-      cache: false,
-      data: {},
-      success: function (response) {
-        alert(response);
-      }
-    });
+    enyodashboard.updateOrderStatus(id);
+  });
+
+  //on EnableOrDisable clicked
+  $("body").delegate(".approve", "click", function () {
+    let element = $(this);
+    enyodashboard.enableOrDisablePartner(element);
   });
 
 });
