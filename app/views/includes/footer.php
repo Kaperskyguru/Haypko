@@ -35,13 +35,13 @@
         <h3>Company</h3>
         <ul class="list-unstyled">
           <li>
-            <a href="<?php echo SITEURL;?>/pages/about ">About</a>
+            <a href="<?php echo SITEURL; ?>/pages/about ">About</a>
           </li>
           <li>
-            <a href="<?php echo SITEURL;?>/pages/contact ">Contact</a>
+            <a href="<?php echo SITEURL; ?>/pages/contact ">Contact</a>
           </li>
           <li>
-            <a href="<?php echo SITEURL;?>/pages/terms">Terms and Conditions</a>
+            <a href="<?php echo SITEURL; ?>/pages/terms">Terms and Conditions</a>
           </li>
         </ul>
       </div>
@@ -102,7 +102,7 @@
               <div class="form-group">
                   <select name="partner_id" id="partner_id" class="form-control">
                       <option value="0"> Select district </option>
-                    <?php foreach($data['partners'] as $partner): ?>
+                    <?php foreach ($data['partners'] as $partner): ?>
                       <option value="<?php echo $escaper->escapeHtmlAttr($partner->id); ?>"> <?php echo $escaper->escapeHtml($partner->partner_name); ?> </option>
                     <?php endforeach?>
                   </select>
@@ -251,6 +251,9 @@
                 <label class="control-label" for="pemail">Email</label>
                 <input class="form-control" id="pemail" name="email" />
               </div>
+            </div>
+            <div class="col-md-8">
+              <div class="g-recaptcha" data-sitekey="6Ld1uJEUAAAAAJ9mFF7g9hcQJfxcMfuvJn6wafZz"></div>
             </div>
           </div>
           <div class="row">

@@ -1,13 +1,13 @@
 <?php
 /**
- *
- */
+*
+*/
 class Partners extends Controller
 {
     private $partnerModel;
-    public function __construct()
+    function __construct()
     {
-        $this->partnerModel = $this->model('Partner');
+        $this->partnerModel = $this->model( 'Partner' );
         $this->historyModel = $this->model('History');
         $this->notifModel = $this->model('notify');
         $this->indexModel = $this->model('index');
@@ -19,7 +19,7 @@ class Partners extends Controller
     }
 
     public function index()
-    { // Caching here
+    {   // Caching here
         $user_id = $_SESSION['user_id'];
         $user_type = $_SESSION['user_type'];
 
@@ -40,59 +40,62 @@ class Partners extends Controller
                 'totalRevenue' => $totalRevenue,
                 'totalProductSold' => $totalProductSold,
                 'totalRevenueByMonth' => $totalRevenueByMonth,
-                'clientRevenueChartData' => $this->clientRevenueChartData($user_id),
+                'clientRevenueChartdata' => $this->clientRevenueChartdata($user_id),
                 'clientSoldChartdata' => $this->clientSoldChartdata($user_id),
             ];
 
             $this->views('partner/partner', $data);
         } else {
-            redirector('users/login');
+            redirector( 'users/login');
         }
     }
 
-    public function add()
-    {
+    public function add() {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $password = generateRandomPassword();
-            $data = [
-                'partner_name' => $_POST['name'],
-                'username' => $this->partnerModel->generateUsername($_POST['name']),
-                'password' => generateHashes($password),
-                'partner_location' => $_POST['address'],
-                'partner_state' => $_POST['state'],
-                'partner_city' => $_POST['city'],
-                'partner_email' => $_POST['email'],
-                'partner_mobile' => $_POST['phone'],
-                'partner_rc_number' => $_POST['rcnum'],
-                'partner_account_number' => $_POST['accnum'],
-                'partner_account_name' => $_POST['accname'],
-                'partner_bank_name' => $_POST['bankname'],
-            ];
-            $mailData = [
-                'password' => $password,
-                'username' => $data['username'],
-                'email' => $data['partner_email'],
-            ];
-            if (mailer($mailData)) {
-                $create = $this->partnerModel->createPartner($data);
-                if ($create) {
-                    echo "Partner Created/" . $create;
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
+            
+            if (!$this->partnerModel->isEmailExist($_POST['email'])) {
+                $password = generateRandomPassword();
+                $data = [
+                    'partner_name' => $_POST['name'],
+                    'username' => $this->partnerModel->generateUsername($_POST['name']),
+                    'password' => generateHashes($password),
+                    'partner_location' => $_POST['address'],
+                    'partner_state' => $_POST['state'],
+                    'partner_city' => $_POST['city'],
+                    'partner_email' => $_POST['email'],
+                    'partner_mobile' => $_POST['phone'],
+                    'partner_rc_number' => $_POST['rcnum'],
+                    'partner_account_number' => $_POST['accnum'],
+                    'partner_account_name' => $_POST['accname'],
+                    'partner_bank_name' => $_POST['bankname'],
+                ];
+                $mailData = [
+                    'password' => $password,
+                    'username' => $data['username'],
+                    'email' => $data['partner_email'],
+                ];
+                if (mailer($mailData)) {
+                    $create = $this->partnerModel->createPartner($data);
+                    if ($create) {
+                        echo "Partner Created/" . $create;
+                    } else {
+                        echo "Partner Not Created";
+                    }
                 } else {
-                    echo "Partner Not Created";
+                    echo "We could not send mail";
                 }
             } else {
-                echo "We could not send mail";
+                echo "Email already exist";
             }
         } else {
             redirector('');
         }
     }
 
-    public function viewPartner()
-    {
+    public function viewPartner() {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $partner = $this->partnerModel->getPartner($_POST['id']);
             echo "
             <p>Name</p>
@@ -112,10 +115,9 @@ class Partners extends Controller
         }
     }
 
-    public function viewOrder()
-    {
+    public function viewOrder() {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $order = $this->historyModel->getOrder($_POST['id']);
             ?>
             <p>Product</p>
@@ -129,7 +131,7 @@ class Partners extends Controller
             <p>Trasaction ID</p>
             <h4><?php echo $order->order_reference_id ?></h4>
             <p>Status</p>
-            <p> <?php echo ($order->order_status == 0) ? 'Pending' : 'Delivered' ?></p>
+            <p> <?php echo ($order->order_status ==0) ? 'Pending':'Delivered'?></p>
             <?php ;
         } else {
             redirector('');
@@ -155,10 +157,9 @@ class Partners extends Controller
     //     }
     // }
 
-    public function showDetails()
-    {
+    public function showDetails() {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $password = generateRandomPassword();
             if ($this->storeGeneratedPassword($password, $_POST['id'])) {
                 $partner = $this->partnerModel->getPartner($_POST['id']);
@@ -202,7 +203,7 @@ class Partners extends Controller
     public function updatePass()
     {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $data = [
                 'password' => generateHashes($_POST['npassword']),
             ];
@@ -216,38 +217,38 @@ class Partners extends Controller
                 echo "Current password not match";
             }
 
-        } else {
+        }  else {
             redirector('');
         }
 
     }
 
-    public function updateAccount()
-    {
+
+    public function updateAccount() {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
             $data = [
                 'partner_account_number' => $_POST['accnum'],
                 'partner_account_name' => $_POST['accname'],
                 'partner_bank_name' => $_POST['bankname'],
             ];
             $update = $this->partnerModel->updatePartner($_POST['uid'], $data);
-            if ($update) {
+            if($update) {
                 echo "Partner Account Updated";
             } else {
                 echo "Partner Account Failed to Update";
             }
-        } else {
+        }  else {
             redirector('');
         }
     }
-
+    
     public function update()
     {
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                'partner_status' => $_POST['status'],
+                'status' => $_POST['status'],
             ];
             $update = $this->partnerModel->updatePartner($_POST['id'], $data);
             if ($update) {
@@ -260,15 +261,14 @@ class Partners extends Controller
         }
     }
 
-    public function delete($id = 0)
-    {
+    public function delete($id = 0) {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
             if ($id != 0) {
                 $delete = $this->partnerModel->deletePartner($id);
             } else {
                 $delete = $this->partnerModel->deletePartners($_POST['emp_id']);
             }
-            if (!$delete) {
+            if(!$delete) {
                 echo "Partner Not Deleted";
             } else {
                 echo "Partner Deleted";
@@ -282,10 +282,10 @@ class Partners extends Controller
     {
         if ("POST" == $_SERVER['REQUEST_METHOD']) {
             $data = [
-                'order_status' => 1,
+                'order_status' => 1
             ];
             $update = $this->historyModel->updateOrder($id, $data);
-            if ($update) {
+            if($update) {
                 echo "Delivered";
             } else {
                 echo "Error occured";
@@ -295,7 +295,7 @@ class Partners extends Controller
         }
     }
 
-    private function clientRevenueChartData($id)
+    private function clientRevenueChartdata($id)
     {
         $revenues = $this->partnerModel->getClientRevenues($id);
         $chartData = '';

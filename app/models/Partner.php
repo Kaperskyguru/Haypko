@@ -14,11 +14,12 @@ class Partner
 
     public function createPartner(array $data)
     {
-        $query = "INSERT INTO {$this->table} (partner_name, username, partner_location, partner_state, partner_city, partner_email, partner_mobile, partner_rc_number, partner_account_number, partner_account_name, partner_bank_name) VALUES
-        (:partner_name, :username, :partner_location, :partner_state, :partner_city, :partner_email, :partner_mobile, :partner_rc_number, :partner_account_number, :partner_account_name, :partner_bank_name)";
+        $query = "INSERT INTO {$this->table} (partner_name, username, password, partner_location, partner_state, partner_city, partner_email, partner_mobile, partner_rc_number, partner_account_number, partner_account_name, partner_bank_name) VALUES
+        (:partner_name, :username, :password, :partner_location, :partner_state, :partner_city, :partner_email, :partner_mobile, :partner_rc_number, :partner_account_number, :partner_account_name, :partner_bank_name)";
         $this->db->query($query);
         $this->db->bind(':partner_name', $data['partner_name']);
         $this->db->bind(':username', $data['username']);
+        $this->db->bind(':password', $data['password']);
         $this->db->bind(':partner_location', $data['partner_location']);
         $this->db->bind(':partner_state', $data['partner_state']);
         $this->db->bind(':partner_city', $data['partner_city']);
@@ -36,7 +37,7 @@ class Partner
 
     public function getPartners()
     {
-        $this->db->query("SELECT id, partner_status, partner_name, username, partner_location, partner_rc_number, partner_email, partner_state,partner_city,partner_mobile, partner_account_number, partner_account_name, partner_bank_name FROM {$this->table} ORDER BY id DESC");
+        $this->db->query("SELECT id, partner_name, status, username, partner_location, partner_rc_number, partner_email, partner_state,partner_city,partner_mobile, partner_account_number, partner_account_name, partner_bank_name FROM {$this->table} ORDER BY id DESC");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;
@@ -46,7 +47,7 @@ class Partner
 
     public function getPartnersName()
     {
-        $this->db->query("SELECT id, partner_name FROM {$this->table} ORDER BY partner_name");
+        $this->db->query("SELECT id, partner_name, partner_city FROM {$this->table} WHERE status = 1 ORDER BY partner_name");
         $row = $this->db->resultSet();
         if (!$row) {
             return null;
@@ -267,6 +268,18 @@ class Partner
             }
             return false;
         }
+    }
+    
+    public function isEmailExist(string $email)
+    {
+        $query = "SELECT partner_email FROM {$this->table} WHERE partner_email = :email";
+        $this->db->query($query);
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        if ($row) {
+            return true;
+        }
+        return false; 
     }
 
 }

@@ -69,21 +69,26 @@ class Users extends Controller
 
         if ($err_code == 0) {
 
-            if ($this->userModel->login($data)) {
+            // Check if Approved
+            if ($this->userModel->isUserApproved($data)) {
+                if ($this->userModel->login($data)) {
 
-                if ($this->createUserSession($_SESSION['user_id'])) {
+                    if ($this->createUserSession($_SESSION['user_id'])) {
 
-                    if ($this->getType($_POST['type']) == 'partners') {
-                        $this->setUserType(USER_TYPE);
-                    } else {
-                        $this->setUserType(ADMIN_TYPE);
+                        if ($this->getType($_POST['type']) == 'partners') {
+                            $this->setUserType(USER_TYPE);
+                        } else {
+                            $this->setUserType(ADMIN_TYPE);
+                        }
+
+                        $this->redirectToUserAccount();
                     }
-
-                    $this->redirectToUserAccount();
+                } else {
+                    $data['username_err'] = 'Something went wrong, try again';
+                    $this->views('users/signin', $data);
                 }
-
             } else {
-                $data['username_err'] = 'Something went wrong, try again';
+                $data['username_err'] = 'Your account is pending approval, contact the admin';
                 $this->views('users/signin', $data);
             }
 
@@ -101,7 +106,7 @@ class Users extends Controller
             return redirector('');
         }
         Sanitizer::sanitize($_POST);
-        
+
         $data = [
             'name' => $_POST['name'],
             'email' => $_POST['email'],

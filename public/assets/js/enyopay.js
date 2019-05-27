@@ -243,6 +243,7 @@ function enyoUX() {
                 let arr = response.split('/');
                 if (arr[0] == "Partner Created") {
                     alert('Account created successfully, Check your mail for details');
+                    window.location = url;
                 } else {
                     alert(response);
                 }
