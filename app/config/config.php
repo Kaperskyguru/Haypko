@@ -10,7 +10,7 @@ define('PASSWORD', 'Dtdcchub1');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('SITEURL', 'http://localhost/Enyopay');
+define('SITEURL', 'https://haypko.herokuapp.com/');
 
 define('SITENAME', 'Haykpo');
 
