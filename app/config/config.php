@@ -1,9 +1,9 @@
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'Changeless11!');
-define('DB_NAME', 'haykpodb');
+define('DB_HOST', 'db4free.net');
+define('DB_USER', 'kapman');
+define('DB_PASS', 'Changeless11');
+define('DB_NAME', 'haypkodb');
 
 define('USERNAME', 'Owumi2244');
 define('PASSWORD', 'Dtdcchub1');
